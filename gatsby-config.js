@@ -133,8 +133,11 @@ module.exports = {
           return {
             title: siteMetadata.title,
             description: siteMetadata.description,
+            // eslint-disable-next-line @typescript-eslint/camelcase
             site_url: siteMetadata.site_url,
+            // eslint-disable-next-line @typescript-eslint/camelcase
             image_url: siteMetadata.image_url,
+            // eslint-disable-next-line @typescript-eslint/camelcase
             custom_namespaces: {
               media: 'http://search.yahoo.com/mrss/',
             },
@@ -155,6 +158,7 @@ module.exports = {
                   author: postMeta.author.name,
                   url: siteMeta.siteUrl + edge.node.fields.slug,
                   guid: siteMeta.siteUrl + edge.node.fields.slug,
+                  // eslint-disable-next-line @typescript-eslint/camelcase
                   custom_elements: [
                     {
                       'content:encoded': edge.node.html,

@@ -10,7 +10,8 @@
     "lib": ["dom", "es2015", "es2017"],
     "esModuleInterop": true,
     "noUnusedLocals": true,
-    "noUnusedParameters": true
+    "noUnusedParameters": true,
+    "allowJs": true
   },
-  "include": ["./src/**/*"]
+  "include": ["./src/**/*", "gatsby-config.js"]
 }
