@@ -1,7 +1,7 @@
 import { graphql, StaticQuery } from 'gatsby';
-import Image from 'gatsby-image';
 import React from 'react';
 import { SharpImageFixed } from '../../types';
+import Image from '../Image';
 import { Container, Item, ItemLink, Label, LabelWrapper } from './styled';
 
 const stuffToPromote = [

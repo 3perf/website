@@ -1,6 +1,6 @@
-import GatsbyImage from 'gatsby-image';
 import styled, { css } from 'styled-components';
 import { gridSize } from '../../styles/variables';
+import GatsbyImage from '../Image';
 
 export const Text = styled.div`
   margin-bottom: ${gridSize * 2}px;

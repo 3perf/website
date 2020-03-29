@@ -1,7 +1,7 @@
-import GatsbyImage from 'gatsby-image';
 import styled from 'styled-components';
 import { linkActiveStyles, linkStyles } from '../../styles/shared-styles';
 import { gridSize } from '../../styles/variables';
+import GatsbyImage from '../Image';
 
 export const Link = styled.a`
   display: flex;
