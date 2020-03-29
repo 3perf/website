@@ -80,23 +80,15 @@ class Layout extends React.Component<LayoutProps, {}> {
         <GlobalStyle />
         {children}
         <Script
+          src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.0.0-alpha/quicklink.umd.js"
+          defer
+        />
+        <Script
+          data-no-instant
           dangerouslySetInnerHTML={{
             __html: `
-(function(d, w, c) {
-    if (window.location.pathname.startsWith('/blog')) {
-        return;
-    }
-
-    w.ChatraID = 'rbqWqTkKJD2hEGTMf';
-    var s = d.createElement('script');
-    w[c] = w[c] || function() {
-        (w[c].q = w[c].q || []).push(arguments);
-    };
-    s.async = true;
-    s.src = 'https://call.chatra.io/chatra.js';
-    if (d.head) d.head.appendChild(s);
-})(document, window, 'Chatra');
-`,
+              window.addEventListener('load', () => quicklink.listen());
+            `,
           }}
         />
       </div>

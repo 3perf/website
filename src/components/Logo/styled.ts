@@ -33,7 +33,6 @@ export const animationCss = css`
 
 interface LogoSvgProps {
   color: string;
-  enableAnimation: boolean;
 }
 
 export const LogoSvg = styled(_LogoSvg)`
@@ -45,5 +44,7 @@ export const LogoSvg = styled(_LogoSvg)`
     stroke: ${(props: LogoSvgProps) => props.color};
   }
 
-  ${(props: LogoSvgProps) => props.enableAnimation && animationCss}
+  &.js--site-logo_animation-enabled {
+    ${animationCss}
+  }
 `;

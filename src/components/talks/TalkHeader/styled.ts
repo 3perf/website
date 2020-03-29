@@ -1,7 +1,7 @@
-import GatsbyImage from 'gatsby-image';
 import styled from 'styled-components';
 import media from '../../../styles/media';
 import { gridSize, sizes } from '../../../styles/variables';
+import GatsbyImage from '../../Image';
 
 export const Container = styled.div`
   font-size: ${sizes.fontLarge}px;

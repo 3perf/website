@@ -1,6 +1,6 @@
-import GatsbyImage from 'gatsby-image';
 import styled from 'styled-components';
 import { linkActiveStyles, linkStyles } from '../../styles/shared-styles';
+import GatsbyImage from '../Image';
 
 export const Intro = styled.div`
   margin-bottom: 20px;

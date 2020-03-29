@@ -1,7 +1,7 @@
-import GatsbyImage from 'gatsby-image';
 import styled, { css } from 'styled-components';
 import media from '../../../styles/media';
 import { sizes } from '../../../styles/variables';
+import GatsbyImage from '../../Image';
 
 export const Container = styled.figure`
   display: flex;
