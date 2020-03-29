@@ -18,9 +18,3 @@ export interface SharpImageFixed {
     fixed: FixedObject;
   };
 }
-
-declare global {
-  interface Window {
-    Chatra: (methodName: 'openChat', focus?: boolean) => void;
-  }
-}
