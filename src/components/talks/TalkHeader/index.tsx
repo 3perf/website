@@ -1,3 +1,4 @@
+import { FluidObject } from 'gatsby-image';
 import * as React from 'react';
 import { JSXChildrenProp } from '../../../types';
 import Author from '../../Author';
@@ -22,7 +23,7 @@ const formatDate = (date: Date) => {
 };
 
 interface TalkHeaderProps {
-  imageData: object;
+  imageData: FluidObject;
   title: JSXChildrenProp;
   description: JSXChildrenProp;
   authors: Array<{
@@ -44,7 +45,7 @@ const TalkHeader = ({
   date,
 }: TalkHeaderProps) => (
   <Container className={className}>
-    <Image fluid={imageData} />
+    <Image loading="eager" fluid={imageData} />
     <Title>{title}</Title>
     <Description>{description}</Description>
     <Meta>
