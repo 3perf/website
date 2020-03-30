@@ -20,7 +20,7 @@ const getGlobalFonts = () => `
     font-family: 'Montserrat';
     font-weight: 400;
     font-style: normal;
-    font-display: fallback;
+    font-display: swap;
     src: local('Montserrat Regular'),
       local('Montserrat-Regular'),
       url(${montserratRegularWoff2}) format('woff2'),
@@ -31,7 +31,7 @@ const getGlobalFonts = () => `
     font-family: 'Montserrat';
     font-weight: 700;
     font-style: normal;
-    font-display: fallback;
+    font-display: swap;
     src: local('Montserrat Bold'),
       local('Montserrat-Bold'),
       url(${montserratBoldWoff2}) format('woff2'),
@@ -42,7 +42,7 @@ const getGlobalFonts = () => `
     font-family: 'Montserrat';
     font-weight: 900;
     font-style: normal;
-    font-display: fallback;
+    font-display: swap;
     src: local('Montserrat Black'),
       local('Montserrat-Black'),
       url(${montserratBlackWoff2}) format('woff2'),
@@ -53,7 +53,7 @@ const getGlobalFonts = () => `
     font-family: 'Merriweather';
     font-weight: 400;
     font-style: normal;
-    font-display: fallback;
+    font-display: swap;
     src: local('Merriweather Regular'),
       local('Merriweather-Regular'),
       url(${merriweatherRegularWoff2}) format('woff2'),
@@ -64,7 +64,7 @@ const getGlobalFonts = () => `
     font-family: 'Merriweather';
     font-weight: 400;
     font-style: italic;
-    font-display: fallback;
+    font-display: swap;
     src: local('Merriweather Italic'),
       local('Merriweather-Italic'),
       url(${merriweatherItalicWoff2}) format('woff2'),
@@ -75,7 +75,7 @@ const getGlobalFonts = () => `
     font-family: 'Merriweather';
     font-weight: 700;
     font-style: normal;
-    font-display: fallback;
+    font-display: swap;
     src: local('Merriweather Bold'),
       local('Merriweather-Bold'),
       url(${merriweatherBoldWoff2}) format('woff2'),
@@ -86,7 +86,7 @@ const getGlobalFonts = () => `
     font-family: 'Merriweather';
     font-weight: 700;
     font-style: italic;
-    font-display: fallback;
+    font-display: swap;
     src: local('Merriweather Bold Italic'),
       local('Merriweather-BoldItalic'),
       url(${merriweatherBoldItalicWoff2}) format('woff2'),
