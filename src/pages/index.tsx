@@ -32,7 +32,7 @@ const IndexPage = () => (
       <title>PerfPerfPerf · Web performance consulting</title>
       <meta
         name="description"
-        content="We’re helping companies to earn more by making web apps faster. We worked with Google, CMTT, Jochen Schweizer"
+        content="We’re helping companies to earn more by making web apps faster. We worked with Google, Framer, Common, CMTT and others"
       />
       <meta
         name="keywords"
