@@ -5,9 +5,11 @@ import {
   Content,
   FatLlamaLogo,
   GoogleLogo,
-  JochenSchweizerLogo,
+  FramerLogo,
+  Mark,
   LogoText,
   TitleContentWrapper,
+  CommonLogo,
 } from './styled';
 
 const ClientsSection = () => (
@@ -56,6 +58,74 @@ const ClientsSection = () => (
     <TitleContentWrapper
       title={
         <LogoText>
+          <FramerLogo />
+          <p>
+            <a href="https://framer.com/">Framer</a> is a web-based tool for
+            interactive interface design – one of the hottest ones, today.
+          </p>
+        </LogoText>
+      }
+    >
+      <Content>
+        <p>
+          We worked with Framer to perfect their user experience – by making
+          user interactions smoother and app loading faster. We also set up
+          tooling around loading and runtime perf – to help Framer keep &amp;
+          maintain achieved results in the future.
+        </p>
+        <blockquote>
+          <p>
+            We’ve been very satisfied by working with Ivan! Ivan helped us to
+            improve loading performance, runtime performance, and tooling around
+            it.{' '}
+            <Mark>
+              The quality of his work, approach, documentation, etc. has been
+              outstanding.
+            </Mark>
+          </p>
+          <footer>
+            <a href="https://twitter.com/eelco">Eelco Lempsink</a>, VP of
+            Engineering @ Framer
+          </footer>
+        </blockquote>
+      </Content>
+    </TitleContentWrapper>
+
+    <TitleContentWrapper
+      title={
+        <LogoText>
+          <CommonLogo />
+          <p>
+            <a href="https://common.com/">Common</a> is a modern coliving rental
+            company.
+          </p>
+        </LogoText>
+      }
+    >
+      <Content>
+        <p>
+          Common wanted to improve their marketing ROI – and reached to us to
+          help make their website faster. We jumped in and{' '}
+          <Mark>improved the PageSpeed Insights score from 39 to 75.</Mark>
+        </p>
+        <blockquote>
+          <p>
+            Working with Ivan was <Mark>an absolute joy</Mark>. He reliably
+            produces world-class work, communicates effectively and often, and
+            is always willing to share his deep expertise in application
+            performance optimization.
+          </p>
+          <footer>
+            <a href="https://www.linkedin.com/in/ldthorne/">Daniel Thorne</a>,
+            Software Engineer @ Common
+          </footer>
+        </blockquote>
+      </Content>
+    </TitleContentWrapper>
+
+    <TitleContentWrapper
+      title={
+        <LogoText>
           <FatLlamaLogo />
           <p>
             <a href="https://fatllama.com/">Fat Llama</a> is an e-commerce
@@ -78,16 +148,21 @@ const ClientsSection = () => (
         </p>
         <blockquote>
           <p>
-            Ivan gave a ton of extremely useful, actionable feedback that
-            directly improved our First Meaningful Paint, Time to Interactive,
-            Speed Index, First CPU Idle metrics significantly. Also, he helped
-            with some bundle size optimization too.
+            Ivan gave a ton of extremely useful, actionable feedback that{' '}
+            <Mark>
+              directly improved our First Meaningful Paint, Time to Interactive,
+              Speed Index, First CPU Idle metrics significantly
+            </Mark>
+            . Also, he helped with some bundle size optimization too.
           </p>
           <p>
-            Interaction with Ivan is dense in terms of knowledge transfer, and I
-            guarantee you that you will learn a lot of new things. On top of all
-            these, he’s a super smooth person to work with. All in all, I cannot
-            recommend Ivan enough!
+            Interaction with Ivan is{' '}
+            <Mark>
+              dense in terms of knowledge transfer, and I guarantee you that you
+              will learn a lot of new things.
+            </Mark>{' '}
+            On top of all these, he’s a super smooth person to work with. All in
+            all, I cannot recommend Ivan enough!
           </p>
           <footer>
             <a href="https://twitter.com/cihatimamoglu">Cihat Imamoglu</a>,
@@ -102,9 +177,11 @@ const ClientsSection = () => (
         <LogoText>
           <CmttLogo />
           <p>
-            <a href="https://cmtt.ru/">CMTT</a> is a Russia-based media holding
-            company with sites like <a href="https://vc.ru">VC</a> and{' '}
-            <a href="https://tjournal.ru">TJournal</a>.
+            <a href="https://cmtt.ru/">CMTT</a> is a media company specializing
+            in tech and entertainment content. Their sites (like{' '}
+            <a href="https://vc.ru">VC</a> and{' '}
+            <a href="https://tjournal.ru">TJournal</a>) together reach 15
+            million views a month.
           </p>
         </LogoText>
       }
@@ -116,8 +193,10 @@ const ClientsSection = () => (
         </p>
         <p>
           We helped CMTT to optimize the scrolling performance of comments on
-          their sites. The frames-per-second rate got 4–10× higher depending on
-          the device.
+          their sites.{' '}
+          <Mark>
+            The frames-per-second rate got 4–10× higher depending on the device.
+          </Mark>
         </p>
         <blockquote>
           <p>
@@ -128,31 +207,6 @@ const ClientsSection = () => (
             <a href="https://chekalskiy.ru/">Ilya Chekalskiy</a>, CMTT’s CTO
           </footer>
         </blockquote>
-      </Content>
-    </TitleContentWrapper>
-
-    <TitleContentWrapper
-      title={
-        <LogoText>
-          <JochenSchweizerLogo />
-          <p>
-            <a href="https://www.jochen-schweizer.de/">Jochen Schweizer</a> is a
-            German e-commerce company selling experiences (such as hiking with
-            huskies, dinners in an unusual place, and so on).
-          </p>
-        </LogoText>
-      }
-    >
-      <Content>
-        <p>
-          Jochen Schweizer had multiple web performance issues with loading and
-          using the site.
-        </p>
-        <p>
-          We helped to find performance issues and improve the site speed. Made
-          the initial rendering more than twice faster; fixed the runtime
-          issues.
-        </p>
       </Content>
     </TitleContentWrapper>
   </Section>

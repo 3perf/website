@@ -32,9 +32,8 @@ export const ServicesBackground = styled(Background)`
   background: ${colors.softYellow};
 `;
 
-export const ContactFooterBackground = styled(Background)`
+export const FooterWrapper = styled(Background)`
   padding: 0 0 24px;
-  background: ${colors.brightYellow};
 `;
 
 export const Nav = styled(_Nav)`

@@ -1,11 +1,12 @@
 import styled from 'styled-components';
 import media from '../../styles/media';
-import { sizes } from '../../styles/variables';
+import { sizes, colors } from '../../styles/variables';
 import _TitleContentWrapper from '../TitleContentWrapper';
 import cmttUrl from './cmtt.svg';
+import commonUrl from './common.svg';
 import fatLlamaUrl from './fat-llama.svg';
+import framerUrl from './framer.svg';
 import googleUrl from './google.svg';
-import jochenSchweizerUrl from './jochen-schweizer.svg';
 
 export const TitleContentWrapper = styled(_TitleContentWrapper)`
   & + & {
@@ -62,11 +63,15 @@ export const LogoText = styled.div`
 const Logo = styled.img`
   display: block;
   margin: 0 0 12px;
-  width: 120px;
+  height: 48px;
 
   ${media.notSmall`
     margin-top: 10px;
   `};
+`;
+
+export const Mark = styled.mark`
+  background: ${colors.softYellow};
 `;
 
 export const GoogleLogo = styled(Logo).attrs({
@@ -77,12 +82,18 @@ export const GoogleLogo = styled(Logo).attrs({
 
 export const CmttLogo = styled(Logo).attrs({
   src: cmttUrl,
-})``;
+})`
+  height: 36px;
+`;
 
 export const FatLlamaLogo = styled(Logo).attrs({
   src: fatLlamaUrl,
 })``;
 
-export const JochenSchweizerLogo = styled(Logo).attrs({
-  src: jochenSchweizerUrl,
+export const FramerLogo = styled(Logo).attrs({
+  src: framerUrl,
+})``;
+
+export const CommonLogo = styled(Logo).attrs({
+  src: commonUrl,
 })``;
