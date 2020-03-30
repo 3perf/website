@@ -1,5 +1,6 @@
 import classnames from 'classnames';
 import * as React from 'react';
+import Helmet from 'react-helmet';
 import Script from 'react-script-tag';
 import { LogoSvg } from './styled';
 
@@ -26,27 +27,36 @@ const Logo = ({
         color={logoKind === LogoKind.Black ? 'black' : 'white'}
       />
       {isPlayful && (
-        <Script
-          dangerouslySetInnerHTML={{
-            __html: `
-              const playAnimation = () => document.querySelector('.js--site-logo').classList.add('js--site-logo_animation-enabled');
-              const stopAnimation = () => document.querySelector('.js--site-logo').classList.remove('js--site-logo_animation-enabled');
-              // This callback listens to all animationEnd events
-              // and removes the animation as soon as the last element’s animation completes
-              const stopAnimationIfAllDone = (event) => {
-                const target = event.target;
+        // Putting the script into <head> (using <Helmet>) because, otherwise, on a slow network,
+        // it blocks rendering *in the middle of rendering*. As in, the browser renders everything till the script –
+        // and then keeps the remaining part of the page blank for a few seconds.
+        // Ideally, this script should live in the end of <body>, but there’s no easy way
+        // to move it there automatically.
+        <Helmet>
+          <Script
+            dangerouslySetInnerHTML={{
+              __html: `
+                document.addEventListener('DOMContentLoaded', () => {
+                  const playAnimation = () => document.querySelector('.js--site-logo').classList.add('js--site-logo_animation-enabled');
+                  const stopAnimation = () => document.querySelector('.js--site-logo').classList.remove('js--site-logo_animation-enabled');
+                  // This callback listens to all animationEnd events
+                  // and removes the animation as soon as the last element’s animation completes
+                  const stopAnimationIfAllDone = (event) => {
+                    const target = event.target;
 
-                if (target === target.parentNode.lastChild) {
-                  stopAnimation();
-                }
-              }
+                    if (target === target.parentNode.lastChild) {
+                      stopAnimation();
+                    }
+                  }
 
-              document.querySelector('.js--site-logo').addEventListener('click', playAnimation);
-              document.querySelector('.js--site-logo').addEventListener('mouseenter', playAnimation);
-              document.querySelector('.js--site-logo').addEventListener('animationend', stopAnimationIfAllDone);
-            `,
-          }}
-        />
+                  document.querySelector('.js--site-logo').addEventListener('click', playAnimation);
+                  document.querySelector('.js--site-logo').addEventListener('mouseenter', playAnimation);
+                  document.querySelector('.js--site-logo').addEventListener('animationend', stopAnimationIfAllDone);
+                })
+              `,
+            }}
+          />
+        </Helmet>
       )}
     </div>
   );
