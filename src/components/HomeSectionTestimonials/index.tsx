@@ -1,6 +1,7 @@
 import * as React from 'react';
 import commonLogo from './common.svg';
 import fatLlamaLogo from './fat-llama.svg';
+import framerLogo from './framer.svg';
 import googleLogo from './google.svg';
 import {
   Blockquote,
@@ -28,6 +29,7 @@ const HomeSectionTestimonials = () => (
       <Logo src={fatLlamaLogo} />
       <Logo src={googleLogo} />
       <Logo src={commonLogo} />
+      <Logo src={framerLogo} />
     </Logos>
   </Container>
 );

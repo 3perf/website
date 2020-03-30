@@ -1,9 +1,14 @@
 import styled from 'styled-components';
 import media from '../../styles/media';
-import { linkActiveStyles, linkStyles } from '../../styles/shared-styles';
+import { gridSize } from '../../styles/variables';
 
 export const Container = styled.div`
-  text-align: center;
+  margin: 0 -60px;
+  max-width: 900px;
+  padding: 30px 100px 40px 60px;
+  border-radius: 4px;
+  background: #ffdb01;
+  color: #000;
 `;
 
 export const Link = styled.a`
@@ -11,9 +16,14 @@ export const Link = styled.a`
   font-weight: bold;
 
   color: black;
-  border-bottom-color: rgba(0, 0, 0, 0.25);
+  border-bottom: none;
+  text-decoration: underline;
 
   ${media.small`
     font-size: calc(10vw);
   `};
+`;
+
+export const PromptContainer = styled.div`
+  margin-top: ${gridSize * 6}px;
 `;

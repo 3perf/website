@@ -15,7 +15,7 @@ import {
   ChatButton,
   ColumnSectionWrapper,
   ColumnsWrapper,
-  ContactFooterBackground,
+  FooterWrapper,
   ContactSection,
   Content,
   Header,
@@ -84,15 +84,13 @@ const IndexPage = () => (
               <MaterialsSection />
             </ColumnSectionWrapper>
           </ColumnsWrapper>
+          <SectionWrapper id="contact" marginBottom={0}>
+            <ContactSection />
+          </SectionWrapper>
+          <FooterWrapper>
+            <Footer linkToHome={false} license={false} />
+          </FooterWrapper>
         </WidthWrapper>
-        <SectionWrapper id="contact" marginBottom={0}>
-          <ContactFooterBackground>
-            <WidthWrapper>
-              <ContactSection />
-              <Footer linkToHome={false} license={false} />
-            </WidthWrapper>
-          </ContactFooterBackground>
-        </SectionWrapper>
       </div>
     </Content>
   </Layout>
