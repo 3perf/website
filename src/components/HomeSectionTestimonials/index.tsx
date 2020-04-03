@@ -29,7 +29,7 @@ const HomeSectionTestimonials = () => (
       <Logo src={fatLlamaLogo} width="127" height="62" />
       <Logo src={googleLogo} width="148" height="62" />
       <Logo src={commonLogo} width="284" height="62" />
-      <Logo src={framerLogo} width="60" height="62" />
+      <Logo src={framerLogo} width="40" height="62" />
     </Logos>
   </Container>
 );

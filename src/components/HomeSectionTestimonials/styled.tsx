@@ -61,5 +61,4 @@ export const Logos = styled.div`
 
 export const Logo = styled.img`
   margin: ${verticalGap / 2}px ${horizontalGap / 2}px;
-  height: 50px;
 `;
