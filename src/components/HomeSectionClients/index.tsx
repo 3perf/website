@@ -69,9 +69,15 @@ const ClientsSection = () => (
       <Content>
         <p>
           We worked with Framer to perfect their user experience – by making
-          user interactions smoother and app loading faster. We also set up
-          tooling around loading and runtime perf – to help Framer keep &amp;
-          maintain achieved results in the future.
+          user interactions smoother and app loading faster.
+        </p>
+        <p>
+          By working together,{' '}
+          <Mark>
+            we reduced Speed Index and First CPU Idle of Framer Web by 40-45%
+          </Mark>
+          . We also set up tooling around runtime perf – to help Framer keep
+          &amp; maintain achieved results in the future.
         </p>
         <blockquote>
           <p>
@@ -97,7 +103,7 @@ const ClientsSection = () => (
           <CommonLogo />
           <p>
             <a href="https://common.com/">Common</a> is a modern coliving rental
-            company.
+            company. They pride themselves on the design of their housing.
           </p>
         </LogoText>
       }
