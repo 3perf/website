@@ -28,7 +28,7 @@ import twitterCoverUrl from './twitter-cover.png';
 interface ContentPageProps {
   data: {
     webPerf101: SharpImageFixed;
-    googleWebpack: SharpImageFixed;
+    webpackLibs: SharpImageFixed;
   };
 }
 
@@ -38,6 +38,7 @@ interface ContentItemProps {
   description?: string | JSXChildrenProp;
   link: string;
   isNew?: boolean;
+  forceBreakAfter?: boolean;
 }
 const ContentItem = ({
   image,
@@ -45,9 +46,10 @@ const ContentItem = ({
   description,
   link,
   isNew,
+  forceBreakAfter,
 }: ContentItemProps) => {
   return (
-    <ItemLink to={link}>
+    <ItemLink to={link} forceBreakAfter={forceBreakAfter}>
       {image && (
         <ItemImage>
           <GatsbyImage fixed={image.childImageSharp.fixed} />
@@ -89,19 +91,14 @@ const ContentPage = (props: ContentPageProps) => {
               description="A comprehencive guide into modern loading performance"
             />
             <ContentItem
-              link="https://github.com/GoogleChromeLabs/webpack-libs-optimizations"
-              title="webpack-libs-optimizations"
-              description="A community-contributed list of performance tips &amp; tricks
-              for popular JS libraries. Created by us in collaboration with
-              Google"
+              link="https://github.com/iamakulov/awesome-webpack-perf"
+              title="awesome-webpack-perf"
+              description="A curated list of webpack tools for web performance"
+              isNew
             />
             <ContentItem
               link="https://iamakulov.com/notes/optimize-images-webpack/"
               title="How to optimize images in webpack"
-            />
-            <ContentItem
-              link="https://iamakulov.com/notes/resize-scroll/"
-              title="How to optimize resizing or scrolling"
             />
             <ContentItem
               link="/blog/perf-for-startups/"
@@ -116,12 +113,20 @@ const ContentPage = (props: ContentPageProps) => {
               link="https://iamakulov.com/notes/walmart/"
               title="Case study: Analyzing the Walmart site performance"
               description="A deep-dive into improving Walmart’s site speed and conversion"
+              forceBreakAfter
             />
             <ContentItem
               link="https://developers.google.com/web/fundamentals/performance/webpack/"
-              image={props.data.googleWebpack}
               title="Web performance for webpack"
               description="Guide for Google Web Fundamentals"
+            />
+            <ContentItem
+              link="https://github.com/GoogleChromeLabs/webpack-libs-optimizations"
+              title="GoogleChromeLabs/webpack-libs-optimizations"
+              image={props.data.webpackLibs}
+              description="A community-contributed list of performance tips &amp; tricks
+              for popular JS libraries. Created in collaboration with the
+              Google Chrome team"
             />
             <ContentItem
               link="https://iamakulov.com/notes/polished-webpack/"
@@ -136,6 +141,10 @@ const ContentPage = (props: ContentPageProps) => {
               title="How to load polyfills only when needed"
               description="We’be been asked: “These days, how do you typically serve polyfills only to browsers that need them?”"
               isNew
+            />
+            <ContentItem
+              link="https://iamakulov.com/notes/resize-scroll/"
+              title="How to optimize resizing or scrolling"
             />
           </Section>
           <SectionHeader>Tools</SectionHeader>
@@ -179,9 +188,7 @@ export const query = graphql`
       }
     }
 
-    googleWebpack: file(
-      relativePath: { eq: "home-sections/MaterialsSection/google-webpack.png" }
-    ) {
+    webpackLibs: file(relativePath: { eq: "content/webpack-libs.png" }) {
       childImageSharp {
         fixed(height: 150) {
           ...GatsbyImageSharpFixed
