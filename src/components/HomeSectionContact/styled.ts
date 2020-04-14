@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import media from '../../styles/media';
 import { gridSize } from '../../styles/variables';
+import Image from '../Image';
 
 export const Container = styled.div`
   margin: 0 -60px;
@@ -26,4 +27,9 @@ export const Link = styled.a`
 
 export const PromptContainer = styled.div`
   margin-top: ${gridSize * 6}px;
+`;
+
+export const ContactImage = styled(Image)`
+  border-radius: 50%;
+  vertical-align: top;
 `;
