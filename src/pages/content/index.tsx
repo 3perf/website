@@ -38,7 +38,6 @@ interface ContentItemProps {
   description?: string | JSXChildrenProp;
   link: string;
   isNew?: boolean;
-  forceBreakAfter?: boolean;
 }
 const ContentItem = ({
   image,
@@ -46,10 +45,9 @@ const ContentItem = ({
   description,
   link,
   isNew,
-  forceBreakAfter,
 }: ContentItemProps) => {
   return (
-    <ItemLink to={link} forceBreakAfter={forceBreakAfter}>
+    <ItemLink to={link}>
       {image && (
         <ItemImage>
           <GatsbyImage fixed={image.childImageSharp.fixed} />
@@ -113,7 +111,10 @@ const ContentPage = (props: ContentPageProps) => {
               link="https://iamakulov.com/notes/walmart/"
               title="Case study: Analyzing the Walmart site performance"
               description="A deep-dive into improving Walmart’s site speed and conversion"
-              forceBreakAfter
+            />
+            <ContentItem
+              link="/blog/link-rels/"
+              title="Preload, prefetch and other <link> tags"
             />
             <ContentItem
               link="https://developers.google.com/web/fundamentals/performance/webpack/"
@@ -131,10 +132,6 @@ const ContentPage = (props: ContentPageProps) => {
             <ContentItem
               link="https://iamakulov.com/notes/polished-webpack/"
               title="Case study: Improving a popular library’s size for webpack users"
-            />
-            <ContentItem
-              link="/blog/link-rels/"
-              title="Preload, prefetch and other <link> tags"
             />
             <ContentItem
               link="/blog/polyfills/"
