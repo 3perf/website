@@ -60,22 +60,12 @@ export const SectionHeader = styled(_Separator)`
   `}
 `;
 
-interface ItemLinkProps {
-  forceBreakAfter?: boolean;
-}
-
 export const ItemLink = styled(Link)`
   display: block;
   border: none;
   margin-bottom: ${gridSize * 4}px;
   page-break-inside: avoid;
   break-inside: avoid;
-
-  ${(props: ItemLinkProps) =>
-    props.forceBreakAfter &&
-    css`
-      break-after: column;
-    `}
 `;
 
 export const ItemTitle = styled.div`
