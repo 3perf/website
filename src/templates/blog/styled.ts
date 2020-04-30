@@ -3,6 +3,7 @@ import _BlogFooterAccordion from '../../components/BlogFooterAccordion';
 import _Footer from '../../components/Footer';
 import _Nav from '../../components/Nav';
 import codeHighlightStyles from '../../styles/code-highlight-styles';
+import media from '../../styles/media';
 import { linkActiveStyles, linkStyles } from '../../styles/shared-styles';
 import { colors, gridSize, sizes } from '../../styles/variables';
 
@@ -31,6 +32,7 @@ export const Content = styled.article`
   font-family: 'Merriweather', Georgia, serif;
   max-width: 600px;
 
+  /* Headers */
   h1,
   h2,
   h3,
@@ -47,6 +49,7 @@ export const Content = styled.article`
 
   h1 {
     font-size: 2em;
+    font-weight: 900;
   }
 
   h2 {
@@ -57,6 +60,7 @@ export const Content = styled.article`
     font-size: 1.17em;
   }
 
+  /* Images & video */
   a.gatsby-resp-image-link {
     ${linkStyles}
 
@@ -69,18 +73,20 @@ export const Content = styled.article`
     }
   }
 
-  blockquote {
-    margin: ${sizes.paragraphSpacing}px 0;
-    border-left: black 5px solid;
-    padding: ${gridSize * 2}px 0 ${gridSize * 3}px ${gridSize * 4}px;
-    font-style: italic;
-
-    pre,
-    code {
-      font-style: normal;
-    }
+  .gatsby-resp-image-wrapper {
+    width: clamp(100%, 80vw, 900px);
   }
 
+  .sidenote .custom-block-heading .gatsby-resp-image-wrapper,
+  .note .gatsby-resp-image-wrapper {
+    width: unset;
+  }
+
+  video {
+    max-width: 100%;
+  }
+
+  /* Lists */
   ul {
     list-style: none;
     padding-left: 32px;
@@ -98,8 +104,7 @@ export const Content = styled.article`
     margin-bottom: ${sizes.paragraphSpacing * 2.5}px;
   }
 
-  /* Add extra spacing between multi-paragraph lis */
-
+  /* Code highlighting */
   .gatsby-highlight {
     overflow-x: auto;
     margin: 0 -${gridSize * 2}px;
@@ -117,9 +122,72 @@ export const Content = styled.article`
     }
   }
 
-  p + .gatsby-highlight,
-  .gatsby-highlight + p {
+  ${codeHighlightStyles}
+
+  /* Sidenote */
+
+  ${media.notMedium`
+    .sidenote {
+      position: relative;
+    }
+
+    .sidenote .custom-block-heading {
+      position: absolute;
+      top: 0;
+      right: 0;
+      transform: translateX(calc(100% + 48px));
+      width: 300px;
+      font-size: 13px;
+    }
+  `}
+
+  ${media.medium`
+    .sidenote {
+      display: flex;
+      flex-direction: column-reverse;
+    }
+
+    .sidenote .custom-block-heading {
+      background: ${colors.softYellow};
+      margin: ${sizes.paragraphSpacing}px -${gridSize * 2}px 0;
+      padding: ${gridSize}px ${gridSize * 2}px;
+
+      font-size: ${sizes.fontSmall}px;
+
+      &::before {
+        content: 'Sidenote: ';
+        font-weight: bold;
+      }
+    }
+  `}
+
+  /* Random */
+  *:-webkit-any(p, .custom-block, .gatsby-highlight) + *:-webkit-any(p, .custom-block, .gatsby-highlight) {
     margin-top: ${sizes.paragraphSpacing}px;
+  }
+
+  *:-moz-any(p, .custom-block, .gatsby-highlight) + *:-moz-any(p, .custom-block, .gatsby-highlight) {
+    margin-top: ${sizes.paragraphSpacing}px;
+  }
+
+  *:matches(p, .custom-block, .gatsby-highlight) + *:matches(p, .custom-block, .gatsby-highlight) {
+    margin-top: ${sizes.paragraphSpacing}px;
+  }
+
+  *:is(p, .custom-block, .gatsby-highlight) + *:is(p, .custom-block, .gatsby-highlight) {
+    margin-top: ${sizes.paragraphSpacing}px;
+  }
+
+  blockquote {
+    margin: ${sizes.paragraphSpacing}px 0;
+    border-left: black 5px solid;
+    padding: ${gridSize * 2}px 0 ${gridSize * 3}px ${gridSize * 4}px;
+    font-style: italic;
+
+    pre,
+    code {
+      font-style: normal;
+    }
   }
 
   .note {
@@ -135,8 +203,6 @@ export const Content = styled.article`
       margin-bottom: -${gridSize}px;
     }
   }
-
-  ${codeHighlightStyles}
 `;
 
 export const BlogFooterAccordion = styled(_BlogFooterAccordion)`

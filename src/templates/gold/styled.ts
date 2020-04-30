@@ -9,23 +9,64 @@ export const Nav = styled(_Nav)`
   margin-top: ${sizes.navTopMargin}px;
   margin-bottom: ${gridSize * 6}px;
   font-size: 16px;
+
+  @media print {
+    display: none;
+  }
 `;
 
-export const Header = styled.header`
+export const HeaderContainer = styled.header<{ media: 'screen' | 'print' }>`
   margin-bottom: ${gridSize * 4}px;
+
+  @media not ${(props) => props.media} {
+    display: none;
+  }
+`;
+
+export const ClientLogo = styled.img`
+  display: block;
+  height: 50px;
+  margin-bottom: ${gridSize}px;
 `;
 
 export const Meta = styled.div`
-  font-size: ${sizes.fontSmall};
+  font-size: ${sizes.fontSmall}px;
+`;
+
+export const MetaIcon = styled.img`
+  height: 1em;
+  vertical-align: -1px;
 `;
 
 export const Title = styled.h1`
-  margin: 0;
+  margin: 0 0 ${gridSize}px;
+  line-height: 1.2;
+  font-weight: 900;
+`;
+
+export const PrintButton = styled.button`
+  font: inherit;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: none;
+
+  ${linkStyles}
+
+  &:hover,
+  &:focus,
+  &:active {
+    ${linkActiveStyles}
+  }
 `;
 
 export const Content = styled.article`
   font-family: 'Merriweather', Georgia, serif;
   max-width: 600px;
+
+  @media print {
+    max-width: none;
+  }
 
   h1,
   h2,
@@ -39,6 +80,18 @@ export const Content = styled.article`
     .anchor {
       border: none;
     }
+  }
+
+  h1 {
+    font-size: 2em;
+  }
+
+  h2 {
+    font-size: 1.5em;
+  }
+
+  h3 {
+    font-size: 1.17em;
   }
 
   a.gatsby-resp-image-link {
@@ -80,11 +133,47 @@ export const Content = styled.article`
       padding: 0;
       background: unset;
     }
+
+    @media print {
+      overflow: hidden;
+
+      > pre[class*='language-'],
+      > pre[class*='language-'] > code {
+        white-space: pre-wrap;
+        word-wrap: break-word;
+      }
+    }
   }
 
   p + .gatsby-highlight,
   .gatsby-highlight + p {
     margin-top: ${sizes.paragraphSpacing}px;
+  }
+
+  .toc {
+    background: ${colors.softYellow};
+    margin: ${sizes.paragraphSpacing}px -${gridSize * 2}px;
+    padding: ${gridSize}px ${gridSize * 2}px;
+    font-size: ${sizes.fontSmall}px;
+    border-radius: 2px;
+    font-family: 'Montserrat', sans-serif;
+
+    ul {
+      padding-left: ${gridSize * 3}px;
+      list-style: none;
+    }
+
+    > ul {
+      padding-left: 0;
+    }
+
+    li + li {
+      margin-top: ${gridSize}px;
+    }
+
+    @media print {
+      display: none;
+    }
   }
 
   .note {

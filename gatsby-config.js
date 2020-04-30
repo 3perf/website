@@ -65,6 +65,7 @@ module.exports = {
       resolve: 'gatsby-transformer-remark',
       options: {
         plugins: [
+          `gatsby-remark-table-of-contents`,
           `gatsby-remark-autolink-headers`,
           {
             resolve: `gatsby-remark-prismjs`,
@@ -76,10 +77,18 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 600,
-              quality: 80,
-              withWebp: { quality: 80 },
+              maxWidth: 900,
+              quality: 100,
+              withWebp: { quality: 100 },
               linkImagesToOriginal: false,
+            },
+          },
+          {
+            resolve: 'gatsby-remark-custom-blocks',
+            options: {
+              blocks: {
+                sidenote: { classes: 'sidenote', title: 'required' },
+              },
             },
           },
         ],
@@ -147,7 +156,7 @@ module.exports = {
         feeds: [
           {
             serialize: ({ query: { site, allMarkdownRemark } }) => {
-              return allMarkdownRemark.edges.map(edge => {
+              return allMarkdownRemark.edges.map((edge) => {
                 const siteMeta = site.siteMetadata;
                 const postMeta = edge.node.frontmatter.blog;
 
