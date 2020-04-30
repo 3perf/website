@@ -6518,6 +6518,15 @@ gatsby-core-utils@^1.1.1:
     configstore "^5.0.1"
     node-object-hash "^2.0.0"
 
+gatsby-core-utils@^1.1.4:
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/gatsby-core-utils/-/gatsby-core-utils-1.1.4.tgz#4b3c482f9633bafab1291a91f84caab23cdd8b85"
+  integrity sha512-cXUB9PiPGqHzbFlwnJMgd9ezXb1goWOufh8oJglxp4x7vlPKUjPWpVG0UkwF6HNunpreN4WD8Jex5ed/dxEgtw==
+  dependencies:
+    ci-info "2.0.0"
+    configstore "^5.0.1"
+    node-object-hash "^2.0.0"
+
 gatsby-graphiql-explorer@^0.3.1:
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/gatsby-graphiql-explorer/-/gatsby-graphiql-explorer-0.3.1.tgz#ea38430e1b748c681be0e17e85b9ead8ad51fdeb"
@@ -6691,6 +6700,14 @@ gatsby-remark-autolink-headers@^2.0.13:
     mdast-util-to-string "^1.1.0"
     unist-util-visit "^1.4.1"
 
+gatsby-remark-custom-blocks@^2.2.4:
+  version "2.2.4"
+  resolved "https://registry.yarnpkg.com/gatsby-remark-custom-blocks/-/gatsby-remark-custom-blocks-2.2.4.tgz#2c5de003cb646505e846e90a26480351be9b29df"
+  integrity sha512-4fLJdIcTodLuBg1PzwUhE3u3942lfibJGvia96zv6fVgARhvSAfd9Kpg2lE+RhLXaYmEzIVpdGiCG2zxRH+bVQ==
+  dependencies:
+    "@babel/runtime" "^7.8.7"
+    remark-custom-blocks "^2.5.0"
+
 gatsby-remark-images@^3.0.3:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/gatsby-remark-images/-/gatsby-remark-images-3.2.1.tgz#0f767fda76c85cb0ddca2f7ff1b82ca5b4fb716a"
@@ -6708,10 +6725,10 @@ gatsby-remark-images@^3.0.3:
     unist-util-select "^1.5.0"
     unist-util-visit-parents "^2.1.2"
 
-gatsby-remark-prismjs@^3.2.0:
-  version "3.4.1"
-  resolved "https://registry.yarnpkg.com/gatsby-remark-prismjs/-/gatsby-remark-prismjs-3.4.1.tgz#455c60f24882a6167d3035806310d462b9d4f2ec"
-  integrity sha512-DPg4PjalrElXXZ3KZRiWiJiHIsXaee51nN2hCoGC2hfaXW8VdSjXhpBSSps9OWuB+QNmdTp/EP3FDiiwImjpUw==
+gatsby-remark-prismjs@^3.4.5:
+  version "3.4.5"
+  resolved "https://registry.yarnpkg.com/gatsby-remark-prismjs/-/gatsby-remark-prismjs-3.4.5.tgz#4d23ec6b6db8a5af1e1ace63b22b1413bc7e4acf"
+  integrity sha512-vw3VgHm4/o0xtxCBtfLztLU/fRHgdb6skTJ3DXlALCOaXqJ5cQjM8iShg3j5gOiEuMa7xxFUTaIAwKmMK0WbfQ==
   dependencies:
     "@babel/runtime" "^7.8.7"
     parse-numeric-range "^0.0.2"
@@ -6721,6 +6738,14 @@ gatsby-remark-source-name@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/gatsby-remark-source-name/-/gatsby-remark-source-name-1.0.0.tgz#f8200e8ea17b8e242d3d34cd598836aaed3057a8"
   integrity sha512-FNukZxhn7ncOt7jHkl2raIRVVN7O+UPlihnzHfGgg8IBUGnAyDTQW88tcx1cEMXEwZTYNPIjY9txhtCkg1NfwA==
+
+gatsby-remark-table-of-contents@^0.0.9:
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/gatsby-remark-table-of-contents/-/gatsby-remark-table-of-contents-0.0.9.tgz#c5c781a3da692f604326ab794498104f0663a4df"
+  integrity sha512-qGBP31v9qAz/g0HfwG/kEyJq/OdrDbdEVw1VzaX1uodXZo6IzhYhcx7Lg+S7aohmKafc9f59BfSFOu4hrw2Xkw==
+  dependencies:
+    js-yaml "^3.13.1"
+    mdast-util-toc "^4.2.0"
 
 gatsby-source-filesystem@^2.0.2:
   version "2.2.2"
@@ -6766,14 +6791,14 @@ gatsby-telemetry@^1.2.2:
     stack-utils "1.0.2"
     uuid "3.4.0"
 
-gatsby-transformer-remark@^2.1.19:
-  version "2.7.1"
-  resolved "https://registry.yarnpkg.com/gatsby-transformer-remark/-/gatsby-transformer-remark-2.7.1.tgz#986871c3ca9a1b7d1c609e8f378a68d808827770"
-  integrity sha512-9geE8itjePDvaa0uWmyRgi2emPt9ut420YyjaNJ1/4eZw9Yj8zAuCdancw7j1buhL0UAxgQ2YseO6+MWTHEoMw==
+gatsby-transformer-remark@^2.7.5:
+  version "2.7.5"
+  resolved "https://registry.yarnpkg.com/gatsby-transformer-remark/-/gatsby-transformer-remark-2.7.5.tgz#bb279e90543eca895dd504e070d29aff5348db0d"
+  integrity sha512-/2vehj+Ev7zpAF1OL0jqttjrCU0Ti2SXRwYbYtAo/AkXTM/Wn6yA7gLUOT74eM/Q2DosKcQVB3rkob/uJiXayQ==
   dependencies:
     "@babel/runtime" "^7.8.7"
     bluebird "^3.7.2"
-    gatsby-core-utils "^1.1.1"
+    gatsby-core-utils "^1.1.4"
     gray-matter "^4.0.2"
     hast-util-raw "^4.0.0"
     hast-util-to-html "^4.0.1"
@@ -9657,6 +9682,17 @@ mdast-util-to-string@^1.0.5, mdast-util-to-string@^1.1.0:
   resolved "https://registry.yarnpkg.com/mdast-util-to-string/-/mdast-util-to-string-1.1.0.tgz#27055500103f51637bd07d01da01eb1967a43527"
   integrity sha512-jVU0Nr2B9X3MU4tSK7JP1CMkSvOj7X5l/GboG1tKRw52lLF1x2Ju92Ms9tNetCcbfX3hzlM73zYo2NKkWSfF/A==
 
+mdast-util-toc@^4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/mdast-util-toc/-/mdast-util-toc-4.2.0.tgz#9085c4313359c981e4c1d22efe02f8ce01072da4"
+  integrity sha512-BEbxg3GtAsvswmV9bMAV/WJA7v0CsG5tYk90xnTlIeCnnBKD6Cof3KEg/K3xQ1O2FRyJKMWkgKZB2mpnOjA0tg==
+  dependencies:
+    extend "^3.0.2"
+    github-slugger "^1.2.1"
+    mdast-util-to-string "^1.0.5"
+    unist-util-is "^3.0.0"
+    unist-util-visit "^1.1.0"
+
 mdast-util-toc@^5.0:
   version "5.0.2"
   resolved "https://registry.yarnpkg.com/mdast-util-toc/-/mdast-util-toc-5.0.2.tgz#5d16eeb4e4af8d9d8d9f6837d012a6334eeffd97"
@@ -11653,10 +11689,10 @@ prepend-http@^2.0.0:
   resolved "https://registry.yarnpkg.com/prepend-http/-/prepend-http-2.0.0.tgz#e92434bfa5ea8c19f41cdfd401d741a3c819d897"
   integrity sha1-6SQ0v6XqjBn0HN/UAddBo8gZ2Jc=
 
-prettier@^1.15.3:
-  version "1.19.1"
-  resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.19.1.tgz#f7d7f5ff8a9cd872a7be4ca142095956a60797cb"
-  integrity sha512-s7PoyDv/II1ObgQunCbB9PdLmUcBZcnWOcxDh7O0N/UwDEsHyqkW+Qh28jW+mVuCdx7gLB0BotYI1Y6uI9iyew==
+prettier@^2.0.5:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.0.5.tgz#d6d56282455243f2f92cc1716692c08aa31522d4"
+  integrity sha512-7PtVymN48hGcO4fGjybyBSIWDsLU4H4XlvOHfq91pz9kkGlonzwTfYkaIEwiRg/dAJF9YlbsduBAgtYLi+8cFg==
 
 pretty-bytes@^4.0.2:
   version "4.0.2"
@@ -12455,6 +12491,13 @@ relateurl@^0.2.7:
   version "0.2.7"
   resolved "https://registry.yarnpkg.com/relateurl/-/relateurl-0.2.7.tgz#54dbf377e51440aca90a4cd274600d3ff2d888a9"
   integrity sha1-VNvzd+UUQKypCkzSdGANP/LYiKk=
+
+remark-custom-blocks@^2.5.0:
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/remark-custom-blocks/-/remark-custom-blocks-2.5.0.tgz#57cfb814b2c867fbd45a2e331582a1e402e0c4e5"
+  integrity sha512-FcCd5Boqn4XBXnlIvpy/9jyVTOZRg7unXv8m14FM4EM0qXLeSvxSReRfuoWmFWZwi0+MOf8bqEwJIBut0NYdJw==
+  dependencies:
+    space-separated-tokens "^1.1.5"
 
 remark-parse@^6.0.0, remark-parse@^6.0.3:
   version "6.0.3"
@@ -13450,7 +13493,7 @@ source-map@~0.1.30:
   dependencies:
     amdefine ">=0.0.4"
 
-space-separated-tokens@^1.0.0:
+space-separated-tokens@^1.0.0, space-separated-tokens@^1.1.5:
   version "1.1.5"
   resolved "https://registry.yarnpkg.com/space-separated-tokens/-/space-separated-tokens-1.1.5.tgz#85f32c3d10d9682007e917414ddc5c26d1aa6899"
   integrity sha512-q/JSVd1Lptzhf5bkYm4ob4iWPjx0KiRe3sRFBNrVqbJkFaBm5vbbowy1mymoPNLRa52+oadOhJ+K49wsSeSjTA==

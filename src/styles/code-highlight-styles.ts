@@ -9,16 +9,19 @@ const codeHighlightStyles = css`
   code[class*='language-'],
   pre[class*='language-'] {
     text-align: left;
-    white-space: pre;
     word-spacing: normal;
     word-break: normal;
     word-wrap: normal;
 
-    -moz-tab-size: 4;
-    -o-tab-size: 4;
-    tab-size: 4;
+    -moz-tab-size: 2;
+    -o-tab-size: 2;
+    tab-size: 2;
 
     hyphens: none;
+  }
+
+  pre[class*='language-'] {
+    white-space: pre;
   }
 
   pre[class*='language-']::selection,

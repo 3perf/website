@@ -1,10 +1,22 @@
 import { graphql } from 'gatsby';
 import * as React from 'react';
 import Helmet from 'react-helmet';
+import Script from 'react-script-tag';
 import Layout from '../../components/Layout';
 import { LogoKind } from '../../components/Logo';
 import WidthWrapper from '../../components/WidthWrapper';
-import { Content, Footer, Header, Meta, Nav, Title } from './styled';
+import lockIcon from './lock.svg';
+import {
+  ClientLogo,
+  Content,
+  Footer,
+  MetaIcon,
+  HeaderContainer,
+  Meta,
+  Nav,
+  PrintButton,
+  Title,
+} from './styled';
 
 interface ComponentProps {
   data: {
@@ -15,14 +27,68 @@ interface ComponentProps {
       frontmatter: {
         gold: {
           title: string;
-          author: string;
           date: string;
           client: string;
+          clientLogo?: {
+            publicURL: string;
+          };
         };
       };
     };
   };
 }
+
+const Header = ({
+  clientLogoUrl,
+  title,
+  date,
+  client,
+}: {
+  clientLogoUrl?: string;
+  title: string;
+  date: string;
+  client: string;
+}) => {
+  const commonMeta = (
+    <>
+      <>
+        <MetaIcon src={lockIcon} />
+        &nbsp;Private
+      </>{' '}
+      · {date}
+      {clientLogoUrl ? null : <> · {client}</>}
+    </>
+  );
+
+  return (
+    <>
+      <HeaderContainer media="screen">
+        {clientLogoUrl && <ClientLogo src={clientLogoUrl} />}
+        <Title>{title}</Title>
+        <Meta>
+          {commonMeta} ·{' '}
+          <PrintButton className="js--print-button">
+            Print or save as PDF
+          </PrintButton>
+        </Meta>
+        <Script
+          dangerouslySetInnerHTML={{
+            __html: `
+                document.querySelector('.js--print-button').addEventListener('click', () => {
+                  window.print();
+                })
+              `,
+          }}
+        />
+      </HeaderContainer>
+      <HeaderContainer media="print">
+        {clientLogoUrl && <ClientLogo src={clientLogoUrl} />}
+        <Title>{title}</Title>
+        <Meta>{commonMeta} · By PerfPerfPerf</Meta>
+      </HeaderContainer>
+    </>
+  );
+};
 
 const Component = ({ data }: ComponentProps) => {
   const page = data.markdownRemark;
@@ -38,12 +104,12 @@ const Component = ({ data }: ComponentProps) => {
           <meta name="robots" content="noindex" />
         </Helmet>
         <Nav logoKind={LogoKind.Black} />
-        <Header>
-          <Meta>
-            {pageMeta.date} · {pageMeta.author} · {pageMeta.client}
-          </Meta>
-          <Title>{pageMeta.title}</Title>
-        </Header>
+        <Header
+          clientLogoUrl={pageMeta.clientLogo?.publicURL}
+          title={pageMeta.title}
+          date={pageMeta.date}
+          client={pageMeta.client}
+        />
         <Content>
           <div dangerouslySetInnerHTML={{ __html: page.html }} />
         </Content>
@@ -69,9 +135,11 @@ export const pageQuery = graphql`
       frontmatter {
         gold {
           title
-          author
           date(formatString: "D MMMM YYYY")
           client
+          clientLogo: logo {
+            publicURL
+          }
         }
       }
     }

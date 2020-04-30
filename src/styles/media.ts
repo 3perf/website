@@ -12,6 +12,18 @@ const media = {
       ${css(arg, ...otherArgs)}
     }
   `,
+
+  medium: (arg: any, ...otherArgs: any[]) => css`
+    @media (max-width: 1024px) {
+      ${css(arg, ...otherArgs)}
+    }
+  `,
+
+  notMedium: (arg: any, ...otherArgs: any[]) => css`
+    @media (min-width: 1025px) {
+      ${css(arg, ...otherArgs)}
+    }
+  `,
 };
 
 export default media;
