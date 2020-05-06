@@ -91,6 +91,7 @@ module.exports = {
               },
             },
           },
+          `gatsby-remark-3perf-transformer`,
         ],
       },
     },
