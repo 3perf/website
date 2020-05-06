@@ -4,6 +4,7 @@ import _Footer from '../../components/Footer';
 import _Nav from '../../components/Nav';
 import codeHighlightStyles from '../../styles/code-highlight-styles';
 import media from '../../styles/media';
+import { anyPlusAny } from '../../styles/mixins';
 import { linkActiveStyles, linkStyles } from '../../styles/shared-styles';
 import { colors, gridSize, sizes } from '../../styles/variables';
 
@@ -125,7 +126,6 @@ export const Content = styled.article`
   ${codeHighlightStyles}
 
   /* Sidenote */
-
   ${media.notMedium`
     .sidenote {
       position: relative;
@@ -162,21 +162,9 @@ export const Content = styled.article`
   `}
 
   /* Random */
-  *:-webkit-any(p, .custom-block, .gatsby-highlight) + *:-webkit-any(p, .custom-block, .gatsby-highlight) {
+  ${anyPlusAny('p', '.custom-block', '.gatsby-highlight')`
     margin-top: ${sizes.paragraphSpacing}px;
-  }
-
-  *:-moz-any(p, .custom-block, .gatsby-highlight) + *:-moz-any(p, .custom-block, .gatsby-highlight) {
-    margin-top: ${sizes.paragraphSpacing}px;
-  }
-
-  *:matches(p, .custom-block, .gatsby-highlight) + *:matches(p, .custom-block, .gatsby-highlight) {
-    margin-top: ${sizes.paragraphSpacing}px;
-  }
-
-  *:is(p, .custom-block, .gatsby-highlight) + *:is(p, .custom-block, .gatsby-highlight) {
-    margin-top: ${sizes.paragraphSpacing}px;
-  }
+  `}
 
   blockquote {
     margin: ${sizes.paragraphSpacing}px 0;
@@ -188,6 +176,10 @@ export const Content = styled.article`
     code {
       font-style: normal;
     }
+  }
+
+  mark {
+    background: ${colors.softYellow};
   }
 
   .note {

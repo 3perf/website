@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import _Footer from '../../components/Footer';
 import _Nav from '../../components/Nav';
 import codeHighlightStyles from '../../styles/code-highlight-styles';
+import { anyPlusAny } from '../../styles/mixins';
 import { linkActiveStyles, linkStyles } from '../../styles/shared-styles';
 import { colors, gridSize, sizes } from '../../styles/variables';
 
@@ -118,6 +119,22 @@ export const Content = styled.article`
     }
   }
 
+  .table-container {
+    overflow: auto;
+  }
+
+  table {
+    text-align: left;
+    border-collapse: collapse;
+
+    th,
+    td {
+      border: 1px solid #ccc;
+      padding: ${gridSize / 2}px ${gridSize}px;
+      vertical-align: baseline;
+    }
+  }
+
   .gatsby-highlight {
     overflow-x: auto;
     margin: 0 -${gridSize * 2}px;
@@ -145,9 +162,12 @@ export const Content = styled.article`
     }
   }
 
-  p + .gatsby-highlight,
-  .gatsby-highlight + p {
+  ${anyPlusAny('p', '.table-container', '.gatsby-highlight')`
     margin-top: ${sizes.paragraphSpacing}px;
+  `}
+
+  mark {
+    background: ${colors.softYellow};
   }
 
   .toc {
