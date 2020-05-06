@@ -81,6 +81,7 @@ module.exports = {
               quality: 100,
               withWebp: { quality: 100 },
               linkImagesToOriginal: false,
+              backgroundColor: 'none',
             },
           },
           {
@@ -89,6 +90,13 @@ module.exports = {
               blocks: {
                 sidenote: { classes: 'sidenote', title: 'required' },
               },
+            },
+          },
+          {
+            resolve: `gatsby-remark-copy-linked-files`,
+            options: {
+              // Include images not processed by `gatsby-image`
+              ignoreFileExtensions: [],
             },
           },
           `gatsby-remark-3perf-transformer`,
