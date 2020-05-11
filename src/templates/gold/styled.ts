@@ -95,16 +95,22 @@ export const Content = styled.article`
     font-size: 1.17em;
   }
 
-  a.gatsby-resp-image-link {
-    ${linkStyles}
+  .image-container {
+    /* Reset figure styles */
+    margin: 0;
+  }
 
-    border: 1px solid #ccc;
+  .image-container img {
+    /* clamp(100%, 80vw, 900px) won’t work for scrollable images.
+     * In scrollable images on wide screens,
+     * 100% is more than 900px, and clamp() returns 100% */
+    width: min(max(100%, 80vw), 900px);
+    height: auto;
+  }
 
-    &:hover,
-    &:focus,
-    &:active {
-      ${linkActiveStyles}
-    }
+  .sidenote .custom-block-heading .image-container img,
+  .note .image-container img {
+    width: 100%;
   }
 
   blockquote {
@@ -183,12 +189,16 @@ export const Content = styled.article`
       list-style: none;
     }
 
+    li {
+      margin-top: ${gridSize}px;
+    }
+
     > ul {
       padding-left: 0;
     }
 
-    li + li {
-      margin-top: ${gridSize}px;
+    > ul > li:first-child {
+      margin-top: 0;
     }
 
     @media print {

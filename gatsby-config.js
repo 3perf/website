@@ -1,3 +1,5 @@
+const createImageMarkup = require('./gatsby-config-create-image-markup.js');
+
 let siteUrl = 'https://3perf.com';
 if (process.env.NETLIFY) {
   siteUrl =
@@ -65,7 +67,7 @@ module.exports = {
       resolve: 'gatsby-transformer-remark',
       options: {
         plugins: [
-          `gatsby-remark-table-of-contents`,
+          `gatsby-remark-3perf-table-of-contents`,
           `gatsby-remark-autolink-headers`,
           {
             resolve: `gatsby-remark-prismjs`,
@@ -75,13 +77,15 @@ module.exports = {
           },
           '@weknow/gatsby-remark-twitter',
           {
-            resolve: `gatsby-remark-images`,
+            resolve: `gatsby-remark-images-anywhere`,
             options: {
+              // Sharp options
               maxWidth: 900,
               quality: 100,
               withWebp: { quality: 100 },
-              linkImagesToOriginal: false,
-              backgroundColor: 'none',
+
+              // Custom image markup (simplified & with support for `scrollable`)
+              createMarkup: createImageMarkup,
             },
           },
           {
@@ -89,6 +93,8 @@ module.exports = {
             options: {
               blocks: {
                 sidenote: { classes: 'sidenote', title: 'required' },
+                // make a `note` a <blockquote> for better rendering in Pocket/Feedly/etc
+                note: { classes: 'note', containerElement: 'blockquote' },
               },
             },
           },

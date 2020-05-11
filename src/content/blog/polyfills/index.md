@@ -32,9 +32,10 @@ A colleague asked me:
 I know three ready-to-use approaches for that:
 
 - [_polyfill.io_](#polyfillio)
-- [the `module`/`nomodule` pattern](#modulenomodule)
-- [the `useBuiltIns` option in `@babel/preset-env`](#babels-usebuiltins)
 
+- [the `module`/`nomodule` pattern](#modulenomodule)
+
+- [the `useBuiltIns` option in `@babel/preset-env`](#babels-usebuiltins)
 
 # polyfill.io
 
@@ -57,8 +58,6 @@ _polyfill.io_ also [supports picking a subset of polyfills.](https://polyfill.io
 
 ## Tricky parts
 
-<div class="list-wrapper_multiparagraph">
-
 1. The _polyfill.io_ script will add 50-300 ms to your [Time to Interactive](https://web.dev/tti/). The script is (obviously) hosted on a server different from yours, and [loading stuff from a different server is costly](https://csswizardry.com/2019/05/self-host-your-static-assets/). The browser will have to spend extra 50-300 ms to setup a connection to the server, and this means adding 50-300 ms to your Time to Interactive.
 
    (Well, unless you resort to [self-hosting](https://github.com/Financial-Times/polyfill-library) or [complex CDN hacks](https://blog.annamalai.me/posts/replicating-polyfill.io-using-cloudflare-workers/).)
@@ -66,8 +65,6 @@ _polyfill.io_ also [supports picking a subset of polyfills.](https://polyfill.io
 2. The _polyfill.io_ script might add these 50-300 ms to your [First Contentful Paint](https://web.dev/fcp/) as well – if you put it into `<head>` without an `async` or a `defer` attribute.
 
 3. In the (unlikely) event of a _polyfill.io_ outage, your site will either get very slow, or will break in older browsers. The outage is unlikely because _polyfill.io_ relies on a CDN and has never gone down so far; but keep this in mind.
-
-</div>
 
 # module/nomodule
 
@@ -90,7 +87,9 @@ This pattern relies on the fact that old browsers – ones that don’t support 
 So, in the snippet above:
 
 - the `/polyfills/full.min.js` script will only load in browsers that don’t support ES2015 and don’t recognize the `nomodule` attrubute – e.g., IE11;
+
 - the `/polyfills/modern.min.js` script will only load in browsers that support ES2015 and recognize `type="module"` scripts – [Chrome 61+, Firefox 60+, Safari 10.1+](https://caniuse.com/#feat=es6-module);
+
 - the `/bundle.min.js` script will load in all browsers.
 
 <div class="note">
@@ -103,13 +102,9 @@ Philip Walton wrote [a great detailed article about the `module`/`nomodule` appr
 
 There’s a bunch of guides and plugins for bundles and frameworks that help to implement the `module`/`nomodule` pattern, e.g.:
 
-<div class="list-wrapper_oneline">
-
 - [for webpack](https://dev.to/thejohnstew/differential-serving-3dkf)
 - [for Babel](https://babeljs.io/docs/en/babel-preset-env#targetsesmodules)
 - [for Next.js](https://github.com/zeit/next.js/issues/7563#issuecomment-568569235)
-
-</div>
 
 </div>
 
@@ -173,8 +168,6 @@ console.log([5, 6, 7].includes(5));
 
 ## Tricky parts
 
-<div class="list-wrapper_multiparagraph">
-
 1. `useBuiltIns: "entry"` is not very useful if you’re targeting old browsers, like IE 11. It might remove _some_ polyfills, like `Object.getPrototypeOf`, but most of them will stay in the bundle and would still be downloaded by everyone.
 
 2. If you use _core-js 2_, `useBuiltIns: "usage"` will fail to add some of the newer polyfills. For example, it won’t polyfill this code:
@@ -195,10 +188,8 @@ console.log([5, 6, 7].includes(5));
    import { myVar } from './myModule';
    myVar.includes();
    ```
-   
-   `@babel/preset-env` has no way of knowing whether `myVar` is an array or a string – so it’d bundle polyfills both for `Array.prototype.includes` and `String.prototype.includes`.
 
-</div>
+   `@babel/preset-env` has no way of knowing whether `myVar` is an array or a string – so it’d bundle polyfills both for `Array.prototype.includes` and `String.prototype.includes`.
 
 # Summing up
 
@@ -211,7 +202,7 @@ All three widely supported solutions have their benefits and drawbacks:
 The best solution would be a custom one: something that combines benefits of _polyfill.io_ and Babel’s `useBuiltIns` but doesn’t incur their costs. To do this, you may:
 
 - build multiple bundles using Babel’s `useBuiltIns` and different target browsers – and serve the right bundle based on the user agent;
-- or follow a Philip Walton’s [approach with client-side conditional loading](https://philipwalton.com/articles/loading-polyfills-only-when-needed/). 
+- or follow a Philip Walton’s [approach with client-side conditional loading](https://philipwalton.com/articles/loading-polyfills-only-when-needed/).
 
 <br>
 

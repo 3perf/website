@@ -29,6 +29,7 @@ interface ContentPageProps {
   data: {
     webPerf101: SharpImageFixed;
     webpackLibs: SharpImageFixed;
+    notion: SharpImageFixed;
   };
 }
 
@@ -92,7 +93,6 @@ const ContentPage = (props: ContentPageProps) => {
               link="https://github.com/iamakulov/awesome-webpack-perf"
               title="awesome-webpack-perf"
               description="A curated list of webpack tools for web performance"
-              isNew
             />
             <ContentItem
               link="https://iamakulov.com/notes/optimize-images-webpack/"
@@ -111,6 +111,13 @@ const ContentPage = (props: ContentPageProps) => {
               link="https://iamakulov.com/notes/walmart/"
               title="Case study: Analyzing the Walmart site performance"
               description="A deep-dive into improving Walmart’s site speed and conversion"
+            />
+            <ContentItem
+              image={props.data.notion}
+              link="/blog/notion/"
+              title="Case study: Analyzing Notion app performance"
+              description="How to make a React app load ~30% faster – just by tuning some configs and delaying some scripts"
+              isNew
             />
             <ContentItem
               link="/blog/link-rels/"
@@ -137,7 +144,6 @@ const ContentPage = (props: ContentPageProps) => {
               link="/blog/polyfills/"
               title="How to load polyfills only when needed"
               description="We’be been asked: “These days, how do you typically serve polyfills only to browsers that need them?”"
-              isNew
             />
             <ContentItem
               link="https://iamakulov.com/notes/resize-scroll/"
@@ -178,6 +184,14 @@ export const query = graphql`
     webPerf101: file(
       relativePath: { eq: "talks/web-perf-101/slides/index.png" }
     ) {
+      childImageSharp {
+        fixed(height: 150) {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
+
+    notion: file(relativePath: { eq: "content/notion-social.png" }) {
       childImageSharp {
         fixed(height: 150) {
           ...GatsbyImageSharpFixed

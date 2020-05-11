@@ -1,13 +1,15 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import _BlogFooterAccordion from '../../components/BlogFooterAccordion';
 import _Footer from '../../components/Footer';
+import _MailchimpSubscribe from '../../components/MailchimpSubscribe';
 import _Nav from '../../components/Nav';
 import codeHighlightStyles from '../../styles/code-highlight-styles';
 import media from '../../styles/media';
 import { anyPlusAny } from '../../styles/mixins';
-import { linkActiveStyles, linkStyles } from '../../styles/shared-styles';
 import { colors, gridSize, sizes } from '../../styles/variables';
 
+//////////////////////////////////////////////////////////////////////
+// React blocks
 export const Nav = styled(_Nav)`
   margin-top: ${sizes.navTopMargin}px;
   margin-bottom: ${gridSize * 7}px;
@@ -27,13 +29,34 @@ export const Title = styled.h1`
   font-size: 60px;
   font-weight: 900;
   line-height: 1;
+
+  ${media.small`
+    font-size: 40px;
+  `}
 `;
 
-export const Content = styled.article`
-  font-family: 'Merriweather', Georgia, serif;
+export const MailchimpSubscribe = styled(_MailchimpSubscribe)`
+  margin: ${gridSize * 6}px -${gridSize * 3}px;
   max-width: 600px;
+  padding: ${gridSize * 2}px ${gridSize * 3}px;
+  border-radius: 4px;
+  background: ${colors.softYellow};
+`;
 
-  /* Headers */
+export const BlogFooterAccordion = styled(_BlogFooterAccordion)`
+  margin-top: ${sizes.paragraphSpacing * 3}px;
+`;
+
+export const Footer = styled(_Footer)`
+  margin-top: ${gridSize * 6}px;
+  margin-bottom: ${gridSize * 2}px;
+`;
+
+//////////////////////////////////////////////////////////////////////
+// Markdown content
+
+// Header styles
+const headerStyles = css`
   h1,
   h2,
   h3,
@@ -49,63 +72,94 @@ export const Content = styled.article`
   }
 
   h1 {
-    font-size: 2em;
+    font-size: 32px;
     font-weight: 900;
   }
 
   h2 {
-    font-size: 1.5em;
+    font-size: 24px;
   }
 
   h3 {
-    font-size: 1.17em;
+    font-size: 18px;
+  }
+`;
+
+// List styles
+const listStyles = css`
+  ol,
+  ul {
+    margin: 0;
+    padding-left: 32px;
   }
 
-  /* Images & video */
-  a.gatsby-resp-image-link {
-    ${linkStyles}
+  ul {
+    list-style-type: '— ';
+  }
 
-    border: 1px solid #ccc;
+  /* Duplicating the class to increase specificity */
+  p + .list_compact.list_compact,
+  p + .list_compact.list_compact {
+    margin-top: ${sizes.paragraphSpacing / 2}px;
+  }
 
-    &:hover,
-    &:focus,
-    &:active {
-      ${linkActiveStyles}
+  .list_compact li + li {
+    margin-top: 0;
+  }
+
+  .list_spread li + li {
+    margin-top: ${sizes.paragraphSpacing}px;
+  }
+`;
+
+// Media styles
+const mediaStyles = css`
+  .image-container {
+    /* Reset figure styles */
+    margin: 0;
+  }
+
+  .image-container img {
+    /* clamp(100%, 80vw, 900px) won’t work for scrollable images.
+     * In scrollable images on wide screens,
+     * 100% is more than 900px, and clamp() returns 100% */
+    width: min(max(100%, 80vw), 900px);
+    height: auto;
+  }
+
+  .sidenote .custom-block-heading .image-container img,
+  .note .image-container img {
+    width: 100%;
+  }
+
+  .image-container_scrollable {
+    width: 100vw;
+    overflow-x: auto;
+    margin-left: -${sizes.contentPadding}px;
+    margin-right: -${sizes.contentPadding}px;
+    padding-left: ${sizes.contentPadding}px;
+    padding-right: ${sizes.contentPadding}px;
+
+    /* On mobile, make it more obvious that image content is scrollable */
+    &::-webkit-scrollbar {
+      height: 4px;
+      background: #eee;
     }
-  }
 
-  .gatsby-resp-image-wrapper {
-    width: clamp(100%, 80vw, 900px);
-  }
-
-  .sidenote .custom-block-heading .gatsby-resp-image-wrapper,
-  .note .gatsby-resp-image-wrapper {
-    width: unset;
+    &::-webkit-scrollbar-thumb {
+      background: #ccc;
+      border-radius: 4px;
+    }
   }
 
   video {
     max-width: 100%;
+    height: auto;
   }
+`;
 
-  /* Lists */
-  ul {
-    list-style: none;
-    padding-left: 32px;
-  }
-
-  p + div.list-wrapper_oneline {
-    margin-top: -${sizes.paragraphSpacing / 2}px;
-  }
-
-  div.list-wrapper_oneline li {
-    margin: 0;
-  }
-
-  div.list-wrapper_multiparagraph li {
-    margin-bottom: ${sizes.paragraphSpacing * 2.5}px;
-  }
-
-  /* Code highlighting */
+// Gatsby highlight
+const gatsbyHighlightStyles = css`
   .gatsby-highlight {
     overflow-x: auto;
     margin: 0 -${gridSize * 2}px;
@@ -122,47 +176,149 @@ export const Content = styled.article`
       background: unset;
     }
   }
+`;
 
-  ${codeHighlightStyles}
+// Sidenote styles
+const sidenoteWidth = 300;
+const sidenoteMargin = 48;
+const sidenoteStyles = css`
+  /* Reset blockquote styles */
+  .sidenote .custom-block-heading {
+    margin: unset;
+    font-style: unset;
+    padding: unset;
+    border: unset;
+  }
 
-  /* Sidenote */
   ${media.notMedium`
     .sidenote {
-      position: relative;
+      display: flex;
+      align-items: baseline;
+      width: calc(100% + ${sidenoteWidth}px + ${sidenoteMargin}px);
+    }
+
+    /* Bring text’s width back to 100% */
+    .sidenote .custom-block-body {
+      width: calc(100% - ${sidenoteWidth}px - ${sidenoteMargin}px);
     }
 
     .sidenote .custom-block-heading {
-      position: absolute;
-      top: 0;
-      right: 0;
-      transform: translateX(calc(100% + 48px));
-      width: 300px;
-      font-size: 13px;
+      /* Position the sidenote to the right of the text */
+      margin-left: ${sidenoteMargin}px;
+      width: ${sidenoteWidth}px;
+      font-size: ${sizes.fontSmall}px;
+      /* Set height to 0 to avoid pushing primary content down */
+      height: 0;
+    }
+
+    .sidenote__remark {
+      display: none;
     }
   `}
 
   ${media.medium`
-    .sidenote {
-      display: flex;
-      flex-direction: column-reverse;
-    }
-
     .sidenote .custom-block-heading {
       background: ${colors.softYellow};
       margin: ${sizes.paragraphSpacing}px -${gridSize * 2}px 0;
       padding: ${gridSize}px ${gridSize * 2}px;
 
       font-size: ${sizes.fontSmall}px;
-
-      &::before {
-        content: 'Sidenote: ';
-        font-weight: bold;
-      }
     }
   `}
+`;
+
+// TOC styles
+const tocStyles = css`
+  .toc {
+    background: ${colors.softYellow};
+    width: fit-content;
+    margin: ${sizes.paragraphSpacing}px -${gridSize * 2}px;
+    padding: ${gridSize * 1.5}px ${gridSize * 5}px ${gridSize * 2}px
+      ${gridSize * 2}px;
+    font-size: ${sizes.fontSmall}px;
+    border-radius: 2px;
+    font-family: 'Montserrat', sans-serif;
+
+    &.toc_with-header {
+      margin: ${gridSize * 4}px -${gridSize * 2}px;
+      padding: ${gridSize * 2}px ${gridSize * 5}px ${gridSize * 3}px
+        ${gridSize * 2}px;
+    }
+
+    ul {
+      padding-left: ${gridSize * 3}px;
+      list-style: none;
+    }
+
+    li {
+      margin-top: ${gridSize}px;
+    }
+
+    > ul {
+      padding-left: 0;
+    }
+
+    > ul > li:first-child {
+      margin-top: 0;
+    }
+
+    /* Overwrite default p + ul styles */
+    ${anyPlusAny('p', 'ul')`
+      margin-top: 0;
+    `}
+  }
+
+  .toc__header {
+    margin: 0 0 ${gridSize}px;
+    font-size: 26px;
+  }
+`;
+
+// Note styles
+const noteStyles = css`
+  .note {
+    /* Unset blockquote styles */
+    margin: unset;
+    padding: unset;
+    border: unset;
+    font-style: unset;
+
+    background: ${colors.softYellow};
+    margin: ${sizes.paragraphSpacing}px -${gridSize * 2}px;
+    padding: ${gridSize}px ${gridSize * 2}px;
+    font-size: ${sizes.fontSmall}px;
+    border-radius: 2px;
+
+    > .gatsby-highlight:last-child {
+      /* Remove the extra spacing between the gatsby-highlight’s bottom border
+         and .note’s one. */
+      margin-bottom: -${gridSize}px;
+    }
+  }
+`;
+
+export const Content = styled.article`
+  font-family: 'Merriweather', Georgia, serif;
+  max-width: 600px;
+
+  ${headerStyles}
+
+  ${mediaStyles}
+
+  ${listStyles}
+
+  ${gatsbyHighlightStyles}
+
+  ${codeHighlightStyles}
+
+  ${sidenoteStyles}
+
+  ${tocStyles}
+
+  ${noteStyles}
 
   /* Random */
-  ${anyPlusAny('p', '.custom-block', '.gatsby-highlight')`
+  ${anyPlusAny('p', '.custom-block', '.gatsby-highlight', 'ul', 'ol')`
     margin-top: ${sizes.paragraphSpacing}px;
   `}
 
@@ -181,27 +337,4 @@ export const Content = styled.article`
   mark {
     background: ${colors.softYellow};
   }
-
-  .note {
-    background: ${colors.softYellow};
-    margin: ${sizes.paragraphSpacing}px -${gridSize * 2}px;
-    padding: ${gridSize}px ${gridSize * 2}px;
-    font-size: ${sizes.fontSmall}px;
-    border-radius: 2px;
-
-    > .gatsby-highlight:last-child {
-      /* Remove the extra spacing between the gatsby-highlight’s bottom border
-         and .note’s one. */
-      margin-bottom: -${gridSize}px;
-    }
-  }
-`;
-
-export const BlogFooterAccordion = styled(_BlogFooterAccordion)`
-  margin-top: ${sizes.paragraphSpacing * 3}px;
-`;
-
-export const Footer = styled(_Footer)`
-  margin-top: ${gridSize * 6}px;
-  margin-bottom: ${gridSize * 2}px;
 `;

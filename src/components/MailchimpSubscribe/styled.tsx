@@ -21,6 +21,8 @@ export const MailchimpInput = styled.input`
 `;
 
 export const MailchimpSubmit = styled.input`
+  cursor: pointer;
+
   height: 32px;
   padding: 0 12px;
   border-radius: 2px;
