@@ -117,6 +117,9 @@ const Component = ({ data }: ComponentProps) => {
           license={`Sharing prohibited unless approved by ${pageMeta.client}`}
           useLicenseFontSpacing={false}
         />
+        {/* Inserting the Twitter script manually
+         * since we’re disabling Gatsby JS with gatsby-plugin-no-javascript */}
+        <Script async src="https://platform.twitter.com/widgets.js" />
       </WidthWrapper>
     </Layout>
   );

@@ -6729,6 +6729,14 @@ gatsby-remark-custom-blocks@^2.2.4:
     "@babel/runtime" "^7.8.7"
     remark-custom-blocks "^2.5.0"
 
+gatsby-remark-images-anywhere@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/gatsby-remark-images-anywhere/-/gatsby-remark-images-anywhere-1.2.1.tgz#6add79cd67c0b55dbeb9091e049b0522df864316"
+  integrity sha512-eMMUele8RbGZbouU1HPdiOoiWO7KebhyIUZgHS1A8cHCmtLbF0iWDXYF20EpVe2k3Zlu99+D4Exm1bzQ256EIg==
+  dependencies:
+    parse5 "^5.1.0"
+    unist-util-select "^2.0.2"
+
 gatsby-remark-images@^3.0.3:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/gatsby-remark-images/-/gatsby-remark-images-3.2.1.tgz#0f767fda76c85cb0ddca2f7ff1b82ca5b4fb716a"
@@ -6759,14 +6767,6 @@ gatsby-remark-source-name@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/gatsby-remark-source-name/-/gatsby-remark-source-name-1.0.0.tgz#f8200e8ea17b8e242d3d34cd598836aaed3057a8"
   integrity sha512-FNukZxhn7ncOt7jHkl2raIRVVN7O+UPlihnzHfGgg8IBUGnAyDTQW88tcx1cEMXEwZTYNPIjY9txhtCkg1NfwA==
-
-gatsby-remark-table-of-contents@^0.0.9:
-  version "0.0.9"
-  resolved "https://registry.yarnpkg.com/gatsby-remark-table-of-contents/-/gatsby-remark-table-of-contents-0.0.9.tgz#c5c781a3da692f604326ab794498104f0663a4df"
-  integrity sha512-qGBP31v9qAz/g0HfwG/kEyJq/OdrDbdEVw1VzaX1uodXZo6IzhYhcx7Lg+S7aohmKafc9f59BfSFOu4hrw2Xkw==
-  dependencies:
-    js-yaml "^3.13.1"
-    mdast-util-toc "^4.2.0"
 
 gatsby-source-filesystem@^2.0.2:
   version "2.2.2"
@@ -9703,21 +9703,23 @@ mdast-util-to-string@^1.0.5, mdast-util-to-string@^1.1.0:
   resolved "https://registry.yarnpkg.com/mdast-util-to-string/-/mdast-util-to-string-1.1.0.tgz#27055500103f51637bd07d01da01eb1967a43527"
   integrity sha512-jVU0Nr2B9X3MU4tSK7JP1CMkSvOj7X5l/GboG1tKRw52lLF1x2Ju92Ms9tNetCcbfX3hzlM73zYo2NKkWSfF/A==
 
-mdast-util-toc@^4.2.0:
-  version "4.2.0"
-  resolved "https://registry.yarnpkg.com/mdast-util-toc/-/mdast-util-toc-4.2.0.tgz#9085c4313359c981e4c1d22efe02f8ce01072da4"
-  integrity sha512-BEbxg3GtAsvswmV9bMAV/WJA7v0CsG5tYk90xnTlIeCnnBKD6Cof3KEg/K3xQ1O2FRyJKMWkgKZB2mpnOjA0tg==
-  dependencies:
-    extend "^3.0.2"
-    github-slugger "^1.2.1"
-    mdast-util-to-string "^1.0.5"
-    unist-util-is "^3.0.0"
-    unist-util-visit "^1.1.0"
-
 mdast-util-toc@^5.0:
   version "5.0.2"
   resolved "https://registry.yarnpkg.com/mdast-util-toc/-/mdast-util-toc-5.0.2.tgz#5d16eeb4e4af8d9d8d9f6837d012a6334eeffd97"
   integrity sha512-IeihbQLXrnCs/427dVzCp3ffvSPpdx/Mc2WWYAdVaS+MFqdKZHlJylGWAA1cGPewhEVyITsWrlXJ/b2d80Wsnw==
+  dependencies:
+    "@types/mdast" "^3.0.3"
+    "@types/unist" "^2.0.3"
+    extend "^3.0.2"
+    github-slugger "^1.2.1"
+    mdast-util-to-string "^1.0.5"
+    unist-util-is "^4.0.0"
+    unist-util-visit "^2.0.0"
+
+mdast-util-toc@^5.0.3:
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/mdast-util-toc/-/mdast-util-toc-5.0.3.tgz#5fb1503e3655688929d596799a6910cc6548e420"
+  integrity sha512-A3xzcgC1XFHK0+abFmbINOxjwo7Bi0Nsfp3yTgTy5JHo2q2V6YZ5BVJreDWoK3szcLlSMvHqe8WPbjY50wAkow==
   dependencies:
     "@types/mdast" "^3.0.3"
     "@types/unist" "^2.0.3"
@@ -10347,6 +10349,11 @@ normalizeurl@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/normalizeurl/-/normalizeurl-1.0.0.tgz#4b1a458cd0c7d0856436f69c6b51047ab6855317"
   integrity sha1-SxpFjNDH0IVkNvaca1EEeraFUxc=
+
+not@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/not/-/not-0.1.0.tgz#c9691c1746c55dcfbe54cbd8bd4ff041bc2b519d"
+  integrity sha1-yWkcF0bFXc++VMvYvU/wQbwrUZ0=
 
 npm-conf@^1.1.0:
   version "1.1.3"
@@ -10998,7 +11005,7 @@ parse5@^3.0.1:
   dependencies:
     "@types/node" "*"
 
-parse5@^5.0.0:
+parse5@^5.0.0, parse5@^5.1.0:
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/parse5/-/parse5-5.1.1.tgz#f68e4e5ba1852ac2cadc00f4555fff6c2abb6178"
   integrity sha512-ugq4DFI0Ptb+WWjAdOK16+u/nHfiIrcE+sh8kZMaM0WllQKLI9rOUq6c2b7cwPkXdzfQESqvoqK6ug7U/Yyzug==
@@ -12519,6 +12526,11 @@ remark-custom-blocks@^2.5.0:
   integrity sha512-FcCd5Boqn4XBXnlIvpy/9jyVTOZRg7unXv8m14FM4EM0qXLeSvxSReRfuoWmFWZwi0+MOf8bqEwJIBut0NYdJw==
   dependencies:
     space-separated-tokens "^1.1.5"
+
+remark-image-attributes@^0.1.3:
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/remark-image-attributes/-/remark-image-attributes-0.1.3.tgz#a3e1e77a1cde8a52f8bd6d3ee145b0f8d1a25eda"
+  integrity sha512-Q9DuaEeNUUDVW7qZ5CgzFWN7BO3aKzSOdTojJJf23sr7Yauh3pmG2M65UXIRzwRYvoUf/WhctvQHB+v8D1S1xA==
 
 remark-parse@^6.0.0, remark-parse@^6.0.3:
   version "6.0.3"
@@ -14834,6 +14846,17 @@ unist-util-select@^1.5.0:
     debug "^2.2.0"
     nth-check "^1.0.1"
 
+unist-util-select@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/unist-util-select/-/unist-util-select-2.0.2.tgz#cb2774b599695172e7b60a8b5f50793e418f7ea6"
+  integrity sha512-Yv5Z5ShMxv7Z9Dw175tKvOiRVXV4FrMHG778DSD9Z0jALgb3wAx9DoeInr3200QlYp71rYUXzzJdCb76xKdrCw==
+  dependencies:
+    css-selector-parser "^1.1.0"
+    not "^0.1.0"
+    nth-check "^1.0.1"
+    unist-util-is "^3.0.0"
+    zwitch "^1.0.3"
+
 unist-util-stringify-position@^1.0.0, unist-util-stringify-position@^1.1.1:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/unist-util-stringify-position/-/unist-util-stringify-position-1.1.2.tgz#3f37fcf351279dcbca7480ab5889bb8a832ee1c6"
@@ -14858,7 +14881,7 @@ unist-util-visit-parents@^2.0.0, unist-util-visit-parents@^2.1.2:
   dependencies:
     unist-util-is "^3.0.0"
 
-unist-util-visit-parents@^3.0.0:
+unist-util-visit-parents@^3.0.0, unist-util-visit-parents@^3.0.2:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/unist-util-visit-parents/-/unist-util-visit-parents-3.0.2.tgz#d4076af3011739c71d2ce99d05de37d545f4351d"
   integrity sha512-yJEfuZtzFpQmg1OSCyS9M5NJRrln/9FbYosH3iW0MG402QbdbaB8ZESwUv9RO6nRfLAKvWcMxCwdLWOov36x/g==
@@ -14880,7 +14903,7 @@ unist-util-visit@^1.1.3:
   dependencies:
     unist-util-visit-parents "^2.0.0"
 
-unist-util-visit@^2.0.0:
+unist-util-visit@^2.0.0, unist-util-visit@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/unist-util-visit/-/unist-util-visit-2.0.2.tgz#3843782a517de3d2357b4c193b24af2d9366afb7"
   integrity sha512-HoHNhGnKj6y+Sq+7ASo2zpVdfdRifhTgX2KTU3B/sO/TTlZchp7E3S4vjRzDJ7L60KmrCPsQkVK3lEF3cz36XQ==
@@ -15819,7 +15842,7 @@ yurnalist@^1.1.2:
     strip-ansi "^5.2.0"
     strip-bom "^4.0.0"
 
-zwitch@^1.0.0:
+zwitch@^1.0.0, zwitch@^1.0.3:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/zwitch/-/zwitch-1.0.5.tgz#d11d7381ffed16b742f6af7b3f223d5cd9fe9920"
   integrity sha512-V50KMwwzqJV0NpZIZFwfOD5/lyny3WlSzRiXgA0G7VUnRlqttta1L6UQIHzd6EuBY/cHGfwTIck7w1yH6Q5zUw==

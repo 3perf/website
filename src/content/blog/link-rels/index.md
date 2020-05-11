@@ -59,23 +59,17 @@ The browser doesn’t do anything with the resource after downloading it. Script
 
 `as` can be anything you can download in a browser:
 
-<div class="list-wrapper_oneline">
-
 - `style` for stylesheets,
 - `script` for scripts,
 - `font` for fonts,
 - `fetch` for resources downloaded with `fetch()` or `XMLHttpRequest`,
 - other values – see the full list [on MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Preloading_content#What_types_of_content_can_be_preloaded)
 
-</div>
-
 It’s important to specify the `as` attribute – it helps the browser to prioritize and schedule the download properly.
 
 ### When to use
 
 **Use it when you’ll need a resource soon.** `<link rel="preload">` will help when you know you’ll need a resource soon after loading the page, and you want to start loading it earlier. For example:
-
-<div class="list-wrapper_multiparagraph">
 
 - You use custom fonts. The `@font-face` rule that applies those fonts is in an external CSS file:
 
@@ -125,8 +119,6 @@ It’s important to specify the `as` attribute – it helps the browser to prior
   </script>
   ```
 
-</div>
-
 **Don’t overuse it.** Preloading everything won’t magically speed up the site – instead, it will likely prevent the browser from scheduling everything smartly.
 
 **Don’t confuse with `prefetch`.** Don’t use `<link rel="preload">` if you don’t need a resource immediately after the page loads. If you only need it later – e.g., for a next page – use `<link rel="prefetch">`.
@@ -155,15 +147,11 @@ The browser doesn’t do anything with the resource after downloading it. Script
 
 `as` can be anything you can download in a browser:
 
-<div class="list-wrapper_oneline">
-
 - `style` for stylesheets,
 - `script` for scripts,
 - `font` for fonts,
 - `fetch` for resources downloaded with `fetch()` or `XMLHttpRequest`,
 - other values – see the full list [on MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Preloading_content#What_types_of_content_can_be_preloaded)
-
-</div>
 
 It’s important to specify the `as` attribute – it helps the browser to prioritize and schedule the download properly.
 
@@ -205,8 +193,6 @@ Setting up a new connection typically takes several hundred milliseconds. It’s
 
 **Use it for domains you’ll need shortly.** `<link rel="preconnect" />` will help you when you have an important style, script, or image on a third-party domain, but you don’t know the resource URL yet. For example:
 
-<div class="list-wrapper_multiparagraph">
-
 - Your app is hosted at `my-app.com`, and it makes AJAX requests to `api.my-app.com`. You don’t know what specific requests you’ll be making to that domain – because you make them dynamically from JS.
 
   Use `<link rel="preconnect">` to connect to `api.my-app.com` in advance and make the first data request faster
@@ -214,8 +200,6 @@ Setting up a new connection typically takes several hundred milliseconds. It’s
 - Your app is hosted at `my-app.com`, and it uses Google Fonts. Google Fonts load fonts in two stages: first, a CSS file is downloaded from `fonts.googleapis.com`; then, that CSS file requests fonts from `fonts.gstatic.com`.
 
   You can’t know what specific font files from `fonts.gstatic.com` you’ll need until you download the CSS file from `fonts.googleapis.com`. Use `<link rel="preconnect">` to set up a connection in advance
-
-</div>
 
 **Use it to slightly speed up some third-party script or style.** If you have a third-party resource in the page that you really need to load sooner, add `<link rel="preconnect" />` for that domain. It will instruct the browser to setup connection for that domain sooner.
 
@@ -255,8 +239,6 @@ For each new domain, resolving the DNS record usually [takes around 20-120 ms](h
 
 **Use it for domains you’ll need shortly.** `<link rel="dns-prefetch" />` will help you when you have some important resources on third-party domains the browser doesn’t know about in advance. For example:
 
-<div class="list-wrapper_multiparagraph">
-
 - Your app is hosted at `my-app.com`, and it makes AJAX requests to `api.my-app.com`. The browser doesn’t know that you’ll be making requests to that domain – because you make them from JS.
 
   Use `<link rel="dns-prefetch">` to resolve `api.my-app.com` and make the first data request faster
@@ -264,8 +246,6 @@ For each new domain, resolving the DNS record usually [takes around 20-120 ms](h
 - Your app is hosted at `my-app.com`, and it uses Google Fonts. Google Fonts load fonts in two stages: first, a CSS file is downloaded from `fonts.googleapis.com`; then, that CSS file requests fonts from `fonts.gstatic.com`.
 
   The browser doesn’t know that you’ll load fonts from `fonts.gstatic.com`, so use `<link rel="dns-prefetch">` to resolve it in advance
-
-</div>
 
 **Use it to slightly speed up some third-party script or style.** If you have a third-party resource in the page that you really need to load sooner, add `<link rel="dns-prefetch" />` for that domain. It will instruct the browser to schedule DNS resolution for that domain sooner.
 

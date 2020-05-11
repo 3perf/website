@@ -1,6 +1,7 @@
 import { graphql } from 'gatsby';
 import * as React from 'react';
 import Helmet from 'react-helmet';
+import Script from 'react-script-tag';
 import Layout from '../../components/Layout';
 import { LogoKind } from '../../components/Logo';
 import WidthWrapper from '../../components/WidthWrapper';
@@ -9,6 +10,7 @@ import {
   Content,
   Footer,
   Header,
+  MailchimpSubscribe,
   Meta,
   Nav,
   Title,
@@ -153,14 +155,24 @@ const Component = ({ data }: ComponentProps) => {
                 </time>,
               ]
             )}{' '}
-            · <a href={authorDetails.link}>{authorDetails.name}</a>
+            ·{' '}
+            <a href={authorDetails.link} rel="author">
+              {authorDetails.name}
+            </a>
           </Meta>
         </Header>
         <Content>
           <div dangerouslySetInnerHTML={{ __html: page.html }} />
         </Content>
+        <MailchimpSubscribe
+          text="Performance articles, case studies, and more. A new email every few weeks. Subscribe:"
+          buttonText="Grow my perf skills"
+        />
         <BlogFooterAccordion />
         <Footer />
+        {/* Inserting the Twitter script manually
+         * since we’re disabling Gatsby JS with gatsby-plugin-no-javascript */}
+        <Script async src="https://platform.twitter.com/widgets.js" />
       </WidthWrapper>
     </Layout>
   );

@@ -12,7 +12,7 @@ const stuffToPromote = [
   },
   {
     imageKey: 'content',
-    title: 'Our articles & tools',
+    title: 'Articles & open-source tools',
     href: '/content',
   },
 
@@ -62,7 +62,7 @@ const BlogFooterAccordion = ({ className }: BlogFooterAccordionProps) => (
     `}
     render={(data: { [key: string]: SharpImageFixed }) => (
       <Container className={className}>
-        {stuffToPromote.map(i => (
+        {stuffToPromote.map((i) => (
           <Item key={i.imageKey}>
             <ItemLink to={i.href}>
               <Image fixed={data[i.imageKey].childImageSharp.fixed} />

@@ -17,12 +17,14 @@ interface MailchimpSubscribeProps {
   className?: string;
   email?: string;
   text: string;
+  buttonText?: string;
 }
 
 const MailchimpSubscribe = ({
   className,
   email = '',
   text,
+  buttonText = 'Subscribe',
 }: MailchimpSubscribeProps) => {
   return (
     <Container className={className}>
@@ -42,14 +44,14 @@ const MailchimpSubscribe = ({
             name="EMAIL"
             required={true}
           />
-          <MailchimpSubmit type="submit" value="Subscribe" />
+          <MailchimpSubmit type="submit" value={buttonText} />
         </div>
         <HiddenDiv>
           <input
             type="text"
             name="b_d7d2af05c405078e8f6a48956_6c7cabbc15"
             tabIndex={-1}
-            value=""
+            defaultValue=""
           />
         </HiddenDiv>
       </MailchimpForm>

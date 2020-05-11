@@ -64,16 +64,12 @@ A good place to start is [a performance-oriented Next.js introduction at `web.de
 Cloudflare has free and paid plans; free plans work quite well, but paid plans allow doing more advanced optimizations. Start with a free plan – and make sure to enable [the most useful optimization toggles](https://gist.github.com/iamakulov/106264563793c5e47049ddcc60372ece).
 
 <div class="note">
-
+ 
 Cloudflare is the tool that I personally like the most. But if you want to explore alternatives, there’re a few other similar services:
-
-<div class="list-wrapper_oneline">
 
 - [Fastly](https://www.fastly.com/)
 - [StackPath](https://www.stackpath.com/)
 - [KeyCDN](https://www.keycdn.com/)
-
-</div>
 
 </div>
 
@@ -82,6 +78,7 @@ Cloudflare is the tool that I personally like the most. But if you want to explo
 I’ve seen a number of apps to get huge and slow because
 
 - either it depends on a library that has a large unnecessary dependency under the hood;
+
 - or it depends on several similar libraries (e.g., checkbox components) because they were added by different developers.
 
 To avoid this, pick a day every 3-6 months to analyze your app bundle and understand what shouldn’t be there. [webpack-bundle-analyzer](https://www.npmjs.com/package/webpack-bundle-analyzer) would help with this; and I also wrote [a guide about what to look on during the analysis](https://developers.google.com/web/fundamentals/performance/webpack/monitor-and-analyze#analyze_why_the_bundle_is_so_large).
@@ -89,6 +86,9 @@ To avoid this, pick a day every 3-6 months to analyze your app bundle and unders
 ## Summing up
 
 - Next.js is very easy to start with. It will be harder to migrate if you already have an existing app, but it might still be worth the try
+
 - Cloudflare and dependency review work great for both new and existing apps
+
 - Use these practices if you don’t have time to invest into performance
+
 - And check out [Web Performance 101](/talks/web-perf-101) if you want to learn more
