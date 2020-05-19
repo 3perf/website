@@ -596,7 +596,7 @@ So, how much time can all these optimizations save us?
 
 In total, based on this (very rough) calculation, <mark>we save 3.9 out of 12.6 seconds – a 30% improvement</mark> just by tuning some configs and deferring some loading. And this is after great speed improvements the Notion team has already done.
 
-It turns out, almost every app has low-hanging fruits that could be implemented just by tuning the bundler configuration and doing a few precise code changes. So here’s [the easiest way to find and pick them](/#services). And if you liked this case study, help to spread the word about it:
+It turns out, almost every app has low-hanging fruits that could be implemented just by tuning the bundler configuration and doing a few precise code changes. So here’s [the easiest way to find and pick them](/#services). And if you read this far and liked this case study, consider spreading the word about it:
 
 https://twitter.com/iamakulov/status/1262729442159443973
 
