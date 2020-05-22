@@ -574,7 +574,7 @@ The Notion app has a spinner that’s shown while the page is loading:
 
 ![](./notion-spinner.svg)
 
-The spinner helps to signify that “something is loading”. However, sometimes, the spinner actually [worsers the perceived performance](https://www.lukew.com/ff/entry.asp?1797). Users see the spinner and _pay attention_ to the fact that something is loading – which makes the app feel slower.
+The spinner helps to signify that “something is loading”. However, sometimes, the spinner actually [worsens the perceived performance](https://www.lukew.com/ff/entry.asp?1797). Users see the spinner and _pay attention_ to the fact that something is loading – which makes the app feel slower.
 
 What could be done instead is [showing a skeleton of the UI](https://uxdesign.cc/what-you-should-know-about-skeleton-screens-a820c45a571a):
 
