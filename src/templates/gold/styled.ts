@@ -101,16 +101,8 @@ export const Content = styled.article`
   }
 
   .image-container img {
-    /* clamp(100%, 80vw, 900px) won’t work for scrollable images.
-     * In scrollable images on wide screens,
-     * 100% is more than 900px, and clamp() returns 100% */
-    width: min(max(100%, 80vw), 900px);
+    max-width: 100%;
     height: auto;
-  }
-
-  .sidenote .custom-block-heading .image-container img,
-  .note .image-container img {
-    width: 100%;
   }
 
   blockquote {
