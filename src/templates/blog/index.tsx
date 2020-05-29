@@ -149,7 +149,7 @@ const Component = ({ data }: ComponentProps) => {
               </time>
             ) : (
               [
-                `Published ${articleMeta.date.formattedPublished} · Last modified `,
+                `Published ${articleMeta.date.formattedPublished} · Last updated `,
                 <time dateTime={articleMeta.date.modified} key="modified">
                   {articleMeta.date.formattedModified}
                 </time>,
