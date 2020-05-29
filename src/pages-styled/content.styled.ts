@@ -1,9 +1,8 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import _Footer from '../components/Footer';
 import Link from '../components/Link';
 import _MailchimpSubscribe from '../components/MailchimpSubscribe';
 import _Nav from '../components/Nav';
-import _Separator from '../components/talks/Separator';
 import backgroundUrl from '../pages/content/background.svg';
 import media from '../styles/media';
 import { linkActiveStyles, linkStyles } from '../styles/shared-styles';
@@ -49,8 +48,8 @@ export const Section = styled.div`
   column-gap: ${gridSize * 6}px;
 `;
 
-export const SectionHeader = styled(_Separator)`
-  margin: ${gridSize * 6}px 0 ${gridSize * 4}px;
+export const SectionHeader = styled.h2`
+  margin: ${gridSize * 8}px 0 ${gridSize * 4}px;
   font-size: 48px;
   font-weight: bold;
   line-height: 1;

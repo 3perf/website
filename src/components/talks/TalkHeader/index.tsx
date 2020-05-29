@@ -32,7 +32,8 @@ interface TalkHeaderProps {
     description: string;
     link: string;
   }>;
-  date: Date;
+  publishedDate: Date;
+  lastUpdatedDate?: Date;
   className?: string;
 }
 
@@ -42,7 +43,8 @@ const TalkHeader = ({
   description,
   authors,
   className,
-  date,
+  publishedDate,
+  lastUpdatedDate,
 }: TalkHeaderProps) => (
   <Container className={className}>
     <Image loading="eager" fluid={imageData} />
@@ -66,8 +68,18 @@ const TalkHeader = ({
       <MetaChild>
         <Date>
           Published on{' '}
-          <time dateTime={date.toISOString()}>{formatDate(date)}</time>
+          <time dateTime={publishedDate.toISOString()}>
+            {formatDate(publishedDate)}
+          </time>
         </Date>
+        {lastUpdatedDate && (
+          <Date>
+            Last updated on{' '}
+            <time dateTime={lastUpdatedDate.toISOString()}>
+              {formatDate(lastUpdatedDate)}
+            </time>
+          </Date>
+        )}
       </MetaChild>
     </Meta>
   </Container>

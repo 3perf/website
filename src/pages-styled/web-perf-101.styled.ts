@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import _Footer from '../components/Footer';
 import _Nav from '../components/Nav';
-import _Separator from '../components/talks/Separator';
+import _SectionHeader from '../components/talks/SectionHeader';
 import _Slide from '../components/talks/Slide';
 import media from '../styles/media';
 import { colors, gridSize, sizes } from '../styles/variables';
@@ -25,7 +25,7 @@ export const BlockImage = styled.img`
   display: block;
 `;
 
-export const Separator = styled(_Separator)`
+export const SectionHeader = styled(_SectionHeader)`
   margin: ${gridSize * 6}px 0 ${gridSize * 1.5}px;
 
   + ${Slide} {

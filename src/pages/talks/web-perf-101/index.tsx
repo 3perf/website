@@ -3,9 +3,9 @@ import * as React from 'react';
 import Helmet from 'react-helmet';
 import Layout from '../../../components/Layout';
 import { LogoKind } from '../../../components/Logo';
+import WidthWrapper from '../../../components/WidthWrapper';
 import { SlideGatsbyImage } from '../../../components/talks/Slide';
 import TalkHeader from '../../../components/talks/TalkHeader';
-import WidthWrapper from '../../../components/WidthWrapper';
 import {
   BlockImage,
   Blockquote,
@@ -14,7 +14,7 @@ import {
   Footer,
   Footnote,
   Nav,
-  Separator,
+  SectionHeader,
   Slide,
   Slides,
   Video,
@@ -146,6 +146,9 @@ interface WebPerf101PageProps {
 
 const resolvedCoverUrl = `https://3perf.com${indexCoverUrl}`;
 
+const publishedDate = new Date(2018, 9, 25);
+const lastUpdatedDate = new Date(2020, 4, 29);
+
 const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
   return (
     <Layout>
@@ -199,6 +202,39 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
           <meta property="fb:admins" content="100002052594007" />
           <meta property="og:type" content="article" />
           <meta property="article:author" content="Ivan Akulov" />
+          <script type="application/ld+json">
+            {JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'TechArticle',
+              headline: 'Web Performance 101: JS, CSS, HTTP, images & fonts',
+              description:
+                'Learn how (and why) to make your app faster by optimizing JS, CSS, images/fonts and other things',
+              image: resolvedCoverUrl,
+              author: {
+                '@type': 'Person',
+                name: 'Ivan Akulov',
+                url: 'https://twitter.com/iamakulov',
+              },
+              publisher: {
+                '@type': 'Organization',
+                name: 'PerfPerfPerf',
+                url: 'https://3perf.com',
+                logo: {
+                  '@type': 'ImageObject',
+                  url: 'https://3perf.com/3perf-logo-black-raster.png',
+                  width: 1500,
+                  height: 1500,
+                },
+              },
+              datePublished: publishedDate.toISOString(),
+              dateModified: lastUpdatedDate.toISOString(),
+              mainEntityOfPage: {
+                '@type': 'WebPage',
+                url: 'https://3perf.com/talks/web-perf-101/',
+              },
+            })}
+          </script>
+          <meta property="foo" content="test" />
         </Helmet>
         <Nav logoKind={LogoKind.Black} />
         <TalkHeader
@@ -214,7 +250,8 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
               </p>
               <p>
                 (Shameless ad: need help with more advanced cases? We’re a web
-                performance consulting agency, and <a href="/#services">we’re here to help</a>.)
+                performance consulting agency, and{' '}
+                <a href="/#services">we’re here to help</a>.)
               </p>
             </>
           }
@@ -226,7 +263,8 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
               name: 'Ivan Akulov',
             },
           ]}
-          date={new Date(2018, 9, 25)}
+          publishedDate={publishedDate}
+          lastUpdatedDate={lastUpdatedDate}
         />
         <Slides>
           <Slide
@@ -255,15 +293,15 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
                         </a>
                       </li>
                       <li>
-                        <a href="#js-download-1">
+                        <a href="#async-and-defer">
                           Use <code>async</code> and <code>defer</code>
                         </a>
                       </li>
                       <li>
-                        <a href="#js-code-splitting-1">Use code splitting</a>
+                        <a href="#code-splitting">Use code splitting</a>
                       </li>
                       <li>
-                        <a href="#js-unused-dependencies-1">
+                        <a href="#webpack-libs-optimizations">
                           Remove unused code from dependencies
                         </a>
                       </li>
@@ -276,7 +314,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
                         <a href="#css-minify-1">Minify code</a>
                       </li>
                       <li>
-                        <a href="#css-block-rendering-1">
+                        <a href="#critical-css">
                           Use the Critical CSS approach
                         </a>
                       </li>
@@ -289,18 +327,16 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
                         <a href="#http-minify">Minify HTML</a>
                       </li>
                       <li>
-                        <a href="#http-gzip-1">Compress content with Gzip</a>
+                        <a href="#gzip">Compress content with Gzip</a>
                       </li>
                       <li>
-                        <a href="#http-brotli-1">
-                          Compress content with Brotli
-                        </a>
+                        <a href="#brotli">Compress content with Brotli</a>
                       </li>
                       <li>
-                        <a href="#http-cdn-1">Use a CDN</a>
+                        <a href="#cdn">Use a CDN</a>
                       </li>
                       <li>
-                        <a href="#http-preload-1">Preload content</a>
+                        <a href="#preload">Preload content</a>
                       </li>
                     </ol>
                   </li>
@@ -311,7 +347,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
                         <a href="#images-format">Choose a proper format</a>
                       </li>
                       <li>
-                        <a href="#images-compress">Compress images</a>
+                        <a href="#image-compression">Compress images</a>
                       </li>
                     </ol>
                   </li>
@@ -319,10 +355,10 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
                     <a href="#fonts-header">Fonts</a>
                     <ol>
                       <li>
-                        <a href="#fonts-fallback-1">Specify a fallback font</a>
+                        <a href="#fallback-fonts">Specify a fallback font</a>
                       </li>
                       <li>
-                        <a href="#fonts-font-display-1">
+                        <a href="#font-display">
                           Use <code>font-display</code>
                         </a>
                       </li>
@@ -383,15 +419,13 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
               <a href="https://edge.akamai.com/ec/us/highlights/keynote-speakers.jsp#edge2016futureofcommercemodal">
                 received 10.5% more orders
               </a>
-              <br />
-              — Back in 2006, Google tried making the search slower by
+              <br />— Back in 2006, Google tried making the search slower by
               half-a-second and discovered{' '}
               <a href="http://glinden.blogspot.com/2006/11/marissa-mayer-at-web-20.html">
                 that users were making 25% fewer requests
               </a>
-              <br />
-              — In 2008, Aberdeen Group discovered that slowing a site down by
-              one second{' '}
+              <br />— In 2008, Aberdeen Group discovered that slowing a site
+              down by one second{' '}
               <a href="https://headspin.io/resources/marketing/reports/5136-RR-performance-web-application.pdf">
                 decreases the user satisfaction by 16%
               </a>
@@ -417,10 +451,11 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
               understand a fast site consists of.
             </p>
             <p>
-              When is a site fast? It’s fast when:<br />
-              — it loads quickly,<br />
-              — and, being loaded, it works quickly (meaning animations don’t
-              skip frames, scrolling is smooth, and so on)
+              When is a site fast? It’s fast when:
+              <br />
+              — it loads quickly,
+              <br />— and, being loaded, it works quickly (meaning animations
+              don’t skip frames, scrolling is smooth, and so on)
             </p>
           </Slide>
           <Slide
@@ -433,9 +468,10 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             }
           >
             <p>
-              And the site loads quickly when:<br />
-              — the server responds to requests in a short time,<br />
-              — and the app itself loads and renders quickly.
+              And the site loads quickly when:
+              <br />
+              — the server responds to requests in a short time,
+              <br />— and the app itself loads and renders quickly.
             </p>
           </Slide>
           <Slide
@@ -454,10 +490,9 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             <p>
               The first element is not relevant – most often, performance
               problems lie in the second or the third one. The third element
-              didn’t fit into the talk – probably we’ll make another one :) (<a href="/subscribe/">
-                Subscribe
-              </a>{' '}
-              to get notified if/when it’s out.)
+              didn’t fit into the talk – probably we’ll make another one :) (
+              <a href="/subscribe/">Subscribe</a> to get notified if/when it’s
+              out.)
             </p>
           </Slide>
           <Slide
@@ -516,7 +551,8 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
               Minification makes the code take{' '}
               <a href="https://www.gribble.org/techreports/minification/">
                 around 30–40% less size
-              </a>.
+              </a>
+              .
             </p>
           </Slide>
           <Slide
@@ -529,25 +565,25 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             }
           >
             <p>
-              Minification is supported by every major app builder:<br />
-              —{' '}
+              Minification is supported by every major app builder:
+              <br />—{' '}
               <a href="https://webpack.js.org/concepts/mode/">
                 <code>mode: production</code>
               </a>{' '}
-              in webpack,<br />
-              —{' '}
+              in webpack,
+              <br />—{' '}
               <a href="https://www.npmjs.com/package/babel-preset-minify">
                 <code>babel-preset-minify</code>
               </a>{' '}
-              in Babel,<br />
-              —{' '}
+              in Babel,
+              <br />—{' '}
               <a href="https://www.npmjs.com/package/gulp-uglify">
                 <code>gulp-uglify</code>
               </a>{' '}
               in Gulp
             </p>
           </Slide>
-          <Separator>Async and defer</Separator>
+          <SectionHeader id="async-and-defer">Async and defer</SectionHeader>
           <Slide
             slideId="js-download-1"
             useImageBorder={true}
@@ -584,9 +620,12 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             image={<BlockImage src={jsScriptsBlockParsing1Url} />}
           >
             <p>
-              The problem is that<br />
-              scripts<br />
-              block<br />
+              The problem is that
+              <br />
+              scripts
+              <br />
+              block
+              <br />
               parsing.
             </p>
           </Slide>
@@ -638,12 +677,14 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             }
           >
             <p>
-              From the browser’s standpoint, it looks like this:<br />
-              — The browser goes over the document and parses it<br />
-              — At some moment, the browser encounters the{' '}
+              From the browser’s standpoint, it looks like this:
+              <br />
+              — The browser goes over the document and parses it
+              <br />— At some moment, the browser encounters the{' '}
               <code>&lt;script&gt;</code> tag. It pauses parsing HTML and starts
-              downloading and executing the script<br />
-              — Once the script is executed, the browser continues with parsing
+              downloading and executing the script
+              <br />— Once the script is executed, the browser continues with
+              parsing
             </p>
           </Slide>
           <Slide
@@ -658,16 +699,17 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             <p>
               In practice, this means that when you add a script, no content
               after it will be visible until the script downloads and executes.
-              And if you add a script into <code>&lt;head></code>, nothing will
-              be visible at all – until the script execution is complete.
+              And if you add a script into <code>&lt;head&gt;</code>, nothing
+              will be visible at all – until the script execution is complete.
             </p>
             <p>
               <small>
                 Note: modern browsers, in fact, usually try to parse the DOM
-                tree further even if they encounter a <code>&lt;script></code>{' '}
-                tag. This helps to save time in case the script doesn’t modify
-                anything, and the DOM tree doesn’t change. Browsers still don’t
-                show any content after the script though.{' '}
+                tree further even if they encounter a{' '}
+                <code>&lt;script&gt;</code> tag. This helps to save time in case
+                the script doesn’t modify anything, and the DOM tree doesn’t
+                change. Browsers still don’t show any content after the script
+                though.{' '}
                 <a href="https://hacks.mozilla.org/2017/09/building-the-dom-faster-speculative-parsing-async-defer-and-preload/">
                   More on this
                 </a>{' '}
@@ -747,7 +789,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
               on your code size and connection. Half a second is actually a lot.
             </p>
           </Slide>
-          <Separator>Code splitting</Separator>
+          <SectionHeader id="code-splitting">Code splitting</SectionHeader>
           <Slide
             slideId="js-code-splitting-1"
             useImageBorder={true}
@@ -817,7 +859,8 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
               one.) All these bundlers support a special function called{' '}
               <a href="https://webpack.js.org/guides/code-splitting/#dynamic-imports">
                 <code>import()</code>
-              </a>.
+              </a>
+              .
             </p>
             <p>
               In browsers, <code>import()</code> takes a JS file passed into it
@@ -875,7 +918,8 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
               16.6 added a similar built-in feature called{' '}
               <a href="https://reactjs.org/blog/2018/10/23/react-v-16-6.html#reactlazy-code-splitting-with-suspense">
                 <code>Suspense</code>
-              </a>. And Vue.js has had support for{' '}
+              </a>
+              . And Vue.js has had support for{' '}
               <a href="https://vuejs.org/v2/guide/components-dynamic-async.html#Async-Components">
                 async components
               </a>{' '}
@@ -903,24 +947,24 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
               splitting.
             </Blockquote>
             <p>
-              Refer to guides to learn more:<br />
-              — WebFundamentals article{' '}
+              Refer to guides to learn more:
+              <br />— WebFundamentals article{' '}
               <a href="https://developers.google.com/web/fundamentals/performance/optimizing-javascript/code-splitting/">
                 about code splitting
               </a>
-              <br />
-              — React docs{' '}
+              <br />— React docs{' '}
               <a href="https://reactjs.org/docs/code-splitting.html">
                 covering code splitting basics
               </a>
-              <br />
-              — webpack guide{' '}
+              <br />— webpack guide{' '}
               <a href="https://webpack.js.org/guides/code-splitting/">
                 into splitting code
               </a>
             </p>
           </Slide>
-          <Separator>webpack-libs-optimizations repo</Separator>
+          <SectionHeader id="webpack-libs-optimizations">
+            webpack-libs-optimizations repo
+          </SectionHeader>
           <Slide
             slideId="js-unused-dependencies-1"
             useImageBorder={true}
@@ -937,11 +981,11 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             <p>
               — For example, Moment.js, a library for working with dates,
               includes about 160 kBs of localization files for different
-              languages.<br />
-              — React components keep <code>propTypes</code> even in the
-              production bundle, despite the fact they aren’t necessary there.<br />
-              — With Lodash, it’s too easy to import and serve the whole library
-              even if you only need a few methods from it.
+              languages.
+              <br />— React components keep <code>propTypes</code> even in the
+              production bundle, despite the fact they aren’t necessary there.
+              <br />— With Lodash, it’s too easy to import and serve the whole
+              library even if you only need a few methods from it.
             </p>
             <p>
               All these things are the useless code that app dependencies bring
@@ -970,9 +1014,9 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
               </a>
             </p>
           </Slide>
-          <Separator>All together</Separator>
+          <SectionHeader id="js-summing-up">All together</SectionHeader>
           <Slide
-            slideId="js-summing-up"
+            slideId="js-summing-up-slide"
             useImageBorder={true}
             image={
               <SlideGatsbyImage
@@ -981,18 +1025,16 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             }
           >
             <p>
-              That’s all about JS for now. Summing up:<br />
-              — <a href="#javascript-minification-source">Minify the JS code</a>
-              <br />
-              — Use <code>async</code> and <code>defer</code>{' '}
+              That’s all about JS for now. Summing up:
+              <br />—{' '}
+              <a href="#javascript-minification-source">Minify the JS code</a>
+              <br />— Use <code>async</code> and <code>defer</code>{' '}
               <a href="#js-download-1">for your scripts</a>
-              <br />
-              — Split your code{' '}
+              <br />— Split your code{' '}
               <a href="#js-code-splitting-1">
                 to load as few of it as possible
               </a>
-              <br />
-              — And remove unused code{' '}
+              <br />— And remove unused code{' '}
               <a href="#js-unused-dependencies-1">from your dependencies</a>
             </p>
           </Slide>
@@ -1026,8 +1068,8 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             }
           >
             <p>
-              These are tools that would help you with this:<br />
-              — webpack’s{' '}
+              These are tools that would help you with this:
+              <br />— webpack’s{' '}
               <a href="https://github.com/postcss/postcss-loader">
                 <code>postcss-loader</code>
               </a>{' '}
@@ -1035,19 +1077,17 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
               <a href="https://github.com/cssnano/cssnano">
                 <code>cssnano</code>
               </a>
-              <br />
-              — PostCSS’s{' '}
+              <br />— PostCSS’s{' '}
               <a href="https://github.com/cssnano/cssnano">
                 <code>cssnano</code>
               </a>
-              <br />
-              — Gulp’s{' '}
+              <br />— Gulp’s{' '}
               <a href="https://www.npmjs.com/package/gulp-clean-css">
                 <code>gulp-clean-css</code>
               </a>
             </p>
           </Slide>
-          <Separator>Critical CSS</Separator>
+          <SectionHeader id="critical-css">Critical CSS</SectionHeader>
           <Slide
             slideId="css-block-rendering-1"
             useImageBorder={true}
@@ -1158,7 +1198,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
               <li>
                 You add a{' '}
                 <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Preloading_content">
-                  <code>&lt;link rel="preload"></code>
+                  <code>&lt;link rel=&quot;preload&quot;&gt;</code>
                 </a>{' '}
                 to start fetching the non-critical CSS file.
               </li>
@@ -1213,21 +1253,24 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
               —{' '}
               <a href="https://github.com/styled-components/styled-components">
                 <code>styled-components</code>
-              </a>. It’s a CSS-in-JS library that extracts and returns critical
+              </a>
+              . It’s a CSS-in-JS library that extracts and returns critical
               styles during server-side rendering. It works only if you already
               write styles using <code>styled-components</code>, but if you do,
-              it works really well.<br />
-              —{' '}
+              it works really well.
+              <br />—{' '}
               <a href="https://github.com/addyosmani/critical">
                 <code>critical</code>
-              </a>. It’s a utility that takes an HTML page, renders it in a
-              headless browser and extracts styles for above-the-fold content.
-              Because <code>critical</code> runs only over a single page, it
-              might not work well for complex single-page apps.<br />
-              —{' '}
+              </a>
+              . It’s a utility that takes an HTML page, renders it in a headless
+              browser and extracts styles for above-the-fold content. Because{' '}
+              <code>critical</code> runs only over a single page, it might not
+              work well for complex single-page apps.
+              <br />—{' '}
               <a href="https://github.com/pocketjoso/penthouse">
                 <code>penthouse</code>
-              </a>. It’s similar to <code>critical</code> but works with URLs
+              </a>
+              . It’s similar to <code>critical</code> but works with URLs
               instead of HTML pages.
             </p>
           </Slide>
@@ -1250,13 +1293,14 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
                 To learn more about critical CSS, read{' '}
                 <a href="https://www.smashingmagazine.com/2015/08/understanding-critical-css/">
                   the amazing Smashing Magazine’s guide
-                </a>.
+                </a>
+                .
               </small>
             </p>
           </Slide>
-          <Separator>All together</Separator>
+          <SectionHeader id="css-summing-up">All together</SectionHeader>
           <Slide
-            slideId="css-summing-up"
+            slideId="css-summing-up-slide"
             useImageBorder={true}
             image={
               <SlideGatsbyImage
@@ -1265,10 +1309,9 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             }
           >
             <p>
-              Those are the primary optimization strategies for CSS. Summing up:<br />
-              — <a href="#css-minify-1">Minify the CSS code</a>
-              <br />
-              — Extract critical CSS{' '}
+              Those are the primary optimization strategies for CSS. Summing up:
+              <br />— <a href="#css-minify-1">Minify the CSS code</a>
+              <br />— Extract critical CSS{' '}
               <a href="#css-critical-1">and fetch it first</a>
             </p>
           </Slide>
@@ -1296,7 +1339,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
               client (along with CSS and JS, as we discussed earlier).
             </p>
           </Slide>
-          <Separator>Gzip</Separator>
+          <SectionHeader id="gzip">Gzip</SectionHeader>
           <Slide
             slideId="http-gzip-1"
             useImageBorder={true}
@@ -1315,7 +1358,8 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
               volume will be reduced{' '}
               <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/optimize-encoding-and-transfer#text_compression_with_gzip">
                 by 60–80%
-              </a>. And when a browser receives the data, it will decompress it
+              </a>
+              . And when a browser receives the data, it will decompress it
               back.
             </p>
           </Slide>
@@ -1348,7 +1392,8 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
                 cases, but if you want to have a top-notch response time,{' '}
                 <a href="https://github.com/webpack-contrib/compression-webpack-plugin">
                   pre-compress your resources during the build
-                </a>.
+                </a>
+                .
               </small>
             </p>
           </Slide>
@@ -1366,7 +1411,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
               larger. SVG images are the only exception because they are text.
             </p>
           </Slide>
-          <Separator>Brotli</Separator>
+          <SectionHeader id="brotli">Brotli</SectionHeader>
           <Slide
             slideId="http-brotli-1"
             useImageBorder={true}
@@ -1383,7 +1428,8 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
               <em>Brotli’s advantage:</em> with the same CPU load,{' '}
               <a href="https://blogs.akamai.com/2016/02/understanding-brotlis-potential.html">
                 it compresses 20–30% better than Gzip
-              </a>. That’s 30% fewer bytes to download for free!
+              </a>
+              . That’s 30% fewer bytes to download for free!
             </p>
             <p>
               <em>Brotli’s disadvantage:</em> it’s relatively new and is
@@ -1419,11 +1465,12 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
                 <a href="https://certsimple.com/blog/nginx-brotli">
                   is both faster than the Gzip’s default level and compresses
                   better
-                </a>.
+                </a>
+                .
               </small>
             </p>
           </Slide>
-          <Separator>CDN</Separator>
+          <SectionHeader id="cdn">CDN</SectionHeader>
           <Slide
             slideId="http-cdn-1"
             useImageBorder={true}
@@ -1434,10 +1481,11 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
               What’s a CDN? Imagine you built an application and hosted it on
               servers located in the US. If the app’s user is in Warsaw, their
               request will have to travel all the way to the States and back to
-              Poland. And this will take a lot of time because:<br />
+              Poland. And this will take a lot of time because:
+              <br />
               — the request will have to travel a large distance (and its speed
-              is limited by the speed of light);<br />
-              — it will also have to pass through a number of routers and
+              is limited by the speed of light);
+              <br />— it will also have to pass through a number of routers and
               similar devices (and each device adds a processing delay).
             </p>
             <p>
@@ -1471,7 +1519,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
               CDN is truly marvelous.
             </p>
           </Slide>
-          <Separator>Preloading</Separator>
+          <SectionHeader id="preloading">Preloading</SectionHeader>
           <Slide
             slideId="http-preload-1"
             useImageBorder={true}
@@ -1486,7 +1534,8 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
               search results as soon as you do a search? That’s because{' '}
               <a href="https://searchenginewatch.com/sew/study/2276184/no-1-position-in-google-gets-33-of-search-traffic-study">
                 a third of all visitors click the first link
-              </a>, and preloading it allows them to see the target site faster.
+              </a>
+              , and preloading it allows them to see the target site faster.
             </p>
             <p>
               If you have pages or resources that you know will also be needed
@@ -1509,43 +1558,46 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
               do, in brief:
             </p>
             <p>
-              — <code>&lt;link rel="dns-prefetch"></code> instructs the browser
-              to make a DNS request for a server’s IP address in advance. This
-              is useful for CDNs, Google Fonts, and all other cases when you
-              know you’ll need a resource in a short time, know the domain it’s
-              hosted at, but don’t know its exact path. In this case, resolving
-              the server’s IP address in advance would save you{' '}
+              — <code>&lt;link rel=&quot;dns-prefetch&quot;&gt;</code> instructs
+              the browser to make a DNS request for a server’s IP address in
+              advance. This is useful for CDNs, Google Fonts, and all other
+              cases when you know you’ll need a resource in a short time, know
+              the domain it’s hosted at, but don’t know its exact path. In this
+              case, resolving the server’s IP address in advance would save you{' '}
               <a href="https://www.chromium.org/developers/design-documents/dns-prefetching">
                 from 50 to 300 ms
-              </a>.
+              </a>
+              .
             </p>
             <p>
-              — <code>&lt;link rel="preconnect"></code> instructs the browser to
-              perform the connection to a server in advance. It’s useful in the
-              same cases when <code>dns-prefetch</code> is useful, but{' '}
+              — <code>&lt;link rel=&quot;preconnect&quot;&gt;</code> instructs
+              the browser to perform the connection to a server in advance. It’s
+              useful in the same cases when <code>dns-prefetch</code> is useful,
+              but{' '}
               <a href="https://www.igvita.com/2015/08/17/eliminating-roundtrips-with-preconnect/">
                 sets up a full connection and saves more time
-              </a>. The drawback here is that opening a new connection is pretty
+              </a>
+              . The drawback here is that opening a new connection is pretty
               resource-intensive, so you don’t want to overuse this
               optimization.
             </p>
             <p>
-              — <code>&lt;link rel="prefetch"></code> preloads and caches a
-              resource in background with a low priority. This is useful e.g. to
-              preload a JS bundle for the next page of an app.
+              — <code>&lt;link rel=&quot;prefetch&quot;&gt;</code> preloads and
+              caches a resource in background with a low priority. This is
+              useful e.g. to preload a JS bundle for the next page of an app.
             </p>
             <p>
-              — <code>&lt;link rel="preload"></code> preloads a resource in
-              background with a high priority. This is useful to preload a
-              resource you’ll need in several seconds – e.g.,{' '}
+              — <code>&lt;link rel=&quot;preload&quot;&gt;</code> preloads a
+              resource in background with a high priority. This is useful to
+              preload a resource you’ll need in several seconds – e.g.,{' '}
               <a href="#css-critical-1">a non-critical CSS file</a>.
             </p>
             <p>
-              — <code>&lt;link rel="prerender"></code> preloads the specified
-              page in the background and renders it in an invisible tab. Later,
-              when a visitor clicks to a link leading to the prerendered page,
-              the page displays immediately. This is what Google uses to preload
-              its first search result.
+              — <code>&lt;link rel=&quot;prerender&quot;&gt;</code> preloads the
+              specified page in the background and renders it in an invisible
+              tab. Later, when a visitor clicks to a link leading to the
+              prerendered page, the page displays immediately. This is what
+              Google uses to preload its first search result.
             </p>
             <p>
               <small>
@@ -1559,19 +1611,15 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             <p>
               <small>
                 Read more:{' '}
-                <a href="https://medium.com/reloading/preload-prefetch-and-priorities-in-chrome-776165961bbf">
-                  Preload, prefetch and priorities in Chrome
-                </a>{' '}
-                ·{' '}
-                <a href="https://css-tricks.com/prefetching-preloading-prebrowsing/">
-                  Prefetching, preloading, prebrowsing
+                <a href="/blog/link-rels">
+                  Preload, prefetch and other &lt;link&gt; tags
                 </a>
               </small>
             </p>
           </Slide>
-          <Separator>All together</Separator>
+          <SectionHeader id="http-summing-up">All together</SectionHeader>
           <Slide
-            slideId="http-summing-up"
+            slideId="http-summing-up-slide"
             useImageBorder={true}
             image={
               <SlideGatsbyImage
@@ -1580,21 +1628,17 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             }
           >
             <p>
-              Summing up HTTP/connection optimizations:<br />
-              —{' '}
+              Summing up HTTP/connection optimizations:
+              <br />—{' '}
               <a href="#http-minify">
                 Minify HTML, just like any other resource
               </a>
-              <br />
-              — Compress text resources <a href="#http-gzip-1">
-                using Gzip
-              </a>{' '}
-              and <a href="#http-brotli-1">Brotli</a>
-              <br />
-              — Use a CDN to save time{' '}
+              <br />— Compress text resources{' '}
+              <a href="#http-gzip-1">using Gzip</a> and{' '}
+              <a href="#http-brotli-1">Brotli</a>
+              <br />— Use a CDN to save time{' '}
               <a href="#http-cdn-1">on downloading your static resources</a>
-              <br />
-              — Preload resources{' '}
+              <br />— Preload resources{' '}
               <a href="#http-preload-1">you know you’ll need later</a>
             </p>
           </Slide>
@@ -1608,7 +1652,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
               />
             }
           >
-            <p>Moving on. Let’s talk images.</p>
+            <p>Moving on. Let’s talk about images.</p>
           </Slide>
           <Slide
             slideId="images-format"
@@ -1690,22 +1734,25 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
               <code>webp</code> works great for both photos and raster graphics
               because it supports both lossy and lossless compression. It also
               compresses at least 20-30% better than <code>jpg</code> and{' '}
-              <code>png</code> (<a href="https://optimus.keycdn.com/support/jpg-to-webp/">
+              <code>png</code> (
+              <a href="https://optimus.keycdn.com/support/jpg-to-webp/">
                 <code>jpg</code> study
               </a>{' '}
               ·{' '}
               <a href="https://optimus.keycdn.com/support/png-to-webp/">
                 <code>png</code> study
-              </a>).
+              </a>
+              ).
             </p>
             <p>
               Unfortunately, <code>webp</code> is{' '}
               <a href="https://caniuse.com/#feat=webp">
-                only supported in Chrome
-              </a>. However, you can still load webp images with a{' '}
-              <code>jpg</code> or <code>png</code> fallback using the{' '}
+                not supported in Safari and Internet Explorer
+              </a>
+              . However, you can still load webp images with a <code>jpg</code>{' '}
+              or <code>png</code> fallback using the{' '}
               <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture">
-                <code>&lt;picture></code>
+                <code>&lt;picture&gt;</code>
               </a>{' '}
               tag.
             </p>
@@ -1720,14 +1767,15 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             }
           >
             <p>
-              This is how a <code>&lt;picture></code> tag for <code>webp</code>{' '}
-              with a <code>jpg</code> fallback would look like.
+              This is how a <code>&lt;picture&gt;</code> tag for{' '}
+              <code>webp</code> with a <code>jpg</code> fallback would look
+              like.
             </p>
             <p>
               With such tag, browsers that support <code>webp</code> will load
               the <code>webp</code> file. Browsers that don’t support{' '}
-              <code>webp</code> or the <code>&lt;picture></code> tag would fall
-              back to the plain <code>jpg</code> image.
+              <code>webp</code> or the <code>&lt;picture&gt;</code> tag would
+              fall back to the plain <code>jpg</code> image.
             </p>
           </Slide>
           <Slide
@@ -1747,7 +1795,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
               are <em>huge</em> – too often, they take megabytes or tens of
               megabytes of data. Instead, use video files (with the{' '}
               <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video">
-                <code>&lt;video></code>
+                <code>&lt;video&gt;</code>
               </a>{' '}
               tag) which compress the content way better.
             </p>
@@ -1761,7 +1809,9 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
               </small>
             </p>
           </Slide>
-          <Separator>Image compression</Separator>
+          <SectionHeader id="image-compression">
+            Image compression
+          </SectionHeader>
           <Slide
             slideId="images-compress"
             useImageBorder={true}
@@ -1808,10 +1858,12 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
               called{' '}
               <a href="https://github.com/svg/svgo">
                 <code>svgo</code>
-              </a>. There’s also{' '}
+              </a>
+              . There’s also{' '}
               <a href="https://jakearchibald.github.io/svgomg/">
                 a great UI for <code>svgo</code>
-              </a>.
+              </a>
+              .
             </p>
           </Slide>
           <Slide
@@ -1860,10 +1912,11 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
               Photoshop or Gimp, with a webpack loader (e.g.,{' '}
               <a href="https://github.com/herrstucki/responsive-loader">
                 <code>responsive-loader</code>
-              </a>), or using another tool. If you need high-dimension pictures
-              for HiDPI screens, use{' '}
+              </a>
+              ), or using another tool. If you need high-dimension pictures for
+              HiDPI screens, use{' '}
               <a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images">
-                <code>&lt;picture></code> or <code>&lt;img srcset></code>
+                <code>&lt;picture&gt;</code> or <code>&lt;img srcset&gt;</code>
               </a>{' '}
               instead.
             </p>
@@ -1972,7 +2025,8 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
               Gimp, a webpack loader (e.g.,{' '}
               <a href="https://www.npmjs.com/package/image-webpack-loader">
                 <code>image-webpack-loader</code>
-              </a>), or another tool.
+              </a>
+              ), or another tool.
             </p>
           </Slide>
           <Slide
@@ -2029,7 +2083,8 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
               or Gimp, a webpack loader (e.g.,{' '}
               <a href="https://www.npmjs.com/package/image-webpack-loader">
                 <code>image-webpack-loader</code>
-              </a>), or another tool.
+              </a>
+              ), or another tool.
             </p>
             <p>
               <small>
@@ -2069,8 +2124,9 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
               as{' '}
               <a href="#images-and-fonts-compress-jpg-progressive-1">
                 Progressive JPEG
-              </a>: it starts rendering in a low quality but improves as it
-              loads. It’s not suitable for everything – e.g., loading png icons
+              </a>
+              : it starts rendering in a low quality but improves as it loads.
+              It’s not suitable for everything – e.g., loading png icons
               progressively would look weird – but it might work for some
               images.
             </p>
@@ -2078,8 +2134,9 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
               — <em>Use indexed colors.</em> With{' '}
               <a href="https://en.wikipedia.org/wiki/Indexed_color">
                 indexed colors
-              </a>, a PNG image puts all its colors into a palette and uses it
-              to reference each color. This makes the number of bytes needed for
+              </a>
+              , a PNG image puts all its colors into a palette and uses it to
+              reference each color. This makes the number of bytes needed for
               each pixel smaller and might help to decrease the overall image
               weight. Because the palette size is limited (up to 256 colors),
               this solution doesn’t work for images with lots of colors.
@@ -2089,7 +2146,8 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
               editor,{' '}
               <a href="https://www.npmjs.com/package/image-webpack-loader">
                 <code>image-webpack-loader</code>
-              </a>, or another tool.
+              </a>
+              , or another tool.
             </p>
           </Slide>
           <Slide
@@ -2121,8 +2179,8 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             <p>
               — If you can’t plug a webpack loader into your build process,
               there’re also a number of CDNs and services that host and optimize
-              images for you (e.g., <a href="https://www.akamai.com/">Akamai</a>,{' '}
-              <a href="https://cloudinary.com/">Cloudinary</a>, or{' '}
+              images for you (e.g., <a href="https://www.akamai.com/">Akamai</a>
+              , <a href="https://cloudinary.com/">Cloudinary</a>, or{' '}
               <a href="https://www.imgix.com/">imgix</a>).
             </p>
           </Slide>
@@ -2136,24 +2194,26 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             }
           >
             <p>
-              That’s all about images. Summing up:<br />
-              — <a href="#images-format">Choose the proper image format</a>
-              <br />
-              — <a href="#images-compress">Optimize image loading time</a> by
-              decreasing their dimensions, decreasing their quality, or making
-              them progressive
+              That’s all about images. Summing up:
+              <br />—{' '}
+              <a href="#images-format">Choose the proper image format</a>
+              <br />— <a href="#images-compress">
+                Optimize image loading time
+              </a>{' '}
+              by decreasing their dimensions, decreasing their quality, or
+              making them progressive
             </p>
             <p>
               <small>
-                To learn more about image optimization, see:<br />
-                — <a href="https://images.guide/">images.guide</a> by Addy
-                Osmani<br />
-                —{' '}
+                To learn more about image optimization, see:
+                <br />— <a href="https://images.guide/">images.guide</a> by Addy
+                Osmani
+                <br />—{' '}
                 <a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images">
                   Responsive images
                 </a>{' '}
-                on MDN<br />
-                —{' '}
+                on MDN
+                <br />—{' '}
                 <a href="https://iamakulov.com/notes/optimize-images-webpack/">
                   How to optimize images in webpack
                 </a>{' '}
@@ -2209,6 +2269,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             </p>
             <p>Let’s see how to optimize fonts to avoid this.</p>
           </Slide>
+          <SectionHeader id="fallback-fonts">Fallback fonts</SectionHeader>
           <Slide
             slideId="fonts-fallback-1"
             useImageBorder={true}
@@ -2270,7 +2331,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
               font that resembles the custom one.
             </p>
           </Slide>
-          <Separator>font-display</Separator>
+          <SectionHeader id="font-display">font-display</SectionHeader>
           <Slide
             slideId="fonts-font-display-1"
             useImageBorder={true}
@@ -2335,8 +2396,9 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
               text by substituting the custom font (see also:{' '}
               <a href="https://css-tricks.com/fout-foit-foft/">
                 the flash of unstyled text
-              </a>). This is slightly worse for the user experience, but it’s
-              still better than not showing any text at all.
+              </a>
+              ). This is slightly worse for the user experience, but it’s still
+              better than not showing any text at all.
             </p>
           </Slide>
           <Slide
@@ -2414,13 +2476,13 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             }
           >
             <p>
-              That’s it about fonts. Summing up:<br />
-              — <a href="#fonts-fallback-1">
+              That’s it about fonts. Summing up:
+              <br />—{' '}
+              <a href="#fonts-fallback-1">
                 Specify the proper fallback font
               </a>{' '}
               (and a generic font family)
-              <br />
-              —{' '}
+              <br />—{' '}
               <a href="#fonts-font-display-1">
                 Use <code>font-display</code>
               </a>{' '}
@@ -2455,7 +2517,8 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
               The first tool is{' '}
               <a href="https://developers.google.com/speed/pagespeed/insights/">
                 Google PageSpeed Insights
-              </a>.
+              </a>
+              .
             </p>
             <p>
               PageSpeed Insights run a number of audits over the URL you give
@@ -2480,7 +2543,8 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
               The second tool is{' '}
               <a href="https://developers.google.com/web/tools/lighthouse/">
                 Lighthouse
-              </a>.
+              </a>
+              .
             </p>
             <p>
               Lighthouse is PageSpeed Insights on steroids. It has several
@@ -2529,7 +2593,8 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
               And the last tool is{' '}
               <a href="https://www.npmjs.com/package/webpack-bundle-analyzer">
                 webpack-bundle-analyzer
-              </a>.
+              </a>
+              .
             </p>
             <p>
               <code>webpack-bundle-analyzer</code> is a webpack utility that
@@ -2538,14 +2603,20 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
               optimize. Read more about how to use it{' '}
               <a href="https://developers.google.com/web/fundamentals/performance/webpack/monitor-and-analyze#analyze_why_the_bundle_is_so_large">
                 at WebFundamentals
-              </a>.
+              </a>
+              .
             </p>
             <p>That’s it about tools – and about the talk!</p>
             <p>
               <small>
-                Video from{' '}
+                Video source:{' '}
                 <a href="https://www.npmjs.com/package/webpack-bundle-analyzer">
-                  the webpack-bundle-analyzer docs
+                  webpack-bundle-analyzer docs
+                </a>
+                <br />
+                More tools:{' '}
+                <a href="https://github.com/iamakulov/awesome-webpack-perf#analysis-tools">
+                  iamakulov/awesome-webpack-perf
                 </a>
               </small>
             </p>
@@ -2568,8 +2639,8 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
                 <a href="https://twitter.com/theKashey">Anton Korzunov</a>,{' '}
                 <a href="https://twitter.com/hollowaynz">Matthew Holloway</a>,{' '}
                 <a href="https://twitter.com/bradleyfew">Bradley Few</a>,{' '}
-                <a href="https://twitter.com/BrianRosamilia">Brian Rosamilia</a>,{' '}
-                <a href="https://twitter.com/iamkeraf">Rafael Keramidas</a>,{' '}
+                <a href="https://twitter.com/BrianRosamilia">Brian Rosamilia</a>
+                , <a href="https://twitter.com/iamkeraf">Rafael Keramidas</a>,{' '}
                 <a href="https://twitter.com/vitkarpov">Viktor Karpov</a>, and
                 Artem Miroshnyk (in no particular order) for providing feedback
                 on drafts.
@@ -2687,9 +2758,7 @@ export const query = graphql`
     }
 
     cssCritical21: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/css-critical-2-1.png"
-      }
+      relativePath: { eq: "talks/web-perf-101/slides/css-critical-2-1.png" }
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
@@ -2699,9 +2768,7 @@ export const query = graphql`
     }
 
     cssCritical22: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/css-critical-2-2.png"
-      }
+      relativePath: { eq: "talks/web-perf-101/slides/css-critical-2-2.png" }
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
@@ -2711,9 +2778,7 @@ export const query = graphql`
     }
 
     cssCritical22: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/css-critical-2-2.png"
-      }
+      relativePath: { eq: "talks/web-perf-101/slides/css-critical-2-2.png" }
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
@@ -2833,9 +2898,7 @@ export const query = graphql`
     }
 
     fontsFallback1: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/fonts-fallback-1.png"
-      }
+      relativePath: { eq: "talks/web-perf-101/slides/fonts-fallback-1.png" }
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
@@ -2845,9 +2908,7 @@ export const query = graphql`
     }
 
     fontsFallback2: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/fonts-fallback-2.png"
-      }
+      relativePath: { eq: "talks/web-perf-101/slides/fonts-fallback-2.png" }
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
@@ -2857,9 +2918,7 @@ export const query = graphql`
     }
 
     fontsFallback3: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/fonts-fallback-3.png"
-      }
+      relativePath: { eq: "talks/web-perf-101/slides/fonts-fallback-3.png" }
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
@@ -2869,9 +2928,7 @@ export const query = graphql`
     }
 
     fontsFallback4: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/fonts-fallback-4.png"
-      }
+      relativePath: { eq: "talks/web-perf-101/slides/fonts-fallback-4.png" }
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
@@ -2881,9 +2938,7 @@ export const query = graphql`
     }
 
     fontsFontDisplay2: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/fonts-font-display-2.png"
-      }
+      relativePath: { eq: "talks/web-perf-101/slides/fonts-font-display-2.png" }
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
@@ -2893,9 +2948,7 @@ export const query = graphql`
     }
 
     fontsFontDisplay3: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/fonts-font-display-3.png"
-      }
+      relativePath: { eq: "talks/web-perf-101/slides/fonts-font-display-3.png" }
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
@@ -2905,9 +2958,7 @@ export const query = graphql`
     }
 
     fontsFontDisplay4: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/fonts-font-display-4.png"
-      }
+      relativePath: { eq: "talks/web-perf-101/slides/fonts-font-display-4.png" }
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
@@ -2917,9 +2968,7 @@ export const query = graphql`
     }
 
     fontsFontDisplay5: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/fonts-font-display-5.png"
-      }
+      relativePath: { eq: "talks/web-perf-101/slides/fonts-font-display-5.png" }
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
@@ -2929,9 +2978,7 @@ export const query = graphql`
     }
 
     fontsFontDisplay4: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/fonts-font-display-4.png"
-      }
+      relativePath: { eq: "talks/web-perf-101/slides/fonts-font-display-4.png" }
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
@@ -2941,9 +2988,7 @@ export const query = graphql`
     }
 
     fontsSummingUp: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/fonts-summing-up.png"
-      }
+      relativePath: { eq: "talks/web-perf-101/slides/fonts-summing-up.png" }
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
@@ -3023,9 +3068,7 @@ export const query = graphql`
     }
 
     httpHtmlMinify1: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/http-html-minify-1.png"
-      }
+      relativePath: { eq: "talks/web-perf-101/slides/http-html-minify-1.png" }
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
@@ -3035,9 +3078,7 @@ export const query = graphql`
     }
 
     httpHtmlMinify2: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/http-html-minify-2.png"
-      }
+      relativePath: { eq: "talks/web-perf-101/slides/http-html-minify-2.png" }
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
@@ -3067,9 +3108,7 @@ export const query = graphql`
     }
 
     httpSummingUp: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/http-summing-up.png"
-      }
+      relativePath: { eq: "talks/web-perf-101/slides/http-summing-up.png" }
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
@@ -3247,9 +3286,7 @@ export const query = graphql`
     }
 
     imagesAndFontsGif: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/images-and-fonts-gif.png"
-      }
+      relativePath: { eq: "talks/web-perf-101/slides/images-and-fonts-gif.png" }
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
@@ -3271,9 +3308,7 @@ export const query = graphql`
     }
 
     imagesAndFontsJpg: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/images-and-fonts-jpg.png"
-      }
+      relativePath: { eq: "talks/web-perf-101/slides/images-and-fonts-jpg.png" }
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
@@ -3283,9 +3318,7 @@ export const query = graphql`
     }
 
     imagesAndFontsPng: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/images-and-fonts-png.png"
-      }
+      relativePath: { eq: "talks/web-perf-101/slides/images-and-fonts-png.png" }
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
@@ -3307,9 +3340,7 @@ export const query = graphql`
     }
 
     imagesAndFontsSvg: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/images-and-fonts-svg.png"
-      }
+      relativePath: { eq: "talks/web-perf-101/slides/images-and-fonts-svg.png" }
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
@@ -3343,9 +3374,7 @@ export const query = graphql`
     }
 
     imagesSummingUp: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/images-summing-up.png"
-      }
+      relativePath: { eq: "talks/web-perf-101/slides/images-summing-up.png" }
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
@@ -3354,9 +3383,7 @@ export const query = graphql`
       }
     }
 
-    index: file(
-      relativePath: { eq: "talks/web-perf-101/slides/index.png" }
-    ) {
+    index: file(relativePath: { eq: "talks/web-perf-101/slides/index.png" }) {
       childImageSharp {
         fluid(maxWidth: 500) {
           ...GatsbyImageSharpFluid
@@ -3365,9 +3392,7 @@ export const query = graphql`
     }
 
     javascriptHeader: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/javascript-header.png"
-      }
+      relativePath: { eq: "talks/web-perf-101/slides/javascript-header.png" }
     ) {
       childImageSharp {
         fluid(maxWidth: 700) {
@@ -3413,9 +3438,7 @@ export const query = graphql`
     }
 
     jsAsyncDefer1: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/js-async-defer-1.png"
-      }
+      relativePath: { eq: "talks/web-perf-101/slides/js-async-defer-1.png" }
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
@@ -3425,9 +3448,7 @@ export const query = graphql`
     }
 
     jsAsyncDefer2: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/js-async-defer-2.png"
-      }
+      relativePath: { eq: "talks/web-perf-101/slides/js-async-defer-2.png" }
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
@@ -3437,9 +3458,7 @@ export const query = graphql`
     }
 
     jsAsyncDefer3: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/js-async-defer-3.png"
-      }
+      relativePath: { eq: "talks/web-perf-101/slides/js-async-defer-3.png" }
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
@@ -3449,9 +3468,7 @@ export const query = graphql`
     }
 
     jsCodeSplitting1: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/js-code-splitting-1.png"
-      }
+      relativePath: { eq: "talks/web-perf-101/slides/js-code-splitting-1.png" }
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
@@ -3461,9 +3478,7 @@ export const query = graphql`
     }
 
     jsCodeSplitting2: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/js-code-splitting-2.png"
-      }
+      relativePath: { eq: "talks/web-perf-101/slides/js-code-splitting-2.png" }
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
@@ -3473,9 +3488,7 @@ export const query = graphql`
     }
 
     jsCodeSplitting3: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/js-code-splitting-3.png"
-      }
+      relativePath: { eq: "talks/web-perf-101/slides/js-code-splitting-3.png" }
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
@@ -3497,9 +3510,7 @@ export const query = graphql`
     }
 
     jsCodeSplitting4: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/js-code-splitting-4.png"
-      }
+      relativePath: { eq: "talks/web-perf-101/slides/js-code-splitting-4.png" }
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
@@ -3509,9 +3520,7 @@ export const query = graphql`
     }
 
     jsCodeSplitting5: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/js-code-splitting-5.png"
-      }
+      relativePath: { eq: "talks/web-perf-101/slides/js-code-splitting-5.png" }
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
@@ -3521,9 +3530,7 @@ export const query = graphql`
     }
 
     jsCodeSplitting6: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/js-code-splitting-6.png"
-      }
+      relativePath: { eq: "talks/web-perf-101/slides/js-code-splitting-6.png" }
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
@@ -3706,9 +3713,7 @@ export const query = graphql`
       }
     }
 
-    thanks: file(
-      relativePath: { eq: "talks/web-perf-101/slides/thanks.png" }
-    ) {
+    thanks: file(relativePath: { eq: "talks/web-perf-101/slides/thanks.png" }) {
       childImageSharp {
         fluid(maxWidth: 500) {
           ...GatsbyImageSharpFluid
@@ -3727,9 +3732,7 @@ export const query = graphql`
     }
 
     toolsLighthouse: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/tools-lighthouse.png"
-      }
+      relativePath: { eq: "talks/web-perf-101/slides/tools-lighthouse.png" }
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
@@ -3751,9 +3754,7 @@ export const query = graphql`
     }
 
     toolsWebpagetest: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/tools-webpagetest.png"
-      }
+      relativePath: { eq: "talks/web-perf-101/slides/tools-webpagetest.png" }
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
@@ -3762,9 +3763,7 @@ export const query = graphql`
       }
     }
 
-    iamakulovPhoto: file(
-      relativePath: { eq: "Author/images/iamakulov.jpg" }
-    ) {
+    iamakulovPhoto: file(relativePath: { eq: "Author/images/iamakulov.jpg" }) {
       childImageSharp {
         fixed(width: 48, height: 48, quality: 90) {
           ...GatsbyImageSharpFixed
@@ -3791,9 +3790,7 @@ export const query = graphql`
     }
 
     panda100Large: file(
-      relativePath: {
-        eq: "talks/web-perf-101/pandas/panda_100_large.png"
-      }
+      relativePath: { eq: "talks/web-perf-101/pandas/panda_100_large.png" }
     ) {
       publicURL
     }

@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 import media from '../../../styles/media';
 
-const Separator = styled.div`
-  color: #ddd;
+const SectionHeader = styled.div`
   font-size: 60px;
   font-weight: bold;
   white-space: nowrap;
@@ -15,4 +14,4 @@ const Separator = styled.div`
   `};
 `;
 
-export default Separator;
+export default SectionHeader;
