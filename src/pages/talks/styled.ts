@@ -1,10 +1,10 @@
 import styled from 'styled-components';
-import _Footer from '../components/Footer';
-import _Nav from '../components/Nav';
-import _SectionHeader from '../components/talks/SectionHeader';
-import _Slide from '../components/talks/Slide';
-import media from '../styles/media';
-import { colors, gridSize, sizes } from '../styles/variables';
+import _Footer from '../../components/Footer';
+import _Nav from '../../components/Nav';
+import _SectionHeader from '../../components/talks/SectionHeader';
+import _Slide from '../../components/talks/Slide';
+import media from '../../styles/media';
+import { colors, gridSize, sizes } from '../../styles/variables';
 
 export const Nav = styled(_Nav)`
   margin-top: ${sizes.navTopMargin}px;

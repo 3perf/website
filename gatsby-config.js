@@ -27,6 +27,14 @@ module.exports = {
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-styled-components',
     'gatsby-plugin-typescript',
+    // Ignore .styled.ts files
+    {
+      resolve: `gatsby-plugin-page-creator`,
+      options: {
+        path: `${__dirname}/src/pages`,
+        ignore: ['**/styled.ts', '**/*.styled.ts'],
+      },
+    },
     {
       resolve: 'gatsby-plugin-react-svg',
       options: {

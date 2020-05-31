@@ -12,7 +12,7 @@ import {
   Header,
   MailchimpSubscribe,
   Nav,
-} from '../../pages-styled/subscribe.styled';
+} from './styled';
 
 const getEmailFromQueryString = (queryString: string) => {
   const email = parse(queryString).email;

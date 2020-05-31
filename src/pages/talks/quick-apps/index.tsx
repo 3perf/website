@@ -4,8 +4,8 @@ import styled from 'styled-components';
 import Layout from '../../../components/Layout';
 import { LogoKind } from '../../../components/Logo';
 import WidthWrapper from '../../../components/WidthWrapper';
-import { Footer, Nav } from '../../../pages-styled/web-perf-101.styled';
 import media from '../../../styles/media';
+import { Footer, Nav } from '../styled';
 
 const IFrame = styled.iframe`
   width: 100%;

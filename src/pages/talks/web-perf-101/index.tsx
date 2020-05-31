@@ -6,6 +6,7 @@ import { LogoKind } from '../../../components/Logo';
 import WidthWrapper from '../../../components/WidthWrapper';
 import { SlideGatsbyImage } from '../../../components/talks/Slide';
 import TalkHeader from '../../../components/talks/TalkHeader';
+import { SharpImageFixed, SharpImageFluid } from '../../../types';
 import {
   BlockImage,
   Blockquote,
@@ -18,8 +19,7 @@ import {
   Slide,
   Slides,
   Video,
-} from '../../../pages-styled/web-perf-101.styled';
-import { SharpImageFixed, SharpImageFluid } from '../../../types';
+} from '../styled';
 import nonProgressiveGif from './progressive-gifs/non-progressive.gif';
 import progressiveGif from './progressive-gifs/progressive.gif';
 import fontsLoadingUrl from './slides/fonts-loading.mp4';

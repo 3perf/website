@@ -24,7 +24,7 @@ import {
   Nav,
   SectionWrapper,
   ServicesBackground,
-} from '../pages-styled/index.styled';
+} from './index.styled';
 
 const IndexPage = () => (
   <Layout>
