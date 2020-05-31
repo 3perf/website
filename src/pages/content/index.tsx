@@ -6,6 +6,8 @@ import Layout from '../../components/Layout';
 import { LogoKind } from '../../components/Logo';
 import { NavKind } from '../../components/NavBase';
 import WidthWrapper from '../../components/WidthWrapper';
+import { JSXChildrenProp, SharpImageFixed } from '../../types';
+import facebookCoverUrl from './facebook-cover.png';
 import {
   Background,
   BadgeImage,
@@ -20,9 +22,7 @@ import {
   NewBadge,
   Section,
   SectionHeader,
-} from '../../pages-styled/content.styled';
-import { JSXChildrenProp, SharpImageFixed } from '../../types';
-import facebookCoverUrl from './facebook-cover.png';
+} from './styled';
 import twitterCoverUrl from './twitter-cover.png';
 
 interface ContentPageProps {

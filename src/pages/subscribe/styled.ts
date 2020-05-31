@@ -1,11 +1,11 @@
 import styled from 'styled-components';
-import _Footer from '../components/Footer';
-import _MailchimpSubscribe from '../components/MailchimpSubscribe';
-import _Nav from '../components/Nav';
-import backgroundLowresUrl from '../pages/subscribe/background-lowres.jpg';
-import backgroundUrl from '../pages/subscribe/background.jpg';
-import media from '../styles/media';
-import { gridSize, sizes } from '../styles/variables';
+import _Footer from '../../components/Footer';
+import _MailchimpSubscribe from '../../components/MailchimpSubscribe';
+import _Nav from '../../components/Nav';
+import backgroundLowresUrl from '../../pages/subscribe/background-lowres.jpg';
+import backgroundUrl from '../../pages/subscribe/background.jpg';
+import media from '../../styles/media';
+import { gridSize, sizes } from '../../styles/variables';
 
 export const Background = styled.div`
   min-height: 100vh;

@@ -1,12 +1,12 @@
 import styled from 'styled-components';
-import _Footer from '../components/Footer';
-import Link from '../components/Link';
-import _MailchimpSubscribe from '../components/MailchimpSubscribe';
-import _Nav from '../components/Nav';
-import backgroundUrl from '../pages/content/background.svg';
-import media from '../styles/media';
-import { linkActiveStyles, linkStyles } from '../styles/shared-styles';
-import { colors, gridSize, sizes } from '../styles/variables';
+import _Footer from '../../components/Footer';
+import Link from '../../components/Link';
+import _MailchimpSubscribe from '../../components/MailchimpSubscribe';
+import _Nav from '../../components/Nav';
+import backgroundUrl from '../../pages/content/background.svg';
+import media from '../../styles/media';
+import { linkActiveStyles, linkStyles } from '../../styles/shared-styles';
+import { colors, gridSize, sizes } from '../../styles/variables';
 
 export const Background = styled.div`
   background: #222;
