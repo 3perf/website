@@ -122,17 +122,6 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-google-gtag`,
-      options: {
-        trackingIds: ['UA-38017504-7'],
-        gtagConfig: {
-          linker: {
-            domains: ['3perf.com', 'googlefonts.3perf.com'],
-          },
-        },
-      },
-    },
-    {
       resolve: `gatsby-plugin-feed`,
       options: {
         query: `

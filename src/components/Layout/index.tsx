@@ -80,11 +80,35 @@ class Layout extends React.Component<LayoutProps, {}> {
         <GlobalStyle />
         {children}
         <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=UA-38017504-7"
+        />
+        <Script
+          dangerouslySetInnerHTML={{
+            __html: `
+              if (window.location.hostname === 'localhost') {
+                // Disable GA on localhost, per https://stackoverflow.com/a/45367051/1192426
+                window['ga-disable-UA-38017504-7'] = true;
+              }
+            `,
+          }}
+        />
+        <Script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+
+              gtag('config', 'UA-38017504-7');
+            `,
+          }}
+        />
+        <Script
           src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.0.0-alpha/quicklink.umd.js"
           defer
         />
         <Script
-          data-no-instant
           dangerouslySetInnerHTML={{
             __html: `
               window.addEventListener('load', () => quicklink.listen());
