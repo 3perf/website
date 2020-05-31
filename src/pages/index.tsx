@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Helmet from 'react-helmet';
+import { Helmet } from 'react-helmet';
 import Footer from '../components/Footer';
 import AboutSection from '../components/HomeSectionAbout';
 import ClientsSection from '../components/HomeSectionClients';

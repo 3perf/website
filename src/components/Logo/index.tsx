@@ -1,6 +1,6 @@
 import classnames from 'classnames';
 import * as React from 'react';
-import Helmet from 'react-helmet';
+import { Helmet } from 'react-helmet';
 import Script from 'react-script-tag';
 import { LogoSvg } from './styled';
 
