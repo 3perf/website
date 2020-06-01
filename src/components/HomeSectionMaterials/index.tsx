@@ -1,6 +1,7 @@
-import { graphql, Link, StaticQuery } from 'gatsby';
+import { graphql, StaticQuery } from 'gatsby';
 import * as React from 'react';
 import { SharpImageFixed } from '../../types';
+import Link from '../Link';
 import Section, { SectionKind } from '../Section';
 import { Image, Links, LinkWrapper, Text } from './styled';
 
@@ -19,43 +20,43 @@ const MaterialsSection = ({ data }: MaterialsSectionProps) => (
     <Text>We write stuff:</Text>
     <Links>
       <LinkWrapper>
-        <Link to="/talks/web-perf-101">
+        <Link href="/talks/web-perf-101">
           <Image fixed={data.webPerf101.childImageSharp.fixed} />
           Web performance 101
         </Link>
       </LinkWrapper>
       <LinkWrapper>
-        <a href="https://iamakulov.com/notes/walmart/">
+        <Link href="https://iamakulov.com/notes/walmart/">
           Case study: analyzing the Walmart site performance
-        </a>
+        </Link>
       </LinkWrapper>
       <LinkWrapper>
-        <a href="https://iamakulov.com/notes/optimize-images-webpack/">
+        <Link href="https://iamakulov.com/notes/optimize-images-webpack/">
           How to optimize images in webpack
-        </a>
+        </Link>
       </LinkWrapper>
       <LinkWrapper>
-        <a href="https://developers.google.com/web/fundamentals/performance/webpack/decrease-frontend-size">
+        <Link href="https://developers.google.com/web/fundamentals/performance/webpack/decrease-frontend-size">
           <Image
             fixed={data.googleWebpack.childImageSharp.fixed}
             addBorder={true}
           />
           Web performance guide for webpack
-        </a>
+        </Link>
       </LinkWrapper>
     </Links>
     <Text>And do stuff:</Text>
     <Links>
       <LinkWrapper>
-        <a href="https://googlefonts.3perf.com">Google Fonts Optimizer</a>
+        <Link href="https://googlefonts.3perf.com">Google Fonts Optimizer</Link>
       </LinkWrapper>
       <LinkWrapper>
-        <a href="https://www.npmjs.com/package/moment-locales-webpack-plugin">
+        <Link href="https://www.npmjs.com/package/moment-locales-webpack-plugin">
           moment-locales-webpack-plugin
-        </a>
+        </Link>
       </LinkWrapper>
     </Links>
-    <Link to="/content">See more →</Link>
+    <Link href="/content">See more →</Link>
   </Section>
 );
 
@@ -94,7 +95,7 @@ const MaterialsSectionWithQuery = () => (
         }
       }
     `}
-    render={data => <MaterialsSection data={data} />}
+    render={(data) => <MaterialsSection data={data} />}
   />
 );
 
