@@ -35,7 +35,6 @@ function createImageMarkup({
     alt="${realAlt}"
     width="${presentationWidth}"
     height="${presentationHeight}"
-    loading="lazy"
   `;
 
   // Scrollable images: on mobile, they scroll horizontally
