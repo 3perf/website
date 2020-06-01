@@ -66,6 +66,9 @@ module.exports = {
     {
       resolve: 'gatsby-transformer-remark',
       options: {
+        // Disable `pedantic` as it’s a) buggy and deprecated, per https://github.com/remarkjs/remark/pull/477,
+        // b) breaks code indents inside list items
+        pedantic: false,
         plugins: [
           `gatsby-remark-3perf-table-of-contents`,
           `gatsby-remark-autolink-headers`,
