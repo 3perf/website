@@ -60,7 +60,14 @@ function createImageMarkup({
           : ''
       }
       <source srcSet="${srcSet}" sizes="${sizes}" />
-      <img src="${src}" ${commonProps} />
+      <img
+        src="${src}"
+        ${commonProps}
+        ${
+          imageOptions.maxWidth
+            ? `style="--max-width-from-options:${imageOptions.maxWidth}px"`
+            : ''
+        } />
     </picture>
   </figure>`;
 }
