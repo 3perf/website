@@ -38,7 +38,7 @@ const NavBase = ({
 }: NavBaseProps) => (
   <Container className={className}>
     {logoLinksToHome ? (
-      <BlockLink to="/">
+      <BlockLink href="/">
         <Logo logoKind={logoKind} isPlayful={isLogoPlayful} />
       </BlockLink>
     ) : (
@@ -47,14 +47,14 @@ const NavBase = ({
     <ItemsWrapper>
       <Items>
         {primaryItems &&
-          primaryItems.map(item => (
-            <PrimaryItem key={item.href} to={item.href} navKind={navKind}>
+          primaryItems.map((item) => (
+            <PrimaryItem key={item.href} href={item.href} navKind={navKind}>
               {item.title}
             </PrimaryItem>
           ))}
         {secondaryItems &&
-          secondaryItems.map(item => (
-            <SecondaryItem key={item.href} to={item.href} navKind={navKind}>
+          secondaryItems.map((item) => (
+            <SecondaryItem key={item.href} href={item.href} navKind={navKind}>
               {item.title}
             </SecondaryItem>
           ))}

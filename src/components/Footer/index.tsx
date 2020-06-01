@@ -22,7 +22,7 @@ const Footer = ({
 }: FooterProps) => (
   <Container className={className}>
     <span>
-      {linkToHome ? <Link to="/">PerfPerfPerf</Link> : 'PerfPerfPerf'} ·{' '}
+      {linkToHome ? <Link href="/">PerfPerfPerf</Link> : 'PerfPerfPerf'} ·{' '}
       2018–2020
       {license && (
         <span>
