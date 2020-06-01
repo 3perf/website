@@ -61,13 +61,18 @@ export const PrintButton = styled.button`
   }
 `;
 
+const printBorderColor = 'black';
+
 export const Content = styled.article`
   font-family: 'Merriweather', Georgia, serif;
   max-width: 600px;
 
   @media print {
     max-width: none;
+    font-size: ${sizes.fontSmall}px;
   }
+
+  ${codeHighlightStyles}
 
   h1,
   h2,
@@ -80,6 +85,10 @@ export const Content = styled.article`
 
     .anchor {
       border: none;
+    }
+
+    @media print {
+      page-break-after: avoid;
     }
   }
 
@@ -95,13 +104,25 @@ export const Content = styled.article`
     font-size: 1.17em;
   }
 
+  code[class*='language-'] {
+    @media print {
+      word-wrap: break-word;
+      /* Chrome excludes backgrounds by default, so let’s optimize
+         for the non-background UI */
+      background: unset;
+      padding: 0;
+    }
+  }
+
   .image-container {
     /* Reset figure styles */
     margin: 0;
   }
 
   .image-container img {
-    max-width: 100%;
+    /* Define the default value – sometimes, it will be overwritten by inline styles */
+    --max-width-from-options: 100%;
+    max-width: min(var(--max-width-from-options), 100%);
     height: auto;
   }
 
@@ -119,17 +140,31 @@ export const Content = styled.article`
 
   .table-container {
     overflow: auto;
+
+    @media print {
+      overflow: unset;
+    }
   }
 
   table {
     text-align: left;
     border-collapse: collapse;
 
+    @media print {
+      width: 100%;
+      table-layout: fixed;
+      page-break-inside: avoid;
+    }
+
     th,
     td {
       border: 1px solid #ccc;
       padding: ${gridSize / 2}px ${gridSize}px;
       vertical-align: baseline;
+
+      @media print {
+        border-color: ${printBorderColor};
+      }
     }
   }
 
@@ -151,6 +186,16 @@ export const Content = styled.article`
 
     @media print {
       overflow: hidden;
+
+      /* Chrome excludes backgrounds by default, so let’s optimize
+         for the non-background UI */
+      background: unset;
+      margin-left: 0;
+      margin-right: 0;
+      border: 1px solid ${printBorderColor};
+      border-radius: 0;
+      width: fit-content;
+      page-break-inside: avoid;
 
       > pre[class*='language-'],
       > pre[class*='language-'] > code {
@@ -210,12 +255,25 @@ export const Content = styled.article`
          and .note’s one. */
       margin-bottom: -${gridSize}px;
     }
-  }
 
-  ${codeHighlightStyles}
+    @media print {
+      /* Chrome excludes backgrounds by default, so let’s optimize
+         for the non-background UI */
+      background: none;
+      margin-left: 0;
+      margin-right: 0;
+      border: 1px dotted ${printBorderColor};
+      border-radius: 0;
+      page-break-inside: avoid;
+    }
+  }
 `;
 
 export const Footer = styled(_Footer)`
   margin-top: ${gridSize * 6}px;
   margin-bottom: ${gridSize * 2}px;
+
+  @media print {
+    display: none;
+  }
 `;
