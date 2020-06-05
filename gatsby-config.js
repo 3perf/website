@@ -24,6 +24,7 @@ module.exports = {
     logoUrl: `${siteUrl}/logo-black-raster.png`,
   },
   plugins: [
+    'gatsby-plugin-preact',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-styled-components',
     'gatsby-plugin-typescript',
@@ -242,6 +243,9 @@ module.exports = {
         ],
       },
     },
-    'gatsby-plugin-no-javascript',
+    {
+      resolve: 'gatsby-plugin-no-javascript',
+      options: { excludePaths: '/consulting/' },
+    },
   ],
 };

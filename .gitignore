@@ -8,6 +8,10 @@ yarn-error.log
 !/public/_redirects
 /dist
 .DS_Store
+/functions
 
 .env.*
 .vscode
+
+# Local Netlify folder
+.netlify

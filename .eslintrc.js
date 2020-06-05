@@ -27,5 +27,7 @@ module.exports = {
     // Not useful
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
+    // Incompatible with `"esModuleInterop": true`
+    'import/default': 'off',
   },
 };
