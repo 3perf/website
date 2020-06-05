@@ -1,7 +1,7 @@
 import classnames from 'classnames';
 import * as React from 'react';
 import { Helmet } from 'react-helmet';
-import Script from 'react-script-tag';
+import Script from '../Script';
 import { LogoSvg } from './styled';
 
 interface LogoProps {
@@ -34,27 +34,25 @@ const Logo = ({
         // to move it there automatically.
         <Helmet>
           <Script
-            dangerouslySetInnerHTML={{
-              __html: `
-                document.addEventListener('DOMContentLoaded', () => {
-                  const playAnimation = () => document.querySelector('.js--site-logo').classList.add('js--site-logo_animation-enabled');
-                  const stopAnimation = () => document.querySelector('.js--site-logo').classList.remove('js--site-logo_animation-enabled');
-                  // This callback listens to all animationEnd events
-                  // and removes the animation as soon as the last element’s animation completes
-                  const stopAnimationIfAllDone = (event) => {
-                    const target = event.target;
+            innerHTMLCode={`
+              document.addEventListener('DOMContentLoaded', () => {
+                const playAnimation = () => document.querySelector('.js--site-logo').classList.add('js--site-logo_animation-enabled');
+                const stopAnimation = () => document.querySelector('.js--site-logo').classList.remove('js--site-logo_animation-enabled');
+                // This callback listens to all animationEnd events
+                // and removes the animation as soon as the last element’s animation completes
+                const stopAnimationIfAllDone = (event) => {
+                  const target = event.target;
 
-                    if (target === target.parentNode.lastChild) {
-                      stopAnimation();
-                    }
+                  if (target === target.parentNode.lastChild) {
+                    stopAnimation();
                   }
+                }
 
-                  document.querySelector('.js--site-logo').addEventListener('click', playAnimation);
-                  document.querySelector('.js--site-logo').addEventListener('mouseenter', playAnimation);
-                  document.querySelector('.js--site-logo').addEventListener('animationend', stopAnimationIfAllDone);
-                })
-              `,
-            }}
+                document.querySelector('.js--site-logo').addEventListener('click', playAnimation);
+                document.querySelector('.js--site-logo').addEventListener('mouseenter', playAnimation);
+                document.querySelector('.js--site-logo').addEventListener('animationend', stopAnimationIfAllDone);
+              })
+            `}
           />
         </Helmet>
       )}

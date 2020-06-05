@@ -1,9 +1,9 @@
 import * as React from 'react';
-import Script from 'react-script-tag';
 import { createGlobalStyle } from 'styled-components';
 import { linkActiveStyles, linkStyles } from '../../styles/shared-styles';
 import { colors, sizes } from '../../styles/variables';
 import { JSXChildrenProp } from '../../types';
+import Script from '../Script';
 import getGlobalFonts from './getGlobalFonts';
 
 // tslint:disable-next-line no-unused-expression
@@ -84,36 +84,30 @@ class Layout extends React.Component<LayoutProps, {}> {
           src="https://www.googletagmanager.com/gtag/js?id=UA-38017504-7"
         />
         <Script
-          dangerouslySetInnerHTML={{
-            __html: `
-              if (window.location.hostname === 'localhost') {
-                // Disable GA on localhost, per https://stackoverflow.com/a/45367051/1192426
-                window['ga-disable-UA-38017504-7'] = true;
-              }
-            `,
-          }}
+          innerHTMLCode={`
+            if (window.location.hostname === 'localhost') {
+              // Disable GA on localhost, per https://stackoverflow.com/a/45367051/1192426
+              window['ga-disable-UA-38017504-7'] = true;
+            }
+          `}
         />
         <Script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
+          innerHTMLCode={`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
 
-              gtag('config', 'UA-38017504-7');
-            `,
-          }}
+            gtag('config', 'UA-38017504-7');
+          `}
         />
         <Script
           src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.0.0-alpha/quicklink.umd.js"
           defer
         />
         <Script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.addEventListener('load', () => quicklink.listen());
-            `,
-          }}
+          innerHTMLCode={`
+            window.addEventListener('load', () => quicklink.listen());
+          `}
         />
       </div>
     );
