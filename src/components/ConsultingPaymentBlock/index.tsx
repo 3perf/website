@@ -3,19 +3,23 @@ import { calculatePrice } from '../../common/consultingPricing';
 import { ConsultingDuration, ConsultingAppointmentTime } from '../../types';
 import { PayButton, ButtonSpinner } from './styled';
 
-interface NbrbApiResponse {
-  Cur_ID: number;
-  Date: string;
-  Cur_Abbreviation: string;
-  Cur_Scale: number;
-  Cur_Name: string;
-  Cur_OfficialRate: number;
+interface AlfaApiResponse {
+  rates: Array<{
+    rate: number;
+    iso: string;
+    code: number;
+    quantity: number;
+    date: string;
+    name: string;
+  }>;
 }
 
 async function fetchUsdBynExchangeRate() {
-  const response = await fetch('https://www.nbrb.by/api/exrates/rates/145');
-  const data: NbrbApiResponse = await response.json();
-  return data.Cur_OfficialRate;
+  const response = await fetch(
+    'https://developerhub.alfabank.by:8273/partner/1.0.1/public/nationalRates?currencyCode=840',
+  );
+  const data: AlfaApiResponse = await response.json();
+  return data.rates[0].rate;
 }
 
 interface ConsultingPaymentBlockProps {
