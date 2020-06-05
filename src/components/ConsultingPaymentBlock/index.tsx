@@ -13,7 +13,7 @@ interface NbrbApiResponse {
 }
 
 async function fetchUsdBynExchangeRate() {
-  const response = await fetch('http://www.nbrb.by/api/exrates/rates/145');
+  const response = await fetch('https://www.nbrb.by/api/exrates/rates/145');
   const data: NbrbApiResponse = await response.json();
   return data.Cur_OfficialRate;
 }
