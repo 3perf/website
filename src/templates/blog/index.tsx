@@ -1,9 +1,9 @@
 import { graphql } from 'gatsby';
 import * as React from 'react';
 import { Helmet } from 'react-helmet';
-import Script from 'react-script-tag';
 import Layout from '../../components/Layout';
 import { LogoKind } from '../../components/Logo';
+import Script from '../../components/Script';
 import WidthWrapper from '../../components/WidthWrapper';
 import {
   BlogFooterAccordion,
