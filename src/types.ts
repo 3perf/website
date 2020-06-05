@@ -18,3 +18,14 @@ export interface SharpImageFixed {
     fixed: FixedObject;
   };
 }
+
+export enum ConsultingDuration {
+  M30 = '30',
+  M60 = '60',
+  M90 = '90',
+}
+
+export enum ConsultingAppointmentTime {
+  IN_30 = 'IN_30',
+  SCHEDULE = 'SCHEDULE',
+}

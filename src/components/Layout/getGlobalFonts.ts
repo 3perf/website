@@ -4,6 +4,8 @@ import montserratBlackWoff from '../../styles/webfonts/Montserrat-Black.woff';
 import montserratBlackWoff2 from '../../styles/webfonts/Montserrat-Black.woff2';
 import montserratBoldWoff from '../../styles/webfonts/Montserrat-Bold.woff';
 import montserratBoldWoff2 from '../../styles/webfonts/Montserrat-Bold.woff2';
+import montserratItalicWoff from '../../styles/webfonts/Montserrat-Italic.woff';
+import montserratItalicWoff2 from '../../styles/webfonts/Montserrat-Italic.woff2';
 import montserratRegularWoff from '../../styles/webfonts/Montserrat-Regular.woff';
 import montserratRegularWoff2 from '../../styles/webfonts/Montserrat-Regular.woff2';
 import merriweatherBoldWoff from '../../styles/webfonts/merriweather-v19-cyrillic_latin-700.woff';
@@ -25,6 +27,17 @@ const getGlobalFonts = () => `
       local('Montserrat-Regular'),
       url(${montserratRegularWoff2}) format('woff2'),
       url(${montserratRegularWoff}) format('woff');
+  }
+
+  @font-face {
+    font-family: 'Montserrat';
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+    src: local('Montserrat Italic'),
+      local('Montserrat-Italic'),
+      url(${montserratItalicWoff2}) format('woff2'),
+      url(${montserratItalicWoff}) format('woff');
   }
 
   @font-face {
