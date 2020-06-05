@@ -147,7 +147,10 @@ const ConsultingPage = ({ data }: { data: ConsultingPageData }) => {
               <a href="/content">that collected 100K+ views</a>.
             </p>
             <p>
-              <Image fluid={data.talk_cropped.childImageSharp.fluid} />
+              <Image
+                fluid={data.talk_cropped.childImageSharp.fluid}
+                loading="eager"
+              />
             </p>
             <p>
               How I’m ready to share my knowledge with you.{' '}
