@@ -1,10 +1,9 @@
 import type { APIGatewayProxyHandler } from 'aws-lambda';
+import cheerio from 'cheerio';
 import { addDays, format } from 'date-fns';
-
 import parser from 'fast-xml-parser';
 import fetchCookie from 'fetch-cookie';
 import nodeFetch from 'node-fetch';
-import shortUuid from 'short-uuid';
 import {
   getPrimaryProductPrice,
   getCallRecordingPrice,
@@ -21,7 +20,8 @@ const logger = (...args: any[]) =>
 export const fetch = fetchCookie(nodeFetch) as typeof nodeFetch;
 
 function generateInvoiceId() {
-  return format(new Date(), 'y-MM-dd') + '-' + shortUuid().generate();
+  // The length of the invoice ID is limited to 10 chars by WebPay
+  return format(new Date(), 'yyMMddHHmm');
 }
 
 /**
@@ -36,7 +36,20 @@ function generateInvoiceId() {
 function parseForm(formString: string) {
   const jsonObj: { string: string } = parser.parse(formString, {}, true);
 
-  return jsonObj.string.trim();
+  const form = jsonObj.string.trim();
+
+  const $ = cheerio.load(form);
+
+  // Remove the old language_id parameter, if any
+  $('input[name="wsb_language_id"]').remove();
+  // Remove the mistyped “wsb_langiage_id” parameter from Hutki as well
+  $('input[name="wsb_langiage_id"]').remove();
+  // Force WebPay to use English for the payment page & emails
+  $('form').append(
+    '<input type="hidden" name="wsb_language_id" value="english" />',
+  );
+
+  return $.html();
 }
 
 async function createBillForConsulting({
@@ -143,7 +156,7 @@ async function preparePaymentForm({
       ? process.env.HUTKI_RETURN_URL_IN30
       : process.env.HUTKI_RETURN_URL_REGULAR) +
     '?email=' +
-    email;
+    encodeURIComponent(email);
   const cancelReturnUrl = process.env.HUTKI_CANCEL_RETURN_URL as string;
   const { status: formStatus, form } = await getPaymentForm({
     billId,
