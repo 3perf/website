@@ -161,7 +161,9 @@ const ConsultingPage = ({ data }: { data: ConsultingPageData }) => {
             </p>
           </Intro>
           <Form onSubmit={handleSubmit}>
-            <FormHeader>Book a quick consulting session</FormHeader>
+            <FormHeader>
+              Book a quick consulting session<sup>ß</sup>
+            </FormHeader>
             <FormRow>
               <FormRowTitle>For how long:</FormRowTitle>
               <FormRowContent>
