@@ -143,6 +143,7 @@ export const CheckboxContainer = styled.div`
 `;
 
 export const Checkbox = styled.input.attrs({ type: 'checkbox' })`
+  flex: none;
   margin-right: ${gridSize}px;
 `;
 
