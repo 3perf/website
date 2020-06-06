@@ -6,7 +6,7 @@ import { getBill, signIn } from './api-wrappers/hutki';
 import { parsePrimaryProductDescription } from './common/hutkiBillProduct';
 
 const logger = (...args: any[]) =>
-  console.log(`[prepare-payments] [${new Date().toISOString()}]`, ...args);
+  console.log(`[handle-payment] [${new Date().toISOString()}]`, ...args);
 
 async function invokeIntegromatHandler({
   email,

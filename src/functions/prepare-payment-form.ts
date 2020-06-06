@@ -15,7 +15,7 @@ import { signIn, createBill, getPaymentForm } from './api-wrappers/hutki';
 import { generatePrimaryProductDescription } from './common/hutkiBillProduct';
 
 const logger = (...args: any[]) =>
-  console.log(`[prepare-payments] [${new Date().toISOString()}]`, ...args);
+  console.log(`[prepare-payment-form] [${new Date().toISOString()}]`, ...args);
 
 export const fetch = fetchCookie(nodeFetch) as typeof nodeFetch;
 
