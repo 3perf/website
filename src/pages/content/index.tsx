@@ -48,7 +48,7 @@ const ContentItem = ({
   isNew,
 }: ContentItemProps) => {
   return (
-    <ItemLink to={link}>
+    <ItemLink href={link}>
       {image && (
         <ItemImage>
           <GatsbyImage fixed={image.childImageSharp.fixed} />

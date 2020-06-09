@@ -64,7 +64,7 @@ const BlogFooterAccordion = ({ className }: BlogFooterAccordionProps) => (
       <Container className={className}>
         {stuffToPromote.map((i) => (
           <Item key={i.imageKey}>
-            <ItemLink to={i.href}>
+            <ItemLink href={i.href}>
               <Image fixed={data[i.imageKey].childImageSharp.fixed} />
               <LabelWrapper>
                 <Label>{i.title}</Label>
