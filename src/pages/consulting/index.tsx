@@ -401,7 +401,7 @@ const ConsultingPage = ({ data }: { data: ConsultingPageData }) => {
           </Questions>
         </Main>
 
-        <Footer license={false} />
+        <Footer license={false} showLegalDetails={true} />
       </WidthWrapper>
     </Layout>
   );

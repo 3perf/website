@@ -88,7 +88,11 @@ const IndexPage = () => (
             <ContactSection />
           </SectionWrapper>
           <FooterWrapper>
-            <Footer linkToHome={false} license={false} />
+            <Footer
+              linkToHome={false}
+              license={false}
+              showLegalDetails={true}
+            />
           </FooterWrapper>
         </WidthWrapper>
       </div>
