@@ -153,11 +153,11 @@ const ConsultingPage = ({ data }: { data: ConsultingPageData }) => {
               />
             </p>
             <p>
-              How I’m ready to share my knowledge with you.{' '}
+              Now, I’m ready to share my knowledge with you.{' '}
               <Mark>
                 Let’s learn why your site is slow and how to make it faster
               </Mark>{' '}
-              – or anything else you have in mind.
+              – or about anything else you have in mind.
             </p>
           </Intro>
           <Form onSubmit={handleSubmit}>
