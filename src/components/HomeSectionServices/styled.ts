@@ -8,10 +8,6 @@ const columnGapHorizontal = 24;
 
 export const Section = styled(_Section)``;
 
-export const Foreword = styled.p`
-  margin-bottom: 24px;
-`;
-
 export const Columns = styled.div`
   display: flex;
   margin: -${columnGapVertical}px -${columnGapHorizontal}px;
@@ -26,22 +22,6 @@ export const Column = styled.div`
 export const H3 = styled.h3`
   margin: 0;
   font-size: 24px;
-`;
-
-// Prevent the emoji from increasing the line-height of a line
-export const Emoji = styled.span`
-  position: absolute;
-`;
-
-export const Badge = styled.span`
-  border: thin solid black;
-  border-radius: 2px;
-  padding: 0 4px;
-
-  text-transform: uppercase;
-  font-weight: normal;
-  font-size: 0.75em;
-  letter-spacing: 1px;
 `;
 
 export const ActionButton = styled(_ActionButton)`

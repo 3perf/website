@@ -1,48 +1,41 @@
 import * as React from 'react';
-import {
-  Badge,
-  ActionButton,
-  Column,
-  Columns,
-  Emoji,
-  Foreword,
-  H3,
-  Section,
-} from './styled';
+import { ActionButton, Column, Columns, H3, Section } from './styled';
 
 interface ServicesSectionProps {
   className?: string;
 }
 
 const ServicesSection = ({ className = '' }: ServicesSectionProps) => (
-  <Section
-    title={
-      <span>
-        Let’s make you earn more&nbsp;<Emoji>💸</Emoji>
-      </span>
-    }
-    className={className}
-  >
-    <Foreword>We can:</Foreword>
+  <Section title="Let’s make you fast" className={className}>
     <Columns>
       <Column>
-        <H3>Fix a problem</H3>
+        <H3>Loading speed&nbsp;🚀</H3>
+        <p>Let’s get your PageSpeed Insights score as high as possible!</p>
         <p>
-          We’ll analyze and solve your particular performance issue. If your app
-          loads slowly, or a page freezes when you use it, this is for you.
+          We’ll learn how performance affects your business and then make your
+          site fast – focusing on direct business benefits.
         </p>
-        <p>We won’t take money if we’re unable to solve the issue.</p>
       </Column>
       <Column>
-        <H3>Keep the app fast</H3>
+        <H3>Runtime speed&nbsp;⚛️</H3>
+        <p>Is your React app freezing on rerenders? Let’s fix it.</p>
         <p>
-          Once per month, we’ll analyze your app and fix all the performance
-          issues we can find. If you want to never think about your app’s speed
-          again, this is for you.
+          We’ll work alone or with your team to dig into runtime performance
+          issues, fix them, and make your users happier.
         </p>
+      </Column>
+      <Column>
+        <H3>Consulting ⚡</H3>
         <p>
-          To make this reliable, we’ll define specific performance budgets
-          (loading time or app size) and keep the app inside them.
+          Not sure where to start, or just have a bunch of questions? Book{' '}
+          <a href="/consulting">an express consulting session.</a>
+        </p>
+      </Column>
+      <Column>
+        <H3>Something else 🎁</H3>
+        <p>
+          Want something custom? We’re happy to chat. Reach us, and let’s figure
+          out how we can help you.
         </p>
       </Column>
     </Columns>
