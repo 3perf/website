@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import _ChatButton from '../components/ChatButton';
+import _ActionButton from '../components/ActionButton';
 import _ContactSection from '../components/HomeSectionContact';
 import _Nav from '../components/Nav';
 import media from '../styles/media';
@@ -23,7 +23,7 @@ export const HeaderBackground = styled(Background)`
   background: black;
 `;
 
-export const ChatButton = styled(_ChatButton)`
+export const ActionButton = styled(_ActionButton)`
   margin-bottom: 60px;
 `;
 

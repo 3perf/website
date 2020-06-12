@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { gridSize } from '../../styles/variables';
-import _ChatButton from '../ChatButton';
+import _ActionButton from '../ActionButton';
 import _Section from '../Section';
 
 const columnGapVertical = 12;
@@ -44,6 +44,6 @@ export const Badge = styled.span`
   letter-spacing: 1px;
 `;
 
-export const ChatButton = styled(_ChatButton)`
+export const ActionButton = styled(_ActionButton)`
   margin-top: ${gridSize * 6}px;
 `;

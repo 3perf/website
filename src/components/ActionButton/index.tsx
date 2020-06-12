@@ -4,20 +4,20 @@ import { ButtonComponent } from './styled';
 
 interface ChatButtonProps {
   className?: string;
-  href?: string;
-  children?: JSXChildrenProp;
+  href: string;
+  children: JSXChildrenProp;
   kind?: 'light' | 'dark';
 }
 
-const ChatButton = ({
+const ActionButton = ({
   className = '',
-  href = '#contact',
-  children = 'Chat with us',
+  href,
+  children,
   kind = 'dark',
 }: ChatButtonProps) => (
-  <ButtonComponent className={className} href={href} kind={kind}>
+  <ButtonComponent className={className} href={href} $kind={kind}>
     {children}
   </ButtonComponent>
 );
 
-export default ChatButton;
+export default ActionButton;

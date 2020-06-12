@@ -12,7 +12,7 @@ import { LogoKind } from '../components/Logo';
 import { NavKind } from '../components/NavBase';
 import WidthWrapper from '../components/WidthWrapper';
 import {
-  ChatButton,
+  ActionButton,
   ColumnSectionWrapper,
   ColumnsWrapper,
   FooterWrapper,
@@ -51,7 +51,9 @@ const IndexPage = () => (
           <Header>
             <H1>Make your web app faster → earn more</H1>
           </Header>
-          <ChatButton kind="light" />
+          <ActionButton kind="light" href="#contact">
+            Chat with us
+          </ActionButton>
         </WidthWrapper>
       </HeaderBackground>
       <div>

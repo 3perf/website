@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   Badge,
-  ChatButton,
+  ActionButton,
   Column,
   Columns,
   Emoji,
@@ -46,7 +46,7 @@ const ServicesSection = ({ className = '' }: ServicesSectionProps) => (
         </p>
       </Column>
     </Columns>
-    <ChatButton />
+    <ActionButton href="#contact">Chat with us</ActionButton>
   </Section>
 );
 
