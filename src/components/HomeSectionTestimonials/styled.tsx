@@ -2,10 +2,7 @@ import styled from 'styled-components';
 import media from '../../styles/media';
 import { colors } from '../../styles/variables';
 
-export const Container = styled.div`
-  padding-bottom: 60px;
-  border-bottom: 5px dotted ${colors.brightYellow};
-`;
+export const Container = styled.div``;
 
 export const Blockquote = styled.blockquote`
   display: flex;
@@ -51,14 +48,29 @@ export const BlockquoteFooter = styled.footer`
 
 const horizontalGap = 64;
 const verticalGap = 24;
+
+const horizontalGapMobile = 32;
+const verticalGapMobile = 18;
 export const Logos = styled.div`
   display: flex;
   flex-wrap: wrap;
 
   margin: -${verticalGap / 2}px -${horizontalGap / 2}px;
   margin-top: ${60 - verticalGap / 2}px;
+
+  ${media.small`
+    margin: -${verticalGapMobile / 2}px -${horizontalGapMobile / 2}px;
+    margin-top: ${40 - verticalGapMobile / 2}px;
+  `}
 `;
 
 export const Logo = styled.img`
   margin: ${verticalGap / 2}px ${horizontalGap / 2}px;
+
+  ${media.small`
+    height: 31px;
+    width: auto;
+
+    margin: ${verticalGapMobile / 2}px ${horizontalGapMobile / 2}px;
+  `}
 `;

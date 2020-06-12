@@ -123,7 +123,7 @@ const ConsultingPage = ({ data }: { data: ConsultingPageData }) => {
   return (
     <Layout>
       <Helmet>
-        <title>Quick consulting | PerfPerfPerf</title>
+        <title>Express consulting | PerfPerfPerf</title>
         <meta
           name="description"
           content="Learn all you want about your site’s speed. In an hour-long call."
@@ -162,7 +162,7 @@ const ConsultingPage = ({ data }: { data: ConsultingPageData }) => {
           </Intro>
           <Form onSubmit={handleSubmit}>
             <FormHeader>
-              Book a quick consulting session<sup>ß</sup>
+              Book an express consulting session<sup>ß</sup>
             </FormHeader>
             <FormRow>
               <FormRowTitle>For how long:</FormRowTitle>

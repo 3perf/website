@@ -29,6 +29,7 @@ export const Header = styled.h1`
   }
 
   ${media.notSmall`
+    max-width: 800px;
     margin: ${gridSize * 10}px 0 ${gridSize * 10}px;
     font-size: 48px;
 

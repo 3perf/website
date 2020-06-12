@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet';
 import Footer from '../components/Footer';
 import AboutSection from '../components/HomeSectionAbout';
 import ClientsSection from '../components/HomeSectionClients';
+import HomeSectionConsulting from '../components/HomeSectionConsulting';
 import MaterialsSection from '../components/HomeSectionMaterials';
 import PerfConversionSection from '../components/HomeSectionPerfConversion';
 import ServicesSection from '../components/HomeSectionServices';
@@ -49,10 +50,10 @@ const IndexPage = () => (
             navKind={NavKind.Light}
           />
           <Header>
-            <H1>Make your web app faster → earn more</H1>
+            <H1>Make your site faster → earn more</H1>
           </Header>
           <ActionButton kind="light" href="#contact">
-            Chat with us
+            Get a quote
           </ActionButton>
         </WidthWrapper>
       </HeaderBackground>
@@ -60,6 +61,9 @@ const IndexPage = () => (
         <WidthWrapper>
           <SectionWrapper id="testimonials">
             <HomeSectionTestimonials />
+          </SectionWrapper>
+          <SectionWrapper id="consulting">
+            <HomeSectionConsulting />
           </SectionWrapper>
         </WidthWrapper>
         <WidthWrapper>
