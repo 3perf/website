@@ -10,18 +10,18 @@ const ServicesSection = ({ className = '' }: ServicesSectionProps) => (
     <Columns>
       <Column>
         <H3>Loading speed&nbsp;🚀</H3>
-        <p>Let’s get your PageSpeed Insights score as high as possible!</p>
+        <p>Stop losing your cus&shy;tom&shy;ers to com&shy;pet&shy;itors.</p>
         <p>
-          We’ll learn how performance affects your business and then make your
-          site fast – focusing on direct business benefits.
+          Let’s speed your site up – and make you rank in search higher &amp;
+          convert more visits into pur&shy;chases.
         </p>
       </Column>
       <Column>
         <H3>Runtime speed&nbsp;⚛️</H3>
-        <p>Is your React app freezing on rerenders? Let’s fix it.</p>
+        <p>Make your app faster – and users happier.</p>
         <p>
-          We’ll work alone or with your team to dig into runtime performance
-          issues, fix them, and make your users happier.
+          Let’s profile your app, figure out where it’s slow, and fix any issues
+          – alone or together with your team.
         </p>
       </Column>
       <Column>

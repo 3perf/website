@@ -17,7 +17,7 @@ export const Header = styled.h2`
   line-height: 1.3;
 
   ${media.notSmall`
-    font-size: 48px;
+    font-size: 40px;
     margin-bottom: ${gridSize * 4}px;
   `}
 `;

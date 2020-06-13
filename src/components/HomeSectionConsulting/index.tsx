@@ -3,7 +3,7 @@ import { Container, Header, List, ListItem, ActionButton } from './styled';
 
 const HomeSectionTestimonials = () => (
   <Container>
-    <Header>⚡ New: Express consulting ⚡</Header>
+    <Header>New: Express consulting&nbsp;⚡</Header>
     <List>
       <ListItem>Book a time</ListItem>
       <ListItem>Pay with a card</ListItem>
