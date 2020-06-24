@@ -7,11 +7,11 @@ export function getPrimaryProductPrice(
   let basePrise = 0;
 
   if (duration === ConsultingDuration.M30) {
-    basePrise = 45;
-  } else if (duration === ConsultingDuration.M60) {
     basePrise = 90;
+  } else if (duration === ConsultingDuration.M60) {
+    basePrise = 180;
   } else if (duration === ConsultingDuration.M90) {
-    basePrise = 135;
+    basePrise = 270;
   }
 
   if (appointmentTime === ConsultingAppointmentTime.IN_30) {
@@ -22,11 +22,11 @@ export function getPrimaryProductPrice(
 }
 
 export function getCallRecordingPrice() {
-  return 20;
+  return 30;
 }
 
 export function getSummaryPrice() {
-  return 50;
+  return 60;
 }
 
 export function calculatePrice(
