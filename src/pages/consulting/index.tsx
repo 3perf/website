@@ -5,7 +5,6 @@ import {
   getCallRecordingPrice,
   getSummaryPrice,
 } from '../../common/consultingPricing';
-import ConsultingAppointmentIn30Block from '../../components/ConsultingAppointmentIn30Block';
 import ConsultingAppointmentScheduleBlock from '../../components/ConsultingAppointmentScheduleBlock';
 import ConsultingPaymentBlock from '../../components/ConsultingPaymentBlock';
 import Image from '../../components/Image';
@@ -16,12 +15,7 @@ import {
   PreparePaymentFormResponse,
 } from '../../functions/prepare-payment-form';
 import { gridSize, colors } from '../../styles/variables';
-import {
-  SharpImageFluid,
-  SharpImageFixed,
-  ConsultingDuration,
-  ConsultingAppointmentTime,
-} from '../../types';
+import { SharpImageFluid, ConsultingDuration } from '../../types';
 import {
   Nav,
   Main,
@@ -67,19 +61,33 @@ async function preparePaymentForm(
 
 const ConsultingPage = ({ data }: { data: ConsultingPageData }) => {
   const [duration, setDuration] = React.useState(ConsultingDuration.M60);
-  const [appointmentTime, setAppointmentTime] = React.useState(
-    ConsultingAppointmentTime.SCHEDULE,
-  );
-  // Using `true` by default to prevent the submit button from jumping
-  // “Enabled” → “Disabled” → “Enabled” when switching to the 30-min appointment time
-  // for the first time
-  const [
-    is30MinAppointmentAvailable,
-    setIs30MinAppointmentAvailable,
-  ] = React.useState(true);
   const [isCallRecordingAdded, setCallRecordingAdded] = React.useState(false);
   const [isSummaryAdded, setSummaryAdded] = React.useState(false);
   const [email, setEmail] = React.useState('');
+
+  React.useEffect(() => {
+    const url = new URL(document.location.href);
+
+    const duration = url.searchParams.get('duration');
+    if (duration) {
+      setDuration(duration as ConsultingDuration);
+    }
+
+    const isCallRecordingAdded = url.searchParams.get('isCallRecordingAdded');
+    if (isCallRecordingAdded) {
+      setCallRecordingAdded(JSON.parse(isCallRecordingAdded));
+    }
+
+    const isSummaryAdded = url.searchParams.get('isSummaryAdded');
+    if (isSummaryAdded) {
+      setSummaryAdded(JSON.parse(isSummaryAdded));
+    }
+
+    const email = url.searchParams.get('email');
+    if (email) {
+      setEmail(email);
+    }
+  }, [setDuration, setCallRecordingAdded, setSummaryAdded, setEmail]);
 
   const [isSubmitting, setIsSubmitting] = React.useState(false);
 
@@ -91,18 +99,12 @@ const ConsultingPage = ({ data }: { data: ConsultingPageData }) => {
 
       preparePaymentForm({
         duration,
-        appointmentTime,
         isCallRecordingAdded,
         isSummaryAdded,
         email,
       })
         .then((data: PreparePaymentFormResponse) => {
-          const div = document.createElement('div');
-          div.innerHTML = data.form;
-          document.body.appendChild(div);
-
-          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-          div.querySelector('form')!.submit();
+          document.location.href = data.formUrl;
         })
         .catch((e) => {
           // Handle the error simply by resetting into the initial state
@@ -110,14 +112,7 @@ const ConsultingPage = ({ data }: { data: ConsultingPageData }) => {
           setIsSubmitting(false);
         });
     },
-    [
-      setIsSubmitting,
-      duration,
-      appointmentTime,
-      isCallRecordingAdded,
-      isSummaryAdded,
-      email,
-    ],
+    [setIsSubmitting, duration, isCallRecordingAdded, isSummaryAdded, email],
   );
 
   return (
@@ -161,7 +156,7 @@ const ConsultingPage = ({ data }: { data: ConsultingPageData }) => {
             </p>
           </Intro>
           <Form onSubmit={handleSubmit}>
-            <FormHeader>
+            <FormHeader id="book">
               Book an express consulting session<sup>ß</sup>
             </FormHeader>
             <FormRow>
@@ -211,54 +206,9 @@ const ConsultingPage = ({ data }: { data: ConsultingPageData }) => {
             <FormRow>
               <FormRowTitle>When:</FormRowTitle>
               <FormRowContent>
-                <RadioSelect>
-                  <div>
-                    <input
-                      type="radio"
-                      id="in30"
-                      name="appointmentTime"
-                      value={ConsultingAppointmentTime.IN_30}
-                      checked={
-                        appointmentTime === ConsultingAppointmentTime.IN_30
-                      }
-                      onChange={() =>
-                        setAppointmentTime(ConsultingAppointmentTime.IN_30)
-                      }
-                    />
-                    <label htmlFor="in30">In 30 minutes ⚡</label>
-                  </div>
-                  <div>
-                    <input
-                      type="radio"
-                      id="schedule"
-                      name="appointmentTime"
-                      value={ConsultingAppointmentTime.SCHEDULE}
-                      checked={
-                        appointmentTime === ConsultingAppointmentTime.SCHEDULE
-                      }
-                      onChange={() =>
-                        setAppointmentTime(ConsultingAppointmentTime.SCHEDULE)
-                      }
-                    />
-                    <label htmlFor="schedule">Schedule</label>
-                  </div>
-                </RadioSelect>
-                {appointmentTime === ConsultingAppointmentTime.IN_30 && (
-                  <ConsultingAppointmentIn30Block
-                    paragraphComponent={FormNote}
-                    onScheduleClick={() =>
-                      setAppointmentTime(ConsultingAppointmentTime.SCHEDULE)
-                    }
-                    onAvailabilityChange={(isAvailable) =>
-                      setIs30MinAppointmentAvailable(isAvailable)
-                    }
-                  />
-                )}
-                {appointmentTime === ConsultingAppointmentTime.SCHEDULE && (
-                  <ConsultingAppointmentScheduleBlock
-                    paragraphComponent={FormNote}
-                  />
-                )}
+                <ConsultingAppointmentScheduleBlock
+                  paragraphComponent={FormNote}
+                />
               </FormRowContent>
             </FormRow>
 
@@ -308,8 +258,6 @@ const ConsultingPage = ({ data }: { data: ConsultingPageData }) => {
                 <ConsultingPaymentBlock
                   paragraphComponent={FormNote}
                   duration={duration}
-                  appointmentTime={appointmentTime}
-                  is30MinAppointmentAvailable={is30MinAppointmentAvailable}
                   isSummaryAdded={isSummaryAdded}
                   isCallRecordingAdded={isCallRecordingAdded}
                   isSubmitting={isSubmitting}
@@ -401,7 +349,11 @@ const ConsultingPage = ({ data }: { data: ConsultingPageData }) => {
           </Questions>
         </Main>
 
-        <Footer license={false} showLegalDetails={true} />
+        <Footer
+          license={false}
+          showLegalDetails={true}
+          showPaymentDetails={true}
+        />
       </WidthWrapper>
     </Layout>
   );

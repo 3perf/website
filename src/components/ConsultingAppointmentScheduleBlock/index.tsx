@@ -16,7 +16,7 @@ function isDatetimeAvailable(datetime: Date) {
 function getAvailabilityTime() {
   const date = new Date();
 
-  date.setUTCHours(11, 0, 0, 0);
+  date.setUTCHours(9, 0, 0, 0);
   const availableFrom = date.toLocaleString(localeToUse, {
     hour: 'numeric',
     minute: 'numeric',
@@ -73,7 +73,7 @@ const ConsultingAppointmentScheduleBlock = ({
   paragraphComponent: ParagraphComponent,
 }: ConsultingAppointmentScheduleBlockProps) => {
   const [availabilityTime, setAvailabilityTime] = React.useState({
-    from: '14:00',
+    from: '12:00',
     to: '21:00',
   });
   const [timeZone, setTimeZone] = React.useState('Minsk');
@@ -96,12 +96,12 @@ const ConsultingAppointmentScheduleBlock = ({
   return (
     <>
       <ParagraphComponent>
+        Closest available slot: in {closestSpot ? `~${closestSpot}` : '•••'}h.
         Available times: Mon-Fri {availabilityTime.from}–{availabilityTime.to} (
-        {timeZone} time). Closest available slot: in{' '}
-        {closestSpot ? `~${closestSpot}` : '•••'}h.
+        {timeZone} time).
       </ParagraphComponent>
       <ParagraphComponent>
-        You’ll get a link to book the time right after the payment.
+        You’ll get a link to choose the time right after the payment.
       </ParagraphComponent>
     </>
   );

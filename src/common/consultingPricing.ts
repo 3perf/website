@@ -1,24 +1,17 @@
-import { ConsultingDuration, ConsultingAppointmentTime } from '../types';
+import { ConsultingDuration } from '../types';
 
-export function getPrimaryProductPrice(
-  duration: ConsultingDuration,
-  appointmentTime: ConsultingAppointmentTime,
-) {
-  let basePrise = 0;
-
+export function getPrimaryProductPrice(duration: ConsultingDuration) {
   if (duration === ConsultingDuration.M30) {
-    basePrise = 90;
+    return 90;
   } else if (duration === ConsultingDuration.M60) {
-    basePrise = 180;
+    return 180;
   } else if (duration === ConsultingDuration.M90) {
-    basePrise = 270;
+    return 270;
   }
 
-  if (appointmentTime === ConsultingAppointmentTime.IN_30) {
-    basePrise = Math.floor(basePrise * 1.5);
-  }
-
-  return basePrise;
+  throw new Error(
+    'getPrimaryProductPrice: Unknown duration; must not happen: ' + duration,
+  );
 }
 
 export function getCallRecordingPrice() {
@@ -31,13 +24,12 @@ export function getSummaryPrice() {
 
 export function calculatePrice(
   duration: ConsultingDuration,
-  appointmentTime: ConsultingAppointmentTime,
   isCallRecordingAdded: boolean,
   isSummaryAdded: boolean,
 ): number {
   let totalPrice = 0;
 
-  totalPrice += getPrimaryProductPrice(duration, appointmentTime);
+  totalPrice += getPrimaryProductPrice(duration);
 
   if (isCallRecordingAdded) {
     totalPrice += getCallRecordingPrice();
