@@ -1,7 +1,13 @@
 import * as React from 'react';
 import { JSXChildrenProp } from '../../types';
 import Link from '../Link';
-import { Container, Credentials, Legal, LicenseName } from './styled';
+import {
+  Container,
+  Credentials,
+  Legal,
+  LicenseName,
+  PaymentDetails,
+} from './styled';
 
 interface FooterProps {
   className?: string;
@@ -10,6 +16,7 @@ interface FooterProps {
   useLicenseFontSpacing?: boolean;
   extraContent?: JSXChildrenProp;
   showLegalDetails?: boolean;
+  showPaymentDetails?: boolean;
 }
 
 const Footer = ({
@@ -20,6 +27,7 @@ const Footer = ({
   ),
   useLicenseFontSpacing = true,
   showLegalDetails = false,
+  showPaymentDetails = false,
   extraContent,
 }: FooterProps) => (
   <Container className={className}>
@@ -47,6 +55,7 @@ const Footer = ({
         Mar 2017.
       </Legal>
     )}
+    {showPaymentDetails && <PaymentDetails />}
   </Container>
 );
 

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { sizes, gridSize } from '../../styles/variables';
+import { gridSize } from '../../styles/variables';
+import paymentLogos from './payment-logos.svg';
 
 export const Container = styled.div``;
 
@@ -22,4 +23,13 @@ interface LicenseNameProps {
 export const LicenseName = styled.span`
   letter-spacing: ${(props: LicenseNameProps) =>
     props.useFontSpacing ? 1 : 0}px;
+`;
+
+export const PaymentDetails = styled.img.attrs({
+  src: paymentLogos,
+})`
+  display: block;
+  margin-top: ${gridSize}px;
+  max-height: 50px;
+  max-width: 100%;
 `;

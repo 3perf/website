@@ -24,8 +24,3 @@ export enum ConsultingDuration {
   M60 = '60',
   M90 = '90',
 }
-
-export enum ConsultingAppointmentTime {
-  IN_30 = 'IN_30',
-  SCHEDULE = 'SCHEDULE',
-}
