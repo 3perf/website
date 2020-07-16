@@ -98,6 +98,7 @@ const IndexPage = () => (
               linkToHome={false}
               license={false}
               showLegalDetails={true}
+              showPaymentDetails={true}
             />
           </FooterWrapper>
         </WidthWrapper>
