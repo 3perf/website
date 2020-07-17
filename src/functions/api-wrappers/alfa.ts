@@ -66,7 +66,7 @@ export async function registerOrder(data: AlfaRegisterOrderParams) {
   }
 
   const response = await fetch(
-    'https://web.rbsuat.com/ab_by/rest/register.do',
+    'https://ecom.alfabank.by/payment/rest/register.do',
     { method: 'POST', body },
   );
 
@@ -124,7 +124,7 @@ export async function getOrderStatusExtended(
   }
 
   const response = await fetch(
-    'https://web.rbsuat.com/ab_by/rest/getOrderStatusExtended.do',
+    'https://ecom.alfabank.by/payment/rest/getOrderStatusExtended.do',
     { method: 'POST', body },
   );
 
