@@ -8,7 +8,6 @@ const Nav = (props: NavBaseProps) => (
       { title: 'Cases', href: '/#clients' },
       { title: 'Articles', href: '/content' },
       { title: 'About us', href: '/#about' },
-      { title: 'Express consulting ⚡', href: '/consulting' },
     ]}
     secondaryItems={[
       { title: 'perf@3perf.com', href: 'mailto:perf@3perf.com' },

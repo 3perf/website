@@ -245,7 +245,6 @@ module.exports = {
     },
     {
       resolve: 'gatsby-plugin-no-javascript',
-      options: { excludePaths: '/consulting/' },
     },
   ],
 };

@@ -2,7 +2,10 @@ import styled from 'styled-components';
 import media from '../../styles/media';
 import { colors } from '../../styles/variables';
 
-export const Container = styled.div``;
+export const Container = styled.div`
+  padding-bottom: 60px;
+  border-bottom: 5px dotted ${colors.brightYellow};
+`;
 
 export const Blockquote = styled.blockquote`
   display: flex;

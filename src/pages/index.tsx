@@ -3,7 +3,6 @@ import { Helmet } from 'react-helmet';
 import Footer from '../components/Footer';
 import AboutSection from '../components/HomeSectionAbout';
 import ClientsSection from '../components/HomeSectionClients';
-import HomeSectionConsulting from '../components/HomeSectionConsulting';
 import MaterialsSection from '../components/HomeSectionMaterials';
 import PerfConversionSection from '../components/HomeSectionPerfConversion';
 import ServicesSection from '../components/HomeSectionServices';
@@ -62,9 +61,6 @@ const IndexPage = () => (
           <SectionWrapper id="testimonials">
             <HomeSectionTestimonials />
           </SectionWrapper>
-          <SectionWrapper id="consulting">
-            <HomeSectionConsulting />
-          </SectionWrapper>
         </WidthWrapper>
         <WidthWrapper>
           <SectionWrapper id="why">
@@ -98,7 +94,6 @@ const IndexPage = () => (
               linkToHome={false}
               license={false}
               showLegalDetails={true}
-              showPaymentDetails={true}
             />
           </FooterWrapper>
         </WidthWrapper>

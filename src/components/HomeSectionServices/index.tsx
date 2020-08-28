@@ -25,13 +25,6 @@ const ServicesSection = ({ className = '' }: ServicesSectionProps) => (
         </p>
       </Column>
       <Column>
-        <H3>Consulting ⚡</H3>
-        <p>
-          Not sure where to start, or just have a bunch of questions? Book{' '}
-          <a href="/consulting">an express consulting session.</a>
-        </p>
-      </Column>
-      <Column>
         <H3>Something else 🎁</H3>
         <p>
           Want something custom? We’re happy to chat. Reach us, and let’s figure

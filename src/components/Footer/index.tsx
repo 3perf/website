@@ -27,7 +27,6 @@ const Footer = ({
   ),
   useLicenseFontSpacing = true,
   showLegalDetails = false,
-  showPaymentDetails = false,
   extraContent,
 }: FooterProps) => (
   <Container className={className}>
@@ -55,7 +54,6 @@ const Footer = ({
         Mar 2017.
       </Legal>
     )}
-    {showPaymentDetails && <PaymentDetails />}
   </Container>
 );
 
