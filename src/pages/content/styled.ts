@@ -28,7 +28,7 @@ export const Nav = styled(_Nav)`
 export const Header = styled.h1`
   margin: ${gridSize * 8}px 0 ${gridSize * 4}px;
   font-size: 60px;
-  line-height: 1;
+  line-height: 1.2;
   color: ${colors.brightYellow};
   font-weight: 900;
 

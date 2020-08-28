@@ -76,11 +76,7 @@ const ContentPage = (props: ContentPageProps) => {
             <meta name="og:image" content={facebookCoverUrl} />
           </Helmet>
           <Nav logoKind={LogoKind.White} navKind={NavKind.Light} />
-          <Header>
-            We’re Perf&shy;Perf&shy;Perf.
-            <br />
-            We do per&shy;for&shy;mance.
-          </Header>
+          <Header>Here’s all you need for building faster sites.</Header>
           <SectionHeader>Articles</SectionHeader>
           <Section>
             <ContentItem
