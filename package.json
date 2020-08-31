@@ -35,11 +35,10 @@
   "scripts": {
     "install-build-deps": "pip3 install fonttools brotli zopfli || pip install fonttools brotli zopfli",
     "build-gatsby": "gatsby build",
-    "build-functions": "netlify-lambda build src/functions --config ./webpack.functions.js",
     "optimize-fonts": "yarn optimize-fonts:landings && yarn optimize-fonts:content",
     "optimize-fonts:landings": "cd public && find . -type f -name '*.html' | grep -v -E '(blog|gold|talks)' | xargs subfont --root . --canonical-root https://3perf.com/ --formats woff2 --in-place --inline-css",
     "optimize-fonts:content": "cd public && find . -type f -name '*.html' | grep -E '(blog|gold|talks)' | xargs subfont --root . --canonical-root https://3perf.com/ --formats woff2 --in-place --inline-css",
-    "build": "yarn install-build-deps && yarn build-gatsby && yarn optimize-fonts && yarn build-functions",
+    "build": "yarn install-build-deps && yarn build-gatsby && yarn optimize-fonts",
     "develop": "cross-env GATSBY_MAILCHIMP_3PERF_SUBSCRIBERS=FAKE_URL gatsby develop",
     "format": "prettier --write 'src/**/*.js'"
   },
