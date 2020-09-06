@@ -1,14 +1,22 @@
 import { graphql, StaticQuery } from 'gatsby';
 import * as React from 'react';
-import { SharpImageFixed } from '../../types';
+import { SharpImageFluid } from '../../types';
+import HomeLeftRightWrapper from '../HomeLeftRightWrapper';
 import Link from '../Link';
 import Section, { SectionKind } from '../Section';
-import { Image, Links, LinkWrapper, Text } from './styled';
+import {
+  Image,
+  LinkWrapper,
+  LinkBlock,
+  LinkDescription,
+  LinkText,
+  PrimaryArticle,
+  Wrapper,
+  OtherArticles,
+} from './styled';
 
 interface MaterialsSectionData {
-  googleWebpack: SharpImageFixed;
-  polished: SharpImageFixed;
-  webPerf101: SharpImageFixed;
+  webPerf101: SharpImageFluid;
 }
 
 interface MaterialsSectionProps {
@@ -17,46 +25,51 @@ interface MaterialsSectionProps {
 
 const MaterialsSection = ({ data }: MaterialsSectionProps) => (
   <Section title="Articles" sectionKind={SectionKind.VERTICAL}>
-    <Text>We write stuff:</Text>
-    <Links>
-      <LinkWrapper>
-        <Link href="/talks/web-perf-101">
-          <Image fixed={data.webPerf101.childImageSharp.fixed} />
-          Web performance 101
-        </Link>
-      </LinkWrapper>
-      <LinkWrapper>
-        <Link href="https://iamakulov.com/notes/walmart/">
-          Case study: analyzing the Walmart site performance
-        </Link>
-      </LinkWrapper>
-      <LinkWrapper>
-        <Link href="https://iamakulov.com/notes/optimize-images-webpack/">
-          How to optimize images in webpack
-        </Link>
-      </LinkWrapper>
-      <LinkWrapper>
-        <Link href="https://developers.google.com/web/fundamentals/performance/webpack/decrease-frontend-size">
-          <Image
-            fixed={data.googleWebpack.childImageSharp.fixed}
-            addBorder={true}
-          />
-          Web performance guide for webpack
-        </Link>
-      </LinkWrapper>
-    </Links>
-    <Text>And do stuff:</Text>
-    <Links>
-      <LinkWrapper>
-        <Link href="https://googlefonts.3perf.com">Google Fonts Optimizer</Link>
-      </LinkWrapper>
-      <LinkWrapper>
-        <Link href="https://www.npmjs.com/package/moment-locales-webpack-plugin">
-          moment-locales-webpack-plugin
-        </Link>
-      </LinkWrapper>
-    </Links>
-    <Link href="/content">See more →</Link>
+    <HomeLeftRightWrapper
+      left={
+        <LinkBlock href="/talks/web-perf-101">
+          <Image fluid={data.webPerf101.childImageSharp.fluid} />
+          <LinkText>Web Performance 101</LinkText>
+          <LinkDescription>
+            A comprehensive guide into modern web performance
+          </LinkDescription>
+        </LinkBlock>
+      }
+      right={
+        <>
+          <LinkWrapper>
+            <Link href="/blog/notion">
+              Case study: Analyzing Notion app performance
+            </Link>
+            <LinkDescription>
+              How to make a React app load ~30% faster – by tuning some configs
+              and delaying some scripts
+            </LinkDescription>
+          </LinkWrapper>
+          <LinkWrapper>
+            <Link href="/blog/link-rels/">
+              Preload, prefetch and other &lt;link&gt; tags
+            </Link>
+            <LinkDescription>
+              HTML has as much as 5 different tags to preload something. This is
+              a detailed deep-dive into each of them
+            </LinkDescription>
+          </LinkWrapper>
+          <LinkWrapper>
+            <Link href="/blog/polyfills/">
+              How to load polyfills only when needed
+            </Link>
+            <LinkDescription>
+              We’ve been asked: “These days, how do you typically serve
+              polyfills only to browsers that need them?”
+            </LinkDescription>
+          </LinkWrapper>
+          <LinkWrapper>
+            <Link href="/content">More →</Link>
+          </LinkWrapper>
+        </>
+      }
+    />
   </Section>
 );
 
@@ -64,32 +77,12 @@ const MaterialsSectionWithQuery = () => (
   <StaticQuery
     query={graphql`
       query {
-        googleWebpack: file(
-          relativePath: { eq: "HomeSectionMaterials/google-webpack.png" }
-        ) {
-          childImageSharp {
-            fixed(height: 100) {
-              ...GatsbyImageSharpFixed
-            }
-          }
-        }
-
-        polished: file(
-          relativePath: { eq: "HomeSectionMaterials/polished.png" }
-        ) {
-          childImageSharp {
-            fixed(height: 100) {
-              ...GatsbyImageSharpFixed
-            }
-          }
-        }
-
         webPerf101: file(
           relativePath: { eq: "HomeSectionMaterials/web-perf-101.png" }
         ) {
           childImageSharp {
-            fixed(height: 100) {
-              ...GatsbyImageSharpFixed
+            fluid(maxWidth: 600) {
+              ...GatsbyImageSharpFluid
             }
           }
         }

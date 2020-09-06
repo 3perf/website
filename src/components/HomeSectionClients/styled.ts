@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 import media from '../../styles/media';
 import { sizes, colors } from '../../styles/variables';
-import _TitleContentWrapper from '../TitleContentWrapper';
+import _HomeLeftRightWrapper from '../HomeLeftRightWrapper';
 import cmttUrl from './cmtt.svg';
 import commonUrl from './common.svg';
 import fatLlamaUrl from './fat-llama.svg';
 import framerUrl from './framer.svg';
 import googleUrl from './google.svg';
 
-export const TitleContentWrapper = styled(_TitleContentWrapper)`
+export const HomeLeftRightWrapper = styled(_HomeLeftRightWrapper)`
   & + & {
     margin-top: 36px;
   }

@@ -1,53 +1,63 @@
 import styled from 'styled-components';
-import { linkActiveStyles, linkStyles } from '../../styles/shared-styles';
-import GatsbyImage from '../Image';
+import media from '../../styles/media';
+import { gridSize } from '../../styles/variables';
+import _Image from '../Image';
+import _Link from '../Link';
+import factoidBackground from './factoid-bg.svg';
 
 export const Intro = styled.div`
-  margin-bottom: 20px;
+  margin-bottom: ${gridSize * 2}px;
 `;
 
-export const PeopleList = styled.div`
-  display: flex;
-
-  margin: -12px;
-
-  > * {
-    margin: 12px;
-  }
+export const Image = styled(_Image)`
+  max-width: 600px;
 `;
 
-export const Person = styled.a`
-  display: block;
-  color: inherit;
-  border-bottom: none;
-  line-height: 1;
+export const Primary = styled.div``;
+export const Links = styled.div``;
 
-  &:hover,
-  &:focus,
-  &:active {
-    color: inherit;
-  }
+export const Wrapper = styled.div`
+  ${media.notSmall`
+      display: flex;
+
+      ${Primary} {
+        flex: 7;
+        margin: 0 60px 24px 0;
+      }
+
+      ${Links} {
+        
+        flex: 4;
+      }
+    `}
 `;
 
-export const Photo = styled(GatsbyImage)`
-  /* Because gatsby-image uses inline styles */
-  display: block !important;
-  margin-bottom: 8px;
-  height: 80px;
-  width: 80px;
+export const LinkWrapper = styled.div`
+  margin-bottom: ${gridSize}px;
+`;
+
+export const Link = styled(_Link)``;
+
+export const Factoid = styled.div`
+  width: 150px;
+  height: 150px;
+  margin-top: ${gridSize * 3}px;
+  padding: 30px;
   border-radius: 50%;
+  background: url(${factoidBackground});
+  background-size: cover;
+  background-position: center;
+
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  font-size: 12px;
 `;
 
-export const Name = styled.div``;
-
-export const Username = styled.span`
-  font-size: 0.75em;
-
-  ${linkStyles};
-
-  ${Person}:hover &,
-  ${Person}:focus &,
-  ${Person}:active & {
-    ${linkActiveStyles};
-  }
+export const Number = styled.div`
+  font-weight: 900;
+  font-size: 32px;
 `;

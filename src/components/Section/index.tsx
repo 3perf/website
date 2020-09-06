@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { JSXChildrenProp } from '../../types';
-import TitleContentWrapper from '../TitleContentWrapper';
+import HomeLeftRightWrapper from '../HomeLeftRightWrapper';
 import { Content, H2 } from './styled';
 
 interface SectionProps {
@@ -21,13 +21,12 @@ const Section = ({
   className = '',
   sectionKind = SectionKind.HORIZONTAL,
 }: SectionProps) => (
-  <TitleContentWrapper
+  <HomeLeftRightWrapper
     className={className}
-    title={<H2>{title}</H2>}
+    left={<H2>{title}</H2>}
+    right={<Content>{children}</Content>}
     alwaysVertical={sectionKind === SectionKind.VERTICAL}
-  >
-    <Content>{children}</Content>
-  </TitleContentWrapper>
+  />
 );
 
 export default Section;

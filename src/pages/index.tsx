@@ -1,10 +1,10 @@
+import { graphql } from 'gatsby';
 import * as React from 'react';
 import { Helmet } from 'react-helmet';
 import Footer from '../components/Footer';
 import AboutSection from '../components/HomeSectionAbout';
 import ClientsSection from '../components/HomeSectionClients';
 import MaterialsSection from '../components/HomeSectionMaterials';
-import PerfConversionSection from '../components/HomeSectionPerfConversion';
 import ServicesSection from '../components/HomeSectionServices';
 import HomeSectionTestimonials from '../components/HomeSectionTestimonials';
 import Layout from '../components/Layout';
@@ -13,8 +13,6 @@ import { NavKind } from '../components/NavBase';
 import WidthWrapper from '../components/WidthWrapper';
 import {
   ActionButton,
-  ColumnSectionWrapper,
-  ColumnsWrapper,
   FooterWrapper,
   ContactSection,
   Content,
@@ -22,11 +20,36 @@ import {
   HeaderBackground,
   H1,
   Nav,
+  NewArticleBackground,
+  NewArticleLink,
   SectionWrapper,
   ServicesBackground,
 } from './index.styled';
 
-const IndexPage = () => (
+interface IndexPageProps {
+  data: {
+    allMarkdownRemark: {
+      edges: [
+        {
+          node: {
+            fields: {
+              slug: string;
+            };
+            frontmatter: {
+              blog: {
+                title: {
+                  visible: string;
+                };
+              };
+            };
+          };
+        },
+      ];
+    };
+  };
+}
+
+const IndexPage = ({ data }: IndexPageProps) => (
   <Layout>
     <Helmet>
       <title>PerfPerfPerf · Web performance consulting</title>
@@ -55,16 +78,24 @@ const IndexPage = () => (
             Get a quote
           </ActionButton>
         </WidthWrapper>
+        <NewArticleBackground>
+          <WidthWrapper>
+            <strong>New article:</strong>{' '}
+            <NewArticleLink
+              href={data.allMarkdownRemark.edges[0].node.fields.slug}
+            >
+              {
+                data.allMarkdownRemark.edges[0].node.frontmatter.blog.title
+                  .visible
+              }
+            </NewArticleLink>
+          </WidthWrapper>
+        </NewArticleBackground>
       </HeaderBackground>
       <div>
         <WidthWrapper>
           <SectionWrapper id="testimonials">
             <HomeSectionTestimonials />
-          </SectionWrapper>
-        </WidthWrapper>
-        <WidthWrapper>
-          <SectionWrapper id="why">
-            <PerfConversionSection />
           </SectionWrapper>
         </WidthWrapper>
         <SectionWrapper>
@@ -75,17 +106,15 @@ const IndexPage = () => (
           </ServicesBackground>
         </SectionWrapper>
         <WidthWrapper>
+          <SectionWrapper id="materials">
+            <MaterialsSection />
+          </SectionWrapper>
           <SectionWrapper id="clients">
             <ClientsSection />
           </SectionWrapper>
-          <ColumnsWrapper>
-            <ColumnSectionWrapper id="about">
-              <AboutSection />
-            </ColumnSectionWrapper>
-            <ColumnSectionWrapper id="materials">
-              <MaterialsSection />
-            </ColumnSectionWrapper>
-          </ColumnsWrapper>
+          <SectionWrapper id="about">
+            <AboutSection />
+          </SectionWrapper>
           <SectionWrapper id="contact" marginBottom={0}>
             <ContactSection />
           </SectionWrapper>
@@ -103,3 +132,29 @@ const IndexPage = () => (
 );
 
 export default IndexPage;
+
+export const query = graphql`
+  # Retrieve the latest article
+  query {
+    allMarkdownRemark(
+      filter: { fields: { slug: {}, sourceName: { eq: "blog" } } }
+      sort: { fields: frontmatter___blog___date___published, order: DESC }
+      limit: 1
+    ) {
+      edges {
+        node {
+          fields {
+            slug
+          }
+          frontmatter {
+            blog {
+              title {
+                visible
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;

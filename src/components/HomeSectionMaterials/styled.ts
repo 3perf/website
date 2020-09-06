@@ -1,34 +1,39 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
+import media from '../../styles/media';
+import { linkStyles, linkActiveStyles } from '../../styles/shared-styles';
 import { gridSize } from '../../styles/variables';
 import GatsbyImage from '../Image';
-
-export const Text = styled.div`
-  margin-bottom: ${gridSize * 2}px;
-`;
-
-export const Links = styled.div`
-  columns: 2 200px;
-  margin-bottom: ${gridSize * 3}px;
-`;
+import Link from '../Link';
 
 export const LinkWrapper = styled.div`
-  margin-bottom: 16px;
-  break-inside: avoid;
-  page-break-inside: avoid;
+  margin-bottom: ${gridSize}px;
 `;
-
-interface ImageExtraProps {
-  addBorder?: boolean;
-}
 
 export const Image = styled(GatsbyImage)`
   /* Because gatsby-image uses inline styles */
   display: block !important;
-  height: 100px;
+  margin-bottom: ${gridSize}px;
+`;
 
-  ${(props: ImageExtraProps) =>
-    props.addBorder &&
-    css`
-      border: 1px solid #ccc;
-    `};
+export const LinkText = styled.span``;
+
+export const LinkBlock = styled(Link)`
+  color: inherit;
+  text-decoration: none;
+
+  ${LinkText} {
+    ${linkStyles}
+  }
+
+  &:hover,
+  &:focus,
+  &:active {
+    ${LinkText} {
+      ${linkActiveStyles}
+    }
+  }
+`;
+
+export const LinkDescription = styled.div`
+  font-size: 0.75em;
 `;

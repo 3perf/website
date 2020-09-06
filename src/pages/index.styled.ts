@@ -1,9 +1,11 @@
 import styled from 'styled-components';
 import _ActionButton from '../components/ActionButton';
 import _ContactSection from '../components/HomeSectionContact';
+import _Link from '../components/Link';
 import _Nav from '../components/Nav';
 import media from '../styles/media';
-import { colors, sizes } from '../styles/variables';
+import { linkActiveStyles } from '../styles/shared-styles';
+import { colors, sizes, gridSize } from '../styles/variables';
 
 const Background = styled.div`
   // Make the component wrap margins of nested elements
@@ -25,6 +27,22 @@ export const HeaderBackground = styled(Background)`
 
 export const ActionButton = styled(_ActionButton)`
   margin-bottom: 60px;
+`;
+
+export const NewArticleBackground = styled.div`
+  background: ${colors.brightYellow};
+  padding: ${gridSize}px 0;
+`;
+
+export const NewArticleLink = styled(_Link)`
+  color: black;
+  border-bottom-color: rgba(0, 0, 0, 0.25);
+
+  &:hover,
+  &:focus,
+  &:active {
+    ${linkActiveStyles}
+  }
 `;
 
 export const ServicesBackground = styled(Background)`
@@ -63,14 +81,6 @@ export const H1 = styled.h1`
   `};
 `;
 
-export const ColumnsWrapper = styled.div`
-  display: flex;
-
-  ${media.small`
-    display: block;
-  `};
-`;
-
 interface SectionWrapperExtraProps {
   marginBottom?: number;
 }
@@ -78,10 +88,6 @@ interface SectionWrapperExtraProps {
 export const SectionWrapper = styled.div`
   margin-bottom: ${(props: SectionWrapperExtraProps) =>
     props.marginBottom === undefined ? 80 : props.marginBottom}px;
-`;
-
-export const ColumnSectionWrapper = styled(SectionWrapper)`
-  flex: 1;
 `;
 
 export const ContactSection = styled(_ContactSection)`
