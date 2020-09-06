@@ -139,7 +139,7 @@ const ContentPage = (props: ContentPageProps) => {
             <ContentItem
               link="/blog/polyfills/"
               title="How to load polyfills only when needed"
-              description="We’be been asked: “These days, how do you typically serve polyfills only to browsers that need them?”"
+              description="We’ve been asked: “These days, how do you typically serve polyfills only to browsers that need them?”"
             />
             <ContentItem
               link="https://iamakulov.com/notes/resize-scroll/"
