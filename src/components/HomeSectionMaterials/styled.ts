@@ -13,13 +13,19 @@ export const Image = styled(GatsbyImage)`
   /* Because gatsby-image uses inline styles */
   display: block !important;
   margin-bottom: ${gridSize}px;
+
+  ${media.small`
+    max-width: 250px;
+  `}
 `;
 
 export const LinkText = styled.span``;
 
 export const LinkBlock = styled(Link)`
   color: inherit;
-  text-decoration: none;
+  display: block;
+  border: none;
+  margin-bottom: ${gridSize}px;
 
   ${LinkText} {
     ${linkStyles}
