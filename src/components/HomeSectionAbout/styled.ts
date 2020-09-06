@@ -14,7 +14,11 @@ export const Image = styled(_Image)`
 `;
 
 export const Primary = styled.div``;
-export const Links = styled.div``;
+export const Links = styled.div`
+  ${media.small`
+    display: none;
+  `}
+`;
 
 export const Wrapper = styled.div`
   ${media.notSmall`
