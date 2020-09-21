@@ -25,9 +25,9 @@ blog:
     modified: 2020-05-29T12:00:00
 ---
 
-There’re multiple ways to improve web performance (see [Web Performance 101](http://3perf.com/talks/web-perf-101) for a full overview). One of those ways is to preload content you’ll need later in advance. Prefetch a CSS file, prerender a full page, or resolve a domain ahead of time – and you won’t have to wait for it when it’s actually needed! Sounds cool.
+There’re lots of ways to improve web performance (see [Web Performance 101](http://3perf.com/talks/web-perf-101) for a full overview). One of those ways is to preload content you’ll need later in advance. Prefetch a CSS file, prerender a full page, or resolve a domain ahead of time – and you won’t have to wait for it when it’s actually needed! Sounds cool.
 
-What’s even cooler is that browsers have a simple built-in way to do all these things. There’re five `<link rel>` tags that instruct the browser to preload something:
+What’s even cooler is that browsers have a simple built-in way to do all these things. There’re six `<link rel>` tags that instruct the browser to preload something:
 
 ```html
 <link rel="prefetch" href="/style.css" as="style" />
@@ -35,6 +35,7 @@ What’s even cooler is that browsers have a simple built-in way to do all these
 <link rel="preconnect" href="https://example.com" />
 <link rel="dns-prefetch" href="https://example.com" />
 <link rel="prerender" href="https://example.com/about.html" />
+<link rel="modulepreload" href="/script.js" />
 ```
 
 Here’s what they each of them does and when to use them.
@@ -43,11 +44,12 @@ Here’s what they each of them does and when to use them.
 
 Jump to:
 
-- [preload](#preload) (aka “download something urgently”)
-- [prefetch](#prefetch) (aka “download something with a low priority”)
-- [preconnect](#preconnect) (aka “connect to a server”)
-- [dns-prefetch](#dns-prefetch) (aka “resolve the server’s domain”)
-- [prerender](#prerender) (aka “render this page in background”)
+- [`preload`](#preload) – when you’re going to need a resource in a few seconds
+- [`prefetch`](#prefetch) – when you need a resource for the next page
+- [`preconnect`](#preconnect) – when you know you’ll need a resource soon, but you don’t know its full url yet
+- [`dns-prefetch`](#dns-prefetch) – when you know you’ll need a resource soon, but you don’t know its full url yet (for older browsers)
+- [`prerender`](#prerender) – when you’re certain most users will navigate to a specific page, and you want to speed it up
+- [`modulepreload`](#modulepreload) – when you’re going to need an ES module script soon
 
 # preload
 
@@ -55,7 +57,7 @@ Jump to:
 
 The browser doesn’t do anything with the resource after downloading it. Scripts aren’t executed, stylesheets aren’t applied. It’s just cached – so that when something else needs it, it’s available immediately.
 
-## Syntax
+## Example
 
 ```html
 <link rel="preload" href="/style.css" as="style" />
@@ -131,7 +133,7 @@ It’s important to specify the `as` attribute – it helps the browser to prior
 
 ## More details
 
-**It’s mandatory.** Unlike all other preload-related `<link>` tags, this tag is mandatory for the browser (if it supports the tag). A browser _has_ to download the resource specified in `<link rel="preload">`. With other tags described here, a browser is free to skip preloading the resource if it decides to – e.g. if the network is slow.
+**It’s mandatory.** Unlike all other preload-related `<link>` tags (except [`modulepreload`](#modulepreload)), this tag is mandatory for the browser (if it supports the tag). A browser _has_ to download the resource specified in `<link rel="preload">`. With other tags described here, a browser is free to skip preloading the resource if it decides to – e.g. if the network is slow.
 
 **Priorities.** For different kinds of resources (styles, scripts, fonts, etc.), browsers typically assign different priorities. This allows for downloading the most important resources first. For a resource fetched with `<link rel="preload">`, browsers use the `as` attribute to determine its priority. For Chrome, see [the full table of Chrome priorities](https://docs.google.com/document/d/1bCDuq9H1ih9iNjgzyAL0gpwNFiEP4TZS-YLRp_RuMlc/edit#) for more details
 
@@ -143,7 +145,7 @@ It’s important to specify the `as` attribute – it helps the browser to prior
 
 The browser doesn’t do anything with the resource after downloading it. Scripts aren’t executed, stylesheets aren’t applied. It’s just cached – so that when something else needs it, it’s available immediately.
 
-## Syntax
+## Example
 
 ```html
 <link rel="prefetch" href="/style.css" as="style" />
@@ -187,13 +189,13 @@ A browser has to set up a connection when it retrieves something from a new thir
 
 Setting up a new connection typically takes several hundred milliseconds. It’s only needed once per domain, but it still takes time. If you set up a connection in advance, you’ll save that time and load resources from that domain faster.
 
-## Syntax
+## Example
 
 ```html
 <link rel="preconnect" href="https://api.my-app.com" />
 ```
 
-`href` points to the domain name you want to resolve. Feel free to specify it with the scheme (`https://domain.com`) or without it (`//domain.com`), it would work the same.
+`href` points to the server you want to connect to.
 
 ## When to use
 
@@ -209,7 +211,7 @@ Setting up a new connection typically takes several hundred milliseconds. It’s
 
 **Use it to slightly speed up some third-party script or style.** If you have a third-party resource in the page that you really need to load sooner, add `<link rel="preconnect" />` for that domain. It will instruct the browser to setup connection for that domain sooner.
 
-**Don’t overuse it.** Setting up and keeping a connection open is costly – both for a client and a server. Use this tag for 4-6 domains at most.
+**Don’t overuse it.** Setting up and keeping a connection open is costly – both for a client and a server. The simple rule of thumb is: use this tag for 4-6 domains at most.
 
 ## More details
 
@@ -233,13 +235,13 @@ A browser has to perform a DNS resolution when it connects to a new third-party 
 
 For each new domain, resolving the DNS record usually [takes around 20-120 ms](https://www.keycdn.com/support/reduce-dns-lookups). It only affects the first resource downloaded from that domain, but it still matters. If you perform a DNS resolution in advance, you’ll save that time and load that resource faster.
 
-## Syntax
+## Example
 
 ```html
 <link rel="dns-prefetch" href="https://api.my-app.com" />
 ```
 
-`href` points to the domain name you want to resolve. Feel free to specify it with the scheme (`https://domain.com`) or without it (`//domain.com`), it would work the same.
+`href` points to the domain name you want to resolve. The scheme doesn’t matter – both `https://api.my-app.com` and `//api.my-app.com` would work fine.
 
 ## When to use
 
@@ -259,7 +261,7 @@ For each new domain, resolving the DNS record usually [takes around 20-120 ms](h
 
 **Note on `<link rel="dns-prefetch" />` and `<link rel="preconnect" />`.** Using both of these tags for the same domain is not really useful – `<link rel="preconnect" />` already includes everything `<link rel="dns-prefetch" />` does, and more. However, it can still make sense in two cases:
 
-- _You want to support older browsers._ `<link rel="dns-prefetch" />` is supported [starting from IE10 and Safari 5](https://caniuse.com/#feat=link-rel-dns-prefetch). `<link rel="preconnect" />` has been supported in Chrome and Firefox for a while, but was added to Safari only in 11.1, and [still isn’t supported in IE/Edge](https://caniuse.com/#feat=link-rel-preconnect). If you need to support those browsers, use `<link rel="dns-prefetch" />` as a fallback for `<link rel="preconnect" />`.
+- _You want to support older browsers._ `<link rel="dns-prefetch" />` is supported [starting from IE10 and Safari 5](https://caniuse.com/#feat=link-rel-dns-prefetch). `<link rel="preconnect" />` has been supported in Chrome and Firefox for a while, but was added to Safari only in 11.1, and [isn’t supported in IE/non-Chromium Edge](https://caniuse.com/#feat=link-rel-preconnect). If you need to support those browsers, use `<link rel="dns-prefetch" />` as a fallback for `<link rel="preconnect" />`.
 
 - _You want to speed up more than 4-6 domains_. It’s not recommended to use `<link rel="preconnect" />` with more than 4-6 domains, as opening and keeping a connection is an expensive operation. `<link rel="dns-prefetch" />` is more lightweight, so use it for other third-party domains if you want to speed them up too.
 
@@ -281,7 +283,7 @@ To resolve a domain name, the browser has to perform a request to a DNS server. 
 
 Despite (or because of?) its power, in 2019, `<link rel="prerender">` has bad support in major browsers. See [More details](#more-details-4) for more.
 
-## Syntax
+## Example
 
 ```html
 <link rel="prerender" href="https://my-app.com/pricing" />
@@ -303,15 +305,92 @@ Despite (or because of?) its power, in 2019, `<link rel="prerender">` has bad su
 
 **Firefox and Safari don’t support this tag at all.** This doesn’t break the specification, as browsers are not required to act on the tag; but this is still quite sad. Firefox has [an implementation bug](https://bugzilla.mozilla.org/show_bug.cgi?id=730101) which has been open for 7 years; and there are reports that state [Safari doesn’t support it too](https://twitter.com/bluesmoon/status/1108412360828563456).
 
+# modulepreload
+
+`<link rel="modulepreload">` tells the browser to download, cache, and compile a JS module script as soon as possible. It’s helpful when you use ES modules in production, and you want to load your app faster.
+
+Why? Typically, if an app uses ES modules, browsers will load modules in several roundtrips. Imagine your app has a chain of imports:
+
+```js
+// /static/main.js
+import Header from '/static/Header.js';
+...
+
+// /static/Header.js
+import Logo from '/static/Logo.js';
+import Link from '/static/Link.js';
+...
+
+// /static/Logo.js
+import Img from '/static/Img.js';
+...
+```
+
+If you simply add a `<script src="/static/main.js" type="module">` onto the page, the browser will discover
+
+- that it needs `Header.js` – only after it downloads `main.js`
+
+- that it needs `Logo.js` and `Link.js` – only after it downloads `Header.js`
+
+- that it needs `Img.js` – only after it downloads `Logo.js`
+
+and so on. And because the app can’t start working before all modules are downloaded, this makes the app load longer.
+
+`<link rel="modulepreload">` solves this. With this tag, you tell the browser about each module your app has – and the browser discovers and downloads each module right away.
+
+## Example
+
+```html
+<link rel="modulepreload" href="/static/Header.js" />
+<link rel="modulepreload" href="/static/Logo.js" />
+<link rel="modulepreload" href="/static/Image.js" />
+
+<!-- Or if the module belongs to e.g. a service worker: -->
+<link rel="modulepreload" href="/static/Header.js" as="serviceworker" />
+```
+
+`href` points to the module you want to preload.
+
+`as` specifies which context the module belongs to:
+
+- `script` – if the module is loaded by a regular `<script type="module">` tag
+- `worker` – if the module is loaded by a web worker
+- `serviceworker` – if the module is loaded by a service worker
+- [and etc.](https://fetch.spec.whatwg.org/#request-destination-script-like)
+
+`as` defaults to `script`, so, typically, you don’t need to specify it at all.
+
+## When to use
+
+**Use it to load your ES modules app faster.** As described above, this tag is only useful for preloading ES modules – i.e., modules you’re importing through `import ...` or `<script type="module">`.
+
+If you want to preload a regular script, use [`<link rel="preload" as="script">`](#preload).
+
+## More details
+
+**Caching _and_ compiling.** `<link rel="modulepreload">` not only fetches the module and puts it into the network cache, but also compiles it into bytecode. This means when the module is needed, the browser can start executing it immediately.
+
+This is unlike `<link rel="preload">` which caches a resource but doesn’t process it in any way.
+
+**Why not `<link rel="preload" as="module">`?** `<link rel="modulepreload">` and `<link rel="preload">` seem very similar at first glance. But, it turns out, there are important low-level details that justified introducing a new keyword:
+
+- `<link rel="modulepreload">` handles cross-origin requests (CORS) differently from `<link rel="preload">`
+
+- `<link rel="preload">` re-fetches a resource if you change the `as` attribute whereas `<link rel="modulepreload">` doesn’t
+
+and so on. For more details, see [a discussion in `whatwg/fetch`](https://github.com/whatwg/fetch/issues/486#issuecomment-282044172).
+
+**Optional feature: loading dependencies.** The specification allows browsers to preload not only the module but all its imports as well. However, this is an optional feature; as of Sep 2020, no browsers implement this.
+
+**Chrome only.** As of Sep 2020, `<link rel="modulepreload">` is only supported [in Chrome and Chromium-based browsers](https://caniuse.com/link-rel-modulepreload).
+
 # Summing up
 
-Use:
+Preloading is great. It’s easy to enable it, and it gives you solid speed improvements if used right.
 
-- `<link rel="preload">` – when you’ll need a resource in a few seconds
-- `<link rel="prefetch">` – when you’ll need a resource on a next page
-- `<link rel="preconnect">` – when you know you’ll need a resource soon, but you don’t know its full url yet
-- `<link rel="dns-prefetch">` – also when you know you’ll need a resource soon, but you don’t know its full url yet (for older browsers)
-- `<link rel="prerender">` – when you’re certain users will navigate to a specific page, and you want to speed it up
+However, _right_ is the key word. If you `<link rel="preload">` a resource that’s not needed, you’ll steal bandwidth from other important resources. If you `<link rel="preconnect">` too many domains, you’ll occupy the CPU with opening connections – instead of doing other important work. It’s a powerful tool, so it has to be used carefully.
+
+Preload wisely, stay cautious, and [test all your performance changes to make sure they actually help](https://github.com/davidsonfellipe/awesome-wpo#analyzers).
 
 More links:
 
