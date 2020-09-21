@@ -22,7 +22,7 @@ blog:
     twitter: './cover-twitter.png'
   date:
     published: 2019-03-18T20:00:00
-    modified: 2020-05-29T12:00:00
+    modified: 2020-09-21T12:00:00
 ---
 
 There’re lots of ways to improve web performance (see [Web Performance 101](http://3perf.com/talks/web-perf-101) for a full overview). One of those ways is to preload content you’ll need later in advance. Prefetch a CSS file, prerender a full page, or resolve a domain ahead of time – and you won’t have to wait for it when it’s actually needed! Sounds cool.
