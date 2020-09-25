@@ -1,6 +1,6 @@
 import { graphql, StaticQuery } from 'gatsby';
 import * as React from 'react';
-import { SharpImageFixed } from '../../types';
+import { GraphqlImageFixed } from '../../types';
 import { SectionKind } from '../Section';
 import {
   ActionButton,
@@ -20,14 +20,14 @@ import {
 interface ServicesSectionProps {
   className?: string;
   data: {
-    auditDesktop: SharpImageFixed & {
+    auditDesktop: GraphqlImageFixed & {
       childImageSharp: { fixed: { height: number } };
     };
-    optimizationDesktop: SharpImageFixed & {
+    optimizationDesktop: GraphqlImageFixed & {
       childImageSharp: { fixed: { height: number } };
     };
-    auditMobile: SharpImageFixed;
-    optimizationMobile: SharpImageFixed;
+    auditMobile: GraphqlImageFixed;
+    optimizationMobile: GraphqlImageFixed;
   };
 }
 
@@ -47,9 +47,9 @@ const ServicesSection = ({ className = '', data }: ServicesSectionProps) => (
       desktopImageHeight={data.auditDesktop.childImageSharp.fixed.height}
     >
       <MobileImageWrapper>
-        <MobileImage fixed={data.auditMobile.childImageSharp.fixed} />
+        <MobileImage imageData={data.auditMobile.childImageSharp.fixed} />
       </MobileImageWrapper>
-      <DesktopImage fixed={data.auditDesktop.childImageSharp.fixed} />
+      <DesktopImage imageData={data.auditDesktop.childImageSharp.fixed} />
       <Text>
         <H3>Audit&nbsp;🔬</H3>
         <p>
@@ -73,9 +73,13 @@ const ServicesSection = ({ className = '', data }: ServicesSectionProps) => (
       desktopImageHeight={data.optimizationDesktop.childImageSharp.fixed.height}
     >
       <MobileImageWrapper>
-        <MobileImage fixed={data.optimizationMobile.childImageSharp.fixed} />
+        <MobileImage
+          imageData={data.optimizationMobile.childImageSharp.fixed}
+        />
       </MobileImageWrapper>
-      <DesktopImage fixed={data.optimizationDesktop.childImageSharp.fixed} />
+      <DesktopImage
+        imageData={data.optimizationDesktop.childImageSharp.fixed}
+      />
       <Text>
         <H3>Optimization&nbsp;🛠</H3>
         <p>
@@ -120,7 +124,7 @@ const ServicesSectionWithQuery = () => (
         ) {
           childImageSharp {
             fixed(width: 900) {
-              ...GatsbyImageSharpFixed
+              ...ImageFixed
               height
             }
           }
@@ -131,7 +135,7 @@ const ServicesSectionWithQuery = () => (
         ) {
           childImageSharp {
             fixed(width: 900) {
-              ...GatsbyImageSharpFixed
+              ...ImageFixed
               height
             }
           }
@@ -142,7 +146,7 @@ const ServicesSectionWithQuery = () => (
         ) {
           childImageSharp {
             fixed(width: 224) {
-              ...GatsbyImageSharpFixed
+              ...ImageFixed
             }
           }
         }
@@ -152,7 +156,7 @@ const ServicesSectionWithQuery = () => (
         ) {
           childImageSharp {
             fixed(width: 224) {
-              ...GatsbyImageSharpFixed
+              ...ImageFixed
             }
           }
         }

@@ -1,4 +1,4 @@
-import { FluidObject, FixedObject } from 'gatsby-image';
+import type { ImageFixed, ImageFluid } from '../src/components/Image';
 
 export type JSXChildrenProp =
   | string
@@ -7,14 +7,14 @@ export type JSXChildrenProp =
   | JSX.Element[]
   | Array<string | JSX.Element>;
 
-export interface SharpImageFluid {
+export interface GraphqlImageFluid {
   childImageSharp: {
-    fluid: FluidObject;
+    fluid: ImageFluid;
   };
 }
 
-export interface SharpImageFixed {
+export interface GraphqlImageFixed {
   childImageSharp: {
-    fixed: FixedObject;
+    fixed: ImageFixed;
   };
 }

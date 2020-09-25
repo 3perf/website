@@ -10,7 +10,7 @@ interface AuthorProps {
 
 const Author = ({ imageData, name, description, link }: AuthorProps) => (
   <Link href={link}>
-    <Image fixed={imageData} />
+    <Image imageData={imageData} />
     <Content>
       <Name>{name}</Name>
       <Description>{description}</Description>

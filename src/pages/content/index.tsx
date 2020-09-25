@@ -6,7 +6,7 @@ import Layout from '../../components/Layout';
 import { LogoKind } from '../../components/Logo';
 import { NavKind } from '../../components/NavBase';
 import WidthWrapper from '../../components/WidthWrapper';
-import { JSXChildrenProp, SharpImageFixed } from '../../types';
+import { JSXChildrenProp, GraphqlImageFixed } from '../../types';
 import facebookCoverUrl from './facebook-cover.png';
 import {
   Background,
@@ -27,14 +27,14 @@ import twitterCoverUrl from './twitter-cover.png';
 
 interface ContentPageProps {
   data: {
-    webPerf101: SharpImageFixed;
-    webpackLibs: SharpImageFixed;
-    notion: SharpImageFixed;
+    webPerf101: GraphqlImageFixed;
+    webpackLibs: GraphqlImageFixed;
+    notion: GraphqlImageFixed;
   };
 }
 
 interface ContentItemProps {
-  image?: SharpImageFixed;
+  image?: GraphqlImageFixed;
   title: string | JSXChildrenProp;
   description?: string | JSXChildrenProp;
   link: string;
@@ -51,7 +51,7 @@ const ContentItem = ({
     <ItemLink href={link}>
       {image && (
         <ItemImage>
-          <GatsbyImage fixed={image.childImageSharp.fixed} />
+          <GatsbyImage imageData={image.childImageSharp.fixed} />
         </ItemImage>
       )}
       <div>
@@ -182,7 +182,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fixed(height: 150) {
-          ...GatsbyImageSharpFixed
+          ...ImageFixed
         }
       }
     }
@@ -190,7 +190,7 @@ export const query = graphql`
     notion: file(relativePath: { eq: "content/notion-social.png" }) {
       childImageSharp {
         fixed(height: 150) {
-          ...GatsbyImageSharpFixed
+          ...ImageFixed
         }
       }
     }
@@ -198,7 +198,7 @@ export const query = graphql`
     webpackLibs: file(relativePath: { eq: "content/webpack-libs.png" }) {
       childImageSharp {
         fixed(height: 150) {
-          ...GatsbyImageSharpFixed
+          ...ImageFixed
         }
       }
     }

@@ -49,8 +49,7 @@ export const ImageText = styled.div<ImageTextProps>`
     }
 
     ${DesktopImage} {
-      /* !important to overwrite gatsby-image styles */
-      display: none !important;
+      display: none;
     }
 
     ${Text} {
@@ -66,8 +65,7 @@ export const ImageText = styled.div<ImageTextProps>`
     }
 
     ${DesktopImage} {
-      /* !important to overwrite gatsby-image styles */
-      position: absolute !important;
+      position: absolute;
       flex: none;
       align-self: flex-start;
 

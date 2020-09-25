@@ -1,30 +1,87 @@
-import GatsbyImage, { GatsbyImageProps } from 'gatsby-image';
+import { graphql } from 'gatsby';
 import React from 'react';
+import { Container, Img } from './styled';
 
-// There’s no way to make GatsbyImage:
-//  1) opt out of the JS-managed lazy loading behavior
-//  2) and *not* add `loading="eager"`
-// at the same time.
-// To work around that, since we’re service the site without JS,
-// we’re patching the component to trick gatsby-image into the right behavior.
-// Tested with v2.3.1
-class GatsbyEagerImage extends GatsbyImage {
-  public isCritical: boolean;
-  public addNoScript: boolean;
-
-  constructor(props: any, context: any) {
-    super(props, context);
-
-    this.isCritical = true;
-    this.addNoScript = false;
-    // @ts-ignore
-    this.state.isVisible = true;
-  }
+export interface ImageFixed {
+  width: number;
+  height: number;
+  src: string;
+  srcSet: string;
+  srcWebp?: string;
+  srcSetWebp?: string;
 }
 
-const Image = (props: GatsbyImageProps) => (
-  // Disable lazy loading by default
-  <GatsbyEagerImage fadeIn={false} {...props} />
-);
+export interface ImageFluid {
+  presentationWidth: number;
+  presentationHeight: number;
+  src: string;
+  srcSet: string;
+  sizes: string;
+  srcWebp?: string;
+  srcSetWebp?: string;
+}
+
+interface ImageProps {
+  className?: string;
+  loading?: 'eager' | 'lazy';
+  // We’re not using a type union ({ fixed: ... } | { fluid: ... })
+  // because then, styled-components wrappers don’t pick up fixed and fluid props
+  imageData: ImageFixed | ImageFluid;
+}
+
+const Image = ({ className, loading, imageData }: ImageProps) => {
+  return (
+    <Container className={className}>
+      <picture>
+        {imageData.srcWebp && (
+          <source
+            src={imageData.srcWebp}
+            srcSet={imageData.srcSetWebp}
+            sizes={'sizes' in imageData ? imageData.sizes : undefined}
+            type="image/webp"
+          />
+        )}
+        <source
+          srcSet={imageData.srcSet}
+          sizes={'sizes' in imageData ? imageData.sizes : undefined}
+        />
+        <Img
+          isFluid={'presentationWidth' in imageData}
+          src={imageData.src}
+          width={
+            'width' in imageData ? imageData.width : imageData.presentationWidth
+          }
+          loading={loading || 'lazy'}
+          height={
+            'height' in imageData
+              ? imageData.height
+              : imageData.presentationHeight
+          }
+        />
+      </picture>
+    </Container>
+  );
+};
+
+export const query = graphql`
+  fragment ImageFixed on ImageSharpFixed {
+    width
+    height
+    src
+    srcSet
+    srcWebp
+    srcSetWebp
+  }
+
+  fragment ImageFluid on ImageSharpFluid {
+    presentationWidth
+    presentationHeight
+    src
+    srcSet
+    sizes
+    srcWebp
+    srcSetWebp
+  }
+`;
 
 export default Image;

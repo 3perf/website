@@ -1,6 +1,6 @@
 import { graphql, StaticQuery } from 'gatsby';
 import * as React from 'react';
-import { SharpImageFluid } from '../../types';
+import { GraphqlImageFluid } from '../../types';
 import Section, { SectionKind } from '../Section';
 import {
   Intro,
@@ -15,7 +15,7 @@ import {
 } from './styled';
 
 interface AboutSectionData {
-  talkImage: SharpImageFluid;
+  talkImage: GraphqlImageFluid;
 }
 
 interface AboutSectionProps {
@@ -35,7 +35,7 @@ const AboutSection = ({ data }: AboutSectionProps) => (
           , an <a href="https://iamakulov.com/#talks">international speaker</a>,
           and a web performance consultant.
         </Intro>
-        <Image fluid={data.talkImage.childImageSharp.fluid} />
+        <Image imageData={data.talkImage.childImageSharp.fluid} />
       </Primary>
       <Links>
         <LinkWrapper>
@@ -61,7 +61,7 @@ const AboutSectionWithQuery = () => (
         ) {
           childImageSharp {
             fluid(maxWidth: 727) {
-              ...GatsbyImageSharpFluid
+              ...ImageFluid
             }
           }
         }

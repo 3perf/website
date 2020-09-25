@@ -1,10 +1,10 @@
 import { StaticQuery, graphql } from 'gatsby';
 import * as React from 'react';
-import { SharpImageFixed } from '../../types';
+import { GraphqlImageFixed } from '../../types';
 import { PromptContainer, Container, ContactImage, Link } from './styled';
 
 interface ContactSectionData {
-  iamakulov: SharpImageFixed;
+  iamakulov: GraphqlImageFixed;
 }
 
 interface ContactSectionProps {
@@ -22,7 +22,7 @@ const ContactSection = ({
         <p>
           Interested? We’d be glad to help. Drop us an email, and{' '}
           <ContactImage
-            fixed={data.iamakulov.childImageSharp.fixed}
+            imageData={data.iamakulov.childImageSharp.fixed}
             Tag="span"
           />{' '}
           Ivan will get back to you in 24 hours.
@@ -38,7 +38,7 @@ const ContactSectionWithQuery = (props: ContactSectionProps) => (
       fragment ContactImage on File {
         childImageSharp {
           fixed(width: 24, height: 24, quality: 75) {
-            ...GatsbyImageSharpFixed
+            ...ImageFixed
           }
         }
       }
@@ -51,7 +51,7 @@ const ContactSectionWithQuery = (props: ContactSectionProps) => (
         }
       }
     `}
-    render={data => <ContactSection data={data} {...props} />}
+    render={(data) => <ContactSection data={data} {...props} />}
   />
 );
 

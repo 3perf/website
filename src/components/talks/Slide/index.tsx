@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { JSXChildrenProp } from '../../../types';
-import { Container, ImageWrapper, SlideLink, Text } from './styled';
+import { Container, ImageWrapper, Text } from './styled';
 
 interface SlideProps {
   slideId: string;

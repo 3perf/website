@@ -6,7 +6,7 @@ import { LogoKind } from '../../../components/Logo';
 import WidthWrapper from '../../../components/WidthWrapper';
 import { SlideGatsbyImage } from '../../../components/talks/Slide';
 import TalkHeader from '../../../components/talks/TalkHeader';
-import { SharpImageFixed, SharpImageFluid } from '../../../types';
+import { GraphqlImageFixed, GraphqlImageFluid } from '../../../types';
 import {
   BlockImage,
   Blockquote,
@@ -35,112 +35,112 @@ interface FileUrl {
 
 interface WebPerf101PageProps {
   data: {
-    indexSlide: SharpImageFluid;
-    iamakulovPhoto: SharpImageFixed;
+    indexSlide: GraphqlImageFluid;
+    iamakulovPhoto: GraphqlImageFixed;
     panda100: FileUrl;
     panda70: FileUrl;
     panda50: FileUrl;
     panda100Large: FileUrl;
     panda70Large: FileUrl;
     panda50Large: FileUrl;
-    contents: SharpImageFluid;
-    cssBlockRendering1: SharpImageFluid;
-    cssBlockRendering2: SharpImageFluid;
-    cssBlockRendering3: SharpImageFluid;
-    cssBlockRendering4: SharpImageFluid;
-    cssCritical1: SharpImageFluid;
-    cssCritical2: SharpImageFluid;
-    cssCritical21: SharpImageFluid;
-    cssCritical22: SharpImageFluid;
-    cssCritical3: SharpImageFluid;
-    cssCritical4: SharpImageFluid;
-    cssCritical5: SharpImageFluid;
-    cssCritical6: SharpImageFluid;
-    cssCritical7: SharpImageFluid;
-    cssHeader: SharpImageFluid;
-    cssMinify1: SharpImageFluid;
-    cssMinify2: SharpImageFluid;
-    cssMinify3: SharpImageFluid;
-    cssSummingUp: SharpImageFluid;
-    fontsHeader: SharpImageFluid;
-    fontsFallback1: SharpImageFluid;
-    fontsFallback2: SharpImageFluid;
-    fontsFallback3: SharpImageFluid;
-    fontsFallback4: SharpImageFluid;
-    fontsFontDisplay2: SharpImageFluid;
-    fontsFontDisplay3: SharpImageFluid;
-    fontsFontDisplay4: SharpImageFluid;
-    fontsFontDisplay5: SharpImageFluid;
-    fontsSummingUp: SharpImageFluid;
-    httpBrotli1: SharpImageFluid;
-    httpBrotli2: SharpImageFluid;
-    httpCdn2: SharpImageFluid;
-    httpGzip1: SharpImageFluid;
-    httpGzip2: SharpImageFluid;
-    httpGzip3: SharpImageFluid;
-    httpHeader: SharpImageFluid;
-    httpHtmlMinify1: SharpImageFluid;
-    httpHtmlMinify2: SharpImageFluid;
-    httpPreload1: SharpImageFluid;
-    httpPreload2: SharpImageFluid;
-    httpSummingUp: SharpImageFluid;
-    imagesAndFontsCompressJpgDimensions: SharpImageFluid;
-    imagesAndFontsCompressJpgProgressive1: SharpImageFluid;
-    imagesAndFontsCompressJpgProgressive2: SharpImageFluid;
-    imagesAndFontsCompressJpgProgressive3: SharpImageFluid;
-    imagesAndFontsCompressJpgSize1: SharpImageFluid;
-    imagesAndFontsCompressJpgSize2: SharpImageFluid;
-    imagesAndFontsCompressJpgSize3: SharpImageFluid;
-    imagesAndFontsCompressJpgSize4: SharpImageFluid;
-    imagesAndFontsCompressPng: SharpImageFluid;
-    imagesAndFontsCompressSvgJpgExclamation: SharpImageFluid;
-    imagesAndFontsCompressSvgJpg: SharpImageFluid;
-    imagesAndFontsCompressTools: SharpImageFluid;
-    imagesAndFontsCompress: SharpImageFluid;
-    imagesAndFontsFormat: SharpImageFluid;
-    imagesAndFontsGif: SharpImageFluid;
-    imagesAndFontsHeader: SharpImageFluid;
-    imagesAndFontsJpg: SharpImageFluid;
-    imagesAndFontsPng: SharpImageFluid;
-    imagesAndFontsSummingUp: SharpImageFluid;
-    imagesAndFontsSvg: SharpImageFluid;
-    imagesAndFontsWebp1: SharpImageFluid;
-    imagesAndFontsWebp2: SharpImageFluid;
-    imagesSummingUp: SharpImageFluid;
-    index: SharpImageFluid;
-    javascriptHeader: SharpImageFluid;
-    javascriptMinificationResult: SharpImageFluid;
-    javascriptMinificationSource: SharpImageFluid;
-    javascriptMinificationTools: SharpImageFluid;
-    jsAsyncDefer1: SharpImageFluid;
-    jsAsyncDefer2: SharpImageFluid;
-    jsAsyncDefer3: SharpImageFluid;
-    jsCodeSplitting1: SharpImageFluid;
-    jsCodeSplitting2: SharpImageFluid;
-    jsCodeSplitting3: SharpImageFluid;
-    jsCodeSplitting32: SharpImageFluid;
-    jsCodeSplitting4: SharpImageFluid;
-    jsCodeSplitting5: SharpImageFluid;
-    jsCodeSplitting6: SharpImageFluid;
-    jsDownload1: SharpImageFluid;
-    jsDownload2: SharpImageFluid;
-    jsScriptsBlockParsing2: SharpImageFluid;
-    jsScriptsBlockParsing3: SharpImageFluid;
-    jsScriptsBlockParsing4: SharpImageFluid;
-    jsScriptsBlockParsing5: SharpImageFluid;
-    jsSummingUp: SharpImageFluid;
-    jsUnusedDependencies1: SharpImageFluid;
-    jsUnusedDependencies2: SharpImageFluid;
-    perfImportanceHeader: SharpImageFluid;
-    perfImportanceHorror: SharpImageFluid;
-    perfImportanceParts1: SharpImageFluid;
-    perfImportanceParts2: SharpImageFluid;
-    perfImportanceParts3: SharpImageFluid;
-    thanks: SharpImageFluid;
-    toolsHeader: SharpImageFluid;
-    toolsLighthouse: SharpImageFluid;
-    toolsPagespeedInsights: SharpImageFluid;
-    toolsWebpagetest: SharpImageFluid;
+    contents: GraphqlImageFluid;
+    cssBlockRendering1: GraphqlImageFluid;
+    cssBlockRendering2: GraphqlImageFluid;
+    cssBlockRendering3: GraphqlImageFluid;
+    cssBlockRendering4: GraphqlImageFluid;
+    cssCritical1: GraphqlImageFluid;
+    cssCritical2: GraphqlImageFluid;
+    cssCritical21: GraphqlImageFluid;
+    cssCritical22: GraphqlImageFluid;
+    cssCritical3: GraphqlImageFluid;
+    cssCritical4: GraphqlImageFluid;
+    cssCritical5: GraphqlImageFluid;
+    cssCritical6: GraphqlImageFluid;
+    cssCritical7: GraphqlImageFluid;
+    cssHeader: GraphqlImageFluid;
+    cssMinify1: GraphqlImageFluid;
+    cssMinify2: GraphqlImageFluid;
+    cssMinify3: GraphqlImageFluid;
+    cssSummingUp: GraphqlImageFluid;
+    fontsHeader: GraphqlImageFluid;
+    fontsFallback1: GraphqlImageFluid;
+    fontsFallback2: GraphqlImageFluid;
+    fontsFallback3: GraphqlImageFluid;
+    fontsFallback4: GraphqlImageFluid;
+    fontsFontDisplay2: GraphqlImageFluid;
+    fontsFontDisplay3: GraphqlImageFluid;
+    fontsFontDisplay4: GraphqlImageFluid;
+    fontsFontDisplay5: GraphqlImageFluid;
+    fontsSummingUp: GraphqlImageFluid;
+    httpBrotli1: GraphqlImageFluid;
+    httpBrotli2: GraphqlImageFluid;
+    httpCdn2: GraphqlImageFluid;
+    httpGzip1: GraphqlImageFluid;
+    httpGzip2: GraphqlImageFluid;
+    httpGzip3: GraphqlImageFluid;
+    httpHeader: GraphqlImageFluid;
+    httpHtmlMinify1: GraphqlImageFluid;
+    httpHtmlMinify2: GraphqlImageFluid;
+    httpPreload1: GraphqlImageFluid;
+    httpPreload2: GraphqlImageFluid;
+    httpSummingUp: GraphqlImageFluid;
+    imagesAndFontsCompressJpgDimensions: GraphqlImageFluid;
+    imagesAndFontsCompressJpgProgressive1: GraphqlImageFluid;
+    imagesAndFontsCompressJpgProgressive2: GraphqlImageFluid;
+    imagesAndFontsCompressJpgProgressive3: GraphqlImageFluid;
+    imagesAndFontsCompressJpgSize1: GraphqlImageFluid;
+    imagesAndFontsCompressJpgSize2: GraphqlImageFluid;
+    imagesAndFontsCompressJpgSize3: GraphqlImageFluid;
+    imagesAndFontsCompressJpgSize4: GraphqlImageFluid;
+    imagesAndFontsCompressPng: GraphqlImageFluid;
+    imagesAndFontsCompressSvgJpgExclamation: GraphqlImageFluid;
+    imagesAndFontsCompressSvgJpg: GraphqlImageFluid;
+    imagesAndFontsCompressTools: GraphqlImageFluid;
+    imagesAndFontsCompress: GraphqlImageFluid;
+    imagesAndFontsFormat: GraphqlImageFluid;
+    imagesAndFontsGif: GraphqlImageFluid;
+    imagesAndFontsHeader: GraphqlImageFluid;
+    imagesAndFontsJpg: GraphqlImageFluid;
+    imagesAndFontsPng: GraphqlImageFluid;
+    imagesAndFontsSummingUp: GraphqlImageFluid;
+    imagesAndFontsSvg: GraphqlImageFluid;
+    imagesAndFontsWebp1: GraphqlImageFluid;
+    imagesAndFontsWebp2: GraphqlImageFluid;
+    imagesSummingUp: GraphqlImageFluid;
+    index: GraphqlImageFluid;
+    javascriptHeader: GraphqlImageFluid;
+    javascriptMinificationResult: GraphqlImageFluid;
+    javascriptMinificationSource: GraphqlImageFluid;
+    javascriptMinificationTools: GraphqlImageFluid;
+    jsAsyncDefer1: GraphqlImageFluid;
+    jsAsyncDefer2: GraphqlImageFluid;
+    jsAsyncDefer3: GraphqlImageFluid;
+    jsCodeSplitting1: GraphqlImageFluid;
+    jsCodeSplitting2: GraphqlImageFluid;
+    jsCodeSplitting3: GraphqlImageFluid;
+    jsCodeSplitting32: GraphqlImageFluid;
+    jsCodeSplitting4: GraphqlImageFluid;
+    jsCodeSplitting5: GraphqlImageFluid;
+    jsCodeSplitting6: GraphqlImageFluid;
+    jsDownload1: GraphqlImageFluid;
+    jsDownload2: GraphqlImageFluid;
+    jsScriptsBlockParsing2: GraphqlImageFluid;
+    jsScriptsBlockParsing3: GraphqlImageFluid;
+    jsScriptsBlockParsing4: GraphqlImageFluid;
+    jsScriptsBlockParsing5: GraphqlImageFluid;
+    jsSummingUp: GraphqlImageFluid;
+    jsUnusedDependencies1: GraphqlImageFluid;
+    jsUnusedDependencies2: GraphqlImageFluid;
+    perfImportanceHeader: GraphqlImageFluid;
+    perfImportanceHorror: GraphqlImageFluid;
+    perfImportanceParts1: GraphqlImageFluid;
+    perfImportanceParts2: GraphqlImageFluid;
+    perfImportanceParts3: GraphqlImageFluid;
+    thanks: GraphqlImageFluid;
+    toolsHeader: GraphqlImageFluid;
+    toolsLighthouse: GraphqlImageFluid;
+    toolsPagespeedInsights: GraphqlImageFluid;
+    toolsWebpagetest: GraphqlImageFluid;
   };
 }
 
@@ -271,7 +271,9 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             slideId="contents"
             useImageBorder={true}
             image={
-              <SlideGatsbyImage fluid={data.contents.childImageSharp.fluid} />
+              <SlideGatsbyImage
+                imageData={data.contents.childImageSharp.fluid}
+              />
             }
           >
             <p>This is what we’ll talk about.</p>
@@ -376,7 +378,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             isSectionHeader={true}
             image={
               <SlideGatsbyImage
-                fluid={data.perfImportanceHeader.childImageSharp.fluid}
+                imageData={data.perfImportanceHeader.childImageSharp.fluid}
               />
             }
           >
@@ -387,7 +389,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                fluid={data.perfImportanceHorror.childImageSharp.fluid}
+                imageData={data.perfImportanceHorror.childImageSharp.fluid}
               />
             }
           >
@@ -442,7 +444,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                fluid={data.perfImportanceParts1.childImageSharp.fluid}
+                imageData={data.perfImportanceParts1.childImageSharp.fluid}
               />
             }
           >
@@ -463,7 +465,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                fluid={data.perfImportanceParts2.childImageSharp.fluid}
+                imageData={data.perfImportanceParts2.childImageSharp.fluid}
               />
             }
           >
@@ -479,7 +481,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                fluid={data.perfImportanceParts3.childImageSharp.fluid}
+                imageData={data.perfImportanceParts3.childImageSharp.fluid}
               />
             }
           >
@@ -501,7 +503,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             isSectionHeader={true}
             image={
               <SlideGatsbyImage
-                fluid={data.javascriptHeader.childImageSharp.fluid}
+                imageData={data.javascriptHeader.childImageSharp.fluid}
               />
             }
           >
@@ -515,7 +517,9 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                fluid={data.javascriptMinificationSource.childImageSharp.fluid}
+                imageData={
+                  data.javascriptMinificationSource.childImageSharp.fluid
+                }
               />
             }
           >
@@ -537,7 +541,9 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                fluid={data.javascriptMinificationResult.childImageSharp.fluid}
+                imageData={
+                  data.javascriptMinificationResult.childImageSharp.fluid
+                }
               />
             }
           >
@@ -560,7 +566,9 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                fluid={data.javascriptMinificationTools.childImageSharp.fluid}
+                imageData={
+                  data.javascriptMinificationTools.childImageSharp.fluid
+                }
               />
             }
           >
@@ -589,7 +597,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                fluid={data.jsDownload1.childImageSharp.fluid}
+                imageData={data.jsDownload1.childImageSharp.fluid}
               />
             }
           >
@@ -603,7 +611,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                fluid={data.jsDownload2.childImageSharp.fluid}
+                imageData={data.jsDownload2.childImageSharp.fluid}
               />
             }
           >
@@ -634,7 +642,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                fluid={data.jsScriptsBlockParsing2.childImageSharp.fluid}
+                imageData={data.jsScriptsBlockParsing2.childImageSharp.fluid}
               />
             }
           >
@@ -653,7 +661,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                fluid={data.jsScriptsBlockParsing3.childImageSharp.fluid}
+                imageData={data.jsScriptsBlockParsing3.childImageSharp.fluid}
               />
             }
           >
@@ -672,7 +680,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                fluid={data.jsScriptsBlockParsing4.childImageSharp.fluid}
+                imageData={data.jsScriptsBlockParsing4.childImageSharp.fluid}
               />
             }
           >
@@ -692,7 +700,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                fluid={data.jsScriptsBlockParsing5.childImageSharp.fluid}
+                imageData={data.jsScriptsBlockParsing5.childImageSharp.fluid}
               />
             }
           >
@@ -725,7 +733,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                fluid={data.jsAsyncDefer1.childImageSharp.fluid}
+                imageData={data.jsAsyncDefer1.childImageSharp.fluid}
               />
             }
           >
@@ -755,7 +763,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                fluid={data.jsAsyncDefer2.childImageSharp.fluid}
+                imageData={data.jsAsyncDefer2.childImageSharp.fluid}
               />
             }
           >
@@ -779,7 +787,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                fluid={data.jsAsyncDefer3.childImageSharp.fluid}
+                imageData={data.jsAsyncDefer3.childImageSharp.fluid}
               />
             }
           >
@@ -795,7 +803,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                fluid={data.jsCodeSplitting1.childImageSharp.fluid}
+                imageData={data.jsCodeSplitting1.childImageSharp.fluid}
               />
             }
           >
@@ -812,7 +820,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                fluid={data.jsCodeSplitting2.childImageSharp.fluid}
+                imageData={data.jsCodeSplitting2.childImageSharp.fluid}
               />
             }
           >
@@ -828,7 +836,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                fluid={data.jsCodeSplitting3.childImageSharp.fluid}
+                imageData={data.jsCodeSplitting3.childImageSharp.fluid}
               />
             }
           >
@@ -848,7 +856,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                fluid={data.jsCodeSplitting32.childImageSharp.fluid}
+                imageData={data.jsCodeSplitting32.childImageSharp.fluid}
               />
             }
           >
@@ -874,7 +882,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                fluid={data.jsCodeSplitting4.childImageSharp.fluid}
+                imageData={data.jsCodeSplitting4.childImageSharp.fluid}
               />
             }
           >
@@ -900,7 +908,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                fluid={data.jsCodeSplitting5.childImageSharp.fluid}
+                imageData={data.jsCodeSplitting5.childImageSharp.fluid}
               />
             }
           >
@@ -931,7 +939,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                fluid={data.jsCodeSplitting6.childImageSharp.fluid}
+                imageData={data.jsCodeSplitting6.childImageSharp.fluid}
               />
             }
           >
@@ -970,7 +978,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                fluid={data.jsUnusedDependencies1.childImageSharp.fluid}
+                imageData={data.jsUnusedDependencies1.childImageSharp.fluid}
               />
             }
           >
@@ -997,7 +1005,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                fluid={data.jsUnusedDependencies2.childImageSharp.fluid}
+                imageData={data.jsUnusedDependencies2.childImageSharp.fluid}
               />
             }
           >
@@ -1020,7 +1028,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                fluid={data.jsSummingUp.childImageSharp.fluid}
+                imageData={data.jsSummingUp.childImageSharp.fluid}
               />
             }
           >
@@ -1043,7 +1051,9 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             isSectionHeader={true}
             image={
-              <SlideGatsbyImage fluid={data.cssHeader.childImageSharp.fluid} />
+              <SlideGatsbyImage
+                imageData={data.cssHeader.childImageSharp.fluid}
+              />
             }
           >
             <p>Next. Here’s how to optimize your CSS code.</p>
@@ -1052,7 +1062,9 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             slideId="css-minify-1"
             useImageBorder={true}
             image={
-              <SlideGatsbyImage fluid={data.cssMinify2.childImageSharp.fluid} />
+              <SlideGatsbyImage
+                imageData={data.cssMinify2.childImageSharp.fluid}
+              />
             }
           >
             <p>
@@ -1064,7 +1076,9 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             slideId="css-minify-2"
             useImageBorder={true}
             image={
-              <SlideGatsbyImage fluid={data.cssMinify3.childImageSharp.fluid} />
+              <SlideGatsbyImage
+                imageData={data.cssMinify3.childImageSharp.fluid}
+              />
             }
           >
             <p>
@@ -1093,7 +1107,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                fluid={data.cssBlockRendering1.childImageSharp.fluid}
+                imageData={data.cssBlockRendering1.childImageSharp.fluid}
               />
             }
           >
@@ -1108,7 +1122,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                fluid={data.cssBlockRendering2.childImageSharp.fluid}
+                imageData={data.cssBlockRendering2.childImageSharp.fluid}
               />
             }
           >
@@ -1123,7 +1137,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                fluid={data.cssBlockRendering3.childImageSharp.fluid}
+                imageData={data.cssBlockRendering3.childImageSharp.fluid}
               />
             }
           >
@@ -1137,7 +1151,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                fluid={data.cssBlockRendering4.childImageSharp.fluid}
+                imageData={data.cssBlockRendering4.childImageSharp.fluid}
               />
             }
           >
@@ -1160,7 +1174,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                fluid={data.cssCritical21.childImageSharp.fluid}
+                imageData={data.cssCritical21.childImageSharp.fluid}
               />
             }
           >
@@ -1181,7 +1195,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                fluid={data.cssCritical22.childImageSharp.fluid}
+                imageData={data.cssCritical22.childImageSharp.fluid}
               />
             }
           >
@@ -1215,7 +1229,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                fluid={data.cssCritical1.childImageSharp.fluid}
+                imageData={data.cssCritical1.childImageSharp.fluid}
               />
             }
           >
@@ -1241,7 +1255,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                fluid={data.cssCritical7.childImageSharp.fluid}
+                imageData={data.cssCritical7.childImageSharp.fluid}
               />
             }
           >
@@ -1279,7 +1293,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                fluid={data.cssCritical5.childImageSharp.fluid}
+                imageData={data.cssCritical5.childImageSharp.fluid}
               />
             }
           >
@@ -1304,7 +1318,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                fluid={data.cssSummingUp.childImageSharp.fluid}
+                imageData={data.cssSummingUp.childImageSharp.fluid}
               />
             }
           >
@@ -1319,7 +1333,9 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             slideId="http-header"
             isSectionHeader={true}
             image={
-              <SlideGatsbyImage fluid={data.httpHeader.childImageSharp.fluid} />
+              <SlideGatsbyImage
+                imageData={data.httpHeader.childImageSharp.fluid}
+              />
             }
           >
             <p>Now, let’s move to HTTP and the whole networking stuff.</p>
@@ -1329,7 +1345,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                fluid={data.httpHtmlMinify2.childImageSharp.fluid}
+                imageData={data.httpHtmlMinify2.childImageSharp.fluid}
               />
             }
           >
@@ -1344,7 +1360,9 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             slideId="http-gzip-1"
             useImageBorder={true}
             image={
-              <SlideGatsbyImage fluid={data.httpGzip1.childImageSharp.fluid} />
+              <SlideGatsbyImage
+                imageData={data.httpGzip1.childImageSharp.fluid}
+              />
             }
           >
             <p>
@@ -1367,7 +1385,9 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             slideId="http-gzip-2"
             useImageBorder={true}
             image={
-              <SlideGatsbyImage fluid={data.httpGzip2.childImageSharp.fluid} />
+              <SlideGatsbyImage
+                imageData={data.httpGzip2.childImageSharp.fluid}
+              />
             }
           >
             <p>
@@ -1401,7 +1421,9 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             slideId="http-gzip-3"
             useImageBorder={true}
             image={
-              <SlideGatsbyImage fluid={data.httpGzip3.childImageSharp.fluid} />
+              <SlideGatsbyImage
+                imageData={data.httpGzip3.childImageSharp.fluid}
+              />
             }
           >
             <p>NB: don’t use Gzip for anything but text!</p>
@@ -1417,7 +1439,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                fluid={data.httpBrotli1.childImageSharp.fluid}
+                imageData={data.httpBrotli1.childImageSharp.fluid}
               />
             }
           >
@@ -1443,7 +1465,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                fluid={data.httpBrotli2.childImageSharp.fluid}
+                imageData={data.httpBrotli2.childImageSharp.fluid}
               />
             }
           >
@@ -1500,7 +1522,9 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             slideId="http-cdn-2"
             useImageBorder={true}
             image={
-              <SlideGatsbyImage fluid={data.httpCdn2.childImageSharp.fluid} />
+              <SlideGatsbyImage
+                imageData={data.httpCdn2.childImageSharp.fluid}
+              />
             }
           >
             <p>
@@ -1525,7 +1549,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                fluid={data.httpPreload1.childImageSharp.fluid}
+                imageData={data.httpPreload1.childImageSharp.fluid}
               />
             }
           >
@@ -1548,7 +1572,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                fluid={data.httpPreload2.childImageSharp.fluid}
+                imageData={data.httpPreload2.childImageSharp.fluid}
               />
             }
           >
@@ -1623,7 +1647,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                fluid={data.httpSummingUp.childImageSharp.fluid}
+                imageData={data.httpSummingUp.childImageSharp.fluid}
               />
             }
           >
@@ -1648,7 +1672,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                fluid={data.imagesAndFontsHeader.childImageSharp.fluid}
+                imageData={data.imagesAndFontsHeader.childImageSharp.fluid}
               />
             }
           >
@@ -1659,7 +1683,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                fluid={data.imagesAndFontsFormat.childImageSharp.fluid}
+                imageData={data.imagesAndFontsFormat.childImageSharp.fluid}
               />
             }
           >
@@ -1685,7 +1709,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                fluid={data.imagesAndFontsSvg.childImageSharp.fluid}
+                imageData={data.imagesAndFontsSvg.childImageSharp.fluid}
               />
             }
           >
@@ -1697,7 +1721,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             slideId="images-jpg"
             image={
               <SlideGatsbyImage
-                fluid={data.imagesAndFontsJpg.childImageSharp.fluid}
+                imageData={data.imagesAndFontsJpg.childImageSharp.fluid}
               />
             }
           >
@@ -1711,7 +1735,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                fluid={data.imagesAndFontsPng.childImageSharp.fluid}
+                imageData={data.imagesAndFontsPng.childImageSharp.fluid}
               />
             }
           >
@@ -1726,7 +1750,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                fluid={data.imagesAndFontsWebp1.childImageSharp.fluid}
+                imageData={data.imagesAndFontsWebp1.childImageSharp.fluid}
               />
             }
           >
@@ -1762,7 +1786,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                fluid={data.imagesAndFontsWebp2.childImageSharp.fluid}
+                imageData={data.imagesAndFontsWebp2.childImageSharp.fluid}
               />
             }
           >
@@ -1783,7 +1807,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                fluid={data.imagesAndFontsGif.childImageSharp.fluid}
+                imageData={data.imagesAndFontsGif.childImageSharp.fluid}
               />
             }
           >
@@ -1817,7 +1841,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                fluid={data.imagesAndFontsCompress.childImageSharp.fluid}
+                imageData={data.imagesAndFontsCompress.childImageSharp.fluid}
               />
             }
           >
@@ -1831,7 +1855,9 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                fluid={data.imagesAndFontsCompressSvgJpg.childImageSharp.fluid}
+                imageData={
+                  data.imagesAndFontsCompressSvgJpg.childImageSharp.fluid
+                }
               />
             }
           >
@@ -1871,7 +1897,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                fluid={
+                imageData={
                   data.imagesAndFontsCompressSvgJpgExclamation.childImageSharp
                     .fluid
                 }
@@ -1891,7 +1917,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                fluid={
+                imageData={
                   data.imagesAndFontsCompressJpgDimensions.childImageSharp.fluid
                 }
               />
@@ -1926,7 +1952,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                fluid={
+                imageData={
                   data.imagesAndFontsCompressJpgSize1.childImageSharp.fluid
                 }
               />
@@ -1947,7 +1973,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             slideId="images-compress-jpg-size-2"
             image={
               <SlideGatsbyImage
-                fluid={
+                imageData={
                   data.imagesAndFontsCompressJpgSize2.childImageSharp.fluid
                 }
               />
@@ -1979,7 +2005,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             slideId="images-compress-jpg-size-3"
             image={
               <SlideGatsbyImage
-                fluid={
+                imageData={
                   data.imagesAndFontsCompressJpgSize3.childImageSharp.fluid
                 }
               />
@@ -2004,7 +2030,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             slideId="images-compress-jpg-size-4"
             image={
               <SlideGatsbyImage
-                fluid={
+                imageData={
                   data.imagesAndFontsCompressJpgSize4.childImageSharp.fluid
                 }
               />
@@ -2034,7 +2060,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                fluid={
+                imageData={
                   data.imagesAndFontsCompressJpgProgressive1.childImageSharp
                     .fluid
                 }
@@ -2112,7 +2138,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                fluid={data.imagesAndFontsCompressPng.childImageSharp.fluid}
+                imageData={data.imagesAndFontsCompressPng.childImageSharp.fluid}
               />
             }
           >
@@ -2155,7 +2181,9 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                fluid={data.imagesAndFontsCompressTools.childImageSharp.fluid}
+                imageData={
+                  data.imagesAndFontsCompressTools.childImageSharp.fluid
+                }
               />
             }
           >
@@ -2189,7 +2217,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                fluid={data.imagesSummingUp.childImageSharp.fluid}
+                imageData={data.imagesSummingUp.childImageSharp.fluid}
               />
             }
           >
@@ -2227,7 +2255,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                fluid={data.fontsHeader.childImageSharp.fluid}
+                imageData={data.fontsHeader.childImageSharp.fluid}
               />
             }
           >
@@ -2275,7 +2303,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                fluid={data.fontsFallback1.childImageSharp.fluid}
+                imageData={data.fontsFallback1.childImageSharp.fluid}
               />
             }
           >
@@ -2306,7 +2334,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                fluid={data.fontsFallback2.childImageSharp.fluid}
+                imageData={data.fontsFallback2.childImageSharp.fluid}
               />
             }
           >
@@ -2322,7 +2350,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                fluid={data.fontsFallback3.childImageSharp.fluid}
+                imageData={data.fontsFallback3.childImageSharp.fluid}
               />
             }
           >
@@ -2337,7 +2365,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                fluid={data.fontsFontDisplay2.childImageSharp.fluid}
+                imageData={data.fontsFontDisplay2.childImageSharp.fluid}
               />
             }
           >
@@ -2373,7 +2401,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                fluid={data.fontsFontDisplay3.childImageSharp.fluid}
+                imageData={data.fontsFontDisplay3.childImageSharp.fluid}
               />
             }
           >
@@ -2406,7 +2434,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                fluid={data.fontsFontDisplay4.childImageSharp.fluid}
+                imageData={data.fontsFontDisplay4.childImageSharp.fluid}
               />
             }
           >
@@ -2429,7 +2457,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                fluid={data.fontsFontDisplay5.childImageSharp.fluid}
+                imageData={data.fontsFontDisplay5.childImageSharp.fluid}
               />
             }
           >
@@ -2471,7 +2499,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                fluid={data.fontsSummingUp.childImageSharp.fluid}
+                imageData={data.fontsSummingUp.childImageSharp.fluid}
               />
             }
           >
@@ -2495,7 +2523,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                fluid={data.toolsHeader.childImageSharp.fluid}
+                imageData={data.toolsHeader.childImageSharp.fluid}
               />
             }
           >
@@ -2509,7 +2537,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                fluid={data.toolsPagespeedInsights.childImageSharp.fluid}
+                imageData={data.toolsPagespeedInsights.childImageSharp.fluid}
               />
             }
           >
@@ -2535,7 +2563,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                fluid={data.toolsLighthouse.childImageSharp.fluid}
+                imageData={data.toolsLighthouse.childImageSharp.fluid}
               />
             }
           >
@@ -2563,7 +2591,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                fluid={data.toolsWebpagetest.childImageSharp.fluid}
+                imageData={data.toolsWebpagetest.childImageSharp.fluid}
               />
             }
           >
@@ -2625,7 +2653,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             slideId="thanks"
             useImageBorder={true}
             image={
-              <SlideGatsbyImage fluid={data.thanks.childImageSharp.fluid} />
+              <SlideGatsbyImage imageData={data.thanks.childImageSharp.fluid} />
             }
           >
             <p>Thanks!</p>
@@ -2674,7 +2702,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 800) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -2684,7 +2712,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -2696,7 +2724,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -2708,7 +2736,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -2720,7 +2748,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -2732,7 +2760,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -2742,7 +2770,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -2752,7 +2780,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -2762,7 +2790,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -2772,7 +2800,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -2782,7 +2810,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -2792,7 +2820,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -2802,7 +2830,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -2812,7 +2840,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -2822,7 +2850,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -2832,7 +2860,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -2842,7 +2870,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 700) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -2852,7 +2880,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -2862,7 +2890,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -2872,7 +2900,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -2882,7 +2910,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -2892,7 +2920,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 700) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -2902,7 +2930,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -2912,7 +2940,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -2922,7 +2950,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -2932,7 +2960,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -2942,7 +2970,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -2952,7 +2980,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -2962,7 +2990,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -2972,7 +3000,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -2982,7 +3010,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -2992,7 +3020,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -3002,7 +3030,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -3012,7 +3040,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -3022,7 +3050,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -3032,7 +3060,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -3042,7 +3070,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -3052,7 +3080,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -3062,7 +3090,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 700) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -3072,7 +3100,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -3082,7 +3110,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -3092,7 +3120,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -3102,7 +3130,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -3112,7 +3140,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -3124,7 +3152,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -3136,7 +3164,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -3148,7 +3176,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -3160,7 +3188,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -3172,7 +3200,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -3184,7 +3212,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -3196,7 +3224,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -3208,7 +3236,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -3220,7 +3248,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -3232,7 +3260,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -3244,7 +3272,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -3256,7 +3284,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -3268,7 +3296,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -3280,7 +3308,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -3290,7 +3318,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -3302,7 +3330,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 700) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -3312,7 +3340,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -3322,7 +3350,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -3334,7 +3362,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -3344,7 +3372,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -3356,7 +3384,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -3368,7 +3396,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -3378,7 +3406,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -3386,7 +3414,7 @@ export const query = graphql`
     index: file(relativePath: { eq: "talks/web-perf-101/slides/index.png" }) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -3396,7 +3424,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 700) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -3408,7 +3436,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -3420,7 +3448,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -3432,7 +3460,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -3442,7 +3470,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -3452,7 +3480,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -3462,7 +3490,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -3472,7 +3500,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -3482,7 +3510,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -3492,7 +3520,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -3504,7 +3532,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -3514,7 +3542,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -3524,7 +3552,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -3534,7 +3562,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -3544,7 +3572,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -3554,7 +3582,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -3566,7 +3594,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -3578,7 +3606,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -3590,7 +3618,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -3602,7 +3630,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -3614,7 +3642,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -3624,7 +3652,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -3636,7 +3664,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -3648,7 +3676,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -3660,7 +3688,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 700) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -3672,7 +3700,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -3684,7 +3712,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -3696,7 +3724,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -3708,7 +3736,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -3716,7 +3744,7 @@ export const query = graphql`
     thanks: file(relativePath: { eq: "talks/web-perf-101/slides/thanks.png" }) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -3726,7 +3754,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 700) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -3736,7 +3764,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -3748,7 +3776,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -3758,7 +3786,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
+          ...ImageFluid
         }
       }
     }
@@ -3766,7 +3794,7 @@ export const query = graphql`
     iamakulovPhoto: file(relativePath: { eq: "Author/images/iamakulov.jpg" }) {
       childImageSharp {
         fixed(width: 48, height: 48, quality: 90) {
-          ...GatsbyImageSharpFixed
+          ...ImageFixed
         }
       }
     }
