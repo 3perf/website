@@ -1,19 +1,56 @@
+import { graphql, StaticQuery } from 'gatsby';
 import * as React from 'react';
+import { SharpImageFixed } from '../../types';
 import { SectionKind } from '../Section';
-import { ActionButton, Column, Columns, H3, Section } from './styled';
+import {
+  ActionButton,
+  Column,
+  ImageText,
+  DesktopImage,
+  MobileImageWrapper,
+  MobileImage,
+  Note,
+  Text,
+  Columns,
+  H3,
+  Section,
+  SvgMask,
+} from './styled';
 
 interface ServicesSectionProps {
   className?: string;
+  data: {
+    auditDesktop: SharpImageFixed & {
+      childImageSharp: { fixed: { height: number } };
+    };
+    optimizationDesktop: SharpImageFixed & {
+      childImageSharp: { fixed: { height: number } };
+    };
+    auditMobile: SharpImageFixed;
+    optimizationMobile: SharpImageFixed;
+  };
 }
 
-const ServicesSection = ({ className = '' }: ServicesSectionProps) => (
+const ServicesSection = ({ className = '', data }: ServicesSectionProps) => (
   <Section
-    title="Let’s make you fast 🚀"
+    title="Let’s make you fast&nbsp;🚀"
     className={className}
     sectionKind={SectionKind.VERTICAL}
   >
-    <Columns>
-      <Column>
+    <SvgMask>
+      <clipPath id="serviceMobileMask">
+        <path d="M0 112C0 0.139999 0.139999 0 112 0C223.86 0 224 0.139999 224 112C224 223.86 223.86 224 112 224C0.139999 224 0 223.86 0 112Z"></path>
+      </clipPath>
+    </SvgMask>
+    <ImageText
+      direction="forward"
+      desktopImageHeight={data.auditDesktop.childImageSharp.fixed.height}
+    >
+      <MobileImageWrapper>
+        <MobileImage fixed={data.auditMobile.childImageSharp.fixed} />
+      </MobileImageWrapper>
+      <DesktopImage fixed={data.auditDesktop.childImageSharp.fixed} />
+      <Text>
         <H3>Audit&nbsp;🔬</H3>
         <p>
           <strong>What:</strong> we’ll analyze the site, identify all
@@ -21,22 +58,25 @@ const ServicesSection = ({ className = '' }: ServicesSectionProps) => (
           op&shy;ti&shy;mi&shy;za&shy;tions.
         </p>
         <p>
-          <strong>Details.</strong> Before the audit, we’ll ask you a bunch of
-          questions to learn more about your business and your team. We’ll use
-          that knowledge to tailor the audit to your concrete business needs.
-        </p>
-        <p>
-          After the audit, once the team has familiarized themselves with the
-          document, we’ll sync up, discuss any questions you might have, and
-          make sure you know what to do next.
-        </p>
-        <p>
           <strong>Great when:</strong> you have a team that wants to learn a lot
           about their website performance, and that is ready to implement all
           optimizations themselves.
         </p>
-      </Column>
-      <Column>
+        <Note>
+          <strong>Want an example?</strong> See this{' '}
+          <a href="/blog/notion/">public Notion case study</a>.
+        </Note>
+      </Text>
+    </ImageText>
+    <ImageText
+      direction="reverse"
+      desktopImageHeight={data.optimizationDesktop.childImageSharp.fixed.height}
+    >
+      <MobileImageWrapper>
+        <MobileImage fixed={data.optimizationMobile.childImageSharp.fixed} />
+      </MobileImageWrapper>
+      <DesktopImage fixed={data.optimizationDesktop.childImageSharp.fixed} />
+      <Text>
         <H3>Optimization&nbsp;🛠</H3>
         <p>
           <strong>What:</strong> we’ll join your project, roll up our sleeves,
@@ -44,29 +84,19 @@ const ServicesSection = ({ className = '' }: ServicesSectionProps) => (
           all by ourselves.
         </p>
         <p>
-          <strong>Details.</strong> All changes will be thoroughly documented –
-          both in pull requests and in the codebase, when needed. We will ensure
-          your developers know what’s going on, review everything, and learn as
-          much as possible about the site’s speed from the improvements we’ll
-          make.
-        </p>
-        <p>
-          We’re best within the React/webpack ecosystem. But we’ll find a common
-          language as long as your project uses a modern JavaScript framework or
-          bundler.
-        </p>
-        <p>
           <strong>Great when:</strong> you don’t want to distract the team from
-          delivering important business functionality, and you want to make sure
-          no implementation nuance is missed.
+          delivering business functionality, and you want to make sure all
+          quirks and implementation nuances are considered.
         </p>
-      </Column>
+      </Text>
+    </ImageText>
+    <Columns>
       <Column>
-        <H3>Public services&nbsp;💛</H3>
+        <H3>Open Source&nbsp;💛</H3>
         <p>
-          Are you an open-source project or a non-commerce project working for
-          the greater good? Reach out to us, and we’ll be happy to help you for
-          free if we’re available.
+          Are you a non-commercial open-source project? Our work wouldn’t be
+          possible without open-source tools. Reach out, and, if we have
+          capacity, we’ll be glad to help for free.
         </p>
       </Column>
       <Column>
@@ -81,4 +111,55 @@ const ServicesSection = ({ className = '' }: ServicesSectionProps) => (
   </Section>
 );
 
-export default ServicesSection;
+const ServicesSectionWithQuery = () => (
+  <StaticQuery
+    query={graphql`
+      query {
+        auditDesktop: file(
+          relativePath: { eq: "HomeSectionServices/audit-desktop.png" }
+        ) {
+          childImageSharp {
+            fixed(width: 900) {
+              ...GatsbyImageSharpFixed
+              height
+            }
+          }
+        }
+
+        optimizationDesktop: file(
+          relativePath: { eq: "HomeSectionServices/optimization-desktop.png" }
+        ) {
+          childImageSharp {
+            fixed(width: 900) {
+              ...GatsbyImageSharpFixed
+              height
+            }
+          }
+        }
+
+        auditMobile: file(
+          relativePath: { eq: "HomeSectionServices/audit-mobile.png" }
+        ) {
+          childImageSharp {
+            fixed(width: 224) {
+              ...GatsbyImageSharpFixed
+            }
+          }
+        }
+
+        optimizationMobile: file(
+          relativePath: { eq: "HomeSectionServices/optimization-mobile.png" }
+        ) {
+          childImageSharp {
+            fixed(width: 224) {
+              ...GatsbyImageSharpFixed
+            }
+          }
+        }
+      }
+    `}
+    render={(data) => <ServicesSection data={data} />}
+  />
+);
+
+export default ServicesSectionWithQuery;
