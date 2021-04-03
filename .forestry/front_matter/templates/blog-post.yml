@@ -1,0 +1,66 @@
+---
+label: Blog post
+hide_body: false
+fields:
+- type: field_group
+  name: blog
+  label: blog
+  fields:
+  - type: field_group
+    name: title
+    label: title
+    fields:
+    - type: text
+      name: visible
+      label: visible
+    - type: text
+      name: social
+      label: social
+    - type: text
+      name: seo
+      label: seo
+  - type: field_group
+    name: author
+    label: author
+    fields:
+    - type: text
+      name: id
+      label: id
+    - type: text
+      name: name
+      label: name
+    - type: text
+      name: link
+      label: link
+    - type: text
+      name: twitterId
+      label: twitterId
+    - type: text
+      name: facebookId
+      label: facebookId
+  - type: text
+    name: description
+    label: description
+  - type: textarea
+    name: rssDescription
+    label: rssDescription
+  - type: field_group
+    name: socialImage
+    label: socialImage
+    fields:
+    - type: file
+      name: facebook
+      label: facebook
+    - type: file
+      name: twitter
+      label: twitter
+  - type: field_group
+    name: date
+    label: date
+    fields:
+    - type: datetime
+      name: published
+      label: published
+    - type: datetime
+      name: modified
+      label: modified
