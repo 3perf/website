@@ -9,7 +9,7 @@ sections:
   label: All articles
   create: all
   match: "**/*"
-upload_dir: public
+upload_dir: static
 public_path: ''
 front_matter_path: ''
 use_front_matter_path: false
