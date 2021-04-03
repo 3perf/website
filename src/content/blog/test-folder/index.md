@@ -21,3 +21,5 @@ blog:
 
 ---
 Hello world!
+
+![](/3perf-logo-black-raster.png)
