@@ -4,21 +4,29 @@ hide_body: false
 fields:
 - type: field_group
   name: blog
-  label: blog
+  label: Article settings
   fields:
   - type: field_group
     name: title
-    label: title
+    label: Title
     fields:
     - type: text
       name: visible
-      label: visible
+      label: Title on the Website
     - type: text
       name: social
-      label: social
+      label: Social Title
+      description: If you don’t want to customize the social title, copy “Title on
+        the Website” here
+      config:
+        required: true
     - type: text
       name: seo
-      label: seo
+      label: SEO Title
+      config:
+        required: true
+      description: If you don’t want to customize the SEO title, copy “Title on the
+        Website” here
   - type: field_group
     name: author
     label: author
@@ -26,27 +34,45 @@ fields:
     - type: text
       name: id
       label: id
+      default: iamakulov
+      config:
+        required: true
     - type: text
       name: name
       label: name
+      default: Ivan Akulov
+      config:
+        required: true
     - type: text
       name: link
       label: link
+      default: https://twitter.com/iamakulov
+      config:
+        required: true
     - type: text
       name: twitterId
       label: twitterId
+      default: iamakulov
+      config:
+        required: true
     - type: text
       name: facebookId
       label: facebookId
+      default: "'100002052594007'"
+      config:
+        required: true
+    hidden: true
   - type: text
     name: description
-    label: description
+    label: SEO & Social Description
+    config:
+      required: true
   - type: textarea
     name: rssDescription
-    label: rssDescription
+    label: RSS Description
   - type: field_group
     name: socialImage
-    label: socialImage
+    label: Social Image
     fields:
     - type: file
       name: facebook
@@ -56,11 +82,22 @@ fields:
       label: twitter
   - type: field_group
     name: date
-    label: date
+    label: Dates
     fields:
     - type: datetime
       name: published
-      label: published
+      label: Published Date
+      config:
+        date_format: YYYY-MM-DD
+        display_utc: true
+        export_format: YYYY-MM-DDThh:mm:00
+        required: true
     - type: datetime
       name: modified
-      label: modified
+      label: Last Modified Date
+      config:
+        date_format: YYYY-MM-DD
+        export_format: YYYY-MM-DDThh:mm:00
+        display_utc: true
+        required: true
+      description: If you’re just creating the article, copy “Published Date” here
