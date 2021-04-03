@@ -72,6 +72,8 @@ fields:
   - type: textarea
     name: rssDescription
     label: RSS Description
+    config:
+      required: true
   - type: field_group
     name: socialImage
     label: Social Image
