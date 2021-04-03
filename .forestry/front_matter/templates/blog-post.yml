@@ -13,6 +13,8 @@ fields:
     - type: text
       name: visible
       label: Title on the Website
+      config:
+        required: true
     - type: text
       name: social
       label: Social Title
