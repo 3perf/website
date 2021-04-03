@@ -105,3 +105,5 @@ fields:
         display_utc: true
         required: true
       description: If you’re just creating the article, copy “Published Date” here
+pages:
+- src/content/blog/test-folder/index.md.md
