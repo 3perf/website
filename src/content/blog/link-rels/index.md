@@ -22,7 +22,7 @@ blog:
     twitter: './cover-twitter.png'
   date:
     published: 2019-03-18T20:00:00
-    modified: 2020-09-21T12:00:00
+    modified: 2021-05-11T12:00:00
 ---
 
 There’re lots of ways to improve web performance (see [Web Performance 101](http://3perf.com/talks/web-perf-101) for a full overview). One of those ways is to preload content you’ll need later in advance. Prefetch a CSS file, prerender a full page, or resolve a domain ahead of time – and you won’t have to wait for it when it’s actually needed! Sounds cool.
@@ -180,6 +180,8 @@ It’s important to specify the `as` attribute – it helps the browser to prior
 **Not mandatory.** The browser is _not_ required to follow the `<link rel="prefetch">` instruction. This means it can decide not to fetch the resource – e.g. if the connection is slow.
 
 **Priorities in Chrome.** In Chrome, `<link rel="prefetch">` downloads are usually prioritized with the lowest priority ([full table of priorities](https://docs.google.com/document/d/1bCDuq9H1ih9iNjgzyAL0gpwNFiEP4TZS-YLRp_RuMlc/edit)). This means they are usually scheduled after everything else got loaded.
+
+**`<link rel="next">` in Firefox.** In Firefox, `<link rel="next">` [behaves just like `<link rel="prefetch" as="document">`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Link_prefetching_FAQ#what_are_the_prefetching_hints.3f) – it prefetches the linked HTML document. This is somewhat weird, and [there’s a bug from 2002](https://bugzilla.mozilla.org/show_bug.cgi?id=175418) arguing that this should be disabled to avoid unnecessary server requests. Thankfully, [there’s a way to disable this](https://stackoverflow.com/a/12312885/1192426) on a per-page basis. (Thanks to [Mike Harris](https://twitter.com/mikeyhaz) for letting me know about this!)
 
 # preconnect
 
