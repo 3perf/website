@@ -59,6 +59,13 @@ module.exports = {
       },
     },
     {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'shared',
+        path: `${__dirname}/src/shared`,
+      },
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: 'gold',

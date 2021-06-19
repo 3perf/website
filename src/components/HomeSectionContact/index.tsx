@@ -21,11 +21,8 @@ const ContactSection = ({
       <PromptContainer>
         <p>
           Interested? We’d be glad to help. Drop us an email, and{' '}
-          <ContactImage
-            imageData={data.iamakulov.childImageSharp.fixed}
-            Tag="span"
-          />{' '}
-          Ivan will get back to you in 24 hours.
+          <ContactImage imageData={data.iamakulov.childImageSharp.fixed} /> Ivan
+          will get back to you in 24 hours.
         </p>
       </PromptContainer>
     </Container>
@@ -45,7 +42,8 @@ const ContactSectionWithQuery = (props: ContactSectionProps) => (
 
       query {
         iamakulov: file(
-          relativePath: { eq: "HomeSectionContact/iamakulov.jpg" }
+          sourceInstanceName: { eq: "shared" }
+          relativePath: { eq: "iamakulov.jpg" }
         ) {
           ...ContactImage
         }
