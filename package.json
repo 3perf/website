@@ -41,6 +41,7 @@
     "optimize-fonts:content": "cd public && find . -type f -name '*.html' | grep -E '(blog|gold|talks)' | xargs subfont --root . --canonical-root https://3perf.com/ --formats woff2 --in-place --inline-css",
     "build": "yarn install-build-deps && yarn build-gatsby && yarn optimize-fonts",
     "develop": "cross-env GATSBY_MAILCHIMP_3PERF_SUBSCRIBERS=FAKE_URL gatsby develop",
+    "build-locally": "cross-env GATSBY_MAILCHIMP_3PERF_SUBSCRIBERS=FAKE_URL yarn build",
     "format": "prettier --write 'src/**/*.js'"
   },
   "devDependencies": {
