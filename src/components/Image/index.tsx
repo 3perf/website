@@ -24,8 +24,6 @@ export interface ImageFluid {
 interface ImageProps {
   className?: string;
   loading?: 'eager' | 'lazy';
-  // We’re not using a type union ({ fixed: ... } | { fluid: ... })
-  // because then, styled-components wrappers don’t pick up fixed and fluid props
   imageData: ImageFixed | ImageFluid;
 }
 
