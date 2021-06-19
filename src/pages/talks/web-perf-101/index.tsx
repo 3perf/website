@@ -1,12 +1,12 @@
 import { graphql } from 'gatsby';
 import * as React from 'react';
 import { Helmet } from 'react-helmet';
+import { ImageFluid, ImageFixed } from '../../../components/Image';
 import Layout from '../../../components/Layout';
 import { LogoKind } from '../../../components/Logo';
 import WidthWrapper from '../../../components/WidthWrapper';
 import { SlideGatsbyImage } from '../../../components/talks/Slide';
 import TalkHeader from '../../../components/talks/TalkHeader';
-import { GraphqlImageFixed, GraphqlImageFluid } from '../../../types';
 import {
   BlockImage,
   Blockquote,
@@ -35,112 +35,42 @@ interface FileUrl {
 
 interface WebPerf101PageProps {
   data: {
-    indexSlide: GraphqlImageFluid;
-    iamakulovPhoto: GraphqlImageFixed;
+    indexSlide: {
+      childImageSharp: {
+        fluid: ImageFluid;
+      };
+    };
+    iamakulovPhoto: {
+      childImageSharp: {
+        fixed: ImageFixed;
+      };
+    };
     panda100: FileUrl;
     panda70: FileUrl;
     panda50: FileUrl;
     panda100Large: FileUrl;
     panda70Large: FileUrl;
     panda50Large: FileUrl;
-    contents: GraphqlImageFluid;
-    cssBlockRendering1: GraphqlImageFluid;
-    cssBlockRendering2: GraphqlImageFluid;
-    cssBlockRendering3: GraphqlImageFluid;
-    cssBlockRendering4: GraphqlImageFluid;
-    cssCritical1: GraphqlImageFluid;
-    cssCritical2: GraphqlImageFluid;
-    cssCritical21: GraphqlImageFluid;
-    cssCritical22: GraphqlImageFluid;
-    cssCritical3: GraphqlImageFluid;
-    cssCritical4: GraphqlImageFluid;
-    cssCritical5: GraphqlImageFluid;
-    cssCritical6: GraphqlImageFluid;
-    cssCritical7: GraphqlImageFluid;
-    cssHeader: GraphqlImageFluid;
-    cssMinify1: GraphqlImageFluid;
-    cssMinify2: GraphqlImageFluid;
-    cssMinify3: GraphqlImageFluid;
-    cssSummingUp: GraphqlImageFluid;
-    fontsHeader: GraphqlImageFluid;
-    fontsFallback1: GraphqlImageFluid;
-    fontsFallback2: GraphqlImageFluid;
-    fontsFallback3: GraphqlImageFluid;
-    fontsFallback4: GraphqlImageFluid;
-    fontsFontDisplay2: GraphqlImageFluid;
-    fontsFontDisplay3: GraphqlImageFluid;
-    fontsFontDisplay4: GraphqlImageFluid;
-    fontsFontDisplay5: GraphqlImageFluid;
-    fontsSummingUp: GraphqlImageFluid;
-    httpBrotli1: GraphqlImageFluid;
-    httpBrotli2: GraphqlImageFluid;
-    httpCdn2: GraphqlImageFluid;
-    httpGzip1: GraphqlImageFluid;
-    httpGzip2: GraphqlImageFluid;
-    httpGzip3: GraphqlImageFluid;
-    httpHeader: GraphqlImageFluid;
-    httpHtmlMinify1: GraphqlImageFluid;
-    httpHtmlMinify2: GraphqlImageFluid;
-    httpPreload1: GraphqlImageFluid;
-    httpPreload2: GraphqlImageFluid;
-    httpSummingUp: GraphqlImageFluid;
-    imagesAndFontsCompressJpgDimensions: GraphqlImageFluid;
-    imagesAndFontsCompressJpgProgressive1: GraphqlImageFluid;
-    imagesAndFontsCompressJpgProgressive2: GraphqlImageFluid;
-    imagesAndFontsCompressJpgProgressive3: GraphqlImageFluid;
-    imagesAndFontsCompressJpgSize1: GraphqlImageFluid;
-    imagesAndFontsCompressJpgSize2: GraphqlImageFluid;
-    imagesAndFontsCompressJpgSize3: GraphqlImageFluid;
-    imagesAndFontsCompressJpgSize4: GraphqlImageFluid;
-    imagesAndFontsCompressPng: GraphqlImageFluid;
-    imagesAndFontsCompressSvgJpgExclamation: GraphqlImageFluid;
-    imagesAndFontsCompressSvgJpg: GraphqlImageFluid;
-    imagesAndFontsCompressTools: GraphqlImageFluid;
-    imagesAndFontsCompress: GraphqlImageFluid;
-    imagesAndFontsFormat: GraphqlImageFluid;
-    imagesAndFontsGif: GraphqlImageFluid;
-    imagesAndFontsHeader: GraphqlImageFluid;
-    imagesAndFontsJpg: GraphqlImageFluid;
-    imagesAndFontsPng: GraphqlImageFluid;
-    imagesAndFontsSummingUp: GraphqlImageFluid;
-    imagesAndFontsSvg: GraphqlImageFluid;
-    imagesAndFontsWebp1: GraphqlImageFluid;
-    imagesAndFontsWebp2: GraphqlImageFluid;
-    imagesSummingUp: GraphqlImageFluid;
-    index: GraphqlImageFluid;
-    javascriptHeader: GraphqlImageFluid;
-    javascriptMinificationResult: GraphqlImageFluid;
-    javascriptMinificationSource: GraphqlImageFluid;
-    javascriptMinificationTools: GraphqlImageFluid;
-    jsAsyncDefer1: GraphqlImageFluid;
-    jsAsyncDefer2: GraphqlImageFluid;
-    jsAsyncDefer3: GraphqlImageFluid;
-    jsCodeSplitting1: GraphqlImageFluid;
-    jsCodeSplitting2: GraphqlImageFluid;
-    jsCodeSplitting3: GraphqlImageFluid;
-    jsCodeSplitting32: GraphqlImageFluid;
-    jsCodeSplitting4: GraphqlImageFluid;
-    jsCodeSplitting5: GraphqlImageFluid;
-    jsCodeSplitting6: GraphqlImageFluid;
-    jsDownload1: GraphqlImageFluid;
-    jsDownload2: GraphqlImageFluid;
-    jsScriptsBlockParsing2: GraphqlImageFluid;
-    jsScriptsBlockParsing3: GraphqlImageFluid;
-    jsScriptsBlockParsing4: GraphqlImageFluid;
-    jsScriptsBlockParsing5: GraphqlImageFluid;
-    jsSummingUp: GraphqlImageFluid;
-    jsUnusedDependencies1: GraphqlImageFluid;
-    jsUnusedDependencies2: GraphqlImageFluid;
-    perfImportanceHeader: GraphqlImageFluid;
-    perfImportanceHorror: GraphqlImageFluid;
-    perfImportanceParts1: GraphqlImageFluid;
-    perfImportanceParts2: GraphqlImageFluid;
-    perfImportanceParts3: GraphqlImageFluid;
-    thanks: GraphqlImageFluid;
-    toolsHeader: GraphqlImageFluid;
-    toolsLighthouse: GraphqlImageFluid;
-    toolsPagespeedInsights: GraphqlImageFluid;
-    toolsWebpagetest: GraphqlImageFluid;
+    allSlides: {
+      edges: Array<{
+        node: {
+          name: string;
+          childImageSharp: {
+            fluid: ImageFluid;
+          };
+        };
+      }>;
+    };
+    sectionHeaders: {
+      edges: Array<{
+        node: {
+          name: string;
+          childImageSharp: {
+            fluid: ImageFluid;
+          };
+        };
+      }>;
+    };
   };
 }
 
@@ -150,6 +80,18 @@ const publishedDate = new Date(2018, 9, 25);
 const lastUpdatedDate = new Date(2020, 4, 29);
 
 const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
+  const allSlidesByName = Object.fromEntries(
+    data.allSlides.edges.map((edge) => {
+      return [edge.node.name, edge.node.childImageSharp.fluid];
+    }),
+  );
+
+  const sectionHeadersByName = Object.fromEntries(
+    data.sectionHeaders.edges.map((edge) => {
+      return [edge.node.name, edge.node.childImageSharp.fluid];
+    }),
+  );
+
   return (
     <Layout>
       <WidthWrapper>
@@ -249,7 +191,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
                 app is doing well.
               </p>
               <p>
-                (Shameless ad: need help with more advanced cases? We’re a web
+                (Shameless plug: need help with more advanced cases? We’re a web
                 performance consulting agency, and{' '}
                 <a href="/#services">we’re here to help</a>.)
               </p>
@@ -270,11 +212,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
           <Slide
             slideId="contents"
             useImageBorder={true}
-            image={
-              <SlideGatsbyImage
-                imageData={data.contents.childImageSharp.fluid}
-              />
-            }
+            image={<SlideGatsbyImage imageData={allSlidesByName['contents']} />}
           >
             <p>This is what we’ll talk about.</p>
             <Contents>
@@ -378,7 +316,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             isSectionHeader={true}
             image={
               <SlideGatsbyImage
-                imageData={data.perfImportanceHeader.childImageSharp.fluid}
+                imageData={sectionHeadersByName['perf-importance-header']}
               />
             }
           >
@@ -389,7 +327,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                imageData={data.perfImportanceHorror.childImageSharp.fluid}
+                imageData={allSlidesByName['perf-importance-horror']}
               />
             }
           >
@@ -444,7 +382,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                imageData={data.perfImportanceParts1.childImageSharp.fluid}
+                imageData={allSlidesByName['perf-importance-parts-1']}
               />
             }
           >
@@ -465,7 +403,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                imageData={data.perfImportanceParts2.childImageSharp.fluid}
+                imageData={allSlidesByName['perf-importance-parts-2']}
               />
             }
           >
@@ -481,7 +419,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                imageData={data.perfImportanceParts3.childImageSharp.fluid}
+                imageData={allSlidesByName['perf-importance-parts-3']}
               />
             }
           >
@@ -503,7 +441,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             isSectionHeader={true}
             image={
               <SlideGatsbyImage
-                imageData={data.javascriptHeader.childImageSharp.fluid}
+                imageData={sectionHeadersByName['javascript-header']}
               />
             }
           >
@@ -517,9 +455,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                imageData={
-                  data.javascriptMinificationSource.childImageSharp.fluid
-                }
+                imageData={allSlidesByName['javascript-minification-source']}
               />
             }
           >
@@ -541,9 +477,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                imageData={
-                  data.javascriptMinificationResult.childImageSharp.fluid
-                }
+                imageData={allSlidesByName['javascript-minification-result']}
               />
             }
           >
@@ -566,9 +500,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                imageData={
-                  data.javascriptMinificationTools.childImageSharp.fluid
-                }
+                imageData={allSlidesByName['javascript-minification-tools']}
               />
             }
           >
@@ -596,9 +528,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             slideId="js-download-1"
             useImageBorder={true}
             image={
-              <SlideGatsbyImage
-                imageData={data.jsDownload1.childImageSharp.fluid}
-              />
+              <SlideGatsbyImage imageData={allSlidesByName['js-download-1']} />
             }
           >
             <p>
@@ -610,9 +540,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             slideId="js-download-2"
             useImageBorder={true}
             image={
-              <SlideGatsbyImage
-                imageData={data.jsDownload2.childImageSharp.fluid}
-              />
+              <SlideGatsbyImage imageData={allSlidesByName['js-download-2']} />
             }
           >
             <p>
@@ -642,7 +570,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                imageData={data.jsScriptsBlockParsing2.childImageSharp.fluid}
+                imageData={allSlidesByName['js-scripts-block-parsing-2']}
               />
             }
           >
@@ -661,7 +589,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                imageData={data.jsScriptsBlockParsing3.childImageSharp.fluid}
+                imageData={allSlidesByName['js-scripts-block-parsing-3']}
               />
             }
           >
@@ -680,7 +608,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                imageData={data.jsScriptsBlockParsing4.childImageSharp.fluid}
+                imageData={allSlidesByName['js-scripts-block-parsing-4']}
               />
             }
           >
@@ -700,7 +628,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                imageData={data.jsScriptsBlockParsing5.childImageSharp.fluid}
+                imageData={allSlidesByName['js-scripts-block-parsing-5']}
               />
             }
           >
@@ -733,7 +661,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                imageData={data.jsAsyncDefer1.childImageSharp.fluid}
+                imageData={allSlidesByName['js-async-defer-1']}
               />
             }
           >
@@ -763,7 +691,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                imageData={data.jsAsyncDefer2.childImageSharp.fluid}
+                imageData={allSlidesByName['js-async-defer-2']}
               />
             }
           >
@@ -787,7 +715,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                imageData={data.jsAsyncDefer3.childImageSharp.fluid}
+                imageData={allSlidesByName['js-async-defer-3']}
               />
             }
           >
@@ -803,7 +731,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                imageData={data.jsCodeSplitting1.childImageSharp.fluid}
+                imageData={allSlidesByName['js-code-splitting-1']}
               />
             }
           >
@@ -820,7 +748,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                imageData={data.jsCodeSplitting2.childImageSharp.fluid}
+                imageData={allSlidesByName['js-code-splitting-2']}
               />
             }
           >
@@ -836,7 +764,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                imageData={data.jsCodeSplitting3.childImageSharp.fluid}
+                imageData={allSlidesByName['js-code-splitting-3']}
               />
             }
           >
@@ -856,7 +784,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                imageData={data.jsCodeSplitting32.childImageSharp.fluid}
+                imageData={allSlidesByName['js-code-splitting-32']}
               />
             }
           >
@@ -882,7 +810,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                imageData={data.jsCodeSplitting4.childImageSharp.fluid}
+                imageData={allSlidesByName['js-code-splitting-4']}
               />
             }
           >
@@ -908,7 +836,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                imageData={data.jsCodeSplitting5.childImageSharp.fluid}
+                imageData={allSlidesByName['js-code-splitting-5']}
               />
             }
           >
@@ -939,7 +867,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                imageData={data.jsCodeSplitting6.childImageSharp.fluid}
+                imageData={allSlidesByName['js-code-splitting-6']}
               />
             }
           >
@@ -978,7 +906,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                imageData={data.jsUnusedDependencies1.childImageSharp.fluid}
+                imageData={allSlidesByName['js-unused-dependencies-1']}
               />
             }
           >
@@ -1005,7 +933,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                imageData={data.jsUnusedDependencies2.childImageSharp.fluid}
+                imageData={allSlidesByName['js-unused-dependencies-2']}
               />
             }
           >
@@ -1027,9 +955,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             slideId="js-summing-up-slide"
             useImageBorder={true}
             image={
-              <SlideGatsbyImage
-                imageData={data.jsSummingUp.childImageSharp.fluid}
-              />
+              <SlideGatsbyImage imageData={allSlidesByName['js-summing-up']} />
             }
           >
             <p>
@@ -1052,7 +978,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             isSectionHeader={true}
             image={
               <SlideGatsbyImage
-                imageData={data.cssHeader.childImageSharp.fluid}
+                imageData={sectionHeadersByName['css-header']}
               />
             }
           >
@@ -1062,9 +988,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             slideId="css-minify-1"
             useImageBorder={true}
             image={
-              <SlideGatsbyImage
-                imageData={data.cssMinify2.childImageSharp.fluid}
-              />
+              <SlideGatsbyImage imageData={allSlidesByName['css-minify-2']} />
             }
           >
             <p>
@@ -1076,9 +1000,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             slideId="css-minify-2"
             useImageBorder={true}
             image={
-              <SlideGatsbyImage
-                imageData={data.cssMinify3.childImageSharp.fluid}
-              />
+              <SlideGatsbyImage imageData={allSlidesByName['css-minify-3']} />
             }
           >
             <p>
@@ -1107,7 +1029,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                imageData={data.cssBlockRendering1.childImageSharp.fluid}
+                imageData={allSlidesByName['css-block-rendering-1']}
               />
             }
           >
@@ -1122,7 +1044,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                imageData={data.cssBlockRendering2.childImageSharp.fluid}
+                imageData={allSlidesByName['css-block-rendering-2']}
               />
             }
           >
@@ -1137,7 +1059,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                imageData={data.cssBlockRendering3.childImageSharp.fluid}
+                imageData={allSlidesByName['css-block-rendering-3']}
               />
             }
           >
@@ -1151,7 +1073,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                imageData={data.cssBlockRendering4.childImageSharp.fluid}
+                imageData={allSlidesByName['css-block-rendering-4']}
               />
             }
           >
@@ -1174,7 +1096,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                imageData={data.cssCritical21.childImageSharp.fluid}
+                imageData={allSlidesByName['css-critical-21']}
               />
             }
           >
@@ -1195,7 +1117,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                imageData={data.cssCritical22.childImageSharp.fluid}
+                imageData={allSlidesByName['css-critical-22']}
               />
             }
           >
@@ -1228,9 +1150,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             slideId="css-critical-3"
             useImageBorder={true}
             image={
-              <SlideGatsbyImage
-                imageData={data.cssCritical1.childImageSharp.fluid}
-              />
+              <SlideGatsbyImage imageData={allSlidesByName['css-critical-1']} />
             }
           >
             <p>
@@ -1254,9 +1174,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             slideId="css-critical-4"
             useImageBorder={true}
             image={
-              <SlideGatsbyImage
-                imageData={data.cssCritical7.childImageSharp.fluid}
-              />
+              <SlideGatsbyImage imageData={allSlidesByName['css-critical-7']} />
             }
           >
             <p>
@@ -1292,9 +1210,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             slideId="css-critical-5"
             useImageBorder={true}
             image={
-              <SlideGatsbyImage
-                imageData={data.cssCritical5.childImageSharp.fluid}
-              />
+              <SlideGatsbyImage imageData={allSlidesByName['css-critical-5']} />
             }
           >
             <p>
@@ -1317,9 +1233,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             slideId="css-summing-up-slide"
             useImageBorder={true}
             image={
-              <SlideGatsbyImage
-                imageData={data.cssSummingUp.childImageSharp.fluid}
-              />
+              <SlideGatsbyImage imageData={allSlidesByName['css-summing-up']} />
             }
           >
             <p>
@@ -1334,7 +1248,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             isSectionHeader={true}
             image={
               <SlideGatsbyImage
-                imageData={data.httpHeader.childImageSharp.fluid}
+                imageData={sectionHeadersByName['http-header']}
               />
             }
           >
@@ -1345,7 +1259,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                imageData={data.httpHtmlMinify2.childImageSharp.fluid}
+                imageData={allSlidesByName['http-html-minify-2']}
               />
             }
           >
@@ -1360,9 +1274,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             slideId="http-gzip-1"
             useImageBorder={true}
             image={
-              <SlideGatsbyImage
-                imageData={data.httpGzip1.childImageSharp.fluid}
-              />
+              <SlideGatsbyImage imageData={allSlidesByName['http-gzip-1']} />
             }
           >
             <p>
@@ -1385,9 +1297,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             slideId="http-gzip-2"
             useImageBorder={true}
             image={
-              <SlideGatsbyImage
-                imageData={data.httpGzip2.childImageSharp.fluid}
-              />
+              <SlideGatsbyImage imageData={allSlidesByName['http-gzip-2']} />
             }
           >
             <p>
@@ -1421,9 +1331,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             slideId="http-gzip-3"
             useImageBorder={true}
             image={
-              <SlideGatsbyImage
-                imageData={data.httpGzip3.childImageSharp.fluid}
-              />
+              <SlideGatsbyImage imageData={allSlidesByName['http-gzip-3']} />
             }
           >
             <p>NB: don’t use Gzip for anything but text!</p>
@@ -1438,9 +1346,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             slideId="http-brotli-1"
             useImageBorder={true}
             image={
-              <SlideGatsbyImage
-                imageData={data.httpBrotli1.childImageSharp.fluid}
-              />
+              <SlideGatsbyImage imageData={allSlidesByName['http-brotli-1']} />
             }
           >
             <p>
@@ -1464,9 +1370,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             slideId="http-brotli-2"
             useImageBorder={true}
             image={
-              <SlideGatsbyImage
-                imageData={data.httpBrotli2.childImageSharp.fluid}
-              />
+              <SlideGatsbyImage imageData={allSlidesByName['http-brotli-2']} />
             }
           >
             <p>
@@ -1522,9 +1426,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             slideId="http-cdn-2"
             useImageBorder={true}
             image={
-              <SlideGatsbyImage
-                imageData={data.httpCdn2.childImageSharp.fluid}
-              />
+              <SlideGatsbyImage imageData={allSlidesByName['http-cdn-2']} />
             }
           >
             <p>
@@ -1548,9 +1450,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             slideId="http-preload-1"
             useImageBorder={true}
             image={
-              <SlideGatsbyImage
-                imageData={data.httpPreload1.childImageSharp.fluid}
-              />
+              <SlideGatsbyImage imageData={allSlidesByName['http-preload-1']} />
             }
           >
             <p>
@@ -1571,9 +1471,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             slideId="http-preload-2"
             useImageBorder={true}
             image={
-              <SlideGatsbyImage
-                imageData={data.httpPreload2.childImageSharp.fluid}
-              />
+              <SlideGatsbyImage imageData={allSlidesByName['http-preload-2']} />
             }
           >
             <p>
@@ -1647,7 +1545,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                imageData={data.httpSummingUp.childImageSharp.fluid}
+                imageData={allSlidesByName['http-summing-up']}
               />
             }
           >
@@ -1672,7 +1570,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                imageData={data.imagesAndFontsHeader.childImageSharp.fluid}
+                imageData={sectionHeadersByName['images-and-fonts-header']}
               />
             }
           >
@@ -1683,7 +1581,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                imageData={data.imagesAndFontsFormat.childImageSharp.fluid}
+                imageData={allSlidesByName['images-and-fonts-format']}
               />
             }
           >
@@ -1709,7 +1607,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                imageData={data.imagesAndFontsSvg.childImageSharp.fluid}
+                imageData={allSlidesByName['images-and-fonts-svg']}
               />
             }
           >
@@ -1721,7 +1619,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             slideId="images-jpg"
             image={
               <SlideGatsbyImage
-                imageData={data.imagesAndFontsJpg.childImageSharp.fluid}
+                imageData={allSlidesByName['images-and-fonts-jpg']}
               />
             }
           >
@@ -1735,7 +1633,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                imageData={data.imagesAndFontsPng.childImageSharp.fluid}
+                imageData={allSlidesByName['images-and-fonts-png']}
               />
             }
           >
@@ -1750,7 +1648,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                imageData={data.imagesAndFontsWebp1.childImageSharp.fluid}
+                imageData={allSlidesByName['images-and-fonts-webp-1']}
               />
             }
           >
@@ -1786,7 +1684,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                imageData={data.imagesAndFontsWebp2.childImageSharp.fluid}
+                imageData={allSlidesByName['images-and-fonts-webp-2']}
               />
             }
           >
@@ -1807,7 +1705,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                imageData={data.imagesAndFontsGif.childImageSharp.fluid}
+                imageData={allSlidesByName['images-and-fonts-gif']}
               />
             }
           >
@@ -1841,7 +1739,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                imageData={data.imagesAndFontsCompress.childImageSharp.fluid}
+                imageData={allSlidesByName['images-and-fonts-compress']}
               />
             }
           >
@@ -1855,9 +1753,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                imageData={
-                  data.imagesAndFontsCompressSvgJpg.childImageSharp.fluid
-                }
+                imageData={allSlidesByName['images-and-fonts-compress-svg-jpg']}
               />
             }
           >
@@ -1898,8 +1794,9 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             image={
               <SlideGatsbyImage
                 imageData={
-                  data.imagesAndFontsCompressSvgJpgExclamation.childImageSharp
-                    .fluid
+                  allSlidesByName[
+                    'images-and-fonts-compress-svg-jpg-exclamation'
+                  ]
                 }
               />
             }
@@ -1918,7 +1815,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             image={
               <SlideGatsbyImage
                 imageData={
-                  data.imagesAndFontsCompressJpgDimensions.childImageSharp.fluid
+                  allSlidesByName['images-and-fonts-compress-jpg-dimensions']
                 }
               />
             }
@@ -1953,7 +1850,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             image={
               <SlideGatsbyImage
                 imageData={
-                  data.imagesAndFontsCompressJpgSize1.childImageSharp.fluid
+                  allSlidesByName['images-and-fonts-compress-jpg-size-1']
                 }
               />
             }
@@ -1974,7 +1871,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             image={
               <SlideGatsbyImage
                 imageData={
-                  data.imagesAndFontsCompressJpgSize2.childImageSharp.fluid
+                  allSlidesByName['images-and-fonts-compress-jpg-size-2']
                 }
               />
             }
@@ -2006,7 +1903,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             image={
               <SlideGatsbyImage
                 imageData={
-                  data.imagesAndFontsCompressJpgSize3.childImageSharp.fluid
+                  allSlidesByName['images-and-fonts-compress-jpg-size-3']
                 }
               />
             }
@@ -2031,7 +1928,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             image={
               <SlideGatsbyImage
                 imageData={
-                  data.imagesAndFontsCompressJpgSize4.childImageSharp.fluid
+                  allSlidesByName['images-and-fonts-compress-jpg-size-4']
                 }
               />
             }
@@ -2061,8 +1958,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             image={
               <SlideGatsbyImage
                 imageData={
-                  data.imagesAndFontsCompressJpgProgressive1.childImageSharp
-                    .fluid
+                  allSlidesByName['images-and-fonts-compress-jpg-progressive-1']
                 }
               />
             }
@@ -2138,7 +2034,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                imageData={data.imagesAndFontsCompressPng.childImageSharp.fluid}
+                imageData={allSlidesByName['images-and-fonts-compress-png']}
               />
             }
           >
@@ -2181,9 +2077,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                imageData={
-                  data.imagesAndFontsCompressTools.childImageSharp.fluid
-                }
+                imageData={allSlidesByName['images-and-fonts-compress-tools']}
               />
             }
           >
@@ -2217,7 +2111,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                imageData={data.imagesSummingUp.childImageSharp.fluid}
+                imageData={allSlidesByName['images-summing-up']}
               />
             }
           >
@@ -2255,7 +2149,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                imageData={data.fontsHeader.childImageSharp.fluid}
+                imageData={sectionHeadersByName['fonts-header']}
               />
             }
           >
@@ -2303,7 +2197,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                imageData={data.fontsFallback1.childImageSharp.fluid}
+                imageData={allSlidesByName['fonts-fallback-1']}
               />
             }
           >
@@ -2334,7 +2228,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                imageData={data.fontsFallback2.childImageSharp.fluid}
+                imageData={allSlidesByName['fonts-fallback-2']}
               />
             }
           >
@@ -2350,7 +2244,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                imageData={data.fontsFallback3.childImageSharp.fluid}
+                imageData={allSlidesByName['fonts-fallback-3']}
               />
             }
           >
@@ -2365,7 +2259,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                imageData={data.fontsFontDisplay2.childImageSharp.fluid}
+                imageData={allSlidesByName['fonts-font-display-2']}
               />
             }
           >
@@ -2401,7 +2295,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                imageData={data.fontsFontDisplay3.childImageSharp.fluid}
+                imageData={allSlidesByName['fonts-font-display-3']}
               />
             }
           >
@@ -2434,7 +2328,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                imageData={data.fontsFontDisplay4.childImageSharp.fluid}
+                imageData={allSlidesByName['fonts-font-display-4']}
               />
             }
           >
@@ -2457,7 +2351,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                imageData={data.fontsFontDisplay5.childImageSharp.fluid}
+                imageData={allSlidesByName['fonts-font-display-5']}
               />
             }
           >
@@ -2499,7 +2393,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                imageData={data.fontsSummingUp.childImageSharp.fluid}
+                imageData={allSlidesByName['fonts-summing-up']}
               />
             }
           >
@@ -2523,7 +2417,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                imageData={data.toolsHeader.childImageSharp.fluid}
+                imageData={sectionHeadersByName['tools-header']}
               />
             }
           >
@@ -2537,7 +2431,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                imageData={data.toolsPagespeedInsights.childImageSharp.fluid}
+                imageData={allSlidesByName['tools-pagespeed-insights']}
               />
             }
           >
@@ -2563,7 +2457,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                imageData={data.toolsLighthouse.childImageSharp.fluid}
+                imageData={allSlidesByName['tools-lighthouse']}
               />
             }
           >
@@ -2591,7 +2485,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                imageData={data.toolsWebpagetest.childImageSharp.fluid}
+                imageData={allSlidesByName['tools-webpagetest']}
               />
             }
           >
@@ -2652,9 +2546,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
           <Slide
             slideId="thanks"
             useImageBorder={true}
-            image={
-              <SlideGatsbyImage imageData={data.thanks.childImageSharp.fluid} />
-            }
+            image={<SlideGatsbyImage imageData={allSlidesByName['thanks']} />}
           >
             <p>Thanks!</p>
             <p>
@@ -2694,10 +2586,10 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
 
 export default WebPerf101Page;
 
-// #region GraphQL imports
 export const query = graphql`
   query {
     indexSlide: file(
+      sourceInstanceName: { eq: "pages" }
       relativePath: { eq: "talks/web-perf-101/slides/index.png" }
     ) {
       childImageSharp {
@@ -2707,1091 +2599,46 @@ export const query = graphql`
       }
     }
 
-    contents: file(
-      relativePath: { eq: "talks/web-perf-101/slides/contents.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    cssBlockRendering1: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/css-block-rendering-1.png"
-      }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    cssBlockRendering2: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/css-block-rendering-2.png"
-      }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    cssBlockRendering3: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/css-block-rendering-3.png"
-      }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    cssBlockRendering4: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/css-block-rendering-4.png"
-      }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    cssCritical1: file(
-      relativePath: { eq: "talks/web-perf-101/slides/css-critical-1.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    cssCritical2: file(
-      relativePath: { eq: "talks/web-perf-101/slides/css-critical-2.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    cssCritical21: file(
-      relativePath: { eq: "talks/web-perf-101/slides/css-critical-2-1.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    cssCritical22: file(
-      relativePath: { eq: "talks/web-perf-101/slides/css-critical-2-2.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    cssCritical22: file(
-      relativePath: { eq: "talks/web-perf-101/slides/css-critical-2-2.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    cssCritical3: file(
-      relativePath: { eq: "talks/web-perf-101/slides/css-critical-3.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    cssCritical4: file(
-      relativePath: { eq: "talks/web-perf-101/slides/css-critical-4.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    cssCritical5: file(
-      relativePath: { eq: "talks/web-perf-101/slides/css-critical-5.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    cssCritical6: file(
-      relativePath: { eq: "talks/web-perf-101/slides/css-critical-6.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    cssCritical7: file(
-      relativePath: { eq: "talks/web-perf-101/slides/css-critical-7.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    cssHeader: file(
-      relativePath: { eq: "talks/web-perf-101/slides/css-header.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 700) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    cssMinify1: file(
-      relativePath: { eq: "talks/web-perf-101/slides/css-minify-1.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    cssMinify2: file(
-      relativePath: { eq: "talks/web-perf-101/slides/css-minify-2.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    cssMinify3: file(
-      relativePath: { eq: "talks/web-perf-101/slides/css-minify-3.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    cssSummingUp: file(
-      relativePath: { eq: "talks/web-perf-101/slides/css-summing-up.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    fontsHeader: file(
-      relativePath: { eq: "talks/web-perf-101/slides/fonts-header.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 700) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    fontsFallback1: file(
-      relativePath: { eq: "talks/web-perf-101/slides/fonts-fallback-1.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    fontsFallback2: file(
-      relativePath: { eq: "talks/web-perf-101/slides/fonts-fallback-2.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    fontsFallback3: file(
-      relativePath: { eq: "talks/web-perf-101/slides/fonts-fallback-3.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    fontsFallback4: file(
-      relativePath: { eq: "talks/web-perf-101/slides/fonts-fallback-4.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    fontsFontDisplay2: file(
-      relativePath: { eq: "talks/web-perf-101/slides/fonts-font-display-2.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    fontsFontDisplay3: file(
-      relativePath: { eq: "talks/web-perf-101/slides/fonts-font-display-3.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    fontsFontDisplay4: file(
-      relativePath: { eq: "talks/web-perf-101/slides/fonts-font-display-4.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    fontsFontDisplay5: file(
-      relativePath: { eq: "talks/web-perf-101/slides/fonts-font-display-5.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    fontsFontDisplay4: file(
-      relativePath: { eq: "talks/web-perf-101/slides/fonts-font-display-4.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    fontsSummingUp: file(
-      relativePath: { eq: "talks/web-perf-101/slides/fonts-summing-up.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    httpBrotli1: file(
-      relativePath: { eq: "talks/web-perf-101/slides/http-brotli-1.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    httpBrotli2: file(
-      relativePath: { eq: "talks/web-perf-101/slides/http-brotli-2.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    httpCdn2: file(
-      relativePath: { eq: "talks/web-perf-101/slides/http-cdn-2.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    httpGzip1: file(
-      relativePath: { eq: "talks/web-perf-101/slides/http-gzip-1.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    httpGzip2: file(
-      relativePath: { eq: "talks/web-perf-101/slides/http-gzip-2.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    httpGzip3: file(
-      relativePath: { eq: "talks/web-perf-101/slides/http-gzip-3.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    httpHeader: file(
-      relativePath: { eq: "talks/web-perf-101/slides/http-header.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 700) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    httpHtmlMinify1: file(
-      relativePath: { eq: "talks/web-perf-101/slides/http-html-minify-1.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    httpHtmlMinify2: file(
-      relativePath: { eq: "talks/web-perf-101/slides/http-html-minify-2.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    httpPreload1: file(
-      relativePath: { eq: "talks/web-perf-101/slides/http-preload-1.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    httpPreload2: file(
-      relativePath: { eq: "talks/web-perf-101/slides/http-preload-2.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    httpSummingUp: file(
-      relativePath: { eq: "talks/web-perf-101/slides/http-summing-up.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    imagesAndFontsCompressJpgDimensions: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/images-and-fonts-compress-jpg-dimensions.png"
-      }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    imagesAndFontsCompressJpgProgressive1: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/images-and-fonts-compress-jpg-progressive-1.png"
-      }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    imagesAndFontsCompressJpgProgressive2: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/images-and-fonts-compress-jpg-progressive-2.png"
-      }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    imagesAndFontsCompressJpgProgressive3: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/images-and-fonts-compress-jpg-progressive-3.png"
-      }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    imagesAndFontsCompressJpgSize1: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/images-and-fonts-compress-jpg-size-1.png"
-      }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    imagesAndFontsCompressJpgSize2: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/images-and-fonts-compress-jpg-size-2.png"
-      }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    imagesAndFontsCompressJpgSize3: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/images-and-fonts-compress-jpg-size-3.png"
-      }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    imagesAndFontsCompressJpgSize4: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/images-and-fonts-compress-jpg-size-4.png"
-      }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    imagesAndFontsCompressPng: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/images-and-fonts-compress-png.png"
-      }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    imagesAndFontsCompressSvgJpgExclamation: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/images-and-fonts-compress-svg-jpg-exclamation.png"
-      }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    imagesAndFontsCompressSvgJpg: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/images-and-fonts-compress-svg-jpg.png"
-      }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    imagesAndFontsCompressTools: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/images-and-fonts-compress-tools.png"
-      }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    imagesAndFontsCompress: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/images-and-fonts-compress.png"
-      }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    imagesAndFontsFormat: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/images-and-fonts-format.png"
-      }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    imagesAndFontsGif: file(
-      relativePath: { eq: "talks/web-perf-101/slides/images-and-fonts-gif.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    imagesAndFontsHeader: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/images-and-fonts-header.png"
-      }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 700) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    imagesAndFontsJpg: file(
-      relativePath: { eq: "talks/web-perf-101/slides/images-and-fonts-jpg.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    imagesAndFontsPng: file(
-      relativePath: { eq: "talks/web-perf-101/slides/images-and-fonts-png.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    imagesAndFontsSummingUp: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/images-and-fonts-summing-up.png"
-      }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    imagesAndFontsSvg: file(
-      relativePath: { eq: "talks/web-perf-101/slides/images-and-fonts-svg.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    imagesAndFontsWebp1: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/images-and-fonts-webp-1.png"
-      }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    imagesAndFontsWebp2: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/images-and-fonts-webp-2.png"
-      }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    imagesSummingUp: file(
-      relativePath: { eq: "talks/web-perf-101/slides/images-summing-up.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    index: file(relativePath: { eq: "talks/web-perf-101/slides/index.png" }) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    javascriptHeader: file(
-      relativePath: { eq: "talks/web-perf-101/slides/javascript-header.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 700) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    javascriptMinificationResult: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/javascript-minification-result.png"
-      }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    javascriptMinificationSource: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/javascript-minification-source.png"
-      }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    javascriptMinificationTools: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/javascript-minification-tools.png"
-      }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    jsAsyncDefer1: file(
-      relativePath: { eq: "talks/web-perf-101/slides/js-async-defer-1.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    jsAsyncDefer2: file(
-      relativePath: { eq: "talks/web-perf-101/slides/js-async-defer-2.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    jsAsyncDefer3: file(
-      relativePath: { eq: "talks/web-perf-101/slides/js-async-defer-3.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    jsCodeSplitting1: file(
-      relativePath: { eq: "talks/web-perf-101/slides/js-code-splitting-1.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    jsCodeSplitting2: file(
-      relativePath: { eq: "talks/web-perf-101/slides/js-code-splitting-2.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    jsCodeSplitting3: file(
-      relativePath: { eq: "talks/web-perf-101/slides/js-code-splitting-3.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    jsCodeSplitting32: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/js-code-splitting-3-2.png"
-      }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    jsCodeSplitting4: file(
-      relativePath: { eq: "talks/web-perf-101/slides/js-code-splitting-4.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    jsCodeSplitting5: file(
-      relativePath: { eq: "talks/web-perf-101/slides/js-code-splitting-5.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    jsCodeSplitting6: file(
-      relativePath: { eq: "talks/web-perf-101/slides/js-code-splitting-6.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    jsDownload1: file(
-      relativePath: { eq: "talks/web-perf-101/slides/js-download-1.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    jsDownload2: file(
-      relativePath: { eq: "talks/web-perf-101/slides/js-download-2.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    jsScriptsBlockParsing1: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/js-scripts-block-parsing-1.png"
-      }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    jsScriptsBlockParsing2: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/js-scripts-block-parsing-2.png"
-      }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    jsScriptsBlockParsing3: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/js-scripts-block-parsing-3.png"
-      }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    jsScriptsBlockParsing4: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/js-scripts-block-parsing-4.png"
-      }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    jsScriptsBlockParsing5: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/js-scripts-block-parsing-5.png"
+    sectionHeaders: allFile(
+      filter: {
+        relativeDirectory: { eq: "talks/web-perf-101/slides" }
+        name: { glob: "*-header" }
       }
     ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
+      edges {
+        node {
+          name
+          childImageSharp {
+            fluid(maxWidth: 700) {
+              ...ImageFluid
+            }
+          }
         }
       }
     }
 
-    jsSummingUp: file(
-      relativePath: { eq: "talks/web-perf-101/slides/js-summing-up.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    jsUnusedDependencies1: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/js-unused-dependencies-1.png"
-      }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    jsUnusedDependencies2: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/js-unused-dependencies-2.png"
-      }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    perfImportanceHeader: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/perf-importance-header.png"
-      }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 700) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    perfImportanceHorror: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/perf-importance-horror.png"
-      }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    perfImportanceParts1: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/perf-importance-parts-1.png"
-      }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
+    allSlides: allFile(
+      filter: {
+        relativeDirectory: { eq: "talks/web-perf-101/slides" }
+        extension: { nin: ["svg", "mp4"] }
       }
-    }
-
-    perfImportanceParts2: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/perf-importance-parts-2.png"
-      }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    perfImportanceParts3: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/perf-importance-parts-3.png"
-      }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    thanks: file(relativePath: { eq: "talks/web-perf-101/slides/thanks.png" }) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    toolsHeader: file(
-      relativePath: { eq: "talks/web-perf-101/slides/tools-header.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 700) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    toolsLighthouse: file(
-      relativePath: { eq: "talks/web-perf-101/slides/tools-lighthouse.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    toolsPagespeedInsights: file(
-      relativePath: {
-        eq: "talks/web-perf-101/slides/tools-pagespeed-insights.png"
-      }
     ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
+      edges {
+        node {
+          name
+          childImageSharp {
+            fluid(maxWidth: 500) {
+              ...ImageFluid
+            }
+          }
         }
       }
     }
 
-    toolsWebpagetest: file(
-      relativePath: { eq: "talks/web-perf-101/slides/tools-webpagetest.png" }
+    iamakulovPhoto: file(
+      sourceInstanceName: { eq: "shared" }
+      relativePath: { eq: "iamakulov.jpg" }
     ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...ImageFluid
-        }
-      }
-    }
-
-    iamakulovPhoto: file(relativePath: { eq: "Author/images/iamakulov.jpg" }) {
       childImageSharp {
         fixed(width: 48, height: 48, quality: 90) {
           ...ImageFixed
@@ -3836,4 +2683,3 @@ export const query = graphql`
     }
   }
 `;
-// #endregion
