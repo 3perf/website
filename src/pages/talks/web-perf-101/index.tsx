@@ -784,7 +784,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                imageData={allSlidesByName['js-code-splitting-32']}
+                imageData={allSlidesByName['js-code-splitting-3-2']}
               />
             }
           >
@@ -1096,7 +1096,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                imageData={allSlidesByName['css-critical-21']}
+                imageData={allSlidesByName['css-critical-2-1']}
               />
             }
           >
@@ -1117,7 +1117,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
-                imageData={allSlidesByName['css-critical-22']}
+                imageData={allSlidesByName['css-critical-2-2']}
               />
             }
           >
