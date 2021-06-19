@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import media from '../../../styles/media';
 
-const SectionHeader = styled.div`
+const SectionHeader = styled.h2`
   font-size: 60px;
   font-weight: bold;
   white-space: nowrap;

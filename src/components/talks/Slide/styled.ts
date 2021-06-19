@@ -43,7 +43,7 @@ export const ImageWrapper = styled.a`
       max-width: none;
     `}
   `}
-    
+
   &::before {
     content: '#';
 
@@ -92,6 +92,7 @@ interface TextWrapperProps {
 export const Text = styled.figcaption`
   flex: 1 1 300px;
   margin-top: calc(10px + 4px);
+  word-break: break-word;
 
   ${(props: TextWrapperProps) => props.isSectionHeader && css`
     ${media.notSmall`
@@ -108,4 +109,6 @@ export const SlideLink = styled.a`
   border-bottom-color: #ccc;
 `;
 
-export const SlideGatsbyImage = styled(GatsbyImage)``;
+export const SlideGatsbyImage = styled(GatsbyImage)`
+  display: block;
+`;
