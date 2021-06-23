@@ -21,7 +21,7 @@ export const Header = styled.header`
 `;
 
 export const Meta = styled.div`
-  margin-top: ${gridSize * 2}px;
+  margin-top: ${gridSize * 4}px;
 `;
 
 export const Title = styled.h1`

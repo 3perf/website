@@ -142,28 +142,28 @@ const Component = ({ data }: ComponentProps) => {
         <Nav logoKind={LogoKind.Black} />
         <Header>
           <Title>{visibleTitle}</Title>
-          <Meta>
-            {articleMeta.date.modified === articleMeta.date.published ? (
-              <time dateTime={articleMeta.date.published}>
-                {articleMeta.date.formattedPublished}
-              </time>
-            ) : (
-              [
-                `Published ${articleMeta.date.formattedPublished} · Last updated `,
-                <time dateTime={articleMeta.date.modified} key="modified">
-                  {articleMeta.date.formattedModified}
-                </time>,
-              ]
-            )}{' '}
-            ·{' '}
-            <a href={authorDetails.link} rel="author">
-              {authorDetails.name}
-            </a>
-          </Meta>
         </Header>
         <Content>
           <div dangerouslySetInnerHTML={{ __html: page.html }} />
         </Content>
+        <Meta>
+          {articleMeta.date.modified === articleMeta.date.published ? (
+            <time dateTime={articleMeta.date.published}>
+              {articleMeta.date.formattedPublished}
+            </time>
+          ) : (
+            [
+              `Published ${articleMeta.date.formattedPublished} · Last updated `,
+              <time dateTime={articleMeta.date.modified} key="modified">
+                {articleMeta.date.formattedModified}
+              </time>,
+            ]
+          )}{' '}
+          · Author:{' '}
+          <a href={authorDetails.link} rel="author">
+            {authorDetails.name}
+          </a>
+        </Meta>
         <MailchimpSubscribe
           text="Performance articles, case studies, and more. A new email every few weeks. Subscribe:"
           buttonText="Grow my perf skills"
