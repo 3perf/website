@@ -93,12 +93,12 @@ export const MailchimpContainer = styled.div`
 `;
 
 export const Footnote = styled.div`
-  margin-top: ${gridSize * 10}px;
-  padding: ${gridSize * 3}px ${gridSize * 5}px ${gridSize * 4}px;
+  margin-top: ${gridSize * 5}px;
+  padding: ${gridSize * 3}px ${gridSize * 4}px ${gridSize * 3}px;
   border-radius: 8px;
   background: black;
   color: white;
-  font-size: ${sizes.fontLarge}px;
+  max-width: 600px;
 
   > p > strong {
     color: ${colors.brightYellow};

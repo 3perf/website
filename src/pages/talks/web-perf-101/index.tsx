@@ -192,9 +192,9 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
                 app is doing well.
               </p>
               <p>
-                (Shameless plug: need help with more advanced cases? We’re a web
-                performance consulting agency, and{' '}
-                <a href="/#services">we’re here to help</a>.)
+                <strong>Want to apply this advice to your site?</strong> We’ve
+                worked with Google, Framer, SitePoint, and other companies.{' '}
+                <a href="/#services">Reach out</a>
               </p>
             </>
           }
@@ -2576,8 +2576,9 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             help companies to earn more by making web apps faster.
           </p>
           <p>
-            Have a web performance issue or just want to learn what to improve?{' '}
-            <a href="/#services">We’d be glad to help</a>
+            <strong>Want to apply this advice to your site?</strong> We’ve
+            worked with Google, Framer, SitePoint, and other companies.{' '}
+            <a href="/#services">Reach out</a>
           </p>
         </Footnote>
         <Footer />
