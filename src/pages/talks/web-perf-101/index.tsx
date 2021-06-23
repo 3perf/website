@@ -7,6 +7,7 @@ import { LogoKind } from '../../../components/Logo';
 import WidthWrapper from '../../../components/WidthWrapper';
 import { SlideGatsbyImage } from '../../../components/talks/Slide';
 import TalkHeader from '../../../components/talks/TalkHeader';
+import TalkMeta from '../../../components/talks/TalkMeta';
 import {
   BlockImage,
   Blockquote,
@@ -77,7 +78,7 @@ interface WebPerf101PageProps {
 const resolvedCoverUrl = `https://3perf.com${indexCoverUrl}`;
 
 const publishedDate = new Date(2018, 9, 25);
-const lastUpdatedDate = new Date(2020, 4, 29);
+const lastUpdatedDate = new Date(2021, 6, 21);
 
 const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
   const allSlidesByName = Object.fromEntries(
@@ -197,16 +198,6 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
               </p>
             </>
           }
-          authors={[
-            {
-              description: 'PerfPerfPerf founder',
-              imageData: data.iamakulovPhoto.childImageSharp.fixed,
-              link: 'https://twitter.com/iamakulov',
-              name: 'Ivan Akulov',
-            },
-          ]}
-          publishedDate={publishedDate}
-          lastUpdatedDate={lastUpdatedDate}
         />
         <Slides>
           <Slide
@@ -2568,6 +2559,17 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             </p>
           </Slide>
         </Slides>
+        <TalkMeta
+          authors={[
+            {
+              description: 'PerfPerfPerf founder',
+              imageData: data.iamakulovPhoto.childImageSharp.fixed,
+              link: 'https://twitter.com/iamakulov',
+              name: 'Ivan Akulov',
+            },
+          ]}
+          lastUpdatedDate={lastUpdatedDate}
+        />
         <Footnote>
           <p>
             <strong>This talk was brought to you by PerfPerfPerf.</strong> We
