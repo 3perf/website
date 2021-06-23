@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Container, Date, Link, Name } from './styled';
+import { Container, Date, AuthorLink } from './styled';
 
 const formatDate = (date: Date) => {
   return date.toLocaleDateString('en-US', {
@@ -29,16 +29,13 @@ const TalkMeta = ({ authors, className, lastUpdatedDate }: TalkMetaProps) => (
           {formatDate(lastUpdatedDate)}
         </time>
       </Date>
-    )}
-    <span>{'·'}</span>
-    <span>{authors.length === 1 ? 'Author' : 'Authors'}:</span>
+    )}{' '}
+    {'·'} {authors.length === 1 ? 'Author: ' : 'Authors: '}
     {authors.map((author, index) => (
-      <Link href={author.link} key={`${index}`}>
-        <Name>
-          {author.name}
-          {index !== authors.length - 1 ? ',' : ''}
-        </Name>
-      </Link>
+      <AuthorLink href={author.link} rel="author" key={`${index}`}>
+        {author.name}
+        {index !== authors.length - 1 ? ',' : ''}
+      </AuthorLink>
     ))}
   </Container>
 );
