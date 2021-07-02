@@ -16,7 +16,7 @@ This is the source code for [3perf.com](http://3perf.com), a site of PerfPerfPer
    ```shell
    yarn
    ```
-2. Finally run a local development server.
+1. Finally run a local development server.
    ```shell
    yarn develop
    ```
