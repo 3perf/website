@@ -22,6 +22,7 @@ module.exports = {
       version: 'detect',
     },
   },
+  ignorePatterns: ['**/*.js', 'node_modules/'],
   rules: {
     'import/order': ['error', { alphabetize: { order: 'asc' } }],
     // Not useful

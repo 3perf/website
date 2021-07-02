@@ -17,11 +17,10 @@ jobs:
       - name: Check out Git repository
         uses: actions/checkout@v2
 
-      - name: Set up Yarn
+      - name: Set up Yarn and install dependencies
         uses: borales/actions-yarn@v2.3.0
-
-      - name: Install Node.js dependencies
-        run: yarn install --frozen-lockfile
+        with:
+          cmd: install --frozen-lockfile
 
       - name: Run linters
         uses: wearerequired/lint-action@v1

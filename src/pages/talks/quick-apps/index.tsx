@@ -36,11 +36,11 @@ const QuickAppsPage = () => {
           frameBorder="0"
         >
           This is an embedded{' '}
-          <a target="_blank" href="https://office.com">
+          <a target="_blank" rel="noreferrer" href="https://office.com">
             Microsoft Office
           </a>{' '}
           presentation, powered by{' '}
-          <a target="_blank" href="https://office.com/webapps">
+          <a target="_blank" rel="noreferrer" href="https://office.com/webapps">
             Office Online
           </a>
           .

@@ -1,13 +1,7 @@
 import * as React from 'react';
 import { JSXChildrenProp } from '../../types';
 import Link from '../Link';
-import {
-  Container,
-  Credentials,
-  Legal,
-  LicenseName,
-  PaymentDetails,
-} from './styled';
+import { Container, Credentials, Legal, LicenseName } from './styled';
 
 interface FooterProps {
   className?: string;
