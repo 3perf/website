@@ -22,7 +22,7 @@ export const animationCss = css`
 
   ${[...new Array(12 /* letters */).keys()]
     .map(
-      i => `
+      (i) => `
       #perf-letters path:nth-child(${i + 1}) {
         animation-delay: ${0.03 * i}s;
       }
