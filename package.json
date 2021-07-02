@@ -43,7 +43,7 @@
     "develop": "cross-env GATSBY_MAILCHIMP_3PERF_SUBSCRIBERS=FAKE_URL gatsby develop",
     "build-locally": "cross-env GATSBY_MAILCHIMP_3PERF_SUBSCRIBERS=FAKE_URL yarn build",
     "format": "prettier --write 'src/**/*.{ts,tsx}'",
-    "lint": "eslint 'src/**/*.{ts,tsx}'"
+    "lint": "eslint --fix 'src/**/*.{ts,tsx}'"
   },
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.10.1",
