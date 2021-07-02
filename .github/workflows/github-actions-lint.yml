@@ -17,13 +17,19 @@ jobs:
       - name: Check out Git repository
         uses: actions/checkout@v2
 
+        # Automatically installs npm or yarn
+        # and runs "npm ci" or "yarn install --frozen-lockfile" respectively
       - name: Set up Yarn and install dependencies
-        uses: borales/actions-yarn@v2.3.0
-        with:
-          cmd: install --frozen-lockfile
+        uses: bahmutov/npm-install@v1
 
-      - name: Run linters
-        uses: wearerequired/lint-action@v1
+      - name: Run eslint
+        run: yarn lint
+
+      - name: Run prettier
+        run: yarn format
+
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v4.1.2
         with:
-          eslint: true
-          prettier: true
+          commit_message: Apply linting and formatting changes
+          branch: ${{ github.head_ref }}
