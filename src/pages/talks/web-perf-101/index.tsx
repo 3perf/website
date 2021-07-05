@@ -2572,10 +2572,6 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
         />
         <Footnote>
           <p>
-            <strong>This talk was brought to you by PerfPerfPerf.</strong> We
-            help companies to earn more by making web apps faster.
-          </p>
-          <p>
             <strong>Want to apply this advice to your site?</strong> We’ve
             worked with Google, Framer, SitePoint, and other companies.{' '}
             <a href="/#services">Reach out</a>
