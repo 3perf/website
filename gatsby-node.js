@@ -52,21 +52,22 @@ exports.createPages = async ({ graphql, actions }) => {
   });
 };
 
-exports.onCreateNode = ({ node, actions, getNode }) => {
+exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions;
 
-  const pathPrefixPerSourceName = {
-    gold: '/gold',
-    blog: '/blog',
-  };
-
-  // The `sourceName` field is added by `gatsby-remark-source-name`
-  if (node.internal.type === `MarkdownRemark`) {
-    const pathPrefix = pathPrefixPerSourceName[node.fields.sourceName];
+  if (node.internal.type === 'MarkdownRemark') {
+    const fileNode = getNode(node.parent);
+    const pathPrefix = node.frontmatter.gold ? '/gold' : '/blog';
     const filePath = createFilePath({ node, getNode });
+
     createNodeField({
-      name: `slug`,
       node,
+      name: 'sourceName',
+      value: fileNode.sourceInstanceName,
+    });
+    createNodeField({
+      node,
+      name: 'slug',
       value: `${pathPrefix}${filePath}`,
     });
   }
