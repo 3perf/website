@@ -72,7 +72,7 @@ interface LayoutProps {
   children: JSXChildrenProp;
 }
 
-class Layout extends React.Component<LayoutProps, {}> {
+class Layout extends React.Component<LayoutProps> {
   public render() {
     const { children } = this.props;
     return (

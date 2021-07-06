@@ -85,7 +85,7 @@ const MaterialsSectionWithQuery = () => (
         }
       }
     `}
-    render={(data) => <MaterialsSection data={data} />}
+    render={(data: MaterialsSectionData) => <MaterialsSection data={data} />}
   />
 );
 

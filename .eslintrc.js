@@ -30,5 +30,6 @@ module.exports = {
     '@typescript-eslint/no-explicit-any': 'off',
     // Incompatible with `"esModuleInterop": true`
     'import/default': 'off',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
   },
 };

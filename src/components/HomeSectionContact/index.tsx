@@ -20,7 +20,7 @@ const ContactSection = ({
       <Link href="mailto:perf@3perf.com">perf@3perf.com</Link>
       <PromptContainer>
         <p>
-          Interested? We’d be glad to help. Drop us an email, and{' '}
+          Interested? We’d be glad to help. Drop us x email, and{' '}
           <ContactImage imageData={data.iamakulov.childImageSharp.fixed} /> Ivan
           will get back to you in 24 hours.
         </p>
@@ -49,7 +49,9 @@ const ContactSectionWithQuery = (props: ContactSectionProps) => (
         }
       }
     `}
-    render={(data) => <ContactSection data={data} {...props} />}
+    render={(data: ContactSectionData) => (
+      <ContactSection data={data} {...props} />
+    )}
   />
 );
 

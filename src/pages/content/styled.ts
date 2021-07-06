@@ -32,7 +32,7 @@ export const Header = styled.h1`
   color: ${colors.brightYellow};
   font-weight: 900;
 
-  background: url("${backgroundUrl}") center bottom;
+  background: url('${backgroundUrl}') center bottom;
   background-size: cover;
   -webkit-background-clip: text;
   background-clip: text;
@@ -72,7 +72,7 @@ export const ItemTitle = styled.div`
   font-weight: bold;
 
   ${linkStyles}
-  
+
   ${ItemLink}:hover &, 
   ${ItemLink}:focus &, 
   ${ItemLink}:active & {
