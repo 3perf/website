@@ -1,8 +1,9 @@
 import * as React from 'react';
+import { ImageFixed, ImageFluid } from '../Image';
 import { Content, Description, Image, Link, Name } from './styled';
 
 interface AuthorProps {
-  imageData: any;
+  imageData: ImageFixed | ImageFluid;
   name: string;
   description: string;
   link: string;

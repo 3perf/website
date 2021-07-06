@@ -67,7 +67,7 @@ const AboutSectionWithQuery = () => (
         }
       }
     `}
-    render={(data) => <AboutSection data={data} />}
+    render={(data: AboutSectionData) => <AboutSection data={data} />}
   />
 );
 

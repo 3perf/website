@@ -162,7 +162,9 @@ const ServicesSectionWithQuery = () => (
         }
       }
     `}
-    render={(data) => <ServicesSection data={data} />}
+    render={(data: ServicesSectionProps['data']) => (
+      <ServicesSection data={data} />
+    )}
   />
 );
 
