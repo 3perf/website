@@ -128,7 +128,6 @@ module.exports = {
         ],
       },
     },
-    'gatsby-remark-source-name',
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
     'gatsby-plugin-lodash',
