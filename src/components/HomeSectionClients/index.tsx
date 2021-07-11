@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Section, { SectionKind } from '../Section';
 import {
-  CmttLogo,
+  CastorLogo,
   Content,
   FatLlamaLogo,
   GoogleLogo,
@@ -187,37 +187,28 @@ const ClientsSection = () => (
     <HomeLeftRightWrapper
       left={
         <LogoText>
-          <CmttLogo />
+          <CastorLogo />
           <p>
-            <a href="https://cmtt.ru/">CMTT</a> is a media company specializing
-            in tech and entertainment content. Their sites (like{' '}
-            <a href="https://vc.ru">VC</a> and{' '}
-            <a href="https://tjournal.ru">TJournal</a>) together reach 15
-            million views a month.
+            <a href="https://www.castoredc.com/">Castor</a> is a tech platform
+            that makes clinical trials easier
           </p>
         </LogoText>
       }
       right={
         <Content>
-          <p>
-            CMTT had an issue: when an article on one of their sites had a lot
-            of comments, scrolling the page was freezing the browser.
-          </p>
-          <p>
-            We helped CMTT to optimize the scrolling performance of comments on
-            their sites.{' '}
-            <Mark>
-              The frames-per-second rate got 4–10× higher depending on the
-              device.
-            </Mark>
-          </p>
+          <p>We made Castor’s React design system load and execute faster.</p>
           <blockquote>
             <p>
-              Ivan Akulov found a beautiful solution and implemented it on his
-              own. We’ve been satisfied with the results!
+              In just a couple weeks, Ivan significantly improved runtime
+              performance and tree shaking of our key components. One of our
+              products’ bundle got 3 times smaller – with 10× less JS needed for
+              the initial load.
             </p>
             <footer>
-              <a href="https://chekalskiy.ru/">Ilya Chekalskiy</a>, CMTT’s CTO
+              <a href="https://www.linkedin.com/in/david-sigley-4a202353/?originalSubdomain=nl">
+                David Sigley
+              </a>
+              , Head of Engineering @ Castor
             </footer>
           </blockquote>
         </Content>
