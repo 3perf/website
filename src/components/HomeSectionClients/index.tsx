@@ -190,7 +190,7 @@ const ClientsSection = () => (
           <CastorLogo />
           <p>
             <a href="https://www.castoredc.com/">Castor</a> is a tech platform
-            that makes clinical trials easier
+            that makes clinical trials easier.
           </p>
         </LogoText>
       }
