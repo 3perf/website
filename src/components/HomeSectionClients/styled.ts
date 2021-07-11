@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import media from '../../styles/media';
 import { sizes, colors } from '../../styles/variables';
 import _HomeLeftRightWrapper from '../HomeLeftRightWrapper';
-import cmttUrl from './cmtt.svg';
+import castorUrl from './castor.svg';
 import commonUrl from './common.svg';
 import fatLlamaUrl from './fat-llama.svg';
 import framerUrl from './framer.svg';
@@ -80,10 +80,10 @@ export const GoogleLogo = styled(Logo).attrs({
   margin-bottom: 4px;
 `;
 
-export const CmttLogo = styled(Logo).attrs({
-  src: cmttUrl,
+export const CastorLogo = styled(Logo).attrs({
+  src: castorUrl,
 })`
-  height: 36px;
+  height: 42px;
 `;
 
 export const FatLlamaLogo = styled(Logo).attrs({
