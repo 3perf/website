@@ -201,8 +201,8 @@ const ClientsSection = () => (
             <p>
               In just a couple weeks, Ivan significantly improved runtime
               performance and tree shaking of our key components. One of our
-              products’ bundle got 3 times smaller – with 10× less JS needed for
-              the initial load.
+              products’ bundle got <Mark>3 times smaller</Mark> – with{' '}
+              <Mark>10× less JS needed for the initial load</Mark>.
             </p>
             <footer>
               <a href="https://www.linkedin.com/in/david-sigley-4a202353/?originalSubdomain=nl">
