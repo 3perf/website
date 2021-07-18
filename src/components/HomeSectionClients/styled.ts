@@ -82,9 +82,7 @@ export const GoogleLogo = styled(Logo).attrs({
 
 export const CastorLogo = styled(Logo).attrs({
   src: castorUrl,
-})`
-  height: 42px;
-`;
+})``;
 
 export const FatLlamaLogo = styled(Logo).attrs({
   src: fatLlamaUrl,
