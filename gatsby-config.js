@@ -132,7 +132,7 @@ module.exports = {
     'gatsby-plugin-sharp',
     'gatsby-plugin-lodash',
     {
-      resolve: `gatsby-plugin-favicon`,
+      resolve: `@redocly/favicons-webpack-plugin`,
       options: {
         logo: './src/components/Logo/logo-black-raster.png',
         appName: 'PerfPerfPerf',
