@@ -88,7 +88,7 @@
     "gatsby-remark-prismjs": "^5.5.0",
     "gatsby-remark-source-name": "^1.0.0",
     "gatsby-source-filesystem": "^3.8.0",
-    "gatsby-transformer-remark": "^4.5.0",
+    "gatsby-transformer-remark": "^3.2.0",
     "gatsby-transformer-sharp": "^3.8.0",
     "js-yaml": "^3.14.0",
     "mdast-util-toc": "^5.0.3",
