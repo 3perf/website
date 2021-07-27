@@ -1,8 +1,12 @@
 import * as React from 'react';
+import appsmithLogo from './appsmith.svg';
+import castorLogo from './castor.svg';
 import commonLogo from './common.svg';
 import fatLlamaLogo from './fat-llama.svg';
 import framerLogo from './framer.svg';
 import googleLogo from './google.svg';
+import hugoLogo from './hugo.svg';
+import sitepointLogo from './sitepoint.svg';
 import {
   Blockquote,
   BlockquoteText,
@@ -26,6 +30,10 @@ const HomeSectionTestimonials = () => (
       </BlockquoteFooter>
     </Blockquote>
     <Logos>
+      <Logo src={appsmithLogo} width="40" height="62" />
+      <Logo src={castorLogo} width="127" height="62" />
+      <Logo src={hugoLogo} width="40" height="62" />
+      <Logo src={sitepointLogo} width="127" height="62" />
       <Logo src={fatLlamaLogo} width="127" height="62" />
       <Logo src={googleLogo} width="148" height="62" />
       <Logo src={commonLogo} width="284" height="62" />
