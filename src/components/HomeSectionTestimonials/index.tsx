@@ -30,14 +30,14 @@ const HomeSectionTestimonials = () => (
       </BlockquoteFooter>
     </Blockquote>
     <Logos>
-      <Logo src={appsmithLogo} width="40" height="62" />
-      <Logo src={castorLogo} width="127" height="62" />
-      <Logo src={hugoLogo} width="40" height="62" />
-      <Logo src={sitepointLogo} width="127" height="62" />
       <Logo src={fatLlamaLogo} width="127" height="62" />
       <Logo src={googleLogo} width="148" height="62" />
       <Logo src={commonLogo} width="284" height="62" />
       <Logo src={framerLogo} width="40" height="62" />
+      <Logo src={appsmithLogo} width="60" height="62" />
+      <Logo src={castorLogo} width="188" height="62" />
+      <Logo src={hugoLogo} width="61" height="62" />
+      <Logo src={sitepointLogo} width="273" height="62" />
     </Logos>
   </Container>
 );
