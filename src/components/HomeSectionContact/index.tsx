@@ -5,6 +5,7 @@ import { PromptContainer, Container, ContactImage, Link } from './styled';
 
 interface ContactSectionData {
   iamakulov: GraphqlImageFixed;
+  christopherlarscarlson: GraphqlImageFixed;
 }
 
 interface ContactSectionProps {
@@ -22,7 +23,11 @@ const ContactSection = ({
         <p>
           Interested? We’d be glad to help. Drop us x email, and{' '}
           <ContactImage imageData={data.iamakulov.childImageSharp.fixed} /> Ivan
-          will get back to you in 24 hours.
+          or{' '}
+          <ContactImage
+            imageData={data.christopherlarscarlson.childImageSharp.fixed}
+          />{' '}
+          Chris will get back to you in 24 hours.
         </p>
       </PromptContainer>
     </Container>
@@ -41,6 +46,12 @@ const ContactSectionWithQuery = (props: ContactSectionProps) => (
       }
 
       query {
+        christopherlarscarlson: file(
+          sourceInstanceName: { eq: "shared" }
+          relativePath: { eq: "christopherlarscarlson.jpg" }
+        ) {
+          ...ContactImage
+        }
         iamakulov: file(
           sourceInstanceName: { eq: "shared" }
           relativePath: { eq: "iamakulov.jpg" }

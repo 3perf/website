@@ -5,7 +5,7 @@ import Image from '../Image';
 
 export const Container = styled.div`
   margin: 0 -60px;
-  max-width: 900px;
+  max-width: 910px;
   padding: 30px 100px 40px 60px;
   border-radius: 4px;
   background: #ffdb01;
