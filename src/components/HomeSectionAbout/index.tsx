@@ -45,7 +45,7 @@ const AboutSection = ({ data }: AboutSectionProps) => (
           <Link href="https://github.com/iamakulov">Open-source work</Link>
         </LinkWrapper>
         <Factoid>
-          <Number>200K</Number> reads of Ivan’s perf content
+          <Number>340K</Number> reads of Ivan’s perf content
         </Factoid>
       </Links>
     </Wrapper>
