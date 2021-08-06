@@ -5,7 +5,7 @@ import Image from '../Image';
 
 export const Container = styled.div`
   margin: 0 -60px;
-  max-width: 910px;
+  max-width: 900px;
   padding: 30px 100px 40px 60px;
   border-radius: 4px;
   background: #ffdb01;
@@ -29,7 +29,12 @@ export const PromptContainer = styled.div`
   margin-top: ${gridSize * 6}px;
 `;
 
+export const Contact = styled.span`
+  white-space: nowrap;
+`;
+
 export const ContactImage = styled(Image)`
   border-radius: 50%;
-  vertical-align: top;
+  /* -5px is hand-picked for better visual alignment */
+  vertical-align: -5px;
 `;
