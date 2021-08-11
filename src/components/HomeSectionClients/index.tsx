@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Section, { SectionKind } from '../Section';
 import {
+  AppsmithLogo,
   CastorLogo,
   Content,
   FatLlamaLogo,
@@ -104,6 +105,60 @@ const ClientsSection = () => (
     <HomeLeftRightWrapper
       left={
         <LogoText>
+          <CastorLogo />
+          <p>
+            <a href="https://www.castoredc.com/">Castor</a> is a tech platform
+            that makes clinical trials easier.
+          </p>
+        </LogoText>
+      }
+      right={
+        <Content>
+          <p>We made Castor’s React design system load and execute faster.</p>
+          <blockquote>
+            <p>
+              In just a couple weeks, Ivan significantly improved runtime
+              performance and tree shaking of our key components. One of our
+              products’ bundle got <Mark>3 times smaller</Mark> – with{' '}
+              <Mark>10× less JS needed for the initial load</Mark>.
+            </p>
+            <footer>
+              <a href="https://www.linkedin.com/in/david-sigley-4a202353/?originalSubdomain=nl">
+                David Sigley
+              </a>
+              , Head of Engineering @ Castor
+            </footer>
+          </blockquote>
+        </Content>
+      }
+    />
+
+    <HomeLeftRightWrapper
+      left={
+        <LogoText>
+          <AppsmithLogo />
+          <p>
+            <a href="https://www.appsmith.com">Appsmith</a> is a low-code
+            platform for building internal apps.
+          </p>
+        </LogoText>
+      }
+      right={
+        <Content>
+          <p>
+            With Appsmith, we did not one but three React rendering performance
+            audits. This helped us to focus on different aspects of app’s UI
+            speed. With audit recommendations implemented,{' '}
+            <Mark>the app got 1.9…2.8× faster</Mark> across multiple user
+            interactions.
+          </p>
+        </Content>
+      }
+    />
+
+    <HomeLeftRightWrapper
+      left={
+        <LogoText>
           <CommonLogo />
           <p>
             <a href="https://common.com/">Common</a> is a modern coliving rental
@@ -178,37 +233,6 @@ const ClientsSection = () => (
             <footer>
               <a href="https://twitter.com/cihatimamoglu">Cihat Imamoglu</a>,
               Senior Software Engineer @ Fat Llama
-            </footer>
-          </blockquote>
-        </Content>
-      }
-    />
-
-    <HomeLeftRightWrapper
-      left={
-        <LogoText>
-          <CastorLogo />
-          <p>
-            <a href="https://www.castoredc.com/">Castor</a> is a tech platform
-            that makes clinical trials easier.
-          </p>
-        </LogoText>
-      }
-      right={
-        <Content>
-          <p>We made Castor’s React design system load and execute faster.</p>
-          <blockquote>
-            <p>
-              In just a couple weeks, Ivan significantly improved runtime
-              performance and tree shaking of our key components. One of our
-              products’ bundle got <Mark>3 times smaller</Mark> – with{' '}
-              <Mark>10× less JS needed for the initial load</Mark>.
-            </p>
-            <footer>
-              <a href="https://www.linkedin.com/in/david-sigley-4a202353/?originalSubdomain=nl">
-                David Sigley
-              </a>
-              , Head of Engineering @ Castor
             </footer>
           </blockquote>
         </Content>

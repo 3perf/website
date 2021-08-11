@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import media from '../../styles/media';
 import { sizes, colors } from '../../styles/variables';
 import _HomeLeftRightWrapper from '../HomeLeftRightWrapper';
+import appsmithUrl from './appsmith.svg';
 import castorUrl from './castor.svg';
 import commonUrl from './common.svg';
 import fatLlamaUrl from './fat-llama.svg';
@@ -82,6 +83,10 @@ export const GoogleLogo = styled(Logo).attrs({
 
 export const CastorLogo = styled(Logo).attrs({
   src: castorUrl,
+})``;
+
+export const AppsmithLogo = styled(Logo).attrs({
+  src: appsmithUrl,
 })``;
 
 export const FatLlamaLogo = styled(Logo).attrs({
