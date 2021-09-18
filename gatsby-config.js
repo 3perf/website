@@ -214,9 +214,7 @@ module.exports = {
                       html
                       fields { slug }
                       frontmatter {
-                        title {
-                          visible
-                        }
+                        title
                         date {
                           published
                         }
