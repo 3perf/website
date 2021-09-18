@@ -16,7 +16,7 @@ collections:
     slug: 'index'
     media_folder: ''
     public_folder: ''
-    path: '{{url-prefix}}/index'
+    path: '{{url-slug}}/index'
     extension: 'md'
     format: 'frontmatter'
     editor:
@@ -24,7 +24,10 @@ collections:
     fields:
       - { label: 'Body', name: 'body', widget: 'markdown' }
       - { label: 'Title', name: 'title', widget: 'string' }
-      - { label: 'URL Prefix', name: 'url-prefix', widget: 'string' }
+      - label: 'URL Slug'
+        name: 'url-slug'
+        widget: 'string'
+        hint: 'This is the article URL slug. For example, if you write “perf-for-seo” here, the article will be available at 3perf.com/blog/perf-for-seo'
       - label: 'Alternative Titles'
         name: 'alternativeTitles'
         widget: 'object'
@@ -58,7 +61,9 @@ collections:
             name: 'facebookId'
             widget: 'string'
             default: '100002052594007'
-      - { label: 'Description', name: 'description', widget: 'string' }
+      - label: 'Social & SEO Description'
+        name: 'description'
+        widget: 'string'
       - { label: 'RSS Description', name: 'rssDescription', widget: 'text' }
       - label: 'Social Images'
         name: 'socialImage'
