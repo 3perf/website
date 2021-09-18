@@ -206,7 +206,7 @@ module.exports = {
               {
                 allMarkdownRemark(
                   filter: {fields: { sourceName: { eq: "blog" } }},
-                  sort: { order: DESC, fields: [frontmatter___blog___date___published] }
+                  sort: { order: DESC, fields: [frontmatter___date___published] }
                 ) {
                   edges {
                     node {
