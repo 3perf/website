@@ -1,6 +1,6 @@
 ---
 title: fff
-url-prefix: f ff
+url-prefix: "f ff "
 author:
   id: iamakulov
   name: Ivan Akulov
