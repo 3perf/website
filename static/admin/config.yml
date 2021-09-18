@@ -16,7 +16,7 @@ collections:
     slug: 'index'
     media_folder: ''
     public_folder: ''
-    path: '{{title}}/index'
+    path: '{{url-prefix}}/index'
     extension: 'md'
     format: 'frontmatter'
     editor:
@@ -24,7 +24,7 @@ collections:
     fields:
       - { label: 'Body', name: 'body', widget: 'markdown' }
       - { label: 'Title', name: 'title', widget: 'string' }
-      - { label: 'Slug', name: 'slug', widget: 'string' }
+      - { label: 'URL Prefix', name: 'url-prefix', widget: 'string' }
       - label: 'Alternative Titles'
         name: 'alternativeTitles'
         widget: 'object'
