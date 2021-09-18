@@ -1,3 +1,0 @@
-[submodule "src/content/gold"]
-	path = src/content/gold
-	url = git@github.com:iamakulov/3perf-gold.git

@@ -5,7 +5,6 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
 
   const templatePerSourceName = {
-    gold: path.resolve(`./src/templates/gold/index.tsx`),
     blog: path.resolve(`./src/templates/blog/index.tsx`),
   };
 
@@ -57,7 +56,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 
   if (node.internal.type === 'MarkdownRemark') {
     const fileNode = getNode(node.parent);
-    const pathPrefix = node.frontmatter.gold ? '/gold' : '/blog';
+    const pathPrefix = '/blog';
     const filePath = createFilePath({ node, getNode });
 
     createNodeField({

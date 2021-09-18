@@ -4,19 +4,16 @@ This is the source code for [3perf.com](http://3perf.com), a site of PerfPerfPer
 
 ## How to run website locally
 
-1. First, clone the repository using the following command. Don't forget to use `--recurse-submodules` flag.
+1. Clone the repository:
    ```shell
    git clone --recurse-submodules git@github.com:3perf/website.git
-   ```
-1. Then go to the newly created folder, containing the cloned repository.
-   ```shell
    cd website
    ```
-1. After that install node modules using yarn.
+2. Install `node_modules` using yarn:
    ```shell
    yarn
    ```
-1. Finally run a local development server.
+3. Run a local development server:
    ```shell
    yarn develop
    ```
