@@ -36,10 +36,8 @@ interface IndexPageProps {
               slug: string;
             };
             frontmatter: {
-              blog: {
-                title: {
-                  visible: string;
-                };
+              title: {
+                visible: string;
               };
             };
           };
@@ -84,10 +82,7 @@ const IndexPage = ({ data }: IndexPageProps) => (
             <NewArticleLink
               href={data.allMarkdownRemark.edges[0].node.fields.slug}
             >
-              {
-                data.allMarkdownRemark.edges[0].node.frontmatter.blog.title
-                  .visible
-              }
+              {data.allMarkdownRemark.edges[0].node.frontmatter.title}
             </NewArticleLink>
           </WidthWrapper>
         </NewArticleBackground>
@@ -138,7 +133,7 @@ export const query = graphql`
   query {
     allMarkdownRemark(
       filter: { fields: { slug: {}, sourceName: { eq: "blog" } } }
-      sort: { fields: frontmatter___blog___date___published, order: DESC }
+      sort: { fields: frontmatter___date___published, order: DESC }
       limit: 1
     ) {
       edges {
@@ -147,11 +142,7 @@ export const query = graphql`
             slug
           }
           frontmatter {
-            blog {
-              title {
-                visible
-              }
-            }
+            title
           }
         }
       }

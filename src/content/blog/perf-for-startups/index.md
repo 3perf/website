@@ -1,26 +1,25 @@
 ---
-blog:
-  title:
-    visible: 'Quick apps in 3 steps'
-    social: 'Quick apps in 3 steps'
-    seo: 'Quick apps in 3 steps – a (short) guide into web performance for startups'
-  author:
-    id: iamakulov
-    name: Ivan Akulov
-    link: https://twitter.com/iamakulov
-    twitterId: iamakulov
-    facebookId: '100002052594007'
-  description: 'What to do if you want to have a quick app – but don’t have enough time for that'
-  rssDescription: |
-    Ever been in a situation when you wanted to build a quick app – but didn’t have enough time to invest into the performance?
+title: 'Quick apps in 3 steps'
+alternativeTitles:
+  social: 'Quick apps in 3 steps'
+  seo: 'Quick apps in 3 steps – a (short) guide into web performance for startups'
+author:
+  id: iamakulov
+  name: Ivan Akulov
+  link: https://twitter.com/iamakulov
+  twitterId: iamakulov
+  facebookId: '100002052594007'
+description: 'What to do if you want to have a quick app – but don’t have enough time for that'
+rssDescription: |
+  Ever been in a situation when you wanted to build a quick app – but didn’t have enough time to invest into the performance?
 
-    We wrote about the three most significant things that help with web performance and don’t take a lot of time.
-  socialImage:
-    facebook: './cover-facebook.png'
-    twitter: './cover-twitter.png'
-  date:
-    published: 2019-06-11T14:00:00
-    modified: 2020-01-26T14:00:00
+  We wrote about the three most significant things that help with web performance and don’t take a lot of time.
+socialImage:
+  facebook: './cover-facebook.png'
+  twitter: './cover-twitter.png'
+date:
+  published: 2019-06-11T14:00:00
+  modified: 2020-01-26T14:00:00
 ---
 
 [Web performance is important.](https://wpostats.com) But often, you don’t have time for it.
@@ -64,7 +63,7 @@ A good place to start is [a performance-oriented Next.js introduction at `web.de
 Cloudflare has free and paid plans; free plans work quite well, but paid plans allow doing more advanced optimizations. Start with a free plan – and make sure to enable [the most useful optimization toggles](https://gist.github.com/iamakulov/106264563793c5e47049ddcc60372ece).
 
 <div class="note">
- 
+
 Cloudflare is the tool that I personally like the most. But if you want to explore alternatives, there’re a few other similar services:
 
 - [Fastly](https://www.fastly.com/)

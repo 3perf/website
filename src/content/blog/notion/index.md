@@ -1,28 +1,27 @@
 ---
-blog:
-  title:
-    visible: 'Case study: Analyzing Notion app performance'
-    social: 'Case study: Analyzing Notion app performance'
-    seo: 'Case study: Analyzing Notion app performance'
-  author:
-    id: iamakulov
-    name: Ivan Akulov
-    link: https://twitter.com/iamakulov
-    twitterId: iamakulov
-    facebookId: '100002052594007'
-  description: 'How to make a React app load ~30% faster – by tuning some configs and delaying some scripts'
-  rssDescription: |
-    Web performance isn’t going to save you in this crisis.<br /><br />
+title: 'Case study: Analyzing Notion app performance'
+alternativeTitles:
+  social: 'Case study: Analyzing Notion app performance'
+  seo: 'Case study: Analyzing Notion app performance'
+author:
+  id: iamakulov
+  name: Ivan Akulov
+  link: https://twitter.com/iamakulov
+  twitterId: iamakulov
+  facebookId: '100002052594007'
+description: 'How to make a React app load ~30% faster – by tuning some configs and delaying some scripts'
+rssDescription: |
+  Web performance isn’t going to save you in this crisis.<br /><br />
 
-    But if you’re building a software product – like Notion does – chances are you’re relatively unaffected. And in this case, as the Internet is slowing down, having a quick app is more important than ever.<br /><br />
+  But if you’re building a software product – like Notion does – chances are you’re relatively unaffected. And in this case, as the Internet is slowing down, having a quick app is more important than ever.<br /><br />
 
-    In this case study, let’s take a look at Notion, an advanced note-taking web app, and learn how to make it load 30% faster:<br />
-  socialImage:
-    facebook: './notion-social.png'
-    twitter: './notion-social.png'
-  date:
-    published: 2020-05-19T20:00:00
-    modified: 2020-05-19T20:00:00
+  In this case study, let’s take a look at Notion, an advanced note-taking web app, and learn how to make it load 30% faster:<br />
+socialImage:
+  facebook: './notion-social.png'
+  twitter: './notion-social.png'
+date:
+  published: 2020-05-19T20:00:00
+  modified: 2020-05-19T20:00:00
 ---
 
 Web performance isn’t going to save you in this crisis.
@@ -142,7 +141,7 @@ Turns out that’s bundle initialization:
     |
     | ```js
     | import formatDate from './formatDate.js';
-    | 
+    |
     | // ...
     | ```
     |
@@ -495,14 +494,14 @@ But how can we remove the latency in the real app?
 | ```js
 | app.get('*', (req, res) => {
 |   /* ... */
-|   
+|
 |   // Send the bundles so the browser can start loading them
 |   res.write(`
 |     <div id="notion-app"></div>
 |     <script src="/vendors-2b1c131a5683b1af62d9.js" defer></script>
 |     <script src="/app-c87b8b1572429828e701.js" defer></script>
 |   `);
-|   
+|
 |   // Send the initial state when it’s ready
 |   const stateJson = await getStateAsJsonObject();
 |   res.write(`

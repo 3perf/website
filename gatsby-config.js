@@ -174,7 +174,7 @@ module.exports = {
             serialize: ({ query: { site, allMarkdownRemark } }) => {
               return allMarkdownRemark.edges.map((edge) => {
                 const siteMeta = site.siteMetadata;
-                const postMeta = edge.node.frontmatter.blog;
+                const postMeta = edge.node.frontmatter;
 
                 return {
                   title: postMeta.title.visible,
@@ -214,23 +214,21 @@ module.exports = {
                       html
                       fields { slug }
                       frontmatter {
-                        blog {
-                          title {
-                            visible
-                          }
-                          date {
-                            published
-                          }
-                          author {
-                            name
-                          }
-                          socialImage {
-                            facebook {
-                              publicURL
-                            }
-                          }
-                          rssDescription
+                        title {
+                          visible
                         }
+                        date {
+                          published
+                        }
+                        author {
+                          name
+                        }
+                        socialImage {
+                          facebook {
+                            publicURL
+                          }
+                        }
+                        rssDescription
                       }
                     }
                   }

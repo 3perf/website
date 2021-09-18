@@ -1,28 +1,27 @@
 ---
-blog:
-  title:
-    visible: 'How to load polyfills only when needed'
-    social: 'How to load polyfills only when needed'
-    seo: 'How to load polyfills only when needed'
-  author:
-    id: iamakulov
-    name: Ivan Akulov
-    link: https://twitter.com/iamakulov
-    twitterId: iamakulov
-    facebookId: '100002052594007'
-  description: 'I was asked: “How does one serve polyfills only to browsers that need them?”'
-  rssDescription: |
-    We’ve been asked:
+title: 'How to load polyfills only when needed'
+alternativeTitles:
+  social: 'How to load polyfills only when needed'
+  seo: 'How to load polyfills only when needed'
+author:
+  id: iamakulov
+  name: Ivan Akulov
+  link: https://twitter.com/iamakulov
+  twitterId: iamakulov
+  facebookId: '100002052594007'
+description: 'I was asked: “How does one serve polyfills only to browsers that need them?”'
+rssDescription: |
+  We’ve been asked:
 
-    “These days, how do you typically serve polyfills only to browsers that need them?”
+  “These days, how do you typically serve polyfills only to browsers that need them?”
 
-    Turns out the answer is large enough for a full article!
-  socialImage:
-    facebook: './cover-facebook.png'
-    twitter: './cover-twitter.png'
-  date:
-    published: 2020-02-13T19:00:00
-    modified: 2020-02-13T19:00:00
+  Turns out the answer is large enough for a full article!
+socialImage:
+  facebook: './cover-facebook.png'
+  twitter: './cover-twitter.png'
+date:
+  published: 2020-02-13T19:00:00
+  modified: 2020-02-13T19:00:00
 ---
 
 A colleague asked me:
@@ -126,7 +125,7 @@ There’s a bunch of guides and plugins for bundles and frameworks that help to 
 {
   "presets": [
     ["env", {
-      // Specify browsers you’re targeting... 
+      // Specify browsers you’re targeting...
       "targets": "> 0.25%, not dead",
       // ...and either...
       "useBuiltIns": "entry",
