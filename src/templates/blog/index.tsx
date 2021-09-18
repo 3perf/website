@@ -79,20 +79,26 @@ const Component = ({ data }: ComponentProps) => {
             {seoTitle} · {siteMetadata.title}
           </title>
           <meta name="description" content={articleMeta.description} />
-          <meta
-            name="image"
-            content={
-              siteMetadata.siteUrl + articleMeta.socialImage.facebook.publicURL
-            }
-          />
+          {articleMeta.socialImage.facebook && (
+            <meta
+              name="image"
+              content={
+                siteMetadata.siteUrl +
+                articleMeta.socialImage.facebook.publicURL
+              }
+            />
+          )}
           <meta itemProp="name" content={seoTitle} />
           <meta itemProp="description" content={articleMeta.description} />
-          <meta
-            itemProp="image"
-            content={
-              siteMetadata.siteUrl + articleMeta.socialImage.facebook.publicURL
-            }
-          />
+          {articleMeta.socialImage.facebook && (
+            <meta
+              itemProp="image"
+              content={
+                siteMetadata.siteUrl +
+                articleMeta.socialImage.facebook.publicURL
+              }
+            />
+          )}
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:title" content={socialTitle} />
           <meta name="twitter:description" content={articleMeta.description} />
@@ -101,20 +107,25 @@ const Component = ({ data }: ComponentProps) => {
             name="twitter:creator"
             content={`@${authorDetails.twitterId}`}
           />
-          <meta
-            name="twitter:image:src"
-            content={
-              siteMetadata.siteUrl + articleMeta.socialImage.twitter.publicURL
-            }
-          />
+          {articleMeta.socialImage.twitter && (
+            <meta
+              name="twitter:image:src"
+              content={
+                siteMetadata.siteUrl + articleMeta.socialImage.twitter.publicURL
+              }
+            />
+          )}
           <meta name="og:title" content={socialTitle} />
           <meta name="og:description" content={articleMeta.description} />
-          <meta
-            name="og:image"
-            content={
-              siteMetadata.siteUrl + articleMeta.socialImage.facebook.publicURL
-            }
-          />
+          {articleMeta.socialImage.facebook && (
+            <meta
+              name="og:image"
+              content={
+                siteMetadata.siteUrl +
+                articleMeta.socialImage.facebook.publicURL
+              }
+            />
+          )}
           <meta name="og:site_name" content={siteMetadata.title} />
           <meta name="fb:admins" content={authorDetails.facebookId} />
           <meta name="og:type" content="article" />

@@ -188,7 +188,7 @@ module.exports = {
                     {
                       'content:encoded': edge.node.html,
                     },
-                    {
+                    postMeta.socialImage.facebook && {
                       'media:content': {
                         _attr: {
                           url:
@@ -198,7 +198,7 @@ module.exports = {
                         },
                       },
                     },
-                  ],
+                  ].filter(Boolean),
                 };
               });
             },
