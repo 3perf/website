@@ -30,33 +30,31 @@ interface ComponentProps {
       excerpt: string;
       html: string;
       frontmatter: {
-        blog: {
-          title: {
-            visible: string;
-            social: string;
-            seo: string;
+        title: string;
+        alternativeTitles?: {
+          social: string;
+          seo: string;
+        };
+        description: string;
+        date: {
+          published: string;
+          formattedPublished: string;
+          modified: string;
+          formattedModified: string;
+        };
+        socialImage: {
+          facebook: {
+            publicURL: string;
           };
-          description: string;
-          date: {
-            published: string;
-            formattedPublished: string;
-            modified: string;
-            formattedModified: string;
+          twitter: {
+            publicURL: string;
           };
-          socialImage: {
-            facebook: {
-              publicURL: string;
-            };
-            twitter: {
-              publicURL: string;
-            };
-          };
-          author: {
-            name: string;
-            link: string;
-            twitterId: string;
-            facebookId: string;
-          };
+        };
+        author: {
+          name: string;
+          link: string;
+          twitterId: string;
+          facebookId: string;
         };
       };
     };
@@ -66,21 +64,12 @@ interface ComponentProps {
 const Component = ({ data }: ComponentProps) => {
   const siteMetadata = data.site.siteMetadata;
   const page = data.markdownRemark;
-  const articleMeta = page.frontmatter.blog;
+  const articleMeta = page.frontmatter;
   const authorDetails = articleMeta.author;
 
-  const visibleTitle =
-    typeof articleMeta.title === 'string'
-      ? articleMeta.title
-      : articleMeta.title.visible;
-  const socialTitle =
-    typeof articleMeta.title === 'string'
-      ? articleMeta.title
-      : articleMeta.title.social;
-  const seoTitle =
-    typeof articleMeta.title === 'string'
-      ? articleMeta.title
-      : articleMeta.title.seo;
+  const visibleTitle = articleMeta.title;
+  const socialTitle = articleMeta.alternativeTitles?.social || visibleTitle;
+  const seoTitle = articleMeta.alternativeTitles?.seo || visibleTitle;
 
   return (
     <Layout>
@@ -197,33 +186,31 @@ export const pageQuery = graphql`
       excerpt(pruneLength: 160)
       html
       frontmatter {
-        blog {
-          title {
-            visible
-            social
-            seo
+        title
+        alternativeTitles {
+          social
+          seo
+        }
+        description
+        date {
+          published
+          formattedPublished: published(formatString: "D MMMM YYYY")
+          modified
+          formattedModified: modified(formatString: "D MMMM YYYY")
+        }
+        socialImage {
+          facebook {
+            publicURL
           }
-          description
-          date {
-            published
-            formattedPublished: published(formatString: "D MMMM YYYY")
-            modified
-            formattedModified: modified(formatString: "D MMMM YYYY")
+          twitter {
+            publicURL
           }
-          socialImage {
-            facebook {
-              publicURL
-            }
-            twitter {
-              publicURL
-            }
-          }
-          author {
-            name
-            link
-            twitterId
-            facebookId
-          }
+        }
+        author {
+          name
+          link
+          twitterId
+          facebookId
         }
       }
     }

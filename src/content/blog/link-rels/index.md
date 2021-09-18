@@ -1,28 +1,27 @@
 ---
-blog:
-  title:
-    visible: 'Preload, prefetch and other <link> tags'
-    social: 'Preload, prefetch and other <link> tags: what they do and when to use them'
-    seo: 'Preload, prefetch and other <link> tags: what they do and when to use them'
-  author:
-    id: iamakulov
-    name: Ivan Akulov
-    link: https://twitter.com/iamakulov
-    twitterId: iamakulov
-    facebookId: '100002052594007'
-  description: ''
-  rssDescription: |
-    Did you know HTML has as much as 5 different tags to preload something? We wrote a detailed deep-dive into each of them.<br /><br />
+title: 'Preload, prefetch and other <link> tags'
+alternativeTitles:
+  social: 'Preload, prefetch and other <link> tags: what they do and when to use them'
+  seo: 'Preload, prefetch and other <link> tags: what they do and when to use them'
+author:
+  id: iamakulov
+  name: Ivan Akulov
+  link: https://twitter.com/iamakulov
+  twitterId: iamakulov
+  facebookId: '100002052594007'
+description: ''
+rssDescription: |
+  Did you know HTML has as much as 5 different tags to preload something? We wrote a detailed deep-dive into each of them.<br /><br />
 
-    🔬 How they look<br />
-    ⚙️ What they do<br />
-    🤷 And when to use each one<br />
-  socialImage:
-    facebook: './cover-facebook.png'
-    twitter: './cover-twitter.png'
-  date:
-    published: 2019-03-18T20:00:00
-    modified: 2021-05-11T12:00:00
+  🔬 How they look<br />
+  ⚙️ What they do<br />
+  🤷 And when to use each one<br />
+socialImage:
+  facebook: './cover-facebook.png'
+  twitter: './cover-twitter.png'
+date:
+  published: 2019-03-18T20:00:00
+  modified: 2021-05-11T12:00:00
 ---
 
 There’re lots of ways to improve web performance (see [Web Performance 101](http://3perf.com/talks/web-perf-101) for a full overview). One of those ways is to preload content you’ll need later in advance. Prefetch a CSS file, prerender a full page, or resolve a domain ahead of time – and you won’t have to wait for it when it’s actually needed! Sounds cool.
