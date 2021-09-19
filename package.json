@@ -35,12 +35,7 @@
     "ts-assert-exists": "^1.0.4"
   },
   "scripts": {
-    "install-build-deps": "pip3 install fonttools brotli zopfli || pip install fonttools brotli zopfli",
-    "build-gatsby": "gatsby build",
-    "optimize-fonts": "yarn optimize-fonts:landings && yarn optimize-fonts:content",
-    "optimize-fonts:landings": "cd public && find . -type f -name '*.html' | grep -v -E '(blog|talks)' | xargs subfont --root . --canonical-root https://3perf.com/ --formats woff2 --in-place --inline-css",
-    "optimize-fonts:content": "cd public && find . -type f -name '*.html' | grep -E '(blog|talks)' | xargs subfont --root . --canonical-root https://3perf.com/ --formats woff2 --in-place --inline-css",
-    "build": "yarn install-build-deps && yarn build-gatsby && yarn optimize-fonts",
+    "build": "gatsby build",
     "develop": "cross-env GATSBY_MAILCHIMP_3PERF_SUBSCRIBERS=FAKE_URL gatsby develop",
     "build-locally": "cross-env GATSBY_MAILCHIMP_3PERF_SUBSCRIBERS=FAKE_URL yarn build",
     "format": "prettier --write 'src/**/*.{ts,tsx}'",
