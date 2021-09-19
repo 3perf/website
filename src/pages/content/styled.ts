@@ -73,8 +73,8 @@ export const ItemTitle = styled.div`
 
   ${linkStyles}
 
-  ${ItemLink}:hover &, 
-  ${ItemLink}:focus &, 
+  ${ItemLink}:hover &,
+  ${ItemLink}:focus &,
   ${ItemLink}:active & {
     ${linkActiveStyles}
   }
@@ -97,7 +97,7 @@ export const BadgeImage = styled.img`
   margin-top: ${gridSize}px;
 `;
 
-export const NewBadge = styled.span`
+export const Badge = styled.span`
   border-radius: 2px;
   padding: 2px 8px;
 
@@ -108,6 +108,7 @@ export const NewBadge = styled.span`
   font-size: ${sizes.fontSmall}px;
   text-transform: uppercase;
   letter-spacing: 1px;
+  white-space: nowrap;
 
   transform: translateX(${gridSize}px);
 `;
