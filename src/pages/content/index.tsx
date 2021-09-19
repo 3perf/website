@@ -215,7 +215,7 @@ const ContentPage = (props: ContentPageProps) => {
               }
             />
             <ContentItem
-              link="https://twitter.com/iamakulov/status/1287067800884981764"
+              link="https://twitter.com/iamakulov/status/1385230664648253443"
               title="Antipattern: objects in React contexts"
             />
           </Section>
