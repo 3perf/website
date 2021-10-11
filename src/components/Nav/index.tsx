@@ -5,9 +5,9 @@ const Nav = (props: NavBaseProps) => (
   <NavBase
     primaryItems={[
       { title: 'Services', href: '/#services' },
-      { title: 'Cases', href: '/#clients' },
-      { title: 'Articles', href: '/content' },
-      { title: 'About us', href: '/#about' },
+      { title: 'Client Stories', href: '/#clients' },
+      { title: 'Case Studies & Guides', href: '/content' },
+      { title: 'About Us', href: '/#about' },
     ]}
     secondaryItems={[
       { title: 'perf@3perf.com', href: 'mailto:perf@3perf.com' },
