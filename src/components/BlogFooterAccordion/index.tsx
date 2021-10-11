@@ -12,7 +12,7 @@ const stuffToPromote = [
   },
   {
     imageKey: 'content',
-    title: 'Articles & open-source tools',
+    title: 'Case studies, guides, and open-source tools',
     href: '/content',
   },
 
@@ -51,7 +51,9 @@ const BlogFooterAccordion = ({ className }: BlogFooterAccordionProps) => (
           }
         }
 
-        content: file(relativePath: { eq: "BlogFooterAccordion/content.png" }) {
+        content: file(
+          relativePath: { eq: "BlogFooterAccordion/content-views.png" }
+        ) {
           childImageSharp {
             fixed(height: 130) {
               ...ImageFixed
