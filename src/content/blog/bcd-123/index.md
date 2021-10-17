@@ -67,8 +67,6 @@ https://twitter.com/iamakulov/status/1353650639662952448/photo/1
 
 https://twitter.com/iamakulov/status/1353650650438119424/photo/1
 
-
-
 — /\*#​\_\_PURE\_\_\*/ annotations were documented on the Terser website, along with a couple others: [https://terser.org/docs/api-reference.html#annotations…](https://t.co/ieCyZdFq3R?amp=1) 
 
 — This topic remains my favorite conference trivia (because /\*#​\_\_PURE\_\_\*/ plays a huge role today, and I rarely meet people who know about it!)
