@@ -35,15 +35,11 @@ This is bad for performance – for two reasons.
 
    you’re importing not only Button but the whole ‘./components’ file. Which means you’re \*bundling\* the whole file – with all the components it exports.
 
-
-
 Example. Say, we have a huge Icon component. Icon is used only in code that you’re code-splitting using import() 
 
 We’d want Icon to be code-split as well, right? 
 
 Due to the above, that won’t happen! Because the main chunk imports Button from ./components – and takes Icon with it
-
-
 
 And this adds up. 
 
@@ -51,22 +47,16 @@ For one of clients I worked with, replacing the \`./components/index.js\` file w
 
 https://twitter.com/iamakulov/status/1331551364636413953/photo/1
 
-
-
 2. It makes bundle initialization more expensive. \
    Every time a browser downloads the bundle, it has to execute it – and all its modules as well. If there’re a lot of modules, or some of them do something expensive, this can take a while.
 
 https://twitter.com/iamakulov/status/1331551374639853568/photo/1
-
-
 
 When you’re doing reexports, if you are importing \*all\* components into the main chunk – even the ones the chunk doesn’t need. 
 
 As a result, you’re making the main chunk initialize for longer. 
 
 This worsens your TTI/TBT.
-
-
 
 And this also adds up. 
 
@@ -76,15 +66,11 @@ So, reexport files are convenient – but performance-wise, I’d say you should
 
 </thread>
 
-
-
 “But shouldn’t tree shaking help?” 
 
 Tree shaking still works as expected here – it still drops all unused components (“unused” as in “unused in the application”). 
 
 Tree shaking just doesn’t apply to components that are used in the app but are unused in the current chunk.
-
-
 
 And this appears to be a great workaround for webpack (+ ESBuild, + other bundlers that support sideEffects: false):
 
