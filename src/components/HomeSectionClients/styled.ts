@@ -9,14 +9,31 @@ import fatLlamaUrl from './fat-llama.svg';
 import framerUrl from './framer.svg';
 import googleUrl from './google.svg';
 
-export const HomeLeftRightWrapper = styled(_HomeLeftRightWrapper)`
-  & + & {
-    margin-top: 36px;
-  }
+export const CasesItemsContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
 `;
 
 const leftSpacing = 30;
 export const Content = styled.div`
+  flex-basis: 100%;
+  margin-bottom: 48px;
+  :nth-last-child(1) {
+    margin-bottom: 0px;
+  }
+  font-size: 16px;
+
+  ${media.notSmall`
+    flex-basis: 50%;
+    :nth-child(odd) {
+      padding-right: 72px;
+    }
+    :nth-last-child(2) {
+      margin-bottom: 0px;
+    }
+  }
+  `};
+
   ul + blockquote,
   p + blockquote,
   blockquote + ul,
@@ -55,10 +72,7 @@ export const Content = styled.div`
 
 export const LogoText = styled.div`
   margin-bottom: ${sizes.paragraphSpacing}px;
-
-  ${media.notSmall`
-    font-size: 0.75em;
-  `};
+  font-size: 0.75em;
 `;
 
 const Logo = styled.img`
@@ -69,6 +83,19 @@ const Logo = styled.img`
   ${media.notSmall`
     margin-top: 10px;
   `};
+`;
+
+export const TagContainer = styled.div`
+  margin-top: 4px;
+
+  div {
+    display: inline-block;
+    background: ${colors.brightYellow};
+    margin-top: 4px;
+    padding: 2px 8px;
+    border-radius: 2px;
+    margin-right: 8px;
+  }
 `;
 
 export const Mark = styled.mark`
