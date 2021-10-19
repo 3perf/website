@@ -84,6 +84,10 @@ export const Link = styled.a`
 
 export const PromptContainer = styled.div`
   margin-top: ${gridSize * 6}px;
+
+  ${media.small`
+    margin-top: ${gridSize * 3}px;
+  `}
 `;
 
 export const Contact = styled.span`
