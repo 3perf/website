@@ -21,11 +21,11 @@ import {
   Slides,
   Video,
 } from '../styled';
+import socialCoverUrl from './cover.png';
 import nonProgressiveGif from './progressive-gifs/non-progressive.gif';
 import progressiveGif from './progressive-gifs/progressive.gif';
 import fontsLoadingUrl from './slides/fonts-loading.mp4';
 import httpCdnUrl from './slides/http-cdn.svg';
-import indexCoverUrl from './slides/index.png';
 import jsScriptsBlockParsing1Url from './slides/js-scripts-block-parsing-1.svg';
 import perfImportanceDigitsUrl from './slides/perf-importance-digits.svg';
 import toolsWebpackBundleAnalyzer from './slides/tools-webpack-bundle-analyzer.mp4';
@@ -75,7 +75,7 @@ interface WebPerf101PageProps {
   };
 }
 
-const resolvedCoverUrl = `https://3perf.com${indexCoverUrl}`;
+const fullSocialCoverUrl = `https://3perf.com${socialCoverUrl}`;
 
 const publishedDate = new Date(2018, 9, 25);
 const lastUpdatedDate = new Date(2021, 6, 21);
@@ -106,7 +106,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             name="description"
             content="Learn how (and why) to make your app faster by optimizing JS, CSS, images/fonts and other things"
           />
-          <meta name="image" content={resolvedCoverUrl} />
+          <meta name="image" content={fullSocialCoverUrl} />
           <meta
             itemProp="name"
             content="Web Performance 101: JS, CSS, HTTP, images & fonts"
@@ -115,7 +115,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             itemProp="description"
             content="Learn how (and why) to make your app faster by optimizing JS, CSS, images/fonts and other things"
           />
-          <meta itemProp="image" content={resolvedCoverUrl} />
+          <meta itemProp="image" content={fullSocialCoverUrl} />
           <meta name="twitter:card" content="summary_large_image" />
           <meta
             name="twitter:title"
@@ -127,7 +127,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
           />
           <meta name="twitter:site" content="@3perfcom" />
           <meta name="twitter:creator" content="@iamakulov" />
-          <meta name="twitter:image:src" content={resolvedCoverUrl} />
+          <meta name="twitter:image:src" content={fullSocialCoverUrl} />
           <meta
             name="og:title"
             content="Web Performance 101: JS, CSS, HTTP, images & fonts"
@@ -140,7 +140,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             property="og:url"
             content="https://3perf.com/talks/web-perf-101/"
           />
-          <meta property="og:image" content={resolvedCoverUrl} />
+          <meta property="og:image" content={fullSocialCoverUrl} />
           <meta property="og:site_name" content="PerfPerfPerf" />
           <meta property="fb:admins" content="100002052594007" />
           <meta property="og:type" content="article" />
@@ -152,7 +152,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
               headline: 'Web Performance 101: JS, CSS, HTTP, images & fonts',
               description:
                 'Learn how (and why) to make your app faster by optimizing JS, CSS, images/fonts and other things',
-              image: resolvedCoverUrl,
+              image: fullSocialCoverUrl,
               author: {
                 '@type': 'Person',
                 name: 'Ivan Akulov',
