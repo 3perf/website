@@ -55,6 +55,8 @@ export const Link = styled.a`
   border-bottom: none;
   text-decoration: underline;
 
+  white-space: nowrap;
+
   ${media.small`
     font-size: calc(10vw);
   `};
