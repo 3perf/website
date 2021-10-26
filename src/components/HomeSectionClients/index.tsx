@@ -12,6 +12,7 @@ import {
   CommonLogo,
   TagContainer,
   CasesItemsContainer,
+  Tag,
 } from './styled';
 
 const ClientsSection = () => (
@@ -20,14 +21,14 @@ const ClientsSection = () => (
       <Content>
         <LogoText>
           <GoogleLogo />
-          <p>
-            We worked with Google on educating developers about web performance.
-            This targets the long-term goal of making the web faster.
-          </p>
           <TagContainer>
-            <div>#education</div>
+            <Tag>education</Tag>
           </TagContainer>
         </LogoText>
+        <p>
+          We worked with Google on educating developers about web performance.
+          This targets the long-term goal of making the web faster.
+        </p>
         <ul>
           <li>
             <a href="https://developers.google.com/web/fundamentals/performance/webpack/decrease-frontend-size">
@@ -70,9 +71,9 @@ const ClientsSection = () => (
             interactive interface design – one of the hottest ones, today.
           </p>
           <TagContainer>
-            <div>#react-performance</div>
-            <div>#build-performance</div>
-            <div>#core-web-vitals</div>
+            <Tag>react performance</Tag>
+            <Tag>build performance</Tag>
+            <Tag>core web vitals</Tag>
           </TagContainer>
         </LogoText>
         <p>
@@ -112,8 +113,8 @@ const ClientsSection = () => (
             that makes clinical trials easier.
           </p>
           <TagContainer>
-            <div>#react-performance</div>
-            <div>#core-web-vitals</div>
+            <Tag>react performance</Tag>
+            <Tag>core web vitals</Tag>
           </TagContainer>
         </LogoText>
         <p>We made Castor’s React design system load and execute faster.</p>
@@ -141,8 +142,8 @@ const ClientsSection = () => (
             platform for building internal apps.
           </p>
           <TagContainer>
-            <div>#react-performance</div>
-            <div>#core-web-vitals</div>
+            <Tag>react performance</Tag>
+            <Tag>core web vitals</Tag>
           </TagContainer>
         </LogoText>
         <p>
@@ -162,7 +163,7 @@ const ClientsSection = () => (
             company. They pride themselves on the design of their housing.
           </p>
           <TagContainer>
-            <div>#core-web-vitals</div>
+            <Tag>core web vitals</Tag>
           </TagContainer>
         </LogoText>
         <p>
@@ -193,7 +194,7 @@ const ClientsSection = () => (
             anything) from other people.
           </p>
           <TagContainer>
-            <div>#core-web-vitals</div>
+            <Tag>core web vitals</Tag>
           </TagContainer>
         </LogoText>
         <p>

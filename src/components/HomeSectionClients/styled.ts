@@ -9,28 +9,25 @@ import fatLlamaUrl from './fat-llama.svg';
 import framerUrl from './framer.svg';
 import googleUrl from './google.svg';
 
+const casesHorizontalGap = 72;
+
 export const CasesItemsContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
+  gap: 48px ${casesHorizontalGap}px;
 `;
 
 const leftSpacing = 30;
 export const Content = styled.div`
   flex-basis: 100%;
-  margin-bottom: 48px;
+  font-size: 16px;
+
   :nth-last-child(1) {
     margin-bottom: 0px;
   }
-  font-size: 16px;
 
   ${media.notSmall`
-    flex-basis: 50%;
-    :nth-child(odd) {
-      padding-right: 72px;
-    }
-    :nth-last-child(2) {
-      margin-bottom: 0px;
-    }
+    flex-basis: calc(50% - ${casesHorizontalGap / 2}px);
   }
   `};
 
@@ -86,16 +83,17 @@ const Logo = styled.img`
 `;
 
 export const TagContainer = styled.div`
-  margin-top: 4px;
+  margin-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 8px;
+`;
 
-  div {
-    display: inline-block;
-    background: ${colors.brightYellow};
-    margin-top: 4px;
-    padding: 2px 8px;
-    border-radius: 2px;
-    margin-right: 8px;
-  }
+export const Tag = styled.div`
+  flex: none;
+  background: ${colors.brightYellow};
+  padding: 2px 8px;
+  border-radius: 2px;
 `;
 
 export const Mark = styled.mark`
