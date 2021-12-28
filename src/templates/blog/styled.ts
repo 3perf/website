@@ -262,7 +262,7 @@ const tocStyles = css`
     }
 
     /* Overwrite default p + ul styles */
-    :is(p, ul) + :is(p, ul) {
+    *:is(p, ul) + *:is(p, ul) {
       margin-top: 0;
     }
   }
@@ -317,7 +317,7 @@ export const Content = styled.article`
   ${noteStyles}
 
   /* Random */
-  :is(p, .custom-block, .gatsby-highlight, ul, ol) + :is(p, .custom-block, .gatsby-highlight, ul, ol) {
+  *:is(p, .custom-block, .gatsby-highlight, ul, ol) + *:is(p, .custom-block, .gatsby-highlight, ul, ol) {
     margin-top: ${sizes.paragraphSpacing}px;
   }
 
