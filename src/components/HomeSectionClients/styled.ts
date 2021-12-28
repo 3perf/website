@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import media from '../../styles/media';
-import { sizes, colors } from '../../styles/variables';
-import _HomeLeftRightWrapper from '../HomeLeftRightWrapper';
+import { sizes, colors, gridSize } from '../../styles/variables';
 import appsmithUrl from './appsmith.svg';
 import castorUrl from './castor.svg';
 import commonUrl from './common.svg';
@@ -28,7 +27,6 @@ export const Content = styled.div`
 
   ${media.notSmall`
     flex-basis: calc(50% - ${casesHorizontalGap / 2}px);
-  }
   `};
 
   ul + blockquote,
