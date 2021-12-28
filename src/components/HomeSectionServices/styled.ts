@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import media from '../../styles/media';
-import { gridSize } from '../../styles/variables';
+import { gridSize, sizes } from '../../styles/variables';
 import _ActionButton from '../ActionButton';
 import _Image from '../Image';
 import _Section from '../Section';
@@ -21,7 +21,31 @@ export const MobileImage = styled(_Image)``;
 
 export const DesktopImage = styled(_Image)``;
 
-export const Text = styled.div``;
+export const Blockquote = styled.blockquote`
+  margin: 0;
+  padding: 12px 0 16px 25px;
+  border-left: 5px solid #000;
+  font-size: 0.75em;
+`;
+
+export const BlockquoteText = styled.p``;
+
+export const BlockquoteFooter = styled.footer`
+  margin-top: ${gridSize}px;
+  font-size: 0.75em;
+  color: #777;
+
+  &::before {
+    content: '— ';
+  }
+`;
+
+export const Text = styled.div`
+  p + p,
+  p + ${Blockquote}, ${Blockquote} + p {
+    margin-top: ${sizes.paragraphSpacing}px;
+  }
+`;
 
 interface ImageTextProps {
   direction: 'forward' | 'reverse';
