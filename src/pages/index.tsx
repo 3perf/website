@@ -53,11 +53,11 @@ const IndexPage = ({ data }: IndexPageProps) => (
       <title>PerfPerfPerf · Web performance consulting</title>
       <meta
         name="description"
-        content="We’re helping companies to earn more by making web apps faster. We worked with Google, Framer, Common, CMTT and others"
+        content="We help companies to make their web apps faster and increase their revenue. We worked with Google, Framer, Common, CMTT and others"
       />
       <meta
         name="keywords"
-        content="perf perf perf, performance, performance consulting, performance optimization, performance agency, performance company, web performance, web performance optimization, web performance consulting"
+        content="perf perf perf, performance, performance consulting, performance optimization, performance agency, performance company, web performance, web performance optimization, web performance consulting, react performance consulting, react performance optimization"
       />
     </Helmet>
     <Content>
@@ -70,7 +70,7 @@ const IndexPage = ({ data }: IndexPageProps) => (
             navKind={NavKind.Light}
           />
           <Header>
-            <H1>Make your site faster → earn more</H1>
+            <H1>Make your site or web app faster → increase revenue</H1>
           </Header>
           <ActionButton kind="light" href="#contact">
             Get a quote
