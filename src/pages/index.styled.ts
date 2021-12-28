@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 import _ActionButton from '../components/ActionButton';
 import _ContactSection from '../components/HomeSectionContact';
 import _Link from '../components/Link';
@@ -7,17 +7,57 @@ import media from '../styles/media';
 import { linkActiveStyles } from '../styles/shared-styles';
 import { colors, sizes, gridSize } from '../styles/variables';
 
+const listAndBlockquoteInnerSpacing = 24;
+export const IndexPageGlobalStyles = createGlobalStyle`
+  body {
+    --homepage-font-size-regular: ${sizes.fontLarge}px;
+    --homepage-font-size-small: ${sizes.fontDefault}px;
+
+    font-size: var(--homepage-font-size-regular);
+
+    ${media.small`
+      --homepage-font-size-regular: ${sizes.fontDefault}px;
+      --homepage-font-size-small: ${sizes.fontSmall}px;
+    `}
+  }
+
+  :is(ul, blockquote, p) + :is(ul, blockquote, p) {
+    margin-top: ${sizes.paragraphSpacing}px;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding-left: ${listAndBlockquoteInnerSpacing}px;
+  }
+
+  li::before {
+    content: '—';
+    position: absolute;
+    transform: translateX(-${listAndBlockquoteInnerSpacing}px);
+  }
+
+  blockquote {
+    margin: 0;
+    padding: ${gridSize * 1.5}px 0 ${gridSize * 2}px
+      ${listAndBlockquoteInnerSpacing - 4}px;
+    border-left: 4px solid #eee;
+  }
+
+  blockquote footer {
+    margin-top: ${gridSize}px;
+    font-size: var(--homepage-font-size-small);
+    color: #777;
+
+    &::before {
+      content: '— ';
+    }
+  }
+`;
+
 const Background = styled.div`
   // Make the component wrap margins of nested elements
   overflow: hidden;
-`;
-
-export const Content = styled.div`
-  font-size: ${sizes.fontLarge}px;
-
-  ${media.small`
-    font-size: ${sizes.fontDefault}px;
-  `};
 `;
 
 export const HeaderBackground = styled(Background)`

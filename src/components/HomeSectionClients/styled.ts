@@ -8,66 +8,29 @@ import fatLlamaUrl from './fat-llama.svg';
 import framerUrl from './framer.svg';
 import googleUrl from './google.svg';
 
-const casesHorizontalGap = 72;
-
 export const CasesItemsContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 48px ${casesHorizontalGap}px;
-`;
+  display: grid;
+  gap: ${6 * gridSize}px ${9 * gridSize}px;
 
-const leftSpacing = 30;
-export const Content = styled.div`
-  flex-basis: 100%;
-  font-size: 16px;
+  /* Keep the font size consistent across desktop and mobile */
+  --homepage-font-size-regular: ${sizes.fontDefault}px;
+  --homepage-font-size-small: ${sizes.fontSmall}px;
+  font-size: var(--homepage-font-size-regular);
 
-  :nth-last-child(1) {
-    margin-bottom: 0px;
-  }
+  ${media.small`
+    grid-template-columns: 1fr;
+  `}
 
   ${media.notSmall`
-    flex-basis: calc(50% - ${casesHorizontalGap / 2}px);
-  `};
-
-  ul + blockquote,
-  p + blockquote,
-  blockquote + ul,
-  p + ul {
-    margin-top: ${sizes.paragraphSpacing}px;
-  }
-
-  ul {
-    list-style: none;
-    margin: 0;
-    padding-left: ${leftSpacing}px;
-  }
-
-  li::before {
-    content: '—';
-    position: absolute;
-    transform: translateX(-${leftSpacing}px);
-  }
-
-  blockquote {
-    margin: 0;
-    padding: 12px 0 16px ${leftSpacing - 5}px;
-    border-left: 5px solid #eee;
-  }
-
-  blockquote footer {
-    margin-top: ${gridSize}px;
-    font-size: 0.75em;
-    color: #777;
-
-    &::before {
-      content: '— ';
-    }
-  }
+    grid-template-columns: 1fr 1fr;
+  `}
 `;
+
+export const Content = styled.div``;
 
 export const LogoText = styled.div`
   margin-bottom: ${sizes.paragraphSpacing}px;
-  font-size: 0.75em;
+  font-size: var(--homepage-font-size-small);
 `;
 
 const Logo = styled.img`

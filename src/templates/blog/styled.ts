@@ -5,7 +5,6 @@ import _MailchimpSubscribe from '../../components/MailchimpSubscribe';
 import _Nav from '../../components/Nav';
 import codeHighlightStyles from '../../styles/code-highlight-styles';
 import media from '../../styles/media';
-import { anyPlusAny } from '../../styles/mixins';
 import { colors, gridSize, sizes } from '../../styles/variables';
 
 //////////////////////////////////////////////////////////////////////
@@ -263,9 +262,9 @@ const tocStyles = css`
     }
 
     /* Overwrite default p + ul styles */
-    ${anyPlusAny('p', 'ul')`
+    :is(p, ul) + :is(p, ul) {
       margin-top: 0;
-    `}
+    }
   }
 
   .toc__header {
@@ -318,9 +317,9 @@ export const Content = styled.article`
   ${noteStyles}
 
   /* Random */
-  ${anyPlusAny('p', '.custom-block', '.gatsby-highlight', 'ul', 'ol')`
+  :is(p, .custom-block, .gatsby-highlight, ul, ol) + :is(p, .custom-block, .gatsby-highlight, ul, ol) {
     margin-top: ${sizes.paragraphSpacing}px;
-  `}
+  }
 
   blockquote {
     margin: ${sizes.paragraphSpacing}px 0;

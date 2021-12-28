@@ -16,8 +16,6 @@ import {
   Section,
   SvgMask,
   Blockquote,
-  BlockquoteText,
-  BlockquoteFooter,
 } from './styled';
 
 interface ServicesSectionProps {
@@ -66,15 +64,15 @@ const ServicesSection = ({ className = '', data }: ServicesSectionProps) => (
           optimizations themselves.
         </p>
         <Blockquote>
-          <BlockquoteText>
+          <p>
             I want to marry that audit document ❤️ the level of detail,
             including going through our own codebase and pin-pointing where
             exactly improvements need to happen, it’s just... wow
-          </BlockquoteText>
-          <BlockquoteFooter>
+          </p>
+          <footer>
             <a href="https://twitter.com/heypiotr">Piotr Krawiec</a>, Product
             Engineer @ Framer
-          </BlockquoteFooter>
+          </footer>
         </Blockquote>
         <Note>
           <strong>Want an example?</strong> See this{' '}
