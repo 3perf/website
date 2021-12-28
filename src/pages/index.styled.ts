@@ -112,7 +112,7 @@ export const Header = styled.header`
 
 export const H1 = styled.h1`
   margin: 0;
-  font-size: 60px;
+  font-size: 48px;
   line-height: 1.2;
   font-weight: 900;
 

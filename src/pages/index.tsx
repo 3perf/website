@@ -70,7 +70,7 @@ const IndexPage = ({ data }: IndexPageProps) => (
           navKind={NavKind.Light}
         />
         <Header>
-          <H1>Make your site or web app faster → increase revenue</H1>
+          <H1>Make your site or web&nbsp;app faster → increase revenue</H1>
         </Header>
         <ActionButton kind="light" href="#contact">
           Get a quote
