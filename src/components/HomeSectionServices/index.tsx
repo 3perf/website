@@ -15,6 +15,9 @@ import {
   H3,
   Section,
   SvgMask,
+  Blockquote,
+  BlockquoteText,
+  BlockquoteFooter,
 } from './styled';
 
 interface ServicesSectionProps {
@@ -62,6 +65,17 @@ const ServicesSection = ({ className = '', data }: ServicesSectionProps) => (
           about their website performance, and that is ready to implement all
           optimizations themselves.
         </p>
+        <Blockquote>
+          <BlockquoteText>
+            I want to marry that audit document ❤️ the level of detail,
+            including going through our own codebase and pin-pointing where
+            exactly improvements need to happen, it’s just... wow
+          </BlockquoteText>
+          <BlockquoteFooter>
+            <a href="https://twitter.com/heypiotr">Piotr Krawiec</a>, Product
+            Engineer @ Framer
+          </BlockquoteFooter>
+        </Blockquote>
         <Note>
           <strong>Want an example?</strong> See this{' '}
           <a href="/blog/notion/">public Notion case study</a>.
