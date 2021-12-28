@@ -21,7 +21,7 @@ export const IndexPageGlobalStyles = createGlobalStyle`
     `}
   }
 
-  :is(ul, blockquote, p) + :is(ul, blockquote, p) {
+  *:is(ul, blockquote, p) + *:is(ul, blockquote, p) {
     margin-top: ${sizes.paragraphSpacing}px;
   }
 
