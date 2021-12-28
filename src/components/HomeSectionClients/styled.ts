@@ -55,7 +55,7 @@ export const Content = styled.div`
   }
 
   blockquote footer {
-    margin-top: 10px;
+    margin-top: ${gridSize}px;
     font-size: 0.75em;
     color: #777;
 
