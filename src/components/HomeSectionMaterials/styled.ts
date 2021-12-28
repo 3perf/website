@@ -41,5 +41,5 @@ export const LinkBlock = styled(Link)`
 `;
 
 export const LinkDescription = styled.div`
-  font-size: 0.75em;
+  font-size: var(--homepage-font-size-small);
 `;

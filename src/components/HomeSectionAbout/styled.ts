@@ -22,18 +22,17 @@ export const Links = styled.div`
 
 export const Wrapper = styled.div`
   ${media.notSmall`
-      display: flex;
+    display: flex;
 
-      ${Primary} {
-        flex: 7;
-        margin: 0 60px 24px 0;
-      }
+    ${Primary} {
+      flex: 7;
+      margin: 0 60px 24px 0;
+    }
 
-      ${Links} {
-        
-        flex: 4;
-      }
-    `}
+    ${Links} {
+      flex: 4;
+    }
+  `}
 `;
 
 export const LinkWrapper = styled.div`

@@ -21,31 +21,7 @@ export const MobileImage = styled(_Image)``;
 
 export const DesktopImage = styled(_Image)``;
 
-export const Blockquote = styled.blockquote`
-  margin: 0;
-  padding: 12px 0 16px 25px;
-  border-left: 5px solid #000;
-  font-size: 0.75em;
-`;
-
-export const BlockquoteText = styled.p``;
-
-export const BlockquoteFooter = styled.footer`
-  margin-top: ${gridSize}px;
-  font-size: 0.75em;
-  color: #777;
-
-  &::before {
-    content: '— ';
-  }
-`;
-
-export const Text = styled.div`
-  p + p,
-  p + ${Blockquote}, ${Blockquote} + p {
-    margin-top: ${sizes.paragraphSpacing}px;
-  }
-`;
+export const Text = styled.div``;
 
 interface ImageTextProps {
   direction: 'forward' | 'reverse';
@@ -118,7 +94,13 @@ export const ImageText = styled.div<ImageTextProps>`
 `;
 
 export const Note = styled.p`
-  font-size: 0.75em;
+  ${media.small`
+    font-size: ${sizes.fontSmall}px;
+  `}
+
+  ${media.notSmall`
+    font-size: ${sizes.fontDefault}px;
+  `}
 `;
 
 export const Columns = styled.div`
@@ -152,4 +134,17 @@ export const H3 = styled.h3`
 
 export const ActionButton = styled(_ActionButton)`
   margin-top: ${gridSize * 8}px;
+`;
+
+export const Blockquote = styled.blockquote`
+  border-left-color: #000;
+
+  /* Customize the desktop appearance */
+  ${media.notSmall`
+    font-size: var(--homepage-font-size-small);
+
+    footer {
+      font-size: ${sizes.fontSmall}px;
+    }
+  `}
 `;
