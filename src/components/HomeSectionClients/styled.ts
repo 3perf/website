@@ -3,10 +3,10 @@ import media from '../../styles/media';
 import { sizes, colors, gridSize } from '../../styles/variables';
 import appsmithUrl from './appsmith.svg';
 import castorUrl from './castor.svg';
-import commonUrl from './common.svg';
-import fatLlamaUrl from './fat-llama.svg';
+import finderUrl from './finder.svg';
 import framerUrl from './framer.svg';
 import googleUrl from './google.svg';
+import hugoUrl from './hugo.svg';
 
 export const CasesItemsContainer = styled.div`
   display: grid;
@@ -75,14 +75,14 @@ export const AppsmithLogo = styled(Logo).attrs({
   src: appsmithUrl,
 })``;
 
-export const FatLlamaLogo = styled(Logo).attrs({
-  src: fatLlamaUrl,
+export const HugoLogo = styled(Logo).attrs({
+  src: hugoUrl,
 })``;
 
 export const FramerLogo = styled(Logo).attrs({
   src: framerUrl,
 })``;
 
-export const CommonLogo = styled(Logo).attrs({
-  src: commonUrl,
+export const FinderLogo = styled(Logo).attrs({
+  src: finderUrl,
 })``;
