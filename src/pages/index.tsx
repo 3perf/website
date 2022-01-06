@@ -24,6 +24,7 @@ import {
   SectionWrapper,
   ServicesBackground,
   IndexPageGlobalStyles,
+  Mark,
 } from './index.styled';
 
 interface IndexPageProps {
@@ -70,7 +71,10 @@ const IndexPage = ({ data }: IndexPageProps) => (
           navKind={NavKind.Light}
         />
         <Header>
-          <H1>Make your site or web&nbsp;app faster → increase revenue</H1>
+          <H1>
+            <Mark>Make your site or web&nbsp;app faster</Mark> for more revenue
+            &amp; happier users.
+          </H1>
         </Header>
         <ActionButton kind="light" href="#contact">
           Get a quote
