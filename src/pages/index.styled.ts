@@ -101,7 +101,6 @@ export const Nav = styled(_Nav)`
 
 export const Header = styled.header`
   margin: 120px 0 60px;
-  color: #ffdb01;
   max-width: 800px;
 
   ${media.small`
@@ -115,10 +114,17 @@ export const H1 = styled.h1`
   font-size: 48px;
   line-height: 1.2;
   font-weight: 900;
+  color: white;
 
   ${media.small`
     font-size: 36px;
-  `};
+  `}
+`;
+
+export const Mark = styled.mark`
+  background: inherit;
+  color: ${colors.brightYellow};
+  font: inherit;
 `;
 
 interface SectionWrapperExtraProps {
