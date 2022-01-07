@@ -27,8 +27,12 @@ interface ServicesSectionProps {
     optimizationDesktop: GraphqlImageFixed & {
       childImageSharp: { fixed: { height: number } };
     };
+    workshopDesktop: GraphqlImageFixed & {
+      childImageSharp: { fixed: { height: number } };
+    };
     auditMobile: GraphqlImageFixed;
     optimizationMobile: GraphqlImageFixed;
+    workshopMobile: GraphqlImageFixed;
   };
 }
 
@@ -106,6 +110,38 @@ const ServicesSection = ({ className = '', data }: ServicesSectionProps) => (
         </p>
       </Text>
     </ImageText>
+    <ImageText
+      direction="forward"
+      desktopImageHeight={data.workshopDesktop.childImageSharp.fixed.height}
+    >
+      <MobileImageWrapper>
+        <MobileImage imageData={data.workshopMobile.childImageSharp.fixed} />
+      </MobileImageWrapper>
+      <DesktopImage imageData={data.workshopDesktop.childImageSharp.fixed} />
+      <Text>
+        <H3>Training&nbsp;🧑‍💻</H3>
+        <p>
+          <strong>What:</strong> we’ll teach your team everything we know about
+          React performance or Core Web Vitals. We’ll take a slow site, figure
+          out what makes it slow, and gradually fix every performance issue we
+          encounter.
+        </p>
+        <p>
+          <strong>Great when:</strong> you want a foundation to make sure{' '}
+          <em>your team</em> knows how to keep you fast.
+        </p>
+        <Note>
+          <p>
+            Fully online&nbsp;· For either Junior or Senior engineers&nbsp;·
+            Takes 12-16 hours
+          </p>
+          <p>
+            Attendee feedback (as of Dec 2021): 31.8% of all responders so far
+            answered the workshop was “even better than expected”
+          </p>
+        </Note>
+      </Text>
+    </ImageText>
     <Columns>
       <Column>
         <H3>Open Source&nbsp;💛</H3>
@@ -153,6 +189,17 @@ const ServicesSectionWithQuery = () => (
           }
         }
 
+        workshopDesktop: file(
+          relativePath: { eq: "HomeSectionServices/workshop-desktop.png" }
+        ) {
+          childImageSharp {
+            fixed(width: 900) {
+              ...ImageFixed
+              height
+            }
+          }
+        }
+
         auditMobile: file(
           relativePath: { eq: "HomeSectionServices/audit-mobile.png" }
         ) {
@@ -165,6 +212,16 @@ const ServicesSectionWithQuery = () => (
 
         optimizationMobile: file(
           relativePath: { eq: "HomeSectionServices/optimization-mobile.png" }
+        ) {
+          childImageSharp {
+            fixed(width: 224) {
+              ...ImageFixed
+            }
+          }
+        }
+
+        workshopMobile: file(
+          relativePath: { eq: "HomeSectionServices/workshop-mobile.png" }
         ) {
           childImageSharp {
             fixed(width: 224) {
