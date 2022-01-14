@@ -44,43 +44,41 @@ export const ImageWrapper = styled.a`
     `}
   `}
 
-  &::before {
-    content: '#';
 
-    position: absolute;
-    top: -30px;
-    left: -135px;
-
-    /* Increase the area to allow moving the mouse from the image to the element */
-    width: 180px;
-    height: 120px;
-    text-align: center;
-    line-height: 120px;
-
-    color: #ccc;
-    font-size: 48px;
-    font-weight: bold;
-
-    /* Hide & animate the element */
-    opacity: 0;
-    transform: scale(0.8);
-    pointer-events: none;
-    transition: all 0.15s ease-out;
-  }
-
-  &:hover,
-  &:focus,
-  &:active {
-    &::before {
-      opacity: 1;
-      transform: scale(1);
-      pointer-events: auto;
-      transition: none;
-    }
-  }
 
   > * {
     width: 100%;
+  }
+`;
+
+export const ImageLinkSymbol = styled.span`
+  position: absolute;
+  top: -30px;
+  left: -135px;
+
+  /* Increase the area to allow moving the mouse from the image to the element */
+  width: 180px;
+  height: 120px;
+  text-align: center;
+  line-height: 120px;
+
+  color: #ccc;
+  font-size: 48px;
+  font-weight: bold;
+
+  /* Hide & animate the element */
+  opacity: 0;
+  transform: scale(0.8);
+  pointer-events: none;
+  transition: all 0.15s ease-out;
+
+  ${ImageWrapper}:hover &,
+  ${ImageWrapper}:focus &,
+  ${ImageWrapper}:active & {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
+    transition: none;
   }
 `;
 
