@@ -257,34 +257,34 @@ export const query = graphql`
       relativePath: { eq: "talks/web-perf-101/slides/index.png" }
     ) {
       childImageSharp {
-        gatsbyImageData(height: 150, placeholder: NONE, layout: FIXED)
+        gatsbyImageData(height: 150, layout: FIXED)
       }
     }
     notion: file(relativePath: { eq: "content/notion-social.png" }) {
       childImageSharp {
-        gatsbyImageData(height: 150, placeholder: NONE, layout: FIXED)
+        gatsbyImageData(height: 150, layout: FIXED)
       }
     }
     webpackLibs: file(relativePath: { eq: "content/webpack-libs.png" }) {
       childImageSharp {
-        gatsbyImageData(height: 150, placeholder: NONE, layout: FIXED)
+        gatsbyImageData(height: 150, layout: FIXED)
       }
     }
     reexports: file(relativePath: { eq: "content/reexports.png" }) {
       childImageSharp {
-        gatsbyImageData(height: 150, placeholder: NONE, layout: FIXED)
+        gatsbyImageData(height: 150, layout: FIXED)
       }
     }
     polyfills: file(relativePath: { eq: "content/polyfills.png" }) {
       childImageSharp {
-        gatsbyImageData(height: 150, placeholder: NONE, layout: FIXED)
+        gatsbyImageData(height: 150, layout: FIXED)
       }
     }
     awesomeWebpackPerf: file(
       relativePath: { eq: "content/awesome-webpack-perf.png" }
     ) {
       childImageSharp {
-        gatsbyImageData(height: 150, placeholder: NONE, layout: FIXED)
+        gatsbyImageData(height: 150, layout: FIXED)
       }
     }
   }
