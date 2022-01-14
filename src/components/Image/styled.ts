@@ -14,14 +14,11 @@ export const Container = styled.span`
   /* Remove extra spacing below the image: https://stackoverflow.com/a/13961130 */
   line-height: 0;
 
-  ${isSafari &&
-  css`
-    .gatsby-image-wrapper > img {
-      opacity: 1 !important;
-    }
+  .gatsby-image-wrapper > img {
+    opacity: 1 !important;
+  }
 
-    .gatsby-image-wrapper > div {
-      opacity: 0 !important;
-    }
-  `}
+  .gatsby-image-wrapper > div {
+    opacity: 0 !important;
+  }
 `;
