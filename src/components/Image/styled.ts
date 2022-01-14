@@ -5,6 +5,8 @@ if (typeof window !== 'undefined') {
   isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 }
 
+console.log(isSafari);
+
 export const Container = styled.span`
   display: inline-block;
   /* Copy default gatsby-image’s styles – this helps to easily apply border-radius */
