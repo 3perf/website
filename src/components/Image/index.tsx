@@ -2,8 +2,6 @@ import { IGatsbyImageData, GatsbyImage } from 'gatsby-plugin-image';
 import React from 'react';
 import { Container } from './styled';
 
-HTMLImageElement.prototype.loading = 'eager';
-
 interface ImageProps {
   className?: string;
   alt: string;

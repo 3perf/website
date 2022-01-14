@@ -1,6 +1,9 @@
 import styled, { css } from 'styled-components';
 
-const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+let isSafari = false;
+if (typeof window !== 'undefined') {
+  isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+}
 
 export const Container = styled.span`
   display: inline-block;
