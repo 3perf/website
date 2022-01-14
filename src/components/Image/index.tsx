@@ -1,5 +1,5 @@
 import { IGatsbyImageData, GatsbyImage } from 'gatsby-plugin-image';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container } from './styled';
 
 interface ImageProps {
@@ -10,10 +10,13 @@ interface ImageProps {
 }
 
 const Image = ({ className, alt, loading, imageData }: ImageProps) => {
-  let isSafari = false;
-  if (typeof window !== 'undefined') {
-    isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-  }
+  const [isSafari, setIsSafari] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setIsSafari(/^((?!chrome|android).)*safari/i.test(navigator.userAgent));
+    }
+  }, []);
 
   return (
     <Container className={className} isSafari={isSafari}>
