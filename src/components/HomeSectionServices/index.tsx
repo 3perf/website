@@ -29,8 +29,8 @@ interface ServicesSectionProps {
     };
     auditMobile: GraphqlImage;
     optimizationMobile: GraphqlImage;
-    workshopDesktop: GraphqlImage;
     workshopMobile: GraphqlImage;
+    workshopDesktop: GraphqlImage;
   };
 }
 
