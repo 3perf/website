@@ -1,4 +1,6 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
+const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 
 export const Container = styled.span`
   display: inline-block;
@@ -6,4 +8,15 @@ export const Container = styled.span`
   overflow: hidden;
   /* Remove extra spacing below the image: https://stackoverflow.com/a/13961130 */
   line-height: 0;
+
+  ${isSafari &&
+  css`
+    .gatsby-image-wrapper > img {
+      opacity: 1 !important;
+    }
+
+    .gatsby-image-wrapper > div {
+      opacity: 0 !important;
+    }
+  `}
 `;
