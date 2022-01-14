@@ -15,7 +15,6 @@ import {
   ActionButton,
   FooterWrapper,
   ContactSection,
-  Content,
   Header,
   HeaderBackground,
   H1,
@@ -24,6 +23,8 @@ import {
   NewArticleLink,
   SectionWrapper,
   ServicesBackground,
+  IndexPageGlobalStyles,
+  Mark,
 } from './index.styled';
 
 interface IndexPageProps {
@@ -49,80 +50,78 @@ interface IndexPageProps {
 
 const IndexPage = ({ data }: IndexPageProps) => (
   <Layout>
+    <IndexPageGlobalStyles />
     <Helmet>
       <title>PerfPerfPerf · Web performance consulting</title>
       <meta
         name="description"
-        content="We’re helping companies to earn more by making web apps faster. We worked with Google, Framer, Common, CMTT and others"
+        content="We help companies to make their web apps faster and increase their revenue. We worked with Google, Framer, Common, CMTT and others"
       />
       <meta
         name="keywords"
-        content="perf perf perf, performance, performance consulting, performance optimization, performance agency, performance company, web performance, web performance optimization, web performance consulting"
+        content="perf perf perf, performance, performance consulting, performance optimization, performance agency, performance company, web performance, web performance optimization, web performance consulting, react performance consulting, react performance optimization"
       />
     </Helmet>
-    <Content>
-      <HeaderBackground>
+    <HeaderBackground>
+      <WidthWrapper>
+        <Nav
+          logoKind={LogoKind.White}
+          logoLinksToHome={false}
+          isLogoPlayful={true}
+          navKind={NavKind.Light}
+        />
+        <Header>
+          <H1>
+            <Mark>Make your site or web&nbsp;app faster</Mark> for more revenue
+            &amp; happier users.
+          </H1>
+        </Header>
+        <ActionButton kind="light" href="#contact">
+          Get a quote
+        </ActionButton>
+      </WidthWrapper>
+      <NewArticleBackground>
         <WidthWrapper>
-          <Nav
-            logoKind={LogoKind.White}
-            logoLinksToHome={false}
-            isLogoPlayful={true}
-            navKind={NavKind.Light}
-          />
-          <Header>
-            <H1>Make your site faster → earn more</H1>
-          </Header>
-          <ActionButton kind="light" href="#contact">
-            Get a quote
-          </ActionButton>
+          <strong>New article:</strong>{' '}
+          <NewArticleLink
+            href={data.allMarkdownRemark.edges[0].node.fields.slug}
+          >
+            {data.allMarkdownRemark.edges[0].node.frontmatter.title}
+          </NewArticleLink>
         </WidthWrapper>
-        <NewArticleBackground>
-          <WidthWrapper>
-            <strong>New article:</strong>{' '}
-            <NewArticleLink
-              href={data.allMarkdownRemark.edges[0].node.fields.slug}
-            >
-              {data.allMarkdownRemark.edges[0].node.frontmatter.title}
-            </NewArticleLink>
-          </WidthWrapper>
-        </NewArticleBackground>
-      </HeaderBackground>
-      <div>
-        <WidthWrapper>
-          <SectionWrapper id="testimonials">
-            <HomeSectionTestimonials />
-          </SectionWrapper>
-        </WidthWrapper>
-        <SectionWrapper>
-          <ServicesBackground>
-            <WidthWrapper id="services">
-              <ServicesSection />
-            </WidthWrapper>
-          </ServicesBackground>
+      </NewArticleBackground>
+    </HeaderBackground>
+    <div>
+      <WidthWrapper>
+        <SectionWrapper id="testimonials">
+          <HomeSectionTestimonials />
         </SectionWrapper>
-        <WidthWrapper>
-          <SectionWrapper id="materials">
-            <MaterialsSection />
-          </SectionWrapper>
-          <SectionWrapper id="clients">
-            <ClientsSection />
-          </SectionWrapper>
-          <SectionWrapper id="about">
-            <AboutSection />
-          </SectionWrapper>
-          <SectionWrapper id="contact" marginBottom={0}>
-            <ContactSection />
-          </SectionWrapper>
-          <FooterWrapper>
-            <Footer
-              linkToHome={false}
-              license={false}
-              showLegalDetails={true}
-            />
-          </FooterWrapper>
-        </WidthWrapper>
-      </div>
-    </Content>
+      </WidthWrapper>
+      <SectionWrapper>
+        <ServicesBackground>
+          <WidthWrapper id="services">
+            <ServicesSection />
+          </WidthWrapper>
+        </ServicesBackground>
+      </SectionWrapper>
+      <WidthWrapper>
+        <SectionWrapper id="materials">
+          <MaterialsSection />
+        </SectionWrapper>
+        <SectionWrapper id="clients">
+          <ClientsSection />
+        </SectionWrapper>
+        <SectionWrapper id="about">
+          <AboutSection />
+        </SectionWrapper>
+        <SectionWrapper id="contact" marginBottom={0}>
+          <ContactSection />
+        </SectionWrapper>
+        <FooterWrapper>
+          <Footer linkToHome={false} license={false} showLegalDetails={true} />
+        </FooterWrapper>
+      </WidthWrapper>
+    </div>
   </Layout>
 );
 

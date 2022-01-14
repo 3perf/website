@@ -58,5 +58,5 @@ export const MailchimpSubscribe = styled(_MailchimpSubscribe)`
 export const Footer = styled(_Footer)`
   margin-top: ${gridSize * 8}px;
   margin-bottom: ${gridSize * 2}px;
-  font-size: 0.75em;
+  font-size: ${sizes.fontSmall}px;
 `;

@@ -1,64 +1,36 @@
 import styled from 'styled-components';
 import media from '../../styles/media';
-import { sizes, colors } from '../../styles/variables';
-import _HomeLeftRightWrapper from '../HomeLeftRightWrapper';
+import { sizes, colors, gridSize } from '../../styles/variables';
 import appsmithUrl from './appsmith.svg';
 import castorUrl from './castor.svg';
-import commonUrl from './common.svg';
-import fatLlamaUrl from './fat-llama.svg';
+import finderUrl from './finder.svg';
 import framerUrl from './framer.svg';
 import googleUrl from './google.svg';
+import hugoUrl from './hugo.svg';
 
-export const HomeLeftRightWrapper = styled(_HomeLeftRightWrapper)`
-  & + & {
-    margin-top: 36px;
-  }
+export const CasesItemsContainer = styled.div`
+  display: grid;
+  gap: ${6 * gridSize}px ${9 * gridSize}px;
+
+  /* Keep the font size consistent across desktop and mobile */
+  --homepage-font-size-regular: ${sizes.fontDefault}px;
+  --homepage-font-size-small: ${sizes.fontSmall}px;
+  font-size: var(--homepage-font-size-regular);
+
+  ${media.small`
+    grid-template-columns: 1fr;
+  `}
+
+  ${media.notSmall`
+    grid-template-columns: 1fr 1fr;
+  `}
 `;
 
-const leftSpacing = 30;
-export const Content = styled.div`
-  ul + blockquote,
-  p + blockquote,
-  blockquote + ul,
-  p + ul {
-    margin-top: ${sizes.paragraphSpacing}px;
-  }
-
-  ul {
-    list-style: none;
-    margin: 0;
-    padding-left: ${leftSpacing}px;
-  }
-
-  li::before {
-    content: '—';
-    position: absolute;
-    transform: translateX(-${leftSpacing}px);
-  }
-
-  blockquote {
-    margin: 0;
-    padding: 12px 0 16px ${leftSpacing - 5}px;
-    border-left: 5px solid #eee;
-  }
-
-  blockquote footer {
-    margin-top: 10px;
-    font-size: 0.75em;
-    color: #777;
-
-    &::before {
-      content: '— ';
-    }
-  }
-`;
+export const Content = styled.div``;
 
 export const LogoText = styled.div`
   margin-bottom: ${sizes.paragraphSpacing}px;
-
-  ${media.notSmall`
-    font-size: 0.75em;
-  `};
+  font-size: var(--homepage-font-size-small);
 `;
 
 const Logo = styled.img`
@@ -69,6 +41,20 @@ const Logo = styled.img`
   ${media.notSmall`
     margin-top: 10px;
   `};
+`;
+
+export const TagContainer = styled.div`
+  margin-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 8px;
+`;
+
+export const Tag = styled.div`
+  flex: none;
+  background: ${colors.brightYellow};
+  padding: 2px 8px;
+  border-radius: 2px;
 `;
 
 export const Mark = styled.mark`
@@ -89,14 +75,14 @@ export const AppsmithLogo = styled(Logo).attrs({
   src: appsmithUrl,
 })``;
 
-export const FatLlamaLogo = styled(Logo).attrs({
-  src: fatLlamaUrl,
+export const HugoLogo = styled(Logo).attrs({
+  src: hugoUrl,
 })``;
 
 export const FramerLogo = styled(Logo).attrs({
   src: framerUrl,
 })``;
 
-export const CommonLogo = styled(Logo).attrs({
-  src: commonUrl,
+export const FinderLogo = styled(Logo).attrs({
+  src: finderUrl,
 })``;

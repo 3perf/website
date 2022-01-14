@@ -15,6 +15,7 @@ import {
   H3,
   Section,
   SvgMask,
+  Blockquote,
 } from './styled';
 
 interface ServicesSectionProps {
@@ -28,6 +29,8 @@ interface ServicesSectionProps {
     };
     auditMobile: GraphqlImage;
     optimizationMobile: GraphqlImage;
+    workshopDesktop: GraphqlImage;
+    workshopMobile: GraphqlImage;
   };
 }
 
@@ -68,6 +71,17 @@ const ServicesSection = ({ className = '', data }: ServicesSectionProps) => (
           about their website performance, and that is ready to implement all
           optimizations themselves.
         </p>
+        <Blockquote>
+          <p>
+            I want to marry that audit document ❤️ the level of detail,
+            including going through our own codebase and pin-pointing where
+            exactly improvements need to happen, it’s just... wow
+          </p>
+          <footer>
+            <a href="https://twitter.com/heypiotr">Piotr Krawiec</a>, Product
+            Engineer @ Framer
+          </footer>
+        </Blockquote>
         <Note>
           <strong>Want an example?</strong> See this{' '}
           <a href="/blog/notion/">public Notion case study</a>.
@@ -100,6 +114,44 @@ const ServicesSection = ({ className = '', data }: ServicesSectionProps) => (
           delivering business functionality, and you want to make sure all
           quirks and implementation nuances are considered.
         </p>
+      </Text>
+    </ImageText>
+    <ImageText
+      direction="forward"
+      desktopImageHeight={
+        data.workshopDesktop.childImageSharp.gatsbyImageData.height
+      }
+    >
+      <MobileImageWrapper>
+        <MobileImage
+          imageData={data.workshopMobile.childImageSharp.gatsbyImageData}
+        />
+      </MobileImageWrapper>
+      <DesktopImage
+        imageData={data.workshopDesktop.childImageSharp.gatsbyImageData}
+      />
+      <Text>
+        <H3>Training&nbsp;🧑‍💻</H3>
+        <p>
+          <strong>What:</strong> we’ll teach your team everything we know about
+          React performance or Core Web Vitals. We’ll take a slow site, figure
+          out what makes it slow, and gradually fix every performance issue we
+          encounter.
+        </p>
+        <p>
+          <strong>Great when:</strong> you want a foundation to make sure{' '}
+          <em>your team</em> knows how to keep you fast.
+        </p>
+        <Note>
+          <p>
+            Fully online&nbsp;· For either Junior or Senior engineers&nbsp;·
+            Takes 12-16 hours
+          </p>
+          <p>
+            Attendee feedback (as of Dec 2021): 31.8% of all responders so far
+            answered the workshop was “even better than expected”
+          </p>
+        </Note>
       </Text>
     </ImageText>
     <Columns>
@@ -141,6 +193,13 @@ const ServicesSectionWithQuery = () => (
             gatsbyImageData(width: 900, placeholder: NONE, layout: FIXED)
           }
         }
+        workshopDesktop: file(
+          relativePath: { eq: "HomeSectionServices/workshop-desktop.png" }
+        ) {
+          childImageSharp {
+            gatsbyImageData(width: 900, placeholder: NONE, layout: FIXED)
+          }
+        }
         auditMobile: file(
           relativePath: { eq: "HomeSectionServices/audit-mobile.png" }
         ) {
@@ -150,6 +209,13 @@ const ServicesSectionWithQuery = () => (
         }
         optimizationMobile: file(
           relativePath: { eq: "HomeSectionServices/optimization-mobile.png" }
+        ) {
+          childImageSharp {
+            gatsbyImageData(width: 224, placeholder: NONE, layout: FIXED)
+          }
+        }
+        workshopMobile: file(
+          relativePath: { eq: "HomeSectionServices/workshop-mobile.png" }
         ) {
           childImageSharp {
             gatsbyImageData(width: 224, placeholder: NONE, layout: FIXED)

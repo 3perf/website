@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { linkActiveStyles, linkStyles } from '../../styles/shared-styles';
-import { gridSize } from '../../styles/variables';
+import { gridSize, sizes } from '../../styles/variables';
 import GatsbyImage from '../Image';
 
 export const Link = styled.a`
@@ -40,5 +40,5 @@ export const Name = styled.div`
 `;
 
 export const Description = styled.div`
-  font-size: 0.75em;
+  font-size: ${sizes.fontSmall}px;
 `;

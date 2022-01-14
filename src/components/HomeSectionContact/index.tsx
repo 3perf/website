@@ -6,6 +6,7 @@ import {
   Container,
   Contact,
   ContactImage,
+  Dot,
   Link,
 } from './styled';
 
@@ -24,7 +25,9 @@ const ContactSection = ({
 }: ContactSectionProps & { data: ContactSectionData }) => (
   <div className={className}>
     <Container>
-      <Link href="mailto:perf@3perf.com">perf@3perf.com</Link>
+      <Link href="mailto:perf@3perf.com">
+        perf@3perf<Dot>.</Dot>com
+      </Link>
       <PromptContainer>
         <p>
           Interested? We’d be glad to help. Drop us an email, and{' '}

@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import media from '../../styles/media';
-import { gridSize } from '../../styles/variables';
+import { gridSize, sizes } from '../../styles/variables';
 import _ActionButton from '../ActionButton';
 import _Image from '../Image';
 import _Section from '../Section';
@@ -94,7 +94,13 @@ export const ImageText = styled.div<ImageTextProps>`
 `;
 
 export const Note = styled.p`
-  font-size: 0.75em;
+  ${media.small`
+    font-size: ${sizes.fontSmall}px;
+  `}
+
+  ${media.notSmall`
+    font-size: ${sizes.fontDefault}px;
+  `}
 `;
 
 export const Columns = styled.div`
@@ -128,4 +134,17 @@ export const H3 = styled.h3`
 
 export const ActionButton = styled(_ActionButton)`
   margin-top: ${gridSize * 8}px;
+`;
+
+export const Blockquote = styled.blockquote`
+  border-left-color: #000;
+
+  /* Customize the desktop appearance */
+  ${media.notSmall`
+    font-size: var(--homepage-font-size-small);
+
+    footer {
+      font-size: ${sizes.fontSmall}px;
+    }
+  `}
 `;

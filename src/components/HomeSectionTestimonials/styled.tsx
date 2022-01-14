@@ -1,10 +1,13 @@
 import styled from 'styled-components';
 import media from '../../styles/media';
-import { colors } from '../../styles/variables';
+import { colors, gridSize } from '../../styles/variables';
 
 export const Container = styled.div``;
 
 export const Blockquote = styled.blockquote`
+  /* Reset inherited styles */
+  all: unset;
+
   display: flex;
   margin: 0;
 
@@ -39,38 +42,36 @@ export const BlockquoteText = styled.p`
 `;
 
 export const BlockquoteFooter = styled.footer`
+  /* Reset inherited styles */
+  all: unset;
+
   flex: 1;
 
   ${media.small`
     margin-top: 24px;
   `}
+
+  &::before {
+    /* Reset inherited styles */
+    all: unset;
+  }
 `;
 
-const horizontalGap = 64;
-const verticalGap = 24;
-
-const horizontalGapMobile = 32;
-const verticalGapMobile = 18;
 export const Logos = styled.div`
   display: flex;
   flex-wrap: wrap;
+  gap: ${3 * gridSize}px ${8 * gridSize}px;
 
-  margin: -${verticalGap / 2}px -${horizontalGap / 2}px;
-  margin-top: ${60 - verticalGap / 2}px;
+  margin-top: ${8 * gridSize}px;
 
   ${media.small`
-    margin: -${verticalGapMobile / 2}px -${horizontalGapMobile / 2}px;
-    margin-top: ${40 - verticalGapMobile / 2}px;
+    gap: ${4 * gridSize}px ${2 * gridSize}px;
   `}
 `;
 
 export const Logo = styled.img`
-  margin: ${verticalGap / 2}px ${horizontalGap / 2}px;
-
   ${media.small`
     height: 31px;
     width: auto;
-
-    margin: ${verticalGapMobile / 2}px ${horizontalGapMobile / 2}px;
   `}
 `;

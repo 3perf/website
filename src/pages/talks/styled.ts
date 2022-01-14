@@ -56,42 +56,6 @@ export const ToBeContinued = styled.div`
   `};
 `;
 
-export const MailchimpContainer = styled.div`
-  margin-top: ${sizes.paragraphSpacing}px;
-
-  input {
-    margin-right: ${gridSize * 2}px;
-    margin-bottom: ${gridSize}px;
-    height: 32px;
-    border: none;
-    border-radius: 2px;
-    padding: 0 12px;
-
-    font-size: inherit;
-    font-family: inherit;
-  }
-
-  button {
-    height: 32px;
-    padding: 0 12px;
-    border-radius: 2px;
-
-    font-size: inherit;
-    font-family: inherit;
-
-    background: #ffdb01;
-    color: black;
-    border: none;
-  }
-
-  // Subscription message
-  > div > div:first-child {
-    color: white !important;
-    font-size: 0.75em;
-    margin-bottom: ${gridSize / 2}px;
-  }
-`;
-
 export const Footnote = styled.div`
   margin-top: ${gridSize * 5}px;
   padding: ${gridSize * 3}px ${gridSize * 4}px ${gridSize * 3}px;

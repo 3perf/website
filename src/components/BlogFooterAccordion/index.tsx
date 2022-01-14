@@ -12,7 +12,7 @@ const stuffToPromote = [
   },
   {
     imageKey: 'content',
-    title: 'Articles & open-source tools',
+    title: 'Case studies, guides, and open-source tools',
     href: '/content',
   },
 
@@ -45,7 +45,9 @@ const BlogFooterAccordion = ({ className }: BlogFooterAccordionProps) => (
             gatsbyImageData(height: 130, placeholder: NONE, layout: FIXED)
           }
         }
-        content: file(relativePath: { eq: "BlogFooterAccordion/content.png" }) {
+        content: file(
+          relativePath: { eq: "BlogFooterAccordion/content-views.png" }
+        ) {
           childImageSharp {
             gatsbyImageData(height: 130, placeholder: NONE, layout: FIXED)
           }
