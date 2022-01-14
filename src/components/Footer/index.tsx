@@ -27,7 +27,7 @@ const Footer = ({
     <Credentials>
       <span>
         {linkToHome ? <Link href="/">PerfPerfPerf</Link> : 'PerfPerfPerf'} ·{' '}
-        2018–2021
+        2018–2022
         {license && (
           <span>
             {' '}
