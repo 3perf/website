@@ -60,7 +60,14 @@ const ContactSectionWithQuery = (props: ContactSectionProps) => (
     query={graphql`
       fragment ContactImage on File {
         childImageSharp {
-          gatsbyImageData(width: 24, height: 24, quality: 75, layout: FIXED)
+          gatsbyImageData(
+            width: 24
+            height: 24
+            quality: 75
+            placeholder: NONE
+            layout: FIXED
+            formats: [AUTO]
+          )
         }
       }
 

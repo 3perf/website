@@ -189,42 +189,72 @@ const ServicesSectionWithQuery = () => (
           relativePath: { eq: "HomeSectionServices/audit-desktop.png" }
         ) {
           childImageSharp {
-            gatsbyImageData(width: 900, placeholder: NONE, layout: FIXED)
+            gatsbyImageData(
+              width: 900
+              placeholder: NONE
+              layout: FIXED
+              formats: [AUTO]
+            )
           }
         }
         optimizationDesktop: file(
           relativePath: { eq: "HomeSectionServices/optimization-desktop.png" }
         ) {
           childImageSharp {
-            gatsbyImageData(width: 900, placeholder: NONE, layout: FIXED)
+            gatsbyImageData(
+              width: 900
+              placeholder: NONE
+              layout: FIXED
+              formats: [AUTO]
+            )
           }
         }
         workshopDesktop: file(
           relativePath: { eq: "HomeSectionServices/workshop-desktop.png" }
         ) {
           childImageSharp {
-            gatsbyImageData(width: 900, placeholder: NONE, layout: FIXED)
+            gatsbyImageData(
+              width: 900
+              placeholder: NONE
+              layout: FIXED
+              formats: [AUTO]
+            )
           }
         }
         auditMobile: file(
           relativePath: { eq: "HomeSectionServices/audit-mobile.png" }
         ) {
           childImageSharp {
-            gatsbyImageData(width: 224, placeholder: NONE, layout: FIXED)
+            gatsbyImageData(
+              width: 224
+              placeholder: NONE
+              layout: FIXED
+              formats: [AUTO]
+            )
           }
         }
         optimizationMobile: file(
           relativePath: { eq: "HomeSectionServices/optimization-mobile.png" }
         ) {
           childImageSharp {
-            gatsbyImageData(width: 224, placeholder: NONE, layout: FIXED)
+            gatsbyImageData(
+              width: 224
+              placeholder: NONE
+              layout: FIXED
+              formats: [AUTO]
+            )
           }
         }
         workshopMobile: file(
           relativePath: { eq: "HomeSectionServices/workshop-mobile.png" }
         ) {
           childImageSharp {
-            gatsbyImageData(width: 224, placeholder: NONE, layout: FIXED)
+            gatsbyImageData(
+              width: 224
+              placeholder: NONE
+              layout: FIXED
+              formats: [AUTO]
+            )
           }
         }
       }

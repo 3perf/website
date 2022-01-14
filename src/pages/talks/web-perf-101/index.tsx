@@ -2728,7 +2728,12 @@ export const query = graphql`
       relativePath: { eq: "talks/web-perf-101/slides/index.png" }
     ) {
       childImageSharp {
-        gatsbyImageData(width: 800, layout: CONSTRAINED)
+        gatsbyImageData(
+          width: 800
+          placeholder: NONE
+          layout: CONSTRAINED
+          formats: [AUTO]
+        )
       }
     }
     sectionHeaders: allFile(
@@ -2741,7 +2746,12 @@ export const query = graphql`
         node {
           name
           childImageSharp {
-            gatsbyImageData(width: 700, layout: CONSTRAINED)
+            gatsbyImageData(
+              width: 700
+              placeholder: NONE
+              layout: CONSTRAINED
+              formats: [AUTO]
+            )
           }
         }
       }
@@ -2756,7 +2766,12 @@ export const query = graphql`
         node {
           name
           childImageSharp {
-            gatsbyImageData(width: 500, layout: CONSTRAINED)
+            gatsbyImageData(
+              width: 500
+              placeholder: NONE
+              layout: CONSTRAINED
+              formats: [AUTO]
+            )
           }
         }
       }
@@ -2766,7 +2781,14 @@ export const query = graphql`
       relativePath: { eq: "iamakulov.jpg" }
     ) {
       childImageSharp {
-        gatsbyImageData(width: 48, height: 48, quality: 90, layout: FIXED)
+        gatsbyImageData(
+          width: 48
+          height: 48
+          quality: 90
+          placeholder: NONE
+          layout: FIXED
+          formats: [AUTO]
+        )
       }
     }
     panda100: file(

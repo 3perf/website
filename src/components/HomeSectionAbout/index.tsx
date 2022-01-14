@@ -63,7 +63,12 @@ const AboutSectionWithQuery = () => (
           relativePath: { eq: "HomeSectionAbout/talk_cropped.jpg" }
         ) {
           childImageSharp {
-            gatsbyImageData(width: 727, layout: CONSTRAINED)
+            gatsbyImageData(
+              width: 727
+              placeholder: NONE
+              layout: CONSTRAINED
+              formats: [AUTO]
+            )
           }
         }
       }
