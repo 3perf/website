@@ -12,7 +12,7 @@ interface ImageProps {
 const Image = ({ className, alt, loading, imageData }: ImageProps) => {
   return (
     <Container className={className}>
-      <GatsbyImage image={imageData} alt={alt} loading={loading || 'lazy'} />
+      <GatsbyImage image={imageData} alt={alt} loading={'eager'} />
     </Container>
   );
 };
