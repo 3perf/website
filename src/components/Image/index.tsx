@@ -4,14 +4,15 @@ import { Container } from './styled';
 
 interface ImageProps {
   className?: string;
+  alt: string;
   loading?: 'eager' | 'lazy';
   imageData: IGatsbyImageData;
 }
 
-const Image = ({ className, loading, imageData }: ImageProps) => {
+const Image = ({ className, alt, loading, imageData }: ImageProps) => {
   return (
     <Container className={className}>
-      <GatsbyImage image={imageData} alt="" loading={loading || 'lazy'} />
+      <GatsbyImage image={imageData} alt={alt} loading={loading || 'lazy'} />
     </Container>
   );
 };

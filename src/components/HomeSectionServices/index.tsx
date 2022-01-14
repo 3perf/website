@@ -53,10 +53,12 @@ const ServicesSection = ({ className = '', data }: ServicesSectionProps) => (
     >
       <MobileImageWrapper>
         <MobileImage
+          alt=""
           imageData={data.auditMobile.childImageSharp.gatsbyImageData}
         />
       </MobileImageWrapper>
       <DesktopImage
+        alt=""
         imageData={data.auditDesktop.childImageSharp.gatsbyImageData}
       />
       <Text>
@@ -96,10 +98,12 @@ const ServicesSection = ({ className = '', data }: ServicesSectionProps) => (
     >
       <MobileImageWrapper>
         <MobileImage
+          alt=""
           imageData={data.optimizationMobile.childImageSharp.gatsbyImageData}
         />
       </MobileImageWrapper>
       <DesktopImage
+        alt=""
         imageData={data.optimizationDesktop.childImageSharp.gatsbyImageData}
       />
       <Text>
@@ -124,10 +128,12 @@ const ServicesSection = ({ className = '', data }: ServicesSectionProps) => (
     >
       <MobileImageWrapper>
         <MobileImage
+          alt=""
           imageData={data.workshopMobile.childImageSharp.gatsbyImageData}
         />
       </MobileImageWrapper>
       <DesktopImage
+        alt=""
         imageData={data.workshopDesktop.childImageSharp.gatsbyImageData}
       />
       <Text>

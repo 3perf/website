@@ -33,6 +33,7 @@ const ContactSection = ({
           Interested? We’d be glad to help. Drop us an email, and{' '}
           <Contact>
             <ContactImage
+              alt=""
               imageData={data.iamakulov.childImageSharp.gatsbyImageData}
             />{' '}
             Ivan
@@ -40,6 +41,7 @@ const ContactSection = ({
           or{' '}
           <Contact>
             <ContactImage
+              alt=""
               imageData={
                 data.christopherlarscarlson.childImageSharp.gatsbyImageData
               }

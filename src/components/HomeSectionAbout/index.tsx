@@ -35,7 +35,10 @@ const AboutSection = ({ data }: AboutSectionProps) => (
           , an <a href="https://iamakulov.com/#talks">international speaker</a>,
           and a web performance consultant.
         </Intro>
-        <Image imageData={data.talkImage.childImageSharp.gatsbyImageData} />
+        <Image
+          alt="Ivan Akulov’s photo"
+          imageData={data.talkImage.childImageSharp.gatsbyImageData}
+        />
       </Primary>
       <Links>
         <LinkWrapper>

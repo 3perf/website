@@ -60,6 +60,7 @@ const BlogFooterAccordion = ({ className }: BlogFooterAccordionProps) => (
           <Item key={i.imageKey}>
             <ItemLink href={i.href}>
               <Image
+                alt=""
                 imageData={data[i.imageKey].childImageSharp.gatsbyImageData}
               />
               <LabelWrapper>

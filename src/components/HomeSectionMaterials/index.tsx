@@ -25,7 +25,10 @@ const MaterialsSection = ({ data }: MaterialsSectionProps) => (
     <HomeLeftRightWrapper
       left={
         <LinkBlock href="/talks/web-perf-101">
-          <Image imageData={data.webPerf101.childImageSharp.gatsbyImageData} />
+          <Image
+            alt=""
+            imageData={data.webPerf101.childImageSharp.gatsbyImageData}
+          />
           <LinkText>Web Performance 101</LinkText>
           <LinkDescription>
             A comprehensive guide into modern web performance
