@@ -29,6 +29,10 @@ module.exports = {
     'gatsby-plugin-styled-components',
     'gatsby-plugin-typescript',
     'gatsby-plugin-netlify-cms',
+    `gatsby-plugin-image`,
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
+    'gatsby-plugin-lodash',
     // Ignore .styled.ts files
     {
       resolve: `gatsby-plugin-page-creator`,
@@ -122,9 +126,6 @@ module.exports = {
         ],
       },
     },
-    'gatsby-transformer-sharp',
-    'gatsby-plugin-sharp',
-    'gatsby-plugin-lodash',
     {
       resolve: `@redocly/favicons-webpack-plugin`,
       options: {

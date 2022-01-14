@@ -6,7 +6,7 @@ import Layout from '../../components/Layout';
 import { LogoKind } from '../../components/Logo';
 import { NavKind } from '../../components/NavBase';
 import WidthWrapper from '../../components/WidthWrapper';
-import { GraphqlImageFixed, JSXChildrenProp } from '../../types';
+import { GraphqlImage, JSXChildrenProp } from '../../types';
 import facebookCoverUrl from './facebook-cover.png';
 import {
   Background,
@@ -27,17 +27,17 @@ import twitterCoverUrl from './twitter-cover.png';
 
 interface ContentPageProps {
   data: {
-    webPerf101: GraphqlImageFixed;
-    webpackLibs: GraphqlImageFixed;
-    notion: GraphqlImageFixed;
-    reexports: GraphqlImageFixed;
-    polyfills: GraphqlImageFixed;
-    awesomeWebpackPerf: GraphqlImageFixed;
+    webPerf101: GraphqlImage;
+    webpackLibs: GraphqlImage;
+    notion: GraphqlImage;
+    reexports: GraphqlImage;
+    polyfills: GraphqlImage;
+    awesomeWebpackPerf: GraphqlImage;
   };
 }
 
 interface ContentItemProps {
-  image?: GraphqlImageFixed;
+  image?: GraphqlImage;
   title: string | JSXChildrenProp;
   description?: string | JSXChildrenProp;
   link: string;
@@ -54,7 +54,7 @@ const ContentItem = ({
     <ItemLink href={link}>
       {image && (
         <ItemImage>
-          <GatsbyImage imageData={image.childImageSharp.fixed} />
+          <GatsbyImage imageData={image.childImageSharp.gatsbyImageData} />
         </ItemImage>
       )}
       <div>
@@ -249,56 +249,39 @@ const ContentPage = (props: ContentPageProps) => {
 export default ContentPage;
 
 export const query = graphql`
-  query {
+  {
     webPerf101: file(
       relativePath: { eq: "talks/web-perf-101/slides/index.png" }
     ) {
       childImageSharp {
-        fixed(height: 150) {
-          ...ImageFixed
-        }
+        gatsbyImageData(height: 150, placeholder: NONE, layout: FIXED)
       }
     }
-
     notion: file(relativePath: { eq: "content/notion-social.png" }) {
       childImageSharp {
-        fixed(height: 150) {
-          ...ImageFixed
-        }
+        gatsbyImageData(height: 150, placeholder: NONE, layout: FIXED)
       }
     }
-
     webpackLibs: file(relativePath: { eq: "content/webpack-libs.png" }) {
       childImageSharp {
-        fixed(height: 150) {
-          ...ImageFixed
-        }
+        gatsbyImageData(height: 150, placeholder: NONE, layout: FIXED)
       }
     }
-
     reexports: file(relativePath: { eq: "content/reexports.png" }) {
       childImageSharp {
-        fixed(height: 150) {
-          ...ImageFixed
-        }
+        gatsbyImageData(height: 150, placeholder: NONE, layout: FIXED)
       }
     }
-
     polyfills: file(relativePath: { eq: "content/polyfills.png" }) {
       childImageSharp {
-        fixed(height: 150) {
-          ...ImageFixed
-        }
+        gatsbyImageData(height: 150, placeholder: NONE, layout: FIXED)
       }
     }
-
     awesomeWebpackPerf: file(
       relativePath: { eq: "content/awesome-webpack-perf.png" }
     ) {
       childImageSharp {
-        fixed(height: 150) {
-          ...ImageFixed
-        }
+        gatsbyImageData(height: 150, placeholder: NONE, layout: FIXED)
       }
     }
   }

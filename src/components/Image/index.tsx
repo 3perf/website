@@ -1,85 +1,19 @@
-import { graphql } from 'gatsby';
+import { IGatsbyImageData, GatsbyImage } from 'gatsby-plugin-image';
 import React from 'react';
-import { Container, Img } from './styled';
-
-export interface ImageFixed {
-  width: number;
-  height: number;
-  src: string;
-  srcSet: string;
-  srcWebp?: string;
-  srcSetWebp?: string;
-}
-
-export interface ImageFluid {
-  presentationWidth: number;
-  presentationHeight: number;
-  src: string;
-  srcSet: string;
-  sizes: string;
-  srcWebp?: string;
-  srcSetWebp?: string;
-}
+import { Container } from './styled';
 
 interface ImageProps {
   className?: string;
   loading?: 'eager' | 'lazy';
-  imageData: ImageFixed | ImageFluid;
+  imageData: IGatsbyImageData;
 }
 
 const Image = ({ className, loading, imageData }: ImageProps) => {
   return (
     <Container className={className}>
-      <picture>
-        {imageData.srcWebp && (
-          <source
-            src={imageData.srcWebp}
-            srcSet={imageData.srcSetWebp}
-            sizes={'sizes' in imageData ? imageData.sizes : undefined}
-            type="image/webp"
-          />
-        )}
-        <source
-          srcSet={imageData.srcSet}
-          sizes={'sizes' in imageData ? imageData.sizes : undefined}
-        />
-        <Img
-          isFluid={'presentationWidth' in imageData}
-          src={imageData.src}
-          width={
-            'width' in imageData ? imageData.width : imageData.presentationWidth
-          }
-          loading={loading || 'lazy'}
-          height={
-            'height' in imageData
-              ? imageData.height
-              : imageData.presentationHeight
-          }
-        />
-      </picture>
+      <GatsbyImage image={imageData} alt="" loading={loading || 'lazy'} />
     </Container>
   );
 };
-
-export const query = graphql`
-  fragment ImageFixed on ImageSharpFixed {
-    width
-    height
-    src
-    srcSet
-    srcWebp
-    srcSetWebp
-  }
-
-  fragment ImageFluid on ImageSharpFluid {
-    presentationWidth
-    presentationHeight
-    src
-    srcSet
-    sizes
-    srcWebp
-    srcSetWebp
-  }
-`;
 
 export default Image;

@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 export const Container = styled.span`
   display: inline-block;
@@ -6,13 +6,4 @@ export const Container = styled.span`
   overflow: hidden;
   /* Remove extra spacing below the image: https://stackoverflow.com/a/13961130 */
   line-height: 0;
-`;
-
-export const Img = styled.img<{ isFluid: boolean }>`
-  ${(props) =>
-    props.isFluid &&
-    css`
-      width: 100%;
-      height: auto;
-    `}
 `;

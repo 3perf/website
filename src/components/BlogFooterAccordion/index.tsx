@@ -1,6 +1,6 @@
 import { graphql, StaticQuery } from 'gatsby';
 import React from 'react';
-import { GraphqlImageFixed } from '../../types';
+import { GraphqlImage } from '../../types';
 import Image from '../Image';
 import { Container, Item, ItemLink, Label, LabelWrapper } from './styled';
 
@@ -30,42 +30,36 @@ interface BlogFooterAccordionProps {
 const BlogFooterAccordion = ({ className }: BlogFooterAccordionProps) => (
   <StaticQuery
     query={graphql`
-      query {
+      {
         webPerf101: file(
           relativePath: { eq: "BlogFooterAccordion/web-perf-101.png" }
         ) {
           childImageSharp {
-            fixed(height: 130) {
-              ...ImageFixed
-            }
+            gatsbyImageData(height: 130, placeholder: NONE, layout: FIXED)
           }
         }
-
         services: file(
           relativePath: { eq: "BlogFooterAccordion/services.png" }
         ) {
           childImageSharp {
-            fixed(height: 130) {
-              ...ImageFixed
-            }
+            gatsbyImageData(height: 130, placeholder: NONE, layout: FIXED)
           }
         }
-
         content: file(relativePath: { eq: "BlogFooterAccordion/content.png" }) {
           childImageSharp {
-            fixed(height: 130) {
-              ...ImageFixed
-            }
+            gatsbyImageData(height: 130, placeholder: NONE, layout: FIXED)
           }
         }
       }
     `}
-    render={(data: { [key: string]: GraphqlImageFixed }) => (
+    render={(data: { [key: string]: GraphqlImage }) => (
       <Container className={className}>
         {stuffToPromote.map((i) => (
           <Item key={i.imageKey}>
             <ItemLink href={i.href}>
-              <Image imageData={data[i.imageKey].childImageSharp.fixed} />
+              <Image
+                imageData={data[i.imageKey].childImageSharp.gatsbyImageData}
+              />
               <LabelWrapper>
                 <Label>{i.title}</Label>
               </LabelWrapper>

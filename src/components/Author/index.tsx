@@ -1,9 +1,9 @@
+import { IGatsbyImageData } from 'gatsby-plugin-image';
 import * as React from 'react';
-import { ImageFixed, ImageFluid } from '../Image';
 import { Content, Description, Image, Link, Name } from './styled';
 
 interface AuthorProps {
-  imageData: ImageFixed | ImageFluid;
+  imageData: IGatsbyImageData;
   name: string;
   description: string;
   link: string;

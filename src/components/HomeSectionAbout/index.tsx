@@ -1,6 +1,6 @@
 import { graphql, StaticQuery } from 'gatsby';
 import * as React from 'react';
-import { GraphqlImageFluid } from '../../types';
+import { GraphqlImage } from '../../types';
 import Section, { SectionKind } from '../Section';
 import {
   Intro,
@@ -15,7 +15,7 @@ import {
 } from './styled';
 
 interface AboutSectionData {
-  talkImage: GraphqlImageFluid;
+  talkImage: GraphqlImage;
 }
 
 interface AboutSectionProps {
@@ -35,7 +35,7 @@ const AboutSection = ({ data }: AboutSectionProps) => (
           , an <a href="https://iamakulov.com/#talks">international speaker</a>,
           and a web performance consultant.
         </Intro>
-        <Image imageData={data.talkImage.childImageSharp.fluid} />
+        <Image imageData={data.talkImage.childImageSharp.gatsbyImageData} />
       </Primary>
       <Links>
         <LinkWrapper>
@@ -55,14 +55,12 @@ const AboutSection = ({ data }: AboutSectionProps) => (
 const AboutSectionWithQuery = () => (
   <StaticQuery
     query={graphql`
-      query {
+      {
         talkImage: file(
           relativePath: { eq: "HomeSectionAbout/talk_cropped.jpg" }
         ) {
           childImageSharp {
-            fluid(maxWidth: 727) {
-              ...ImageFluid
-            }
+            gatsbyImageData(width: 727, placeholder: NONE, layout: CONSTRAINED)
           }
         }
       }

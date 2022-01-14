@@ -1,10 +1,10 @@
+import { IGatsbyImageData } from 'gatsby-plugin-image';
 import * as React from 'react';
 import { JSXChildrenProp } from '../../../types';
-import { ImageFluid } from '../../Image';
 import { Container, Description, Image, Title } from './styled';
 
 interface TalkHeaderProps {
-  imageData: ImageFluid;
+  imageData: IGatsbyImageData;
   title: JSXChildrenProp;
   description: JSXChildrenProp;
   className?: string;

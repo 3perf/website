@@ -1,4 +1,4 @@
-import type { ImageFixed, ImageFluid } from '../src/components/Image';
+import { IGatsbyImageData } from 'gatsby-plugin-image';
 
 export type JSXChildrenProp =
   | string
@@ -7,14 +7,8 @@ export type JSXChildrenProp =
   | JSX.Element[]
   | Array<string | JSX.Element>;
 
-export interface GraphqlImageFluid {
+export interface GraphqlImage {
   childImageSharp: {
-    fluid: ImageFluid;
-  };
-}
-
-export interface GraphqlImageFixed {
-  childImageSharp: {
-    fixed: ImageFixed;
+    gatsbyImageData: IGatsbyImageData;
   };
 }

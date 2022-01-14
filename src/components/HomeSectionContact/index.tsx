@@ -1,6 +1,6 @@
 import { StaticQuery, graphql } from 'gatsby';
 import * as React from 'react';
-import { GraphqlImageFixed } from '../../types';
+import { GraphqlImage } from '../../types';
 import {
   PromptContainer,
   Container,
@@ -10,8 +10,8 @@ import {
 } from './styled';
 
 interface ContactSectionData {
-  iamakulov: GraphqlImageFixed;
-  christopherlarscarlson: GraphqlImageFixed;
+  iamakulov: GraphqlImage;
+  christopherlarscarlson: GraphqlImage;
 }
 
 interface ContactSectionProps {
@@ -29,13 +29,17 @@ const ContactSection = ({
         <p>
           Interested? We’d be glad to help. Drop us an email, and{' '}
           <Contact>
-            <ContactImage imageData={data.iamakulov.childImageSharp.fixed} />{' '}
+            <ContactImage
+              imageData={data.iamakulov.childImageSharp.gatsbyImageData}
+            />{' '}
             Ivan
           </Contact>{' '}
           or{' '}
           <Contact>
             <ContactImage
-              imageData={data.christopherlarscarlson.childImageSharp.fixed}
+              imageData={
+                data.christopherlarscarlson.childImageSharp.gatsbyImageData
+              }
             />{' '}
             Chris
           </Contact>{' '}
@@ -51,13 +55,17 @@ const ContactSectionWithQuery = (props: ContactSectionProps) => (
     query={graphql`
       fragment ContactImage on File {
         childImageSharp {
-          fixed(width: 24, height: 24, quality: 75) {
-            ...ImageFixed
-          }
+          gatsbyImageData(
+            width: 24
+            height: 24
+            quality: 75
+            placeholder: NONE
+            layout: FIXED
+          )
         }
       }
 
-      query {
+      {
         christopherlarscarlson: file(
           sourceInstanceName: { eq: "shared" }
           relativePath: { eq: "christopherlarscarlson.jpg" }

@@ -1,6 +1,6 @@
 import { graphql, StaticQuery } from 'gatsby';
 import * as React from 'react';
-import { GraphqlImageFixed } from '../../types';
+import { GraphqlImage } from '../../types';
 import { SectionKind } from '../Section';
 import {
   ActionButton,
@@ -20,14 +20,14 @@ import {
 interface ServicesSectionProps {
   className?: string;
   data: {
-    auditDesktop: GraphqlImageFixed & {
-      childImageSharp: { fixed: { height: number } };
+    auditDesktop: GraphqlImage & {
+      childImageSharp: { gatsbyImageData: { height: number } };
     };
-    optimizationDesktop: GraphqlImageFixed & {
-      childImageSharp: { fixed: { height: number } };
+    optimizationDesktop: GraphqlImage & {
+      childImageSharp: { gatsbyImageData: { height: number } };
     };
-    auditMobile: GraphqlImageFixed;
-    optimizationMobile: GraphqlImageFixed;
+    auditMobile: GraphqlImage;
+    optimizationMobile: GraphqlImage;
   };
 }
 
@@ -44,12 +44,18 @@ const ServicesSection = ({ className = '', data }: ServicesSectionProps) => (
     </SvgMask>
     <ImageText
       direction="forward"
-      desktopImageHeight={data.auditDesktop.childImageSharp.fixed.height}
+      desktopImageHeight={
+        data.auditDesktop.childImageSharp.gatsbyImageData.height
+      }
     >
       <MobileImageWrapper>
-        <MobileImage imageData={data.auditMobile.childImageSharp.fixed} />
+        <MobileImage
+          imageData={data.auditMobile.childImageSharp.gatsbyImageData}
+        />
       </MobileImageWrapper>
-      <DesktopImage imageData={data.auditDesktop.childImageSharp.fixed} />
+      <DesktopImage
+        imageData={data.auditDesktop.childImageSharp.gatsbyImageData}
+      />
       <Text>
         <H3>Audit&nbsp;🔬</H3>
         <p>
@@ -70,15 +76,17 @@ const ServicesSection = ({ className = '', data }: ServicesSectionProps) => (
     </ImageText>
     <ImageText
       direction="reverse"
-      desktopImageHeight={data.optimizationDesktop.childImageSharp.fixed.height}
+      desktopImageHeight={
+        data.optimizationDesktop.childImageSharp.gatsbyImageData.height
+      }
     >
       <MobileImageWrapper>
         <MobileImage
-          imageData={data.optimizationMobile.childImageSharp.fixed}
+          imageData={data.optimizationMobile.childImageSharp.gatsbyImageData}
         />
       </MobileImageWrapper>
       <DesktopImage
-        imageData={data.optimizationDesktop.childImageSharp.fixed}
+        imageData={data.optimizationDesktop.childImageSharp.gatsbyImageData}
       />
       <Text>
         <H3>Optimization&nbsp;🛠</H3>
@@ -118,46 +126,33 @@ const ServicesSection = ({ className = '', data }: ServicesSectionProps) => (
 const ServicesSectionWithQuery = () => (
   <StaticQuery
     query={graphql`
-      query {
+      {
         auditDesktop: file(
           relativePath: { eq: "HomeSectionServices/audit-desktop.png" }
         ) {
           childImageSharp {
-            fixed(width: 900) {
-              ...ImageFixed
-              height
-            }
+            gatsbyImageData(width: 900, placeholder: NONE, layout: FIXED)
           }
         }
-
         optimizationDesktop: file(
           relativePath: { eq: "HomeSectionServices/optimization-desktop.png" }
         ) {
           childImageSharp {
-            fixed(width: 900) {
-              ...ImageFixed
-              height
-            }
+            gatsbyImageData(width: 900, placeholder: NONE, layout: FIXED)
           }
         }
-
         auditMobile: file(
           relativePath: { eq: "HomeSectionServices/audit-mobile.png" }
         ) {
           childImageSharp {
-            fixed(width: 224) {
-              ...ImageFixed
-            }
+            gatsbyImageData(width: 224, placeholder: NONE, layout: FIXED)
           }
         }
-
         optimizationMobile: file(
           relativePath: { eq: "HomeSectionServices/optimization-mobile.png" }
         ) {
           childImageSharp {
-            fixed(width: 224) {
-              ...ImageFixed
-            }
+            gatsbyImageData(width: 224, placeholder: NONE, layout: FIXED)
           }
         }
       }

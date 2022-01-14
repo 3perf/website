@@ -1,7 +1,7 @@
 import { graphql } from 'gatsby';
+import { IGatsbyImageData } from 'gatsby-plugin-image';
 import * as React from 'react';
 import { Helmet } from 'react-helmet';
-import { ImageFluid, ImageFixed } from '../../../components/Image';
 import Layout from '../../../components/Layout';
 import { LogoKind } from '../../../components/Logo';
 import WidthWrapper from '../../../components/WidthWrapper';
@@ -38,12 +38,12 @@ interface WebPerf101PageProps {
   data: {
     indexSlide: {
       childImageSharp: {
-        fluid: ImageFluid;
+        gatsbyImageData: IGatsbyImageData;
       };
     };
     iamakulovPhoto: {
       childImageSharp: {
-        fixed: ImageFixed;
+        gatsbyImageData: IGatsbyImageData;
       };
     };
     panda100: FileUrl;
@@ -57,7 +57,7 @@ interface WebPerf101PageProps {
         node: {
           name: string;
           childImageSharp: {
-            fluid: ImageFluid;
+            gatsbyImageData: IGatsbyImageData;
           };
         };
       }>;
@@ -67,7 +67,7 @@ interface WebPerf101PageProps {
         node: {
           name: string;
           childImageSharp: {
-            fluid: ImageFluid;
+            gatsbyImageData: IGatsbyImageData;
           };
         };
       }>;
@@ -83,13 +83,13 @@ const lastUpdatedDate = new Date(2021, 6, 21);
 const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
   const allSlidesByName = Object.fromEntries(
     data.allSlides.edges.map((edge) => {
-      return [edge.node.name, edge.node.childImageSharp.fluid];
+      return [edge.node.name, edge.node.childImageSharp.gatsbyImageData];
     }),
   );
 
   const sectionHeadersByName = Object.fromEntries(
     data.sectionHeaders.edges.map((edge) => {
-      return [edge.node.name, edge.node.childImageSharp.fluid];
+      return [edge.node.name, edge.node.childImageSharp.gatsbyImageData];
     }),
   );
 
@@ -181,7 +181,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
         </Helmet>
         <Nav logoKind={LogoKind.Black} />
         <TalkHeader
-          imageData={data.indexSlide.childImageSharp.fluid}
+          imageData={data.indexSlide.childImageSharp.gatsbyImageData}
           title="Web Performance 101"
           description={
             <>
@@ -2563,7 +2563,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
           authors={[
             {
               description: 'PerfPerfPerf founder',
-              imageData: data.iamakulovPhoto.childImageSharp.fixed,
+              imageData: data.iamakulovPhoto.childImageSharp.gatsbyImageData,
               link: 'https://twitter.com/iamakulov',
               name: 'Ivan Akulov',
             },
@@ -2586,18 +2586,15 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
 export default WebPerf101Page;
 
 export const query = graphql`
-  query {
+  {
     indexSlide: file(
       sourceInstanceName: { eq: "pages" }
       relativePath: { eq: "talks/web-perf-101/slides/index.png" }
     ) {
       childImageSharp {
-        fluid(maxWidth: 800) {
-          ...ImageFluid
-        }
+        gatsbyImageData(width: 800, placeholder: NONE, layout: CONSTRAINED)
       }
     }
-
     sectionHeaders: allFile(
       filter: {
         relativeDirectory: { eq: "talks/web-perf-101/slides" }
@@ -2608,14 +2605,11 @@ export const query = graphql`
         node {
           name
           childImageSharp {
-            fluid(maxWidth: 700) {
-              ...ImageFluid
-            }
+            gatsbyImageData(width: 700, placeholder: NONE, layout: CONSTRAINED)
           }
         }
       }
     }
-
     allSlides: allFile(
       filter: {
         relativeDirectory: { eq: "talks/web-perf-101/slides" }
@@ -2626,55 +2620,50 @@ export const query = graphql`
         node {
           name
           childImageSharp {
-            fluid(maxWidth: 500) {
-              ...ImageFluid
-            }
+            gatsbyImageData(width: 500, placeholder: NONE, layout: CONSTRAINED)
           }
         }
       }
     }
-
     iamakulovPhoto: file(
       sourceInstanceName: { eq: "shared" }
       relativePath: { eq: "iamakulov.jpg" }
     ) {
       childImageSharp {
-        fixed(width: 48, height: 48, quality: 90) {
-          ...ImageFixed
-        }
+        gatsbyImageData(
+          width: 48
+          height: 48
+          quality: 90
+          placeholder: NONE
+          layout: FIXED
+        )
       }
     }
-
     panda100: file(
       relativePath: { eq: "talks/web-perf-101/pandas/panda_100.jpg" }
     ) {
       publicURL
     }
-
     panda70: file(
       relativePath: { eq: "talks/web-perf-101/pandas/panda_70.jpg" }
     ) {
       publicURL
     }
-
     panda50: file(
       relativePath: { eq: "talks/web-perf-101/pandas/panda_50.jpg" }
     ) {
       publicURL
     }
-
     panda100Large: file(
       relativePath: { eq: "talks/web-perf-101/pandas/panda_100_large.png" }
     ) {
       publicURL
     }
-
     panda70Large: file(
       relativePath: { eq: "talks/web-perf-101/pandas/panda_70_large.png" }
     ) {
       publicURL
     }
-
     panda50Large: file(
       relativePath: { eq: "talks/web-perf-101/pandas/panda_50_large.png" }
     ) {
