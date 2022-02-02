@@ -72,7 +72,7 @@ const IndexPage = ({ data }: IndexPageProps) => (
         />
         <Header>
           <H1>
-            <Mark>Make your site or web&nbsp;app faster</Mark> for more revenue
+            <Mark>Make your site or web&nbsp;app faster</Mark>&nbsp;→ get more revenue
             &amp; happier users.
           </H1>
         </Header>
