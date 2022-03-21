@@ -137,7 +137,8 @@ export const ActionButton = styled(_ActionButton)`
 `;
 
 export const Blockquote = styled.blockquote`
-  border-left-color: #000;
+  border: none;
+  padding: 0;
 
   /* Customize the desktop appearance */
   ${media.notSmall`
@@ -147,4 +148,46 @@ export const Blockquote = styled.blockquote`
       font-size: ${sizes.fontSmall}px;
     }
   `}
+`;
+
+export const BlockquoteTextWrapper = styled.div`
+  position: relative;
+  padding: ${gridSize * 1.5}px ${gridSize * 2}px;
+  background: white;
+  border-radius: 8px;
+  margin-left: -${gridSize * 1.5}px;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: ${gridSize * 2}px;
+    width: 0;
+    height: 0;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    border-left: 12px solid white;
+  }
+`;
+
+export const BlockquoteFooter = styled.footer`
+  margin-top: ${gridSize * 2.5}px;
+  margin-left: -${gridSize * 0.5}px;
+
+  /* Remove the default “—” prefix */
+  &::before {
+    content: none;
+  }
+`;
+
+export const BlockquoteImage = styled(_Image)`
+  width: ${gridSize * 2.5}px;
+  height: ${gridSize * 2.5}px;
+  margin-right: 6px;
+  border-radius: 50%;
+  vertical-align: middle;
+`;
+
+export const BlockquoteName = styled.span`
+  color: black;
 `;

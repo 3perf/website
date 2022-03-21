@@ -25,9 +25,10 @@ interface ImageProps {
   className?: string;
   loading?: 'eager' | 'lazy';
   imageData: ImageFixed | ImageFluid;
+  alt?: string;
 }
 
-const Image = ({ className, loading, imageData }: ImageProps) => {
+const Image = ({ className, loading, imageData, alt }: ImageProps) => {
   return (
     <Container className={className}>
       <picture>
@@ -55,6 +56,7 @@ const Image = ({ className, loading, imageData }: ImageProps) => {
               ? imageData.height
               : imageData.presentationHeight
           }
+          alt={alt}
         />
       </picture>
     </Container>

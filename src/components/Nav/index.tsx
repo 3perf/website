@@ -6,7 +6,7 @@ const Nav = (props: NavBaseProps) => (
     primaryItems={[
       { title: 'Services', href: '/#services' },
       { title: 'Client Stories', href: '/#clients' },
-      { title: 'Case Studies & Guides', href: '/content' },
+      { title: 'Perf Guides', href: '/content' },
       { title: 'About Us', href: '/#about' },
     ]}
     secondaryItems={[

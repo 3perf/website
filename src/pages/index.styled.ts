@@ -31,7 +31,7 @@ export const IndexPageGlobalStyles = createGlobalStyle`
     padding-left: ${listAndBlockquoteInnerSpacing}px;
   }
 
-  li::before {
+  ul > li::before {
     content: '—';
     position: absolute;
     transform: translateX(-${listAndBlockquoteInnerSpacing}px);

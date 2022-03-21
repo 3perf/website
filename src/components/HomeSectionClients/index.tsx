@@ -220,8 +220,7 @@ const ClientsSection = () => (
             </Mark>
           </p>
           <footer>
-            <a href="https://twitter.com/eelco">Eelco Lempsink</a>, VP of
-            Engineering @ Framer
+            <a href="https://twitter.com/eelco">Eelco Lempsink</a>, CTO @ Framer
           </footer>
         </blockquote>
       </Content>

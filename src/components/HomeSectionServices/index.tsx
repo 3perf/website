@@ -16,6 +16,10 @@ import {
   Section,
   SvgMask,
   Blockquote,
+  BlockquoteFooter,
+  BlockquoteImage,
+  BlockquoteName,
+  BlockquoteTextWrapper,
 } from './styled';
 
 interface ServicesSectionProps {
@@ -30,6 +34,8 @@ interface ServicesSectionProps {
     workshopDesktop: GraphqlImageFixed & {
       childImageSharp: { fixed: { height: number } };
     };
+    davidAvatar: GraphqlImageFixed;
+    piotrAvatar: GraphqlImageFixed;
     auditMobile: GraphqlImageFixed;
     optimizationMobile: GraphqlImageFixed;
     workshopMobile: GraphqlImageFixed;
@@ -56,27 +62,32 @@ const ServicesSection = ({ className = '', data }: ServicesSectionProps) => (
       </MobileImageWrapper>
       <DesktopImage imageData={data.auditDesktop.childImageSharp.fixed} />
       <Text>
-        <H3>Audit&nbsp;🔬</H3>
+        <H3>Find What To Improve&nbsp;🔬</H3>
         <p>
           <strong>What:</strong> we’ll analyze the site, identify all
-          performance issues, and compose a document with potential
-          op&shy;ti&shy;mi&shy;za&shy;tions.
+          performance issues, and tell you which ones matter the most &amp; how
+          to fix them.
         </p>
         <p>
-          <strong>Great when:</strong> you have a team that wants to learn a lot
-          about their website performance, and that is ready to implement all
-          optimizations themselves.
+          <strong>Great when:</strong> you want to learn how to improve your
+          Core Web Vitals, conversion, or user experience.
         </p>
         <Blockquote>
-          <p>
-            I want to marry that audit document ❤️ the level of detail,
-            including going through our own codebase and pin-pointing where
-            exactly improvements need to happen, it’s just... wow
-          </p>
-          <footer>
-            <a href="https://twitter.com/heypiotr">Piotr Krawiec</a>, Product
-            Engineer @ Framer
-          </footer>
+          <BlockquoteTextWrapper>
+            <p>
+              I want to marry that audit document! The level of detail,
+              including going through our own codebase and pin-pointing where
+              exactly improvements need to happen, it’s just... wow
+            </p>
+          </BlockquoteTextWrapper>
+          <BlockquoteFooter>
+            <BlockquoteImage
+              imageData={data.piotrAvatar.childImageSharp.fixed}
+              alt=""
+            />
+            <BlockquoteName>Piotr Krawiec</BlockquoteName> · Product Engineer @
+            Framer
+          </BlockquoteFooter>
         </Blockquote>
         <Note>
           <strong>Want an example?</strong> See this{' '}
@@ -97,7 +108,7 @@ const ServicesSection = ({ className = '', data }: ServicesSectionProps) => (
         imageData={data.optimizationDesktop.childImageSharp.fixed}
       />
       <Text>
-        <H3>Optimization&nbsp;🛠</H3>
+        <H3>Optimize the App&nbsp;🛠</H3>
         <p>
           <strong>What:</strong> we’ll join your project, roll up our sleeves,
           find all performance bottlenecks, and apply precise optimizations –
@@ -105,9 +116,26 @@ const ServicesSection = ({ className = '', data }: ServicesSectionProps) => (
         </p>
         <p>
           <strong>Great when:</strong> you don’t want to distract the team from
-          delivering business functionality, and you want to make sure all
-          quirks and implementation nuances are considered.
+          delivering business functionality.
         </p>
+        <Blockquote>
+          <BlockquoteTextWrapper>
+            <p>
+              In just a couple weeks, Ivan significantly improved runtime
+              performance and tree shaking of our key components. One of our
+              products’ bundle got 3 times smaller – with 10× less JS needed for
+              the initial load!
+            </p>
+          </BlockquoteTextWrapper>
+          <BlockquoteFooter>
+            <BlockquoteImage
+              imageData={data.davidAvatar.childImageSharp.fixed}
+              alt=""
+            />
+            <BlockquoteName>David Sigley</BlockquoteName> · Head of Engineering
+            @ Castor
+          </BlockquoteFooter>
+        </Blockquote>
       </Text>
     </ImageText>
     <ImageText
@@ -119,26 +147,24 @@ const ServicesSection = ({ className = '', data }: ServicesSectionProps) => (
       </MobileImageWrapper>
       <DesktopImage imageData={data.workshopDesktop.childImageSharp.fixed} />
       <Text>
-        <H3>Training&nbsp;🧑‍💻</H3>
+        <H3>Grow The Team&nbsp;🧑‍💻</H3>
         <p>
           <strong>What:</strong> we’ll teach your team everything we know about
-          React performance or Core Web Vitals. We’ll take a slow site, figure
-          out what makes it slow, and gradually fix every performance issue we
-          encounter.
+          React performance or Core Web Vitals. We’ll take a bunch of slow
+          sites, figure out what makes them slow, and gradually fix every
+          performance issue we encounter.
         </p>
         <p>
-          <strong>Great when:</strong> you want a foundation to make sure{' '}
-          <em>your team</em> knows how to keep you fast.
+          <strong>Great when:</strong> your team needs to learn how to keep you
+          fast on their own.
         </p>
         <Note>
-          <p>
-            Fully online&nbsp;· For either Junior or Senior engineers&nbsp;·
-            Takes 12-16 hours
-          </p>
-          <p>
-            Attendee feedback (as of Dec 2021): 31.8% of all responders so far
-            answered the workshop was “even better than expected”
-          </p>
+          <strong>Format:</strong> Online or offline&nbsp;· For either Junior or
+          Senior engineers&nbsp;· Takes 12-16 hours
+        </Note>
+        <Note>
+          <strong>32% of all respondents</strong> so far told the workshop was
+          “even better than expected”
         </Note>
       </Text>
     </ImageText>
@@ -152,14 +178,14 @@ const ServicesSection = ({ className = '', data }: ServicesSectionProps) => (
         </p>
       </Column>
       <Column>
-        <H3>Something else&nbsp;🎁</H3>
+        <H3>Something Else&nbsp;🎁</H3>
         <p>
-          Want something custom? We’ll be glad to chat. Reach us, and let’s
-          figure out how we can help you.
+          Want something custom? We’ll be glad to help. Reach us, and let’s
+          figure out how our experience can be relevant.
         </p>
       </Column>
     </Columns>
-    <ActionButton href="#contact">Chat with us</ActionButton>
+    <ActionButton href="#contact">Get a quote</ActionButton>
   </Section>
 );
 
@@ -225,6 +251,26 @@ const ServicesSectionWithQuery = () => (
         ) {
           childImageSharp {
             fixed(width: 224) {
+              ...ImageFixed
+            }
+          }
+        }
+
+        davidAvatar: file(
+          relativePath: { eq: "HomeSectionServices/david.jpg" }
+        ) {
+          childImageSharp {
+            fixed(width: 20) {
+              ...ImageFixed
+            }
+          }
+        }
+
+        piotrAvatar: file(
+          relativePath: { eq: "HomeSectionServices/piotr.jpg" }
+        ) {
+          childImageSharp {
+            fixed(width: 20) {
               ...ImageFixed
             }
           }

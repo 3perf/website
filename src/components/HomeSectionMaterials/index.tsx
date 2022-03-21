@@ -21,7 +21,7 @@ interface MaterialsSectionProps {
 }
 
 const MaterialsSection = ({ data }: MaterialsSectionProps) => (
-  <Section title="Articles" sectionKind={SectionKind.VERTICAL}>
+  <Section title="Perf Guides" sectionKind={SectionKind.VERTICAL}>
     <HomeLeftRightWrapper
       left={
         <LinkBlock href="/talks/web-perf-101">
