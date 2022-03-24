@@ -72,8 +72,7 @@ const IndexPage = ({ data }: IndexPageProps) => (
         />
         <Header>
           <H1>
-            <Mark>Make your site or web&nbsp;app faster</Mark>&nbsp;→ get more
-            revenue &amp; happier users
+            <Mark>Get your site blazingly fast</Mark>
           </H1>
         </Header>
         <ActionButton kind="light" href="#contact">
@@ -118,7 +117,7 @@ const IndexPage = ({ data }: IndexPageProps) => (
           <ContactSection />
         </SectionWrapper>
         <FooterWrapper>
-          <Footer linkToHome={false} license={false} showLegalDetails={true} />
+          <Footer linkToHome={false} license={false} />
         </FooterWrapper>
       </WidthWrapper>
     </div>
