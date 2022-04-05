@@ -72,7 +72,8 @@ const IndexPage = ({ data }: IndexPageProps) => (
         />
         <Header>
           <H1>
-            <Mark>Get your site blazingly fast</Mark>
+            <Mark>Make your web app blazing fast</Mark>&nbsp;→ get more revenue
+            &amp; happier users
           </H1>
         </Header>
         <ActionButton kind="light" href="#contact">
