@@ -170,9 +170,14 @@ export const BlockquoteTextWrapper = styled.div`
   }
 `;
 
+const imageSize = 20; /* px */
+const imageAndNameSpacing = 6; /* px */
+const imageOffsetOutsideContainer = 4; /* 4 */
 export const BlockquoteFooter = styled.footer`
   margin-top: ${gridSize * 2.5}px;
-  margin-left: -${gridSize * 0.5}px;
+  margin-left: ${imageSize +
+  imageAndNameSpacing -
+  imageOffsetOutsideContainer}px;
 
   /* Remove the default “—” prefix */
   &::before {
@@ -180,14 +185,17 @@ export const BlockquoteFooter = styled.footer`
   }
 `;
 
-export const BlockquoteImage = styled(_Image)`
-  width: ${gridSize * 2.5}px;
-  height: ${gridSize * 2.5}px;
-  margin-right: 6px;
-  border-radius: 50%;
-  vertical-align: middle;
-`;
-
 export const BlockquoteName = styled.span`
   color: black;
+  display: inline-flex;
+  align-items: center;
+`;
+
+export const BlockquoteImage = styled(_Image)`
+  position: absolute;
+  transform: translateX(-${imageSize + imageAndNameSpacing}px);
+  flex: none;
+  width: ${imageSize}px;
+  height: ${imageSize}px;
+  border-radius: 50%;
 `;

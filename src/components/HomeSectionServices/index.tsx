@@ -35,6 +35,7 @@ interface ServicesSectionProps {
       childImageSharp: { fixed: { height: number } };
     };
     davidAvatar: GraphqlImageFixed;
+    nicolasAvatar: GraphqlImageFixed;
     piotrAvatar: GraphqlImageFixed;
     auditMobile: GraphqlImageFixed;
     optimizationMobile: GraphqlImageFixed;
@@ -128,12 +129,14 @@ const ServicesSection = ({ className = '', data }: ServicesSectionProps) => (
             </p>
           </BlockquoteTextWrapper>
           <BlockquoteFooter>
-            <BlockquoteImage
-              imageData={data.davidAvatar.childImageSharp.fixed}
-              alt=""
-            />
-            <BlockquoteName>David Sigley</BlockquoteName> · Head of Engineering
-            @ Castor
+            <BlockquoteName>
+              <BlockquoteImage
+                imageData={data.davidAvatar.childImageSharp.fixed}
+                alt=""
+              />
+              David Sigley
+            </BlockquoteName>{' '}
+            · Head of Engineering @ Castor
           </BlockquoteFooter>
         </Blockquote>
       </Text>
@@ -158,6 +161,28 @@ const ServicesSection = ({ className = '', data }: ServicesSectionProps) => (
           <strong>Great when:</strong> your team needs to learn how to keep you
           fast on their own.
         </p>
+        {/* TODO: photo of the guy */}
+        <Blockquote>
+          <BlockquoteTextWrapper>
+            <p>
+              Ivan is immensely knowledgeable in React, in performance and in
+              the combination of the two. I really recommend PerfPerfPerf’s
+              React workshop to developers interested in getting the most out of
+              their apps and in understanding the inner workings of React
+              profiling.
+            </p>
+          </BlockquoteTextWrapper>
+          <BlockquoteFooter>
+            <BlockquoteName>
+              <BlockquoteImage
+                imageData={data.nicolasAvatar.childImageSharp.fixed}
+                alt=""
+              />
+              Nicolás Delfino
+            </BlockquoteName>{' '}
+            · Lead consultant & Performance competence lead @ 1337
+          </BlockquoteFooter>
+        </Blockquote>
         <Note>
           <strong>Format:</strong> Online or offline&nbsp;· For either Junior or
           Senior engineers&nbsp;· Takes 12-16 hours
@@ -258,6 +283,16 @@ const ServicesSectionWithQuery = () => (
 
         davidAvatar: file(
           relativePath: { eq: "HomeSectionServices/david.jpg" }
+        ) {
+          childImageSharp {
+            fixed(width: 20) {
+              ...ImageFixed
+            }
+          }
+        }
+
+        nicolasAvatar: file(
+          relativePath: { eq: "HomeSectionServices/nicolas.jpg" }
         ) {
           childImageSharp {
             fixed(width: 20) {
