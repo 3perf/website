@@ -35,13 +35,6 @@ const ContactSection = ({
             <ContactImage imageData={data.iamakulov.childImageSharp.fixed} />{' '}
             Ivan
           </Contact>{' '}
-          or{' '}
-          <Contact>
-            <ContactImage
-              imageData={data.christopherlarscarlson.childImageSharp.fixed}
-            />{' '}
-            Chris
-          </Contact>{' '}
           will get back to you in 24 hours.
         </p>
       </PromptContainer>
