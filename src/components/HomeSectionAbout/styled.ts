@@ -11,6 +11,7 @@ export const Intro = styled.div`
 
 export const Image = styled(_Image)`
   max-width: 600px;
+  display: block;
 `;
 
 export const Primary = styled.div``;
