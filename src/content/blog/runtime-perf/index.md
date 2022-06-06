@@ -24,7 +24,7 @@ Here’s how to do that.
 |
 | This means I might not be aware of some edge cases or pitfalls. This guide should be a good starting point for setting up your monitoring system, but it might (or might not!) need fine-tuning to be useful.
 |
-| Nevertheless, I’m publishing this as I’ve been asked “How would you set up runtime performance tests” half-a-dozen times at this point.
+| (Have your experience to add? Please [share it](https://twitter.com/iamakulov/status/1533885339168714752).)
 
 ```toc
 # This code block gets replaced with the TOC
@@ -285,7 +285,7 @@ In this case, you’ll need to do synthetic testing instead. Synthetic testing m
 [[note]]
 | **Disclaimer:** my previous experiments with synthetic testing failed: there’s been too much noise to catch any regressions. But that was before I learned [how Netflix dealt with the same issue](https://netflixtechblog.com/fixing-performance-regressions-before-they-happen-eab2602b86fe).
 
-# Client Feedback
+# Others’ Experiences
 
 Here are some of my client’s experiences with runtime performance monitoring:
 
@@ -296,3 +296,7 @@ Here are some of my client’s experiences with runtime performance monitoring:
 Not every experience was positive, though:
 
 - **Client A.** tried to set up interaction tracking but later disabled it. Their feedback was that it was hard to make sense of the data: “these numbers don’t make any sense with variables like user system resources, app and data size”.
+
+Have your experience to add? Share it in replies:
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">(Have you tried something like this in the past? Has it worked? Have you stumbled upon any pitfalls? Please share your experience ⬇️)</p>&mdash; Ivan Akulov 🇺🇦 (@iamakulov) <a href="https://twitter.com/iamakulov/status/1533885339168714752?ref_src=twsrc%5Etfw">June 6, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
