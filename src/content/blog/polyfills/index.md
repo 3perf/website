@@ -49,11 +49,8 @@ With _polyfill.io_, you add a single script in front of your bundle:
 
 and the script serves exactly the polyfills the visitor needs.
 
-<div class="note">
-
-_polyfill.io_ also [supports picking a subset of polyfills.](https://polyfill.io/v3/url-builder/) This is useful when, out of all modern JS features, you only use a few – e.g. `Map` and `Promise` – and don’t want to burden IE11 users with extra code.
-
-</div>
+[[note]]
+| _polyfill.io_ also [supports picking a subset of polyfills.](https://polyfill.io/v3/url-builder/) This is useful when, out of all modern JS features, you only use a few – e.g. `Map` and `Promise` – and don’t want to burden IE11 users with extra code.
 
 ## Tricky parts
 
@@ -91,21 +88,15 @@ So, in the snippet above:
 
 - the `/bundle.min.js` script will load in all browsers.
 
-<div class="note">
+[[note]]
+| Philip Walton wrote [a great detailed article about the `module`/`nomodule` approach](https://philipwalton.com/articles/deploying-es2015-code-in-production-today/).
 
-Philip Walton wrote [a great detailed article about the `module`/`nomodule` approach](https://philipwalton.com/articles/deploying-es2015-code-in-production-today/).
-
-</div>
-
-<div class="note">
-
-There’s a bunch of guides and plugins for bundles and frameworks that help to implement the `module`/`nomodule` pattern, e.g.:
-
-- [for webpack](https://dev.to/thejohnstew/differential-serving-3dkf)
-- [for Babel](https://babeljs.io/docs/en/babel-preset-env#targetsesmodules)
-- [for Next.js](https://github.com/zeit/next.js/issues/7563#issuecomment-568569235)
-
-</div>
+[[note]]
+| There’s a bunch of guides and plugins for bundles and frameworks that help to implement the `module`/`nomodule` pattern, e.g.:
+|
+| - [for webpack](https://dev.to/thejohnstew/differential-serving-3dkf)
+| - [for Babel](https://babeljs.io/docs/en/babel-preset-env#targetsesmodules)
+| - [for Next.js](https://github.com/zeit/next.js/issues/7563#issuecomment-568569235)
 
 ## Tricky parts
 
