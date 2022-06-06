@@ -45,7 +45,7 @@ module.exports = ({ markdownAST }) => {
     node.children = [body, heading];
   });
 
-  // Add a <div class="image-container"> wrapper around each (non-processed by gatsby-remark-images-anywhere) image
+  // Spread lists that have new lines between list items
   visitWithAncestors(markdownAST, 'list', (node, ancestors) => {
     // Don’t do anything with table-of-contents lists
     if (ancestors.some((ancestor) => ancestor.type === 'Toc')) {
