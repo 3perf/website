@@ -18,8 +18,8 @@ const stuffToPromote = [
 
   {
     imageKey: 'services',
-    title: 'Performance consulting',
-    href: '/#clients',
+    title: 'Make your site or web app fast',
+    href: '/#services',
   },
 ];
 

@@ -61,6 +61,7 @@ __metadata:
     gatsby-remark-images: ^5.5.0
     gatsby-remark-images-anywhere: ^1.3.1
     gatsby-remark-prismjs: ^5.5.0
+    gatsby-remark-reading-time: ^1.1.0
     gatsby-remark-source-name: ^1.0.0
     gatsby-source-filesystem: ^3.8.0
     gatsby-transformer-remark: ^3.2.0
@@ -11479,6 +11480,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"gatsby-remark-reading-time@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "gatsby-remark-reading-time@npm:1.1.0"
+  dependencies:
+    reading-time: ^1.1.3
+  peerDependencies:
+    gatsby: ^2.0.0
+  checksum: 77fb15a3734eb4838803f1b4c8cabbceed5929bc3afcbe57c0cf0db181365aee688e1eee84066439491a08a90daa5f4f1c86d9657763c5efd2ff8a8d9c39875b
+  languageName: node
+  linkType: hard
+
 "gatsby-remark-source-name@npm:^1.0.0":
   version: 1.0.0
   resolution: "gatsby-remark-source-name@npm:1.0.0"
@@ -21134,6 +21146,13 @@ __metadata:
   dependencies:
     picomatch: ^2.2.1
   checksum: 1ced032e6e45670b6d7352d71d21ce7edf7b9b928494dcaba6f11fba63180d9da6cd7061ebc34175ffda6ff529f481818c962952004d273178acd70f7059b320
+  languageName: node
+  linkType: hard
+
+"reading-time@npm:^1.1.3":
+  version: 1.5.0
+  resolution: "reading-time@npm:1.5.0"
+  checksum: e27bc5a70ba0f4ac337896b18531b914d38f4bee67cbad48029d0c11dd0a7a847b2a6bba895ab7ce2ad3e7ecb86912bdc477d8fa2d48405a3deda964be54d09b
   languageName: node
   linkType: hard
 

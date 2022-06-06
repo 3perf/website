@@ -118,6 +118,7 @@ module.exports = {
               ignoreFileExtensions: [],
             },
           },
+          `gatsby-remark-reading-time`,
           `gatsby-remark-3perf-transformer`,
         ],
       },
