@@ -41,7 +41,9 @@ To track how your app behaves _after_ it loads, you’d need to do some work.
 
 # Step 1: Pick the Most Important Interactions
 
-Before we Pick the interactions you care about the most. For example, for an app like Gmail, that could be:
+Before you start monitoring render performance, you need to decide _what_ to monitor.
+
+For that, pick the interactions you care about the most. For example, for an app like Gmail, that could be:
 
 - Clicking the “Compose” button
 - Opening an email thread
@@ -277,7 +279,7 @@ In this case, you’ll need to do synthetic testing instead. Synthetic testing m
 
 2. **Set up measurements.** If you followed [step 2 above](#step-2-instrument-every-interaction) to instrument interactions, you’re all good! Use that.
 
-   Otherwise, try running Lighthouse [in the Timespan mode](https://github.com/GoogleChrome/lighthouse/blob/master/docs/user-flows.md#timespan). The Timespan mode is like the regular Lighthouse – except that it measures the runtime performance, not the loading speed.
+   Otherwise, try running Lighthouse [in the Timespan mode](https://github.com/GoogleChrome/lighthouse/blob/master/docs/user-flows.md#timespan). The Timespan mode is like the regular Lighthouse – except that it measures the performance of interactions, not the loading speed.
 
    [[sidenote|Why use Interaction to Next Paint? Because it’s specifically designed for what we’re trying to achieve: to measure how quickly an interaction takes. [Docs](https://web.dev/inp/)]]
    | For example, here’s how to measure how fast the Gmail’s “Compose” button is. Open Gmail → start a timespan recording → click the “Compose” button → stop the recording → read the _Interaction to Next Paint_ value:
@@ -302,7 +304,7 @@ In this case, you’ll need to do synthetic testing instead. Synthetic testing m
 
 # Others’ Experiences
 
-Here are some of my client’s experiences with runtime performance monitoring:
+Here are some of my client’s experiences with render performance monitoring:
 
 - **Client F.** tracks both significant interactions and long tasks in their warehouse. They do not use `afterFrame` – instead, every interaction uses an individual tracking approach. They’ve been tracking metrics like this for several years, and it’s been a success: metrics clearly show when something gets slower.
 
