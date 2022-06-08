@@ -31,6 +31,7 @@ interface ComponentProps {
       excerpt: string;
       html: string;
       fields: {
+        slug: string;
         readingTime: {
           text: string;
         };
@@ -144,6 +145,10 @@ const Component = ({ data }: ComponentProps) => {
             name="article:modified_time"
             content={articleMeta.date.modified}
           />
+          <link
+            rel="canonical"
+            href={siteMetadata.siteUrl + page.fields.slug}
+          />
         </Helmet>
         <Nav logoKind={LogoKind.Black} />
         <Header>
@@ -208,6 +213,7 @@ export const pageQuery = graphql`
       excerpt(pruneLength: 160)
       html
       fields {
+        slug
         readingTime {
           text
         }
