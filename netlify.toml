@@ -2,12 +2,9 @@
 publish = "public"
 functions = "functions"
 
-## Yarn 3 cache does not work out of the box as of Jan 2022. Context:
-## https://github.com/netlify/build/issues/1535#issuecomment-1021947989
 [build.environment]
 NODE_VERSION = "16.15.1"
 YARN_VERSION = "1.22.19"
-YARN_CACHE_FOLDER = "/opt/buildhome/.yarn_cache"
 
 [[plugins]]
 package = "@netlify/plugin-gatsby"
