@@ -178,7 +178,7 @@ module.exports = {
                 const postMeta = edge.node.frontmatter;
 
                 return {
-                  title: postMeta.title.visible,
+                  title: postMeta.title,
                   description: postMeta.rssDescription,
                   date: postMeta.date.published,
                   author: postMeta.author.name,
