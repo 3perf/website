@@ -8,7 +8,7 @@ const moveLetters = keyframes`
 
   50% {
     transform: translateY(-3px);
-  } 
+  }
 
   100% {
     transform: translateY(0);

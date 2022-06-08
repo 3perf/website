@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import _Footer from '../../components/Footer';
 import _Nav from '../../components/Nav';
+import _LiveDemo from '../../components/talks/LiveDemo';
 import _SectionHeader from '../../components/talks/SectionHeader';
 import _Slide from '../../components/talks/Slide';
 import media from '../../styles/media';
@@ -25,6 +26,10 @@ export const BlockImage = styled.img`
   display: block;
 `;
 
+export const BlockVideo = styled.video`
+  display: block;
+`;
+
 export const SectionHeader = styled(_SectionHeader)`
   margin: ${gridSize * 6}px 0 ${gridSize * 1.5}px;
 
@@ -37,7 +42,7 @@ export const Blockquote = styled.blockquote`
   margin: ${gridSize * 3}px ${gridSize * 5}px;
   margin-right: 0;
   font-style: italic;
-  font-size: 1.5em;
+  font-size: 1.25em;
 `;
 
 export const ToBeContinued = styled.div`
@@ -114,4 +119,15 @@ export const Contents = styled.div`
 
 export const ContentsInner = styled.div`
   columns: 2 200px;
+`;
+
+export const LiveDemo = styled(_LiveDemo)`
+  /* TODO: remove && */
+  && {
+    margin-top: ${gridSize * 6}px;
+  }
+`;
+
+export const Mark = styled.mark`
+  background: ${colors.softYellow};
 `;

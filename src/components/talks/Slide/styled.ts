@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import media from '../../../styles/media';
-import { sizes } from '../../../styles/variables';
+import { gridSize, sizes } from '../../../styles/variables';
 import GatsbyImage from '../../Image';
 
 export const Container = styled.figure`
@@ -58,7 +58,8 @@ export const ImageWrapper = styled.a`
     line-height: 120px;
 
     color: #ccc;
-    font-size: 48px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 60px;
     font-weight: bold;
 
     /* Hide & animate the element */
@@ -99,6 +100,13 @@ export const Text = styled.figcaption`
       font-size: 1.25em;
     `}
   `}
+
+  > pre > code {
+    display: block;
+    padding: ${gridSize / 2}px ${gridSize}px;
+    margin: 0 -${gridSize}px;
+    white-space: pre-wrap;
+  }
 `;
 
 export const SlideLink = styled.a`

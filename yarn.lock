@@ -12274,9 +12274,9 @@ __metadata:
   linkType: hard
 
 "graceful-fs@npm:^4.2.6":
-  version: 4.2.10
-  resolution: "graceful-fs@npm:4.2.10"
-  checksum: 3f109d70ae123951905d85032ebeae3c2a5a7a997430df00ea30df0e3a6c60cf6689b109654d6fdacd28810a053348c4d14642da1d075049e6be1ba5216218da
+  version: 4.2.9
+  resolution: "graceful-fs@npm:4.2.9"
+  checksum: 68ea4e07ff2c041ada184f9278b830375f8e0b75154e3f080af6b70f66172fabb4108d19b3863a96b53fc068a310b9b6493d86d1291acc5f3861eb4b79d26ad6
   languageName: node
   linkType: hard
 
@@ -15442,9 +15442,9 @@ __metadata:
   linkType: hard
 
 "lru-cache@npm:^7.7.1":
-  version: 7.7.3
-  resolution: "lru-cache@npm:7.7.3"
-  checksum: 1789743a68a8db052564a9dd020f04ba0712327a43e08babc94f05e1c56ef75a03514cf4acab75ae90e3d5d16ae02c7bf0f34754968dc5b8c2c3bc2d92c21745
+  version: 7.7.1
+  resolution: "lru-cache@npm:7.7.1"
+  checksum: f362c5a2cfa8ad6fe557ec43dc1b7a9695cce84a5652a43ff813609f782f5da576631e7dfad41878bf19a7a69438f38375178635ee80de269aa314280ca2f59e
   languageName: node
   linkType: hard
 
@@ -15502,8 +15502,8 @@ __metadata:
   linkType: hard
 
 "make-fetch-happen@npm:^10.0.3":
-  version: 10.1.1
-  resolution: "make-fetch-happen@npm:10.1.1"
+  version: 10.1.0
+  resolution: "make-fetch-happen@npm:10.1.0"
   dependencies:
     agentkeepalive: ^4.2.1
     cacache: ^16.0.2
@@ -15521,7 +15521,7 @@ __metadata:
     promise-retry: ^2.0.1
     socks-proxy-agent: ^6.1.1
     ssri: ^8.0.1
-  checksum: 3f1b0acc2032061a01bb44458e07bbd5721e3fbfb5a1620eef38e7c7d022f2141373fc41a8056685441c70444d94e1479485492ac6e9e8ad5de87ea29ca9d9e4
+  checksum: fae1c2f255f6467bf6731344c2c04dd0e1f1899d8ae4698d98e2c86131ba899a418746ebc564493b85d1651d43c93b49f7825a2773edda4285a1c4c5e5ba9168
   languageName: node
   linkType: hard
 

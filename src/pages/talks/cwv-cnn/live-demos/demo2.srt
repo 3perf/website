@@ -1,0 +1,143 @@
+1
+00:00:00,150 --> 00:00:02,640
+So, how do you check if this has
+an effect, how do you check if
+
+2
+00:00:02,640 --> 00:00:03,950
+your server is actually slow?
+
+3
+00:00:04,380 --> 00:00:07,470
+This is easy to do both in
+WebPageTest and in Chrome DevTools.
+
+4
+00:00:07,950 --> 00:00:10,700
+So in WebPageTest, you
+have this huge waterfall.
+
+5
+00:00:11,780 --> 00:00:16,610
+So what you do is you click that
+waterfall, you wait until it loads,
+
+6
+00:00:16,970 --> 00:00:23,300
+and in this enlarged format, in the
+large shape and you scroll down and
+
+7
+00:00:23,300 --> 00:00:26,720
+you click on some network resources,
+like say the index.html response.
+
+8
+00:00:27,320 --> 00:00:33,540
+This opens a dialogue with a detailed
+information with like- actually one thing,
+
+9
+00:00:33,720 --> 00:00:37,300
+one thing that's great here is that a
+lot of information here is not present
+
+10
+00:00:37,300 --> 00:00:40,089
+in Chrome DevTools, so if you are doing
+advanced network debugging, this is
+
+11
+00:00:40,389 --> 00:00:41,919
+like super great and super convenient.
+
+12
+00:00:42,370 --> 00:00:46,660
+But yeah, this open a dialog with the
+detailed information and there's a lot
+
+13
+00:00:46,660 --> 00:00:52,110
+of stuff here, but what we actually care
+about is the time to first byte row.
+
+14
+00:00:52,940 --> 00:00:53,610
+Here it is.
+
+15
+00:00:54,460 --> 00:00:58,864
+And in this case, time to first
+byte measured by WebPageTest
+
+16
+00:00:58,884 --> 00:01:01,344
+is 196 milliseconds, which
+is actually pretty good.
+
+17
+00:01:02,065 --> 00:01:04,794
+And if you're in Chrome dev
+tools, this is easy to do as well.
+
+18
+00:01:04,854 --> 00:01:11,184
+So what you do is you open the page,
+then you open the browser dev tools.
+
+19
+00:01:11,244 --> 00:01:16,884
+You reload the page, you make sure you
+have the network pane open, and once
+
+20
+00:01:16,975 --> 00:01:20,964
+resources start loading, you click on
+any network resource, like, say, again,
+
+21
+00:01:20,964 --> 00:01:24,995
+index.html, you switched to the timing
+tab, which is already open in my case.
+
+22
+00:01:25,505 --> 00:01:28,705
+And you look at the waiting
+(time to first bite) value.
+
+23
+00:01:29,165 --> 00:01:32,945
+And in this case, the time to first
+value is 40 milliseconds, which is even
+
+24
+00:01:32,945 --> 00:01:34,715
+better than what WebPageTest measured.
+
+25
+00:01:34,835 --> 00:01:36,695
+This is, this is really cool.
+
+26
+00:01:37,325 --> 00:01:42,345
+So yeah, in this case, both in
+WebPageTest and in Chrome DevTools,
+
+27
+00:01:42,365 --> 00:01:45,995
+the time to first bite value is great.
+
+28
+00:01:46,055 --> 00:01:50,475
+In my experience, or in my opinion,
+rather, I would say that any value
+
+29
+00:01:50,475 --> 00:01:53,775
+below 300 milliseconds is pretty good.
+
+30
+00:01:54,315 --> 00:01:58,320
+So in the CNN case, the server
+slowness doesn't seem to be the issue.
+
