@@ -271,6 +271,11 @@ const tocStyles = css`
       margin-top: 0;
     }
 
+    /* Collapse intermediate levels of TOC if e.g. we nest h3 inside h1 */
+    ul:has(> li:only-child > ul:only-child) {
+      padding-left: 0;
+    }
+
     /* Overwrite default p + ul styles */
     *:is(p, ul) + *:is(p, ul) {
       margin-top: 0 !important;
