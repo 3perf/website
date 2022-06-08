@@ -15,3 +15,12 @@ yarn-error.log
 
 # Local Netlify folder
 .netlify
+
+# Yarn stuff
+.yarn/*
+!.yarn/cache
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
