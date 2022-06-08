@@ -1,5 +1,5 @@
 ---
-title: 'How to Monitor Your React Runtime Performance'
+title: 'Get Fast, Stay Fast: How To Monitor React Render Performance'
 description: 'So you just made your app fast. Now, how do you ensure it doesn’t get slow again?'
 author:
   id: iamakulov
@@ -12,19 +12,14 @@ socialImage:
   twitter: './cover-twitter.png'
 date:
   published: 2022-06-06T15:00:00
-  modified: 2022-06-06T15:00:00
+  modified: 2022-06-08T16:00:00
+# The article slug changed; let’s keep its original guid to avoid pushing a new RSS item
+rssForceGuid: https://3perf.com/blog/runtime-perf/
 ---
 
-Say you just finished optimizing your React app and made every button click as fast as possible. Now, you want to keep an eye on the app’s performance – and learn if it gets slower again so you can fix it.
+Say you just finished optimizing your React app and making every button click as fast as possible. Now, you want to keep an eye on the app’s performance – and learn if the app gets slower again so you can fix it.
 
 Here’s how to do that.
-
-[[note]]
-| **Disclaimer: not battle-tested.** This guide is based on the experiences of clients I worked with, plus my experiments in the field. It’s how I would approach setting up performance tests today. However, I haven’t had a chance to implement this in a real-world app myself yet.
-|
-| This means I might not be aware of some edge cases or pitfalls. This guide should be a good starting point for setting up your monitoring system, but it might (or might not!) need fine-tuning to be useful.
-|
-| (Have your experience to add? Please [share it](https://twitter.com/iamakulov/status/1533885339168714752).)
 
 ```toc
 # This code block gets replaced with the TOC
@@ -33,13 +28,20 @@ header: Contents
 
 # No Ready-To-Go Solutions
 
-Tracking runtime performance is challenging. With loading performance, there’s a [whole lot](https://treo.sh) of [tools](https://github.com/GoogleChrome/lighthouse-ci) you [could](https://github.com/GoogleChrome/web-vitals#send-the-results-to-google-analytics) just [plug in](https://www.speedcurve.com) and [start](https://sentry.io/for/web-vitals/) collecting [data](https://www.webpagetest.org). There’s nothing like that for runtime performance.
+Tracking React render performance is challenging. With loading performance, there’s a [whole lot](https://treo.sh) of [tools](https://github.com/GoogleChrome/lighthouse-ci) you [could](https://github.com/GoogleChrome/web-vitals#send-the-results-to-google-analytics) just [plug in](https://www.speedcurve.com) and [start](https://sentry.io/for/web-vitals/) collecting [data](https://www.webpagetest.org). There’s nothing like that for render performance.
 
-To monitor your app responsiveness, you’d need to do some work.
+To track how your app behaves _after_ it loads, you’d need to do some work.
+
+[[note]]
+| **Disclaimer: the solution below is not battle-tested.** These steps are based on the experiences of clients I worked with, plus my experiments in the field. It’s how I would approach setting up performance tests today. However, I haven’t had a chance to implement this in a real-world app myself yet.
+|
+| This means I might not be aware of some edge cases or pitfalls. This guide should be a good starting point for setting up your monitoring system, but it might (or might not!) need fine-tuning to be useful.
+|
+| (Have your experience to add? Please [share it on Twitter](https://twitter.com/iamakulov/status/1533885339168714752)!)
 
 # Step 1: Pick the Most Important Interactions
 
-Pick the interactions you care about the most. For example, for an app like Gmail, that could be:
+Before we Pick the interactions you care about the most. For example, for an app like Gmail, that could be:
 
 - Clicking the “Compose” button
 - Opening an email thread
@@ -271,16 +273,29 @@ Sometimes, it’s useful to catch regressions _before_ they happen. For example:
 
 In this case, you’ll need to do synthetic testing instead. Synthetic testing means “running performance tests in a virtual machine, on demand”. Here’s how to set it up:
 
-1. **Follow steps 1-2** to instrument every important interaction
+1. **Pick the most important interactions.** Just like [in step 1 above](#step-1-pick-the-most-important-interactions).
 
-2. **Set up a virtual machine** that would run tests on demand. This might be a simple EC2 instance in AWS or a physical machine.
+2. **Set up measurements.** If you followed [step 2 above](#step-2-instrument-every-interaction) to instrument interactions, you’re all good! Use that.
+
+   Otherwise, try running Lighthouse [in the Timespan mode](https://github.com/GoogleChrome/lighthouse/blob/master/docs/user-flows.md#timespan). The Timespan mode is like the regular Lighthouse – except that it measures the runtime performance, not the loading speed.
+
+   [[sidenote|Why use Interaction to Next Paint? Because it’s specifically designed for what we’re trying to achieve: to measure how quickly an interaction takes. [Docs](https://web.dev/inp/)]]
+   | For example, here’s how to measure how fast the Gmail’s “Compose” button is. Open Gmail → start a timespan recording → click the “Compose” button → stop the recording → read the _Interaction to Next Paint_ value:
+
+   ![{caption:"This is a human-readable Lighthouse report. In case you need to extract Interaction to Next Paint automatically, Lighthouse also returns data in the JSON format. See <a href='https://github.com/GoogleChrome/lighthouse/blob/master/docs/readme.md#using-programmatically'>“Using Lighthouse Programmatically”</a> for details."}](./timespans.png)
+
+3. **Set up a virtual machine** that would run tests on demand. This might be a simple EC2 instance in AWS or a physical machine.
 
    - **Stable configuration.** Make sure that the machine configuration stays the same over time! If it’s faster today and slower tomorrow, the tests would also return better values today and worse values tomorrow
-   - **One test at a time.** And make sure the machine never runs several tests in parallel. If you run two tests in parallel, each would steal a part of CPU capacity from the other – and report worse numbers.
+   - **One test at a time.** And make sure the machine never runs several tests in parallel. If you run two tests in parallel, each would steal a part of CPU capacity from the other – and report worse numbers
 
-3. **Run tests.** Every time you need to run a synthetic test, run it on that machine and collect the measurements. Use a tool like [Playwright](https://playwright.dev) to launch the app in a headless browser and click it around as a user would do
+4. **Run tests and collect measurements.** Every time you need to run a synthetic test, run it on that machine and collect the measurements. Use a tool like [Playwright](https://playwright.dev) or [Puppeteer](https://github.com/puppeteer/puppeteer) to launch the app in a headless browser and click it around like a user would do.
 
-4. **Compare with the last 4-40 runs.** _Do not_ compare the measurements to the previous run. Instead, compare measurements with an average of the last 4-40 runs. (See [“Fixing Performance Regressions Before they Happen”](https://netflixtechblog.com/fixing-performance-regressions-before-they-happen-eab2602b86fe) in Netflix Tech Blog for why this matters.)
+   - [[sidenote|`page.evaluate()`: [Playwright docs](https://playwright.dev/docs/evaluating) · [Puppeteer docs](https://puppeteer.github.io/puppeteer/docs/next/puppeteer.page.evaluate/)]]
+     | **If you instrumented interactions manually:** store measurements in a global variable (like `window.myPerfMeasurements`) and then read them with `page.evaluate()`
+   - **If you use Lighthouse’s Timespan mode:** Playwright and Puppeteer work well with Lighthouse. [Code example](https://web.dev/lighthouse-user-flows/#timespans)
+
+5. **Compare with the last 4-40 runs.** _Do not_ compare the measurements to the previous run. Instead, compare measurements with an average of the last 4-40 runs. (See [“Fixing Performance Regressions Before they Happen”](https://netflixtechblog.com/fixing-performance-regressions-before-they-happen-eab2602b86fe) in Netflix Tech Blog for why this matters.)
 
 [[note]]
 | **Disclaimer:** my previous experiments with synthetic testing failed: there’s been too much noise to catch any regressions. But that was before I learned [how Netflix dealt with the same issue](https://netflixtechblog.com/fixing-performance-regressions-before-they-happen-eab2602b86fe).
@@ -297,6 +312,6 @@ Not every experience was positive, though:
 
 - **Client A.** tried to set up interaction tracking but later disabled it. Their feedback was that it was hard to make sense of the data: “these numbers don’t make any sense with variables like user system resources, app and data size”.
 
-Have your experience to add? Share it in replies:
+Have your experience to add? Please share it in replies:
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">(Have you tried something like this in the past? Has it worked? Have you stumbled upon any pitfalls? Please share your experience ⬇️)</p>&mdash; Ivan Akulov 🇺🇦 (@iamakulov) <a href="https://twitter.com/iamakulov/status/1533885339168714752?ref_src=twsrc%5Etfw">June 6, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>

@@ -183,7 +183,9 @@ module.exports = {
                   date: postMeta.date.published,
                   author: postMeta.author.name,
                   url: siteMeta.siteUrl + edge.node.fields.slug,
-                  guid: siteMeta.siteUrl + edge.node.fields.slug,
+                  guid:
+                    postMeta.rssForceGuid ||
+                    siteMeta.siteUrl + edge.node.fields.slug,
                   // eslint-disable-next-line @typescript-eslint/camelcase
                   custom_elements: [
                     {
@@ -228,6 +230,7 @@ module.exports = {
                           }
                         }
                         rssDescription
+                        rssForceGuid
                       }
                     }
                   }
