@@ -1,6 +1,3 @@
 /blog /content
 /talks /content
-
-# Force a 301 redirect because it doesn’t work otherwise for whatever reason
-
-/blog/runtime-perf /blog/react-monitoring 301!
+/blog/runtime-perf /blog/react-monitoring
