@@ -112,6 +112,37 @@ Most of the time, a function you’d pass into `useEffect` would be called at th
 
 However, with React 18, if the app updates in response to user input, [`useEffect` fires synchronously](https://github.com/reactwg/react-18/discussions/128). And even with React 17 and below, a `useEffect` will also run early if [you have scheduled several renders in a row](https://stackoverflow.com/a/53048903/1192426).
 
+### Why not React Profiler API?
+
+[React Profiler](https://reactjs.org/docs/profiler.html) is a built-in React component that measures how long its children take to render. If you used it for Gmail’s Compose button, it would look like this:
+
+```js
+import { Profiler } from 'react';
+
+const ComposeButton = () => {
+  const handleRender = (id, phase, actualDuration) => {
+    console.log(
+      `The ${id} interaction took ` +
+        `${actualDuration}ms to render (${phase})`,
+    );
+    // Would log “The ComposeButton interaction
+    // took 25.2999999970197678ms to render (update)”
+  };
+
+  return (
+    <Profiler id="ComposeButton" onRender={handleRender}>
+      <Button onClick={handleClick}>Compose</Button>
+    </Profiler>
+  );
+};
+```
+
+The challenge is that React Profiler measures only a part of the whole interaction:
+
+![{caption:"The highlighted function is <code>renderRootSync</code> – this is where React renders all components."}](./react-profiler.png)
+
+If you added an expensive `useLayoutEffect` or accidentally increased your layout costs twice, React Profiler just wouldn’t catch that.
+
 ### Why not `performance.mark()`/`performance.measure()`?
 
 Instead of using `performance.now()` to measure how long an interaction took, you could also use [`performance.mark()`](http://developer.mozilla.org/en-US/docs/Web/API/Performance/mark) and [`performance.measure()`](http://developer.mozilla.org/en-US/docs/Web/API/Performance/measure) APIs:
@@ -205,7 +236,7 @@ To collect long tasks or events, use [the `PerformanceObserver` API](http://deve
 // - longtask: triggered when any piece of JavaScript took more than 50 ms to execute
 // - event: triggered when any event happens
 // Other events: http://developer.mozilla.org/en-US/docs/Web/API/PerformanceEntry/entryType
-const performanceEventsToTrack = ['longtask', 'event'];
+const performanceEventsToTrack = ['event', 'longtask'];
 
 const observer = new PerformanceObserver((list) => {
   // This callback is called whenever a new event
@@ -214,7 +245,8 @@ const observer = new PerformanceObserver((list) => {
     // Skip `event` events that were cheap
     if (entry.entryType === 'event' && entry.duration < 50) continue;
 
-    // Send the event to the data warehouse
+    // Send the event to a data warehouse
+    // (see below for a Sentry example)
     sendEntryToDataWarehouse(entry);
   }
 });
@@ -222,22 +254,15 @@ const observer = new PerformanceObserver((list) => {
 observer.observe({ entryTypes: performanceEventsToTrack });
 ```
 
-With Sentry, `sendEntryToDataWarehouse` might look like this:
+In Chrome 102, [`event`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceEventTiming) and [`longtask`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceLongTaskTiming) entries look like this:
+
+![{caption:"This is as of Chrome 102 (Jun 2022). Other browsers lack some of these fields. In the future, more fields might be added: for example, <a href='https://chromestatus.com/feature/5674224959094784'><code>interactionId</code></a> was shipped just a few months ago."}](./event-and-long-task.png)
+
+In the above code, there’s a `sendEntryToDataWarehouse` function that sends events to the server. Here’s how it might look with Sentry:
 
 ```js
 function sendEntryToDataWarehouse(entry) {
-  if (entry.entryType === 'longtask') {
-    Sentry.captureMessage('Long task', {
-      level: 'info',
-      contexts: {
-        details: {
-          duration: entry.duration,
-          startTime: entry.startTime,
-          // ...
-        },
-      },
-    });
-  } else {
+  if (entry.entryType === 'event') {
     Sentry.captureMessage('Long event handler', {
       level: 'info',
       contexts: {
@@ -246,6 +271,17 @@ function sendEntryToDataWarehouse(entry) {
           startTime: entry.startTime,
           eventKind: entry.name, // "click" or "keypress" or etc
           target: entry.target.className,
+          // ...
+        },
+      },
+    });
+  } else {
+    Sentry.captureMessage('Long task', {
+      level: 'info',
+      contexts: {
+        details: {
+          duration: entry.duration,
+          startTime: entry.startTime,
           // ...
         },
       },
