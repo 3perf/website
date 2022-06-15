@@ -80,25 +80,10 @@ class Layout extends React.Component<LayoutProps> {
         <GlobalStyle />
         {children}
         <Script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=UA-38017504-7"
-        />
-        <Script
-          innerHTMLCode={`
-            if (window.location.hostname === 'localhost') {
-              // Disable GA on localhost, per https://stackoverflow.com/a/45367051/1192426
-              window['ga-disable-UA-38017504-7'] = true;
-            }
-          `}
-        />
-        <Script
-          innerHTMLCode={`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'UA-38017504-7');
-          `}
+          src="https://cdn.usefathom.com/script.js"
+          data-site="EIKSECOJ"
+          data-excluded-domains="localhost"
+          defer
         />
         <Script
           src="https://unpkg.com/quicklink@2.2.0/dist/quicklink.umd.js"
