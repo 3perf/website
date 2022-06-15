@@ -74,6 +74,13 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: 'legal',
+        path: `${__dirname}/src/content/legal/`,
+      },
+    },
+    {
       resolve: 'gatsby-transformer-remark',
       options: {
         // Disable `pedantic` as it’s a) buggy and deprecated, per https://github.com/remarkjs/remark/pull/477,

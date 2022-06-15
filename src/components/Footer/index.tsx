@@ -20,7 +20,6 @@ const Footer = ({
     <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA</a>
   ),
   useLicenseFontSpacing = true,
-  legalDetails,
   extraContent,
 }: FooterProps) => (
   <Container className={className}>
@@ -41,7 +40,12 @@ const Footer = ({
       </span>
       <span>🖤</span>
     </Credentials>
-    {legalDetails && <Legal>{legalDetails}</Legal>}
+    <Legal>
+      Sole proprietorship (eenmanszaak). Herengracht 551, 1017 BW Amsterdam,
+      Netherlands. KvK no. 86522469. VAT ID NL004265772B46.{' '}
+      <a href="/legal/terms/">Terms and Conditions</a>.{' '}
+      <a href="/legal/privacy/">Privacy Policy</a>
+    </Legal>
   </Container>
 );
 
