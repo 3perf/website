@@ -101,7 +101,7 @@ class Layout extends React.Component<LayoutProps> {
           `}
         />
         <Script
-          src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.0.0-alpha/quicklink.umd.js"
+          src="https://unpkg.com/quicklink@2.2.0/dist/quicklink.umd.js"
           defer
         />
         <Script
