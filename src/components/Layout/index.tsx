@@ -3,7 +3,6 @@ import { createGlobalStyle } from 'styled-components';
 import { linkActiveStyles, linkStyles } from '../../styles/shared-styles';
 import { colors, sizes } from '../../styles/variables';
 import { JSXChildrenProp } from '../../types';
-import Script from '../Script';
 import getGlobalFonts from './getGlobalFonts';
 
 // tslint:disable-next-line no-unused-expression
@@ -79,21 +78,6 @@ class Layout extends React.Component<LayoutProps> {
       <div>
         <GlobalStyle />
         {children}
-        <Script
-          src="https://cdn.usefathom.com/script.js"
-          data-site="EIKSECOJ"
-          data-excluded-domains="localhost"
-          defer
-        />
-        <Script
-          src="https://unpkg.com/quicklink@2.2.0/dist/quicklink.umd.js"
-          defer
-        />
-        <Script
-          innerHTMLCode={`
-            window.addEventListener('load', () => quicklink.listen());
-          `}
-        />
       </div>
     );
   }
