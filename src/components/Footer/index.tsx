@@ -42,8 +42,8 @@ const Footer = ({
     </Credentials>
     <Legal>
       Sole proprietorship (eenmanszaak). Herengracht 551, 1017 BW Amsterdam,
-      Netherlands. KvK no. 86522469. VAT ID NL004265772B46. Contact number:
-      +3197010281674. <a href="/legal/terms/">Terms and Conditions</a>.{' '}
+      Netherlands. KvK no. 86522469. VAT ID NL004265772B46.{' '}
+      <a href="/legal/terms/">Terms and Conditions</a>.{' '}
       <a href="/legal/privacy/">Privacy Policy</a>
     </Legal>
   </Container>
