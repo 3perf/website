@@ -340,7 +340,7 @@ In this case, you’ll need to do synthetic testing instead. Synthetic testing m
 
 # Others’ Experiences
 
-Here are some of my client’s experiences with render performance monitoring:
+Here are some of my clients’ experiences with render performance monitoring:
 
 - **Client F.** tracks both significant interactions and long tasks in their warehouse. They do not use `afterFrame` – instead, every interaction uses an individual tracking approach. They’ve been tracking metrics like this for several years, and it’s been a success: metrics clearly show when something gets slower.
 
