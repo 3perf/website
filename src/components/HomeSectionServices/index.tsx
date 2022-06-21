@@ -55,6 +55,7 @@ const ServicesSection = ({ className = '', data }: ServicesSectionProps) => (
       </clipPath>
     </SvgMask>
     <ImageText
+      id="audit"
       direction="forward"
       desktopImageHeight={data.auditDesktop.childImageSharp.fixed.height}
     >
@@ -97,6 +98,7 @@ const ServicesSection = ({ className = '', data }: ServicesSectionProps) => (
       </Text>
     </ImageText>
     <ImageText
+      id="optimize"
       direction="reverse"
       desktopImageHeight={data.optimizationDesktop.childImageSharp.fixed.height}
     >
@@ -142,6 +144,7 @@ const ServicesSection = ({ className = '', data }: ServicesSectionProps) => (
       </Text>
     </ImageText>
     <ImageText
+      id="workshop"
       direction="forward"
       desktopImageHeight={data.workshopDesktop.childImageSharp.fixed.height}
     >
@@ -161,7 +164,6 @@ const ServicesSection = ({ className = '', data }: ServicesSectionProps) => (
           <strong>Great when:</strong> your team needs to learn how to keep you
           fast on their own.
         </p>
-        {/* TODO: photo of the guy */}
         <Blockquote>
           <BlockquoteTextWrapper>
             <p>
