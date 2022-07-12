@@ -3,9 +3,11 @@ import appsmithLogo from './appsmith.svg';
 import castorLogo from './castor.svg';
 import commonLogo from './common.svg';
 import fatLlamaLogo from './fat-llama.svg';
+import finderLogo from './finder.svg';
 import framerLogo from './framer.svg';
 import googleLogo from './google.svg';
 import hugoLogo from './hugo.svg';
+import restreamLogo from './restream.svg';
 import sitepointLogo from './sitepoint.svg';
 import {
   Blockquote,
@@ -15,6 +17,7 @@ import {
   Logo,
   Logos,
 } from './styled';
+import togglLogo from './toggl.svg';
 
 const HomeSectionTestimonials = () => (
   <Container>
@@ -38,6 +41,9 @@ const HomeSectionTestimonials = () => (
       <Logo src={castorLogo} width="188" height="62" />
       <Logo src={hugoLogo} width="61" height="62" />
       <Logo src={sitepointLogo} width="273" height="62" />
+      <Logo src={togglLogo} width="111" height="62" />
+      <Logo src={finderLogo} width="172" height="62" />
+      <Logo src={restreamLogo} width="232" height="62" />
     </Logos>
   </Container>
 );

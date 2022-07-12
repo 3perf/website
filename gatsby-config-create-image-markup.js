@@ -62,12 +62,13 @@ function createImageMarkup({
       <img
         src="${src}"
         ${commonProps}
-        ${
-          imageOptions.maxWidth
-            ? `style="--max-width-from-options:${imageOptions.maxWidth}px"`
-            : ''
-        } />
+      />
     </picture>
+    ${
+      imageOptions.caption
+        ? `<figcaption class="image-container__caption">${imageOptions.caption}</figcaption>`
+        : ''
+    }
   </figure>`;
 }
 

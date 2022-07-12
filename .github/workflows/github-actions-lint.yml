@@ -15,12 +15,18 @@ jobs:
 
     steps:
       - name: Check out Git repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'yarn'
 
         # Automatically installs npm or yarn
         # and runs "npm ci" or "yarn install --frozen-lockfile" respectively
-      - name: Set up Yarn and install dependencies
-        uses: bahmutov/npm-install@v1
+      - name: Install dependencies
+        run: yarn --immutable --immutable-cache
 
       - name: Run eslint
         run: yarn lint

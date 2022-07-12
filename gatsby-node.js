@@ -6,6 +6,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const templatePerSourceName = {
     blog: path.resolve(`./src/templates/blog/index.tsx`),
+    legal: path.resolve(`./src/templates/legal/index.tsx`),
   };
 
   const result = await graphql(
@@ -17,9 +18,6 @@ exports.createPages = async ({ graphql, actions }) => {
               fields {
                 slug
                 sourceName
-              }
-              frontmatter {
-                title
               }
             }
           }
@@ -56,7 +54,10 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 
   if (node.internal.type === 'MarkdownRemark') {
     const fileNode = getNode(node.parent);
-    const pathPrefix = '/blog';
+    const pathPrefix = {
+      blog: '/blog',
+      legal: '/legal',
+    }[fileNode.sourceInstanceName];
     const filePath = createFilePath({ node, getNode });
 
     createNodeField({

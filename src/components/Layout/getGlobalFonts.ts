@@ -1,3 +1,4 @@
+import firaCodeBoldWoff2 from '../../styles/webfonts/FiraCode-Bold.woff2';
 import firaCodeRegularWoff2 from '../../styles/webfonts/FiraCode-Regular.woff2';
 import montserratBlackWoff2 from '../../styles/webfonts/Montserrat-Black.woff2';
 import montserratBoldWoff2 from '../../styles/webfonts/Montserrat-Bold.woff2';
@@ -48,7 +49,7 @@ const getGlobalFonts = () => `
       local('Montserrat-Black'),
       url(${montserratBlackWoff2}) format('woff2');
   }
-  
+
   @font-face {
     font-family: 'Merriweather';
     font-weight: 400;
@@ -58,7 +59,7 @@ const getGlobalFonts = () => `
       local('Merriweather-Regular'),
       url(${merriweatherRegularWoff2}) format('woff2');
   }
-  
+
   @font-face {
     font-family: 'Merriweather';
     font-weight: 400;
@@ -97,6 +98,16 @@ const getGlobalFonts = () => `
     src: local('Fira Code Regular'),
       local('FiraCode-Regular'),
       url(${firaCodeRegularWoff2}) format('woff2');
+  }
+
+  @font-face {
+    font-family: 'Fira Code';
+    font-weight: 700;
+    font-style: normal;
+    font-display: optional;
+    src: local('Fira Code Bold'),
+      local('FiraCode-Bold'),
+      url(${firaCodeBoldWoff2}) format('woff2');
   }
 `;
 

@@ -258,15 +258,13 @@ For each new domain, resolving the DNS record usually [takes around 20-120 ms](h
 
 **Use it to slightly speed up some third-party script or style.** If you have a third-party resource in the page that you really need to load sooner, add `<link rel="dns-prefetch" />` for that domain. It will instruct the browser to schedule DNS resolution for that domain sooner.
 
-<div class="note">
-
-**Note on `<link rel="dns-prefetch" />` and `<link rel="preconnect" />`.** Using both of these tags for the same domain is not really useful – `<link rel="preconnect" />` already includes everything `<link rel="dns-prefetch" />` does, and more. However, it can still make sense in two cases:
-
-- _You want to support older browsers._ `<link rel="dns-prefetch" />` is supported [starting from IE10 and Safari 5](https://caniuse.com/#feat=link-rel-dns-prefetch). `<link rel="preconnect" />` has been supported in Chrome and Firefox for a while, but was added to Safari only in 11.1, and [isn’t supported in IE/non-Chromium Edge](https://caniuse.com/#feat=link-rel-preconnect). If you need to support those browsers, use `<link rel="dns-prefetch" />` as a fallback for `<link rel="preconnect" />`.
-
-- _You want to speed up more than 4-6 domains_. It’s not recommended to use `<link rel="preconnect" />` with more than 4-6 domains, as opening and keeping a connection is an expensive operation. `<link rel="dns-prefetch" />` is more lightweight, so use it for other third-party domains if you want to speed them up too.
-
-</div>
+[[note]]
+|
+| **Note on `<link rel="dns-prefetch" />` and `<link rel="preconnect" />`.** Using both of these tags for the same domain is not really useful – `<link rel="preconnect" />` already includes everything `<link rel="dns-prefetch" />` does, and more. However, it can still make sense in two cases:
+|
+| - _You want to support older browsers._ `<link rel="dns-prefetch" />` is supported [starting from IE10 and Safari 5](https://caniuse.com/#feat=link-rel-dns-prefetch). `<link rel="preconnect" />` has been supported in Chrome and Firefox for a while, but was added to Safari only in 11.1, and [isn’t supported in IE/non-Chromium Edge](https://caniuse.com/#feat=link-rel-preconnect). If you need to support those browsers, use `<link rel="dns-prefetch" />` as a fallback for `<link rel="preconnect" />`.
+|
+| - _You want to speed up more than 4-6 domains_. It’s not recommended to use `<link rel="preconnect" />` with more than 4-6 domains, as opening and keeping a connection is an expensive operation. `<link rel="dns-prefetch" />` is more lightweight, so use it for other third-party domains if you want to speed them up too.
 
 ## More details
 

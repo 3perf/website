@@ -11,7 +11,8 @@ import {
   Footer,
   Header,
   MailchimpSubscribe,
-  Meta,
+  TopMeta,
+  BottomMeta,
   Nav,
   Title,
 } from './styled';
@@ -29,6 +30,12 @@ interface ComponentProps {
       id: string;
       excerpt: string;
       html: string;
+      fields: {
+        slug: string;
+        readingTime: {
+          text: string;
+        };
+      };
       frontmatter: {
         title: string;
         alternativeTitles?: {
@@ -138,19 +145,32 @@ const Component = ({ data }: ComponentProps) => {
             name="article:modified_time"
             content={articleMeta.date.modified}
           />
+          <link
+            rel="canonical"
+            href={siteMetadata.siteUrl + page.fields.slug}
+          />
         </Helmet>
         <Nav logoKind={LogoKind.Black} />
         <Header>
           <Title>{visibleTitle}</Title>
+          <TopMeta>
+            {page.fields.readingTime.text} · Author:{' '}
+            <a href={authorDetails.link} rel="author">
+              {authorDetails.name}
+            </a>
+          </TopMeta>
         </Header>
         <Content>
           <div dangerouslySetInnerHTML={{ __html: page.html }} />
         </Content>
-        <Meta>
+        <BottomMeta>
           {articleMeta.date.modified === articleMeta.date.published ? (
-            <time dateTime={articleMeta.date.published}>
-              {articleMeta.date.formattedPublished}
-            </time>
+            <>
+              Published{' '}
+              <time dateTime={articleMeta.date.published}>
+                {articleMeta.date.formattedPublished}
+              </time>
+            </>
           ) : (
             [
               `Published ${articleMeta.date.formattedPublished} · Last updated `,
@@ -158,14 +178,10 @@ const Component = ({ data }: ComponentProps) => {
                 {articleMeta.date.formattedModified}
               </time>,
             ]
-          )}{' '}
-          · Author:{' '}
-          <a href={authorDetails.link} rel="author">
-            {authorDetails.name}
-          </a>
-        </Meta>
+          )}
+        </BottomMeta>
         <MailchimpSubscribe
-          text="Performance articles, case studies, and more. A new email every few weeks. Subscribe:"
+          text="Performance articles, case studies, and more. A new email every few weeks (or less). Subscribe:"
           buttonText="Grow my perf skills"
         />
         <BlogFooterAccordion />
@@ -196,6 +212,12 @@ export const pageQuery = graphql`
       id
       excerpt(pruneLength: 160)
       html
+      fields {
+        slug
+        readingTime {
+          text
+        }
+      }
       frontmatter {
         title
         alternativeTitles {

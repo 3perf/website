@@ -78,6 +78,13 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: 'legal',
+        path: `${__dirname}/src/content/legal/`,
+      },
+    },
+    {
       resolve: 'gatsby-transformer-remark',
       options: {
         // Disable `pedantic` as it’s a) buggy and deprecated, per https://github.com/remarkjs/remark/pull/477,
@@ -122,6 +129,7 @@ module.exports = {
               ignoreFileExtensions: [],
             },
           },
+          `gatsby-remark-reading-time`,
           `gatsby-remark-3perf-transformer`,
         ],
       },
@@ -178,12 +186,14 @@ module.exports = {
                 const postMeta = edge.node.frontmatter;
 
                 return {
-                  title: postMeta.title.visible,
+                  title: postMeta.title,
                   description: postMeta.rssDescription,
                   date: postMeta.date.published,
                   author: postMeta.author.name,
                   url: siteMeta.siteUrl + edge.node.fields.slug,
-                  guid: siteMeta.siteUrl + edge.node.fields.slug,
+                  guid:
+                    postMeta.rssForceGuid ||
+                    siteMeta.siteUrl + edge.node.fields.slug,
                   // eslint-disable-next-line @typescript-eslint/camelcase
                   custom_elements: [
                     {
@@ -228,6 +238,7 @@ module.exports = {
                           }
                         }
                         rssDescription
+                        rssForceGuid
                       }
                     }
                   }

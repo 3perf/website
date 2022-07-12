@@ -19,7 +19,11 @@ export const Header = styled.header`
   margin-bottom: ${gridSize * 5}px;
 `;
 
-export const Meta = styled.div`
+export const TopMeta = styled.div`
+  margin-top: ${gridSize * 2}px;
+`;
+
+export const BottomMeta = styled.div`
   margin-top: ${gridSize * 4}px;
 `;
 
@@ -129,6 +133,12 @@ const mediaStyles = css`
   .sidenote .custom-block-heading .image-container img,
   .note .image-container img {
     width: 100%;
+  }
+
+  .image-container__caption {
+    font-size: ${sizes.fontSmall}px;
+    font-style: italic;
+    margin-top: ${gridSize / 2}px;
   }
 
   .image-container_scrollable {
@@ -261,9 +271,14 @@ const tocStyles = css`
       margin-top: 0;
     }
 
+    /* Collapse intermediate levels of TOC if e.g. we nest h3 inside h1 */
+    ul:has(> li:only-child > ul:only-child) {
+      padding-left: 0;
+    }
+
     /* Overwrite default p + ul styles */
     *:is(p, ul) + *:is(p, ul) {
-      margin-top: 0;
+      margin-top: 0 !important;
     }
   }
 
