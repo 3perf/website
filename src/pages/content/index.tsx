@@ -130,6 +130,11 @@ const ContentPage = (props: ContentPageProps) => {
               title="How to optimize resizing or scrolling"
             />
             <ContentItem
+              link="/blog/react-monitoring/"
+              title="How To Monitor React Render Performance"
+              description="So you just made your app fast. Now, how do you ensure it doesn’t get slow again?"
+            />
+            <ContentItem
               link="https://iamakulov.com/notes/caching/"
               title="Short basics of caching"
             />
