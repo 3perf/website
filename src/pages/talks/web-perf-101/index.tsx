@@ -78,7 +78,7 @@ interface WebPerf101PageProps {
 const fullSocialCoverUrl = `https://3perf.com${socialCoverUrl}`;
 
 const publishedDate = new Date(2018, 9, 25);
-const lastUpdatedDate = new Date(2021, 6, 21);
+const lastUpdatedDate = new Date(2022, 6, 16);
 
 const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
   const allSlidesByName = Object.fromEntries(
@@ -186,15 +186,15 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
           description={
             <>
               <p>
-                This is an introduction to the modern web loading performance.
-                Learn why performance is important, what performance
-                optimizations exist and what tools help to understand if your
-                app is doing well.
+                This is an introduction to modern web loading performance. Learn
+                why performance is important, what performance optimizations
+                exist, and which tools can help you understand if your app is
+                performing well.
               </p>
               <p>
-                <strong>Want to apply this advice to your site?</strong> We’ve
-                worked with Google, Framer, SitePoint, and other companies.{' '}
-                <a href="/#services">Reach out</a>
+                <strong>Want to apply this advice to your site?</strong> We help
+                companies like Framer, Toggl, SitePoint to get faster – and we’d
+                be happy to help you as well! <a href="/#services">Reach out</a>
               </p>
             </>
           }
@@ -263,10 +263,10 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
                         <a href="#http-minify">Minify HTML</a>
                       </li>
                       <li>
-                        <a href="#gzip">Compress content with Gzip</a>
+                        <a href="#brotli">Compress content with Brotli</a>
                       </li>
                       <li>
-                        <a href="#brotli">Compress content with Brotli</a>
+                        <a href="#gzip">Compress content with Gzip</a>
                       </li>
                       <li>
                         <a href="#cdn">Use a CDN</a>
@@ -330,12 +330,9 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             }
           >
             <p>
-              Firstly: because a slow site is <em>very</em> uncomfortable.
-            </p>
-            <p>
-              The brightest example of this is that when a mobile site loads
-              slowly, the user experiences the same stress as if they were
-              watching a horror movie.
+              First—a slow site is <em>very</em> uncomfortable. When a mobile
+              site loads slowly, the user experiences stress similar to watching
+              a horror movie.
             </p>
             <p>
               <small>
@@ -351,21 +348,22 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={<BlockImage src={perfImportanceDigitsUrl} />}
           >
-            <p>Secondly: because it directly affects your product.</p>
+            <p>Second—a slow site directly affects your product.</p>
             <p>
-              — In 2016, AliExpress made their site faster by a third and{' '}
+              — In 2016, AliExpress increased the speed of their site by a third
+              – and{' '}
               <a href="https://edge.akamai.com/ec/us/highlights/keynote-speakers.jsp#edge2016futureofcommercemodal">
-                received 10.5% more orders
+                customer orders jumped 10.5%
               </a>
-              <br />— Back in 2006, Google tried making the search slower by
-              half-a-second and discovered{' '}
+              <br />— Back in 2006, Google slowed down its search results by a
+              half-second – and{' '}
               <a href="http://glinden.blogspot.com/2006/11/marissa-mayer-at-web-20.html">
-                that users were making 25% fewer requests
+                user requests dropped 25%
               </a>
-              <br />— In 2008, Aberdeen Group discovered that slowing a site
-              down by one second{' '}
+              <br />— In 2008, Aberdeen Group discovered that discovered that
+              making a site one second slower{' '}
               <a href="https://headspin.io/resources/marketing/reports/5136-RR-performance-web-application.pdf">
-                decreases the user satisfaction by 16%
+                decreased user satisfaction by 16%
               </a>
             </p>
             <p>
@@ -386,15 +384,15 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             }
           >
             <p>
-              Now, to understand what exactly we’ll talk about, we need to
-              understand a fast site consists of.
+              Now, to understand exactly what we’ll talk about, we need to
+              understand what makes a site fast.
             </p>
             <p>
-              When is a site fast? It’s fast when:
+              A site is fast when:
               <br />
               — it loads quickly,
               <br />— and, being loaded, it works quickly (meaning animations
-              don’t skip frames, scrolling is smooth, and so on)
+              don’t skip frames, scrolling is smooth, etc.)
             </p>
           </Slide>
           <Slide
@@ -408,10 +406,10 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             }
           >
             <p>
-              And the site loads quickly when:
+              A the site loads quickly when:
               <br />
-              — the server responds to requests in a short time,
-              <br />— and the app itself loads and renders quickly.
+              — the server promptly responds to requests,
+              <br />— the app renders quickly
             </p>
           </Slide>
           <Slide
@@ -425,13 +423,13 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             }
           >
             <p>
-              In this talk, we’ll be discussing this element: how to make a site
-              load and render quickly.
+              In this talk, we’ll focus on this element—how to ensure that a
+              site loads and renders quickly.
             </p>
             <p>
               The first element is not relevant – most often, performance
               problems lie in the second or the third one. The third element
-              didn’t fit into the talk – probably we’ll make another one :) (
+              didn’t fit into the talk – we’ll probably make another one :) (
               <a href="/subscribe/">Subscribe</a> to get notified if/when it’s
               out.)
             </p>
@@ -448,8 +446,8 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             }
           >
             <p>
-              And, let’s start with JavaScript. Because often, JavaScript is{' '}
-              <em>the</em> slow resource.
+              So, let’s start with JavaScript. Very often, it’s <em>the</em>{' '}
+              slow resource.
             </p>
           </Slide>
           <Slide
@@ -467,13 +465,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
               already know about it,{' '}
               <a href="#js-download-1">skip to the next section</a>.
             </p>
-            <p>
-              What is minification? When people write JS, they (usually) format
-              it in a convenient way. They add indentation, use long meaningful
-              names for variables, write comments, and so on. Thanks to this,
-              the code is easier to read, but all the extra spacing and comments
-              make it <em>significantly</em> larger.
-            </p>
+            <p>A typical unminified code looks like this.</p>
           </Slide>
           <Slide
             slideId="javascript-minification-result"
@@ -486,15 +478,14 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             }
           >
             <p>
-              To fight this, people came up with minification. During
-              minification, the code loses all unnecessary characters, receives
-              shorter variable names, and so on. In the end, it becomes smaller
-              but keeps working as intended.
+              During minification, the code loses all unnecessary characters,
+              receives shorter variable names, and so on. In the end, it becomes
+              smaller but keeps working as intended.
             </p>
             <p>
-              Minification makes the code take{' '}
+              Minification helps to reduce the code size{' '}
               <a href="https://www.gribble.org/techreports/minification/">
-                around 30–40% less size
+                by 30–40%
               </a>
               .
             </p>
@@ -510,7 +501,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             }
           >
             <p>
-              Minification is supported by every major app builder:
+              Minification is supported in every major app builder:
               <br />—{' '}
               <a href="https://webpack.js.org/concepts/mode/">
                 <code>mode: production</code>
@@ -541,7 +532,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
           >
             <p>
               Next. So, you wrote a script, minified it, and now want to load it
-              on a page. How to connect it to the page?
+              on a page. How would you connect it to the page?
             </p>
           </Slide>
           <Slide
@@ -555,11 +546,11 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             }
           >
             <p>
-              The simplest option is just to write the{' '}
+              The simplest approach is just to write the{' '}
               <code>&lt;script&gt;</code> tag and specify the path to your file.
-              It’s fine, and it would work.
+              It’s a fine approach, and it works.
             </p>
-            <p>But – do you know what’s the problem with this approach?</p>
+            <p>But do you know what’s the issue with this approach?</p>
           </Slide>
           <Slide
             slideId="js-scripts-block-parsing-1"
@@ -567,7 +558,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             image={<BlockImage src={jsScriptsBlockParsing1Url} />}
           >
             <p>
-              The problem is that
+              The issue is that
               <br />
               scripts
               <br />
@@ -613,7 +604,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             </p>
             <p>
               That’s why browsers stop parsing when they encounter a script – to
-              prevent the document from jumping and avoid doing extra work.
+              keep the document from jumping and to avoid doing additional work.
             </p>
           </Slide>
           <Slide
@@ -627,12 +618,12 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             }
           >
             <p>
-              From the browser’s standpoint, it looks like this:
+              From the browser’s standpoint, here’s how this looks:
               <br />
-              — The browser goes over the document and parses it
+              — The browser starts scanning the document and parsing it
               <br />— At some moment, the browser encounters the{' '}
-              <code>&lt;script&gt;</code> tag. It pauses parsing HTML and starts
-              downloading and executing the script
+              <code>&lt;script&gt;</code> tag. It pauses the HTML parsing and
+              starts downloading and executing the script
               <br />— Once the script is executed, the browser continues with
               parsing
             </p>
@@ -686,20 +677,23 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
               script attributes.
             </p>
             <p>
-              These attributes let the browser know that scripts can be
-              downloaded in the background, without interrupting the document
+              These attributes tell the browser that a script should be
+              downloaded in the background, without interrupting document
               parsing. Here’s how they work:
             </p>
             <p>
-              — <code>async</code> asks the browser to load scripts
-              asynchronously (in the background) and to continue parsing the
-              document while scripts are downloading. (If a script loads before
-              the parsing ends, parsing will pause; but because loading usually
-              takes more time than parsing, this rarely happens.)
+              — The <code>async</code> attribute asks the browser to download a
+              script asynchronously (in the background) and to execute it as
+              soon as it is loaded. Document parsing will be continued while the
+              script is being downloaded. (If the script downloads before the
+              parsing is complete, parsing will be paused while the script
+              executes, but because downloading a script usually takes more time
+              than parsing a document, this rarely happens.)
             </p>
             <p>
-              — <code>defer</code> tells the browser to download the script
-              asynchronously and execute it only after the document is parsed.
+              — The <code>defer</code> attribute tells the browser to download
+              the script asynchronously and execute it only after the document
+              is parsed.
             </p>
           </Slide>
           <Slide
@@ -712,19 +706,22 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
               />
             }
           >
-            <p>There’s an important difference:</p>
             <p>
-              — <code>async</code> scripts would execute as soon as they
-              download, without keeping the order. This means that if you have
-              an async React bundle and an async app bundle, and the React
-              bundle is larger, the app would download and execute earlier than
-              React – and the site will break.
+              There’s a significant difference between async and defer
+              attributes:
+            </p>
+            <p>
+              — <code>async</code> scripts are executed as soon as the download
+              occurs, without maintaining the script order. This means that if
+              you have an async React bundle and an async app bundle, and the
+              React bundle is larger, the app will be downloaded and executed
+              earlier than React – potentially breaking the site
             </p>
             <p>
               — <code>defer</code> scripts, unlike <code>async</code>, would
-              execute in the right order only after all scripts are downloaded.
-              Because of this, <code>defer</code> might be safer than{' '}
-              <code>async</code> when optimizing a large complex app.
+              execute in the right order only after the document is fully
+              downloaded. Because of this, <code>defer</code> might be safer
+              than <code>async</code> when optimizing a large complex app.
             </p>
           </Slide>
           <Slide
@@ -756,10 +753,10 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
           >
             <p>Moving forward.</p>
             <p>
-              Oftentimes, applications are built like this: you compile an
-              application and end up with a big bundle that you send to the
-              client with each request. The problem is that apps often have
-              screens that users would see on very rare occasions –
+              Applications are often built this way: you compile an app and end
+              up with a big bundle that you send to the client with each
+              request. The problem is that apps often have screens that users
+              would encounter at very rare times –
             </p>
           </Slide>
           <Slide
@@ -773,10 +770,10 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             }
           >
             <p>
-              e.g., modal windows that open once a month or routes that nobody
+              " e.g., modal windows that open once a month or routes that nobody
               ever uses. Even though the code from these routes or popups is
               almost useless, it still takes up space in the bundle and
-              increases loading time.
+              increases loading time."
             </p>
           </Slide>
           <Slide
@@ -794,7 +791,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
               into smaller ones.
             </p>
             <p>
-              With code splitting, we put different parts of app functionality
+              With code splitting, we move different parts of app functionality
               to different files and fetch them only when necessary. Thanks to
               this, if a user doesn’t need to open the “Change avatar” modal,
               they won’t download it at all.
@@ -813,18 +810,12 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             <p>How to implement code splitting?</p>
             <p>
               First, you’ll need a bundler like webpack, Parcel, or Rollup.
-              (I’ll mostly cover webpack hereafter as it’s the most popular
-              one.) All these bundlers support a special function called{' '}
+              (I’ll mostly cover webpack, because it’s the most popular one.)
+              All these bundlers support a special function called{' '}
               <a href="https://webpack.js.org/guides/code-splitting/#dynamic-imports">
                 <code>import()</code>
               </a>
               .
-            </p>
-            <p>
-              In browsers, <code>import()</code> takes a JS file passed into it
-              and downloads that file asynchronously. It’s useful when you don’t
-              need a library when the app starts, but use it at some point
-              later.
             </p>
           </Slide>
           <Slide
@@ -838,16 +829,22 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             }
           >
             <p>
-              Bundlers, however, treat <code>import()</code> function
+              In browsers, <code>import()</code> takes a JS file passed into it
+              and downloads that file asynchronously. It’s useful when you don’t
+              need a library when the app starts, but use it at some point
+              later.
+            </p>
+            <p>
+              Bundlers, however, treat the <code>import()</code> function
               differently. If you pass a file name into the{' '}
               <code>import()</code> function and then bundle this code with
               webpack, Parcel, or Rollup, the bundler will take that file,
               bundle it and all its dependencies and put the result into a
-              separate compiled file. And then the app will only download that
-              file when this <code>import()</code> is called.
+              separate compiled file. Thanks to this, the app will only download
+              that file when this <code>import()</code> is called.
             </p>
             <p>
-              So, in the example on this slide, webpack will bundle{' '}
+              On this slide, webpack will bundle{' '}
               <code>ChangeAvatarModal.js</code> (and its dependencies) into a
               separate file. And, during the execution, it will download this
               file only when this <code>import()</code> function is called.
@@ -865,17 +862,17 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             }
           >
             <p>
-              Second, in React and Vue.js, there’re helper tools that work with{' '}
+              Second, in React and Vue.js, there are helper tools that work with{' '}
               <code>import()</code> and make your job even easier.
             </p>
             <p>
-              For example, the{' '}
+              For example,{' '}
               <a href="https://github.com/jamiebuilds/react-loadable">
                 <code>react-loadable</code>
               </a>{' '}
-              library is a component that helps to wait until another component
-              is loaded – and renders a placeholder while it’s loading. React
-              16.6 added a similar built-in feature called{' '}
+              helps to wait until another component is loaded – and renders a
+              placeholder while it’s loading. React 16.6 added a similar
+              built-in feature called{' '}
               <a href="https://reactjs.org/blog/2018/10/23/react-v-16-6.html#reactlazy-code-splitting-with-suspense">
                 <code>Suspense</code>
               </a>
@@ -897,10 +894,10 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             }
           >
             <p>
-              Well, and savings from code splitting? <em>Huge.</em>
+              Well, and data savings from code splitting? <em>Huge.</em>
             </p>
             <p>
-              If done properly, code splitting is the most significant
+              If done properly, code splitting is the most meaningful
               optimization in terms of data saving. So:
             </p>
             <Blockquote>
@@ -908,7 +905,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
               splitting.
             </Blockquote>
             <p>
-              Refer to guides to learn more:
+              Refer to these guides to learn more:
               <br />— WebFundamentals article{' '}
               <a href="https://developers.google.com/web/fundamentals/performance/optimizing-javascript/code-splitting/">
                 about code splitting
@@ -937,7 +934,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             }
           >
             <p>
-              What else? Another great space for optimization is app
+              What else could be done? Another important step is to optimize app
               dependencies.
             </p>
             <p>
@@ -968,7 +965,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
               To make developers more aware of this extra code and help them
               remove it, we (together with Google) made a repository that
               collects tips how to optimize various dependencies with webpack.
-              Use these tips to make your apps faster and smaller in size!
+              Use these tips to make your apps smaller and faster!
             </p>
             <p>
               →{' '}
@@ -988,8 +985,9 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
               />
             }
           >
+            <p>That’s all about JavaScript for now.</p>
             <p>
-              That’s all about JS for now. Summing up:
+              Summing up:
               <br />—{' '}
               <a href="#javascript-minification-source">Minify the JS code</a>
               <br />— Use <code>async</code> and <code>defer</code>{' '}
@@ -1041,7 +1039,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             }
           >
             <p>
-              These are tools that would help you with this:
+              Here are the tools that would help you with this:
               <br />— webpack’s{' '}
               <a href="https://github.com/postcss/postcss-loader">
                 <code>postcss-loader</code>
@@ -1072,9 +1070,11 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             }
           >
             <p>
-              Second – oh, you’ve already seen{' '}
-              <a href="#js-scripts-block-parsing-1">a similar problem</a> –
-              styles block rendering.
+              Second: just like{' '}
+              <a href="#js-scripts-block-parsing-1">
+                JavaScript blocks parsing
+              </a>{' '}
+              – styles block page rendering.
             </p>
           </Slide>
           <Slide
@@ -1104,8 +1104,8 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             }
           >
             <p>
-              ...and then the page would blink, and they would see this. Hardly
-              a pleasant user experience.
+              ...and then the page would blink, changing to this. Hardly a
+              pleasant user experience.
             </p>
           </Slide>
           <Slide
@@ -1130,7 +1130,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
               remaining styles afterward. Those styles needed for initial
               rendering are called “Critical CSS”.
             </p>
-            <p>Let’s see how it works.</p>
+            <p>Let’s see how Critical CSS works.</p>
           </Slide>
           <Slide
             slideId="css-critical-1"
@@ -1142,10 +1142,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
               />
             }
           >
-            <p>
-              With Critical CSS, the process of loading the page looks as
-              follows:
-            </p>
+            <p>With Critical CSS, the page loading process looks like this:</p>
             <ol>
               <li>You split your styles into critical and non-critical CSS.</li>
               <li>
@@ -1170,22 +1167,27 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
               and apply the non-critical CSS.
             </p>
             <p>
-              There are multiple ways to load remaining CSS, and all of them are
-              hacky, unfortunately. This is how I prefer to do this:
+              There are several ways to load remaining CSS, and all of them are
+              hacky, unfortunately. Here’s{' '}
+              <a href="https://twitter.com/iamakulov/status/1239488313876189184">
+                what I prefer to do
+              </a>
+              :
             </p>
             <ol start={3}>
               <li>
                 You add a{' '}
                 <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Preloading_content">
-                  <code>&lt;link rel=&quot;preload&quot;&gt;</code>
+                  <code>&lt;link rel=&quot;stylesheet&quot;&gt;</code>
                 </a>{' '}
-                to start fetching the non-critical CSS file.
+                to start fetching the non-critical CSS file – but as a{' '}
+                <code>media=&quot;print&quot;</code> stylesheet.
               </li>
               <li>
-                And, as soon as the file is fetched and lies in the cache, you
-                change the <code>rel</code> attribute from <code>preload</code>{' '}
-                to <code>stylesheet</code>. This makes the browser take the
-                cached CSS file and apply it to the document.
+                And, as soon as the file is fetched and cached, you change the{' '}
+                <code>media</code> attribute from <code>print</code> to{' '}
+                <code>all</code>. This makes the browser take the cached CSS
+                file and apply it to the document.
               </li>
             </ol>
           </Slide>
@@ -1200,20 +1202,20 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             }
           >
             <p>
-              How to understand what to include into critical CSS, and what to
+              How to understand what to include in critical CSS, and what to
               serve later? Generally, the rule is:
             </p>
             <Blockquote>
-              Remove styles and hide page elements till the page starts to look
-              really funny (or incorrect). The remaining CSS is critical.
+              Start removing styles you think aren’t critical. Keep removing
+              styles until the page starts to look funny or incorrect. The
+              remaining CSS is critical.
             </Blockquote>
             <p>
               For example, styles for the page layout or for the text in an
-              article are critical – because, without them, the page would look
-              broken. And styles for a JavaScript popup or for the footer are
-              not critical – because the user won’t see these elements
-              immediately, and the page would look perfectly fine without their
-              styles.
+              article are critical, because without them, the page will look
+              broken. Styles for a JavaScript popup or for the footer are not
+              critical, because the user won’t see these elements immediately,
+              and the page will look perfectly fine without their styles.
             </p>
           </Slide>
           <Slide
@@ -1227,8 +1229,8 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             }
           >
             <p>
-              This might sound complex, but, thankfully, there’re automated
-              tools that would do this for you:
+              It may seem complex, but, fortunately, there are automated tools
+              that can do it for you:
             </p>
             <p>
               —{' '}
@@ -1236,9 +1238,9 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
                 <code>styled-components</code>
               </a>
               . It’s a CSS-in-JS library that extracts and returns critical
-              styles during server-side rendering. It works only if you already
-              write styles using <code>styled-components</code>, but if you do,
-              it works really well.
+              styles during server-side rendering. It works only if you write
+              styles using <code>styled-components</code>, but if you do, it
+              works really well.
               <br />—{' '}
               <a href="https://github.com/addyosmani/critical">
                 <code>critical</code>
@@ -1251,7 +1253,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
               <a href="https://github.com/pocketjoso/penthouse">
                 <code>penthouse</code>
               </a>
-              . It’s similar to <code>critical</code> but works with URLs
+              . It’s similar to <code>critical</code> but operates on URLs
               instead of HTML pages.
             </p>
           </Slide>
@@ -1266,9 +1268,9 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             }
           >
             <p>
-              Well, and time savings? Significant. From my experience,
-              extracting critical CSS would strip 200–500 ms from time to first
-              paint – or even more!
+              What about performance wins? They are huge. From my experience,
+              extracting critical CSS will shave 200–500 ms off Time to First
+              Paint – or even more!
             </p>
             <p>
               <small>
@@ -1293,9 +1295,8 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
           >
             <p>
               Those are the primary optimization strategies for CSS. Summing up:
-              <br />— <a href="#css-minify-1">Minify the CSS code</a>
-              <br />— Extract critical CSS{' '}
-              <a href="#css-critical-1">and fetch it first</a>
+              <br />— <a href="#css-minify-1">Minify CSS code</a>
+              <br />— Extract <a href="#css-critical-1">Critical CSS</a>
             </p>
           </Slide>
           <Slide
@@ -1321,28 +1322,25 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             }
           >
             <p>
-              The first approach to transfer fewer data over the network is,
+              The first approach to transferring less data over the network is,
               again, minification. Minify HTML documents you’re sending to the
               client (along with CSS and JS, as we discussed earlier).
             </p>
           </Slide>
-          <SectionHeader id="gzip">Gzip</SectionHeader>
+          <SectionHeader id="brotli">Brotli</SectionHeader>
           <Slide
-            slideId="http-gzip-1"
+            slideId="http-brotli-1"
             useImageBorder={true}
             image={
-              <SlideGatsbyImage
-                alt=""
-                imageData={allSlidesByName['http-gzip-1']}
-              />
+              <SlideGatsbyImage imageData={allSlidesByName['http-brotli-1']} />
             }
           >
             <p>
-              The second approach to transfer less data is to compress
-              everything you send to the client using Gzip.
+              The second approach to transferring less data is to compress
+              everything you send to the client using Brotli.
             </p>
             <p>
-              Gzip is an algorithm that compresses data you send to the client
+              Brotli is an algorithm that compresses data you send to the client
               using a sophisticated archiving algorithm. After compression, your
               documents will look like an unreadable binary soup, but their
               volume will be reduced{' '}
@@ -1354,100 +1352,21 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             </p>
           </Slide>
           <Slide
-            slideId="http-gzip-2"
-            useImageBorder={true}
-            image={
-              <SlideGatsbyImage
-                alt=""
-                imageData={allSlidesByName['http-gzip-2']}
-              />
-            }
-          >
-            <p>
-              Basically, using Gzip is a production standard, so if you use any
-              popular server like Apache or Nginx, you’ll be able to turn it on
-              with just a couple of config changes.
-            </p>
-            <p>
-              <a href="https://httpd.apache.org/docs/2.4/mod/mod_deflate.html#recommended">
-                Apache instructions
-              </a>{' '}
-              ·{' '}
-              <a href="http://nginx.org/en/docs/http/ngx_http_gzip_module.html#example">
-                Nginx instructions
-              </a>
-            </p>
-            <p>
-              <small>
-                Note: enabling Gzip with these instructions will cause servers
-                to compress resources on the fly. This would make response time
-                slightly larger. You don’t need to care about that in most
-                cases, but if you want to have a top-notch response time,{' '}
-                <a href="https://github.com/webpack-contrib/compression-webpack-plugin">
-                  pre-compress your resources during the build
-                </a>
-                .
-              </small>
-            </p>
-          </Slide>
-          <Slide
-            slideId="http-gzip-3"
-            useImageBorder={true}
-            image={
-              <SlideGatsbyImage
-                alt=""
-                imageData={allSlidesByName['http-gzip-3']}
-              />
-            }
-          >
-            <p>NB: don’t use Gzip for anything but text!</p>
-            <p>
-              Pictures, fonts, videos. and other binary files are usually
-              compressed already, so gzipping them will only make response time
-              larger. SVG images are the only exception because they are text.
-            </p>
-          </Slide>
-          <SectionHeader id="brotli">Brotli</SectionHeader>
-          <Slide
-            slideId="http-brotli-1"
-            useImageBorder={true}
-            image={
-              <SlideGatsbyImage
-                alt=""
-                imageData={allSlidesByName['http-brotli-1']}
-              />
-            }
-          >
-            <p>
-              Gzip has an alternative – a compression algorithm called Brotli.
-            </p>
-            <p>
-              <em>Brotli’s advantage:</em> with the same CPU load,{' '}
-              <a href="https://blogs.akamai.com/2016/02/understanding-brotlis-potential.html">
-                it compresses 20–30% better than Gzip
-              </a>
-              . That’s 30% fewer bytes to download for free!
-            </p>
-            <p>
-              <em>Brotli’s disadvantage:</em> it’s relatively new and is
-              supported worse than Gzip. Because of that, you can’t easily
-              replace Gzip with Brotli – you’ll have to use both at the same
-              time for compression to work in different browsers.
-            </p>
-          </Slide>
-          <Slide
             slideId="http-brotli-2"
             useImageBorder={true}
             image={
-              <SlideGatsbyImage
-                alt=""
-                imageData={allSlidesByName['http-brotli-2']}
-              />
+              <SlideGatsbyImage imageData={allSlidesByName['http-brotli-2']} />
             }
           >
             <p>
-              Brotli is supported in Apache since version 2.4.26 and is
-              available for Nginx as an external module.
+              If you use <a href="#cdn">a CDN</a>, the CDN is likely already
+              doing Brotli compression for you.
+            </p>
+            <p>
+              If you don’t use a CDN but run a popular server like Apache or
+              Nginx, you’ll be able to turn Brotli on with just a couple of
+              config changes. Brotli is supported in Apache since version 2.4.26
+              and is available for Nginx as an external module.
             </p>
             <p>
               <a href="https://httpd.apache.org/docs/trunk/mod/mod_brotli.html#recommended">
@@ -1458,14 +1377,77 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             <p>
               <small>
                 Note: don’t set Brotli’s compression level to the maximum as
-                it’d make it significantly slower than Gzip. Brotli’s
-                compression level 4{' '}
+                it’d make it very slow without significant compression wins.
+                Brotli’s compression level 4{' '}
                 <a href="https://certsimple.com/blog/nginx-brotli">
                   is both faster than the Gzip’s default level and compresses
                   better
                 </a>
                 .
               </small>
+            </p>
+          </Slide>
+          <Slide
+            slideId="http-brotli-3"
+            useImageBorder={true}
+            image={
+              <SlideGatsbyImage imageData={allSlidesByName['http-brotli-3']} />
+            }
+          >
+            <p>NB: don’t use Brotli for anything but text!</p>
+            <p>
+              Images, fonts, videos and other binary files are typically already
+              compressed, so compressing them with gzip will not change their
+              size significantly (and would sometimes even make them larger).
+              SVG images are the only exception here.
+            </p>
+          </Slide>
+          <SectionHeader id="gzip">Gzip</SectionHeader>
+          <Slide
+            slideId="http-gzip-1"
+            useImageBorder={true}
+            image={
+              <SlideGatsbyImage imageData={allSlidesByName['http-gzip-1']} />
+            }
+          >
+            <p>
+              Brotli has an older alternative: a compression algorithm called
+              Gzip.
+            </p>
+            <p>
+              <em>The upside of Brotli:</em> with the same CPU load,{' '}
+              <a href="https://blogs.akamai.com/2016/02/understanding-brotlis-potential.html">
+                it compresses 20–30% better than Gzip
+              </a>
+              . That’s 30% fewer bytes to download!
+            </p>
+            <p>
+              <em>The downside of Brotli:</em> it’s{' '}
+              <a href="https://caniuse.com/brotli">
+                not supported in older browsers
+              </a>{' '}
+              like Internet Explorer 11. If you need to support older browser,
+              you can’t easily replace Gzip with Brotli – you’ll have to use
+              both at the same time for compression to work in different
+              browsers.
+            </p>
+          </Slide>
+          <Slide
+            slideId="http-gzip-2"
+            useImageBorder={true}
+            image={
+              <SlideGatsbyImage imageData={allSlidesByName['http-gzip-2']} />
+            }
+          >
+            <p>You can enable Gzip with a couple config changes.</p>
+            <p>
+              <a href="https://httpd.apache.org/docs/2.4/mod/mod_deflate.html#recommended">
+                Apache instructions
+              </a>{' '}
+              ·{' '}
+              <a href="http://nginx.org/en/docs/http/ngx_http_gzip_module.html#example">
+                Nginx instructions
+              </a>
             </p>
           </Slide>
           <SectionHeader id="cdn">CDN</SectionHeader>
@@ -1478,20 +1460,21 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             <p>
               What’s a CDN? Imagine you built an application and hosted it on
               servers located in the US. If the app’s user is in Warsaw, their
-              request will have to travel all the way to the States and back to
-              Poland. And this will take a lot of time because:
+              request will have to travel all the way to the US and back to
+              Poland. This will take a lot of time because:
               <br />
-              — the request will have to travel a large distance (and its speed
+              — the request will have to travel a long distance (and its speed
               is limited by the speed of light);
               <br />— it will also have to pass through a number of routers and
-              similar devices (and each device adds a processing delay).
+              similar devices, and each device will add a processing delay.
             </p>
             <p>
               This can be justified if the request is made to retrieve the app
               data, and only that one server in the US knows how to form it
-              properly. But this is absolutely unnecessary if the user is trying
-              to download an image or a video – because that’s just a regular
-              static content that can be served by literally any server.
+              properly. However, this is absolutely unnecessary if the user is
+              trying to download an image or a video, because that’s just a
+              regular static content, which can be served by literally any
+              server.
             </p>
           </Slide>
           <Slide
@@ -1505,19 +1488,19 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             }
           >
             <p>
-              CDN services are offering a solution to this problem. CDN stands
-              for “content delivery network”, and CDN services provide a large
+              CDN services offer a solution to this problem. CDN stands for
+              “content delivery network”, and CDN services provide a large
               number of servers to put your static files (the “content”) on
               around the world. To use one, you register in a CDN service,
-              upload your files, and update the files’ domain in the app. And,
-              after that, each user’s request is rerouted to a server closest to
-              their location.
+              upload your files, and update the files’ domain in the app. After
+              that, the request of each user is rerouted to a server closest to
+              its location.
             </p>
             <p>
               In our experience, CDNs typically reduce each request’s delay from
-              hundreds of milliseconds to 5–10 ms. Considering how many requests
+              hundreds of milliseconds to 5–10 ms. Given the number of requests
               an app makes when a single page is opened, the effect from using
-              CDN is truly marvelous.
+              CDN is really wonderful.
             </p>
           </Slide>
           <SectionHeader id="preloading">Preloading</SectionHeader>
@@ -1556,14 +1539,13 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             }
           >
             <p>
-              There’re a whole 5 different methods of preloading, and all of
-              them are suitable for different goals. Here’re what these methods
-              do, in brief:
+              There’re 5 different preload methods, and all are tailored for
+              different purposes.
             </p>
             <p>
               — <code>&lt;link rel=&quot;dns-prefetch&quot;&gt;</code> instructs
               the browser to make a DNS request for a server’s IP address in
-              advance. This is useful for CDNs, Google Fonts, and all other
+              advance. This is useful for CDNs, Google Fonts, and for other
               cases when you know you’ll need a resource in a short time, know
               the domain it’s hosted at, but don’t know its exact path. In this
               case, resolving the server’s IP address in advance would save you{' '}
@@ -1605,10 +1587,10 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             <p>
               <small>
                 Note: don’t overuse prefetching methods. Downloading stuff in
-                the background still consumes visitor’s traffic – and it’s
-                really bad on mobile. So adding 10 extra preloads might make
-                your app a bit faster, but your visitor will pay real money for
-                this. 2-4 preloads per page are probably fine.
+                the background consumes visitor’s traffic – and it’s really bad
+                on mobile. So adding 10 extra preloads might make your app a bit
+                faster, but your visitor will pay real money for this. 2-4
+                preloads per page are probably fine.
               </small>
             </p>
             <p>
@@ -1757,7 +1739,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             <p>
               Unfortunately, <code>webp</code> is{' '}
               <a href="https://caniuse.com/#feat=webp">
-                not supported in Safari and Internet Explorer
+                not supported in Internet Explorer and older Safari versions
               </a>
               . However, you can still load webp images with a <code>jpg</code>{' '}
               or <code>png</code> fallback using the{' '}
@@ -1785,7 +1767,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             <p>
               With such tag, browsers that support <code>webp</code> will load
               the <code>webp</code> file. Browsers that don’t support{' '}
-              <code>webp</code> or the <code>&lt;picture&gt;</code> tag would
+              <code>webp</code> or the <code>&lt;picture&gt;</code> tag will
               fall back to the plain <code>jpg</code> image.
             </p>
           </Slide>
@@ -1803,13 +1785,13 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
               And, finally, <code>gif</code>s.
             </p>
             <p>
-              Don’t use the <code>gif</code> format at all. <code>gif</code>s
-              are <em>huge</em> – too often, they take megabytes or tens of
-              megabytes of data. Instead, use video files (with the{' '}
+              Don’t use gifs at all. <code>gif</code>s are <em>massive</em> –
+              too often, they take megabytes or tens of megabytes of data.
+              Instead, use video files (with the{' '}
               <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video">
                 <code>&lt;video&gt;</code>
               </a>{' '}
-              tag) which compress the content way better.
+              tag) which compress the content more effectively.
             </p>
             <p>
               <small>
@@ -2009,7 +1991,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
               If you zoom into the pictures, you’ll see noticeable compression
               artifacts and detail loss only at compression level 50.
               Compression level 70 still eats some of the image details, but
-              it’s way less noticeable.
+              it’s much less visible.
             </p>
             <p>
               <small>
@@ -2032,14 +2014,14 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             }
           >
             <p>
-              But what’s drastically different about the versions of this image
+              But what’s dramatically different about the versions of the image
               is their size. The level 70 image is almost 7 times smaller than
               level 100 image – keeping practically the same level of details!
             </p>
             <p>
-              That’s why you want to compress JPG images with level 70-80.
-              Because the quality losses are insignificant, but the size gains
-              are incredible.
+              That’s why you want to compress JPG images with level 70-80. With
+              that level of compression, the quality losses are insignificant,
+              but the size gains are incredible.
             </p>
             <p>
               To compress JPG images, use a graphics editor like Photoshop or
@@ -2065,7 +2047,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             <p>Next.</p>
             <p>
               — <em>Use Progressive JPEG.</em> Progressive JPEG a kind of JPG
-              that starts rendering in a bad quality but improves as the image’s
+              that starts rendering in poor quality but improves as the image’s
               being loaded.
             </p>
           </Slide>
@@ -2158,7 +2140,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
                 Progressive JPEG
               </a>
               : it starts rendering in a low quality but improves as it loads.
-              It’s not suitable for everything – e.g., loading png icons
+              It’s not suitable for everything – e.g., loading PNG icons
               progressively would look weird – but it might work for some
               images.
             </p>
@@ -2239,7 +2221,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             </p>
             <p>
               <small>
-                To learn more about image optimization, see:
+                To learn more about image optimization, check:
                 <br />— <a href="https://images.guide/">images.guide</a> by Addy
                 Osmani
                 <br />—{' '}
@@ -2266,7 +2248,10 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
               />
             }
           >
-            <p>And the last section on optimizations: fonts.</p>
+            <p>
+              And the last part of web performance optimizations we’ll talk
+              about is fonts.
+            </p>
           </Slide>
           <Slide
             slideId="fonts-video"
@@ -2283,7 +2268,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
               When you browse the web from a slow connection, sometimes,
               there’re cases when a page has started loading, the layout and
               pictures are already visible, but the text is absent for a few
-              more seconds. Like on the video.
+              more seconds, like on the video.
             </p>
             <p>
               This happens when the page has custom fonts. On such pages,
@@ -2299,8 +2284,8 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
                 the flash of unstyled text
               </a>{' '}
               (jumping of text that happens when one font is replaced with
-              another). But in slower networks, this behavior makes users wait
-              for longer. And it’s undesirable.
+              another). But in slower networks, this behavior makes users wait.
+              And it’s undesirable.
             </p>
             <p>Let’s see how to optimize fonts to avoid this.</p>
           </Slide>
@@ -2351,7 +2336,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
               Without the fallback font, if a custom font isn’t available, the
               browser will render everything in the default{' '}
               <a href="https://en.wikipedia.org/wiki/Serif">serif font</a>. And
-              this might not look well.
+              this might not look good.
             </p>
           </Slide>
           <Slide
@@ -2389,8 +2374,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
               font is applied. By default, it’s set to <code>auto</code>, and in
               all major browsers, this means the browser will wait 3 seconds for
               the custom font to download. This means that if a network is slow,
-              the visitor will have to wait for the text for the whole 3 extra
-              seconds.
+              the visitor will have to wait for the text for another 3 seconds.
             </p>
             <p>
               This is bad. To optimize this, specify a different{' '}
