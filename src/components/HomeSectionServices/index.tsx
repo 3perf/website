@@ -92,7 +92,7 @@ const ServicesSection = ({ className = '', data }: ServicesSectionProps) => (
           </BlockquoteTextWrapper>
           <BlockquoteFooter>
             <BlockquoteImage
-              imageData={data.piotrAvatar.childImageSharp.fixed}
+              imageData={data.piotrAvatar.childImageSharp.gatsbyImageData}
               alt=""
             />
             <BlockquoteName>Piotr Krawiec</BlockquoteName> · Product Engineer @
@@ -145,7 +145,7 @@ const ServicesSection = ({ className = '', data }: ServicesSectionProps) => (
           <BlockquoteFooter>
             <BlockquoteName>
               <BlockquoteImage
-                imageData={data.davidAvatar.childImageSharp.fixed}
+                imageData={data.davidAvatar.childImageSharp.gatsbyImageData}
                 alt=""
               />
               David Sigley
@@ -197,7 +197,7 @@ const ServicesSection = ({ className = '', data }: ServicesSectionProps) => (
           <BlockquoteFooter>
             <BlockquoteName>
               <BlockquoteImage
-                imageData={data.nicolasAvatar.childImageSharp.fixed}
+                imageData={data.nicolasAvatar.childImageSharp.gatsbyImageData}
                 alt=""
               />
               Nicolás Delfino
@@ -317,9 +317,12 @@ const ServicesSectionWithQuery = () => (
           relativePath: { eq: "HomeSectionServices/david.jpg" }
         ) {
           childImageSharp {
-            fixed(width: 20) {
-              ...ImageFixed
-            }
+            gatsbyImageData(
+              height: 20
+              placeholder: NONE
+              layout: FIXED
+              formats: [AUTO]
+            )
           }
         }
 
@@ -327,9 +330,12 @@ const ServicesSectionWithQuery = () => (
           relativePath: { eq: "HomeSectionServices/nicolas.jpg" }
         ) {
           childImageSharp {
-            fixed(width: 20) {
-              ...ImageFixed
-            }
+            gatsbyImageData(
+              height: 20
+              placeholder: NONE
+              layout: FIXED
+              formats: [AUTO]
+            )
           }
         }
 
@@ -337,9 +343,12 @@ const ServicesSectionWithQuery = () => (
           relativePath: { eq: "HomeSectionServices/piotr.jpg" }
         ) {
           childImageSharp {
-            fixed(width: 20) {
-              ...ImageFixed
-            }
+            gatsbyImageData(
+              height: 20
+              placeholder: NONE
+              layout: FIXED
+              formats: [AUTO]
+            )
           }
         }
       }
