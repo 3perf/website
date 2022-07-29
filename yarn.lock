@@ -14,6 +14,9 @@ __metadata:
     "@babel/plugin-transform-object-assign": ^7.10.1
     "@babel/preset-env": ^7.10.2
     "@babel/preset-typescript": ^7.10.1
+    "@fontsource/fira-code": ^4.5.10
+    "@fontsource/merriweather": ^4.5.12
+    "@fontsource/montserrat": ^4.5.11
     "@netlify/plugin-gatsby": ^1.0.3
     "@reach/router": ^1.3.4
     "@redocly/gatsby-plugin-favicon": ^3.1.9
@@ -1812,6 +1815,27 @@ __metadata:
     minimatch: ^3.0.4
     strip-json-comments: ^3.1.1
   checksum: 03a7704150b868c318aab6a94d87a33d30dc2ec579d27374575014f06237ba1370ae11178db772f985ef680d469dc237e7b16a1c5d8edaaeb8c3733e7a95a6d3
+  languageName: node
+  linkType: hard
+
+"@fontsource/fira-code@npm:^4.5.10":
+  version: 4.5.10
+  resolution: "@fontsource/fira-code@npm:4.5.10"
+  checksum: 170c12374c67b7f7685a46190f98a499292233532a100684487eba04bfb6a7268f1597ad569cfae8df47f34e1753286389415109fbb2776597cbf87368082c95
+  languageName: node
+  linkType: hard
+
+"@fontsource/merriweather@npm:^4.5.12":
+  version: 4.5.12
+  resolution: "@fontsource/merriweather@npm:4.5.12"
+  checksum: 5e6fdd8998555dec93a842b1caebf39f54d40f10e875cb3d8f9d3373c73a3195eda7199fd2db5b4b372f81cba9757bbc733762906673c49b149e1bceac652027
+  languageName: node
+  linkType: hard
+
+"@fontsource/montserrat@npm:^4.5.11":
+  version: 4.5.11
+  resolution: "@fontsource/montserrat@npm:4.5.11"
+  checksum: 5bd8ab43ca26eee78ccd45d1c1e418abeaed4201c68d70a409df5bf35df0b15a0d242df5a15a8c6db3c4e9f25fcf1a58b4019e01550fc9bba39cc0f6754ebd2e
   languageName: node
   linkType: hard
 
