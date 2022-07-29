@@ -741,10 +741,10 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             }
           >
             <p>
-              " e.g., modal windows that open once a month or routes that nobody
-              ever uses. Even though the code from these routes or popups is
-              almost useless, it still takes up space in the bundle and
-              increases loading time."
+              &quot; e.g., modal windows that open once a month or routes that
+              nobody ever uses. Even though the code from these routes or popups
+              is almost useless, it still takes up space in the bundle and
+              increases loading time.&quot;
             </p>
           </Slide>
           <Slide
