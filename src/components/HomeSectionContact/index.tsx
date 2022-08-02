@@ -8,6 +8,7 @@ import {
   ContactImage,
   Dot,
   Link,
+  Prompt,
 } from './styled';
 
 interface ContactSectionData {
@@ -28,7 +29,7 @@ const ContactSection = ({
         perf@3perf<Dot>.</Dot>com
       </Link>
       <PromptContainer>
-        <p>
+        <Prompt>
           Interested? We’d be glad to help. Drop us an email, and{' '}
           <Contact>
             <ContactImage
@@ -37,7 +38,7 @@ const ContactSection = ({
             Ivan
           </Contact>{' '}
           will get back to you in 24 hours.
-        </p>
+        </Prompt>
       </PromptContainer>
     </Container>
   </div>

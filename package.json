@@ -11,7 +11,7 @@
     "fast-xml-parser": "^3.17.3",
     "gatsby": "^3.8.0",
     "gatsby-link": "^3.8.0",
-    "gatsby-plugin-image": "^2.18.0",
+    "gatsby-plugin-image": "^2.20.0",
     "gatsby-plugin-netlify-cms": "^5.13.0",
     "gatsby-react-router-scroll": "^4.8.0",
     "gatsby-remark-reading-time": "^1.1.0",

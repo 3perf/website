@@ -1,8 +1,9 @@
+import React from 'react';
 import styled, { keyframes } from 'styled-components';
 import media from '../../styles/media';
 import { linkStyles, linkActiveStyles } from '../../styles/shared-styles';
 import { gridSize } from '../../styles/variables';
-import Image from '../Image';
+import Image, { ImageProps } from '../Image';
 
 export const Container = styled.div`
   margin: 0 -60px;
@@ -90,12 +91,18 @@ export const PromptContainer = styled.div`
   `}
 `;
 
+export const Prompt = styled.p`
+  display: inline-block;
+`;
+
 export const Contact = styled.span`
   white-space: nowrap;
 `;
 
-export const ContactImage = styled(Image)`
-  border-radius: 50%;
-  /* -5px is hand-picked for better visual alignment */
-  vertical-align: -5px;
-`;
+export const ContactImage = (props: ImageProps) => (
+  <Image
+    {...props}
+    style={{ display: 'inline-block', verticalAlign: -5 }}
+    imgStyle={{ borderRadius: '50%' }}
+  />
+);

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { JSXChildrenProp } from '../../../types';
-import { Container, ImageLinkSymbol, ImageWrapper, Text } from './styled';
+import { Container, ImageWrapper, Text } from './styled';
 
 interface SlideProps {
   slideId: string;
@@ -25,7 +25,6 @@ const Slide = ({
       useImageBorder={useImageBorder}
       isSectionHeader={isSectionHeader}
     >
-      <ImageLinkSymbol aria-hidden>#</ImageLinkSymbol>
       {image}
     </ImageWrapper>
     <Text isSectionHeader={isSectionHeader}>{children}</Text>

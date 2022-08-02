@@ -45,7 +45,7 @@ __metadata:
     gatsby: ^3.8.0
     gatsby-link: ^3.8.0
     gatsby-plugin-feed: ^3.8.0
-    gatsby-plugin-image: ^2.18.0
+    gatsby-plugin-image: ^2.20.0
     gatsby-plugin-lodash: ^4.8.0
     gatsby-plugin-netlify-cms: ^5.13.0
     gatsby-plugin-no-javascript: ^2.0.5
@@ -3508,9 +3508,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@lmdb/lmdb-darwin-arm64@npm:2.5.3":
+  version: 2.5.3
+  resolution: "@lmdb/lmdb-darwin-arm64@npm:2.5.3"
+  conditions: os=darwin & cpu=arm64
+  languageName: node
+  linkType: hard
+
 "@lmdb/lmdb-darwin-x64@npm:2.5.2":
   version: 2.5.2
   resolution: "@lmdb/lmdb-darwin-x64@npm:2.5.2"
+  conditions: os=darwin & cpu=x64
+  languageName: node
+  linkType: hard
+
+"@lmdb/lmdb-darwin-x64@npm:2.5.3":
+  version: 2.5.3
+  resolution: "@lmdb/lmdb-darwin-x64@npm:2.5.3"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
@@ -3522,9 +3536,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@lmdb/lmdb-linux-arm64@npm:2.5.3":
+  version: 2.5.3
+  resolution: "@lmdb/lmdb-linux-arm64@npm:2.5.3"
+  conditions: os=linux & cpu=arm64
+  languageName: node
+  linkType: hard
+
 "@lmdb/lmdb-linux-arm@npm:2.5.2":
   version: 2.5.2
   resolution: "@lmdb/lmdb-linux-arm@npm:2.5.2"
+  conditions: os=linux & cpu=arm
+  languageName: node
+  linkType: hard
+
+"@lmdb/lmdb-linux-arm@npm:2.5.3":
+  version: 2.5.3
+  resolution: "@lmdb/lmdb-linux-arm@npm:2.5.3"
   conditions: os=linux & cpu=arm
   languageName: node
   linkType: hard
@@ -3536,9 +3564,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@lmdb/lmdb-linux-x64@npm:2.5.3":
+  version: 2.5.3
+  resolution: "@lmdb/lmdb-linux-x64@npm:2.5.3"
+  conditions: os=linux & cpu=x64
+  languageName: node
+  linkType: hard
+
 "@lmdb/lmdb-win32-x64@npm:2.5.2":
   version: 2.5.2
   resolution: "@lmdb/lmdb-win32-x64@npm:2.5.2"
+  conditions: os=win32 & cpu=x64
+  languageName: node
+  linkType: hard
+
+"@lmdb/lmdb-win32-x64@npm:2.5.3":
+  version: 2.5.3
+  resolution: "@lmdb/lmdb-win32-x64@npm:2.5.3"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
@@ -6116,16 +6158,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"babel-plugin-remove-graphql-queries@npm:^4.18.0":
-  version: 4.18.0
-  resolution: "babel-plugin-remove-graphql-queries@npm:4.18.0"
+"babel-plugin-remove-graphql-queries@npm:^4.20.0":
+  version: 4.20.0
+  resolution: "babel-plugin-remove-graphql-queries@npm:4.20.0"
   dependencies:
     "@babel/runtime": ^7.15.4
-    gatsby-core-utils: ^3.18.0
+    "@babel/types": ^7.15.4
+    gatsby-core-utils: ^3.20.0
   peerDependencies:
     "@babel/core": ^7.0.0
     gatsby: ^4.0.0-next
-  checksum: 89b7909a5ff2ba178b1627b3d4f78c30f2e6f42f16280a374ad4e40aae2f0d09740f0846bdefb2a3e6855e0fe0d1da45552a54f45692e539e3b0aa205a85c44b
+  checksum: f383d4232baf9c49c51cd480cee467e03f1dd4ef83dae91597462b4648ce7f54580674909cf34768ee28d921c751298f87f1f623fde64d3193273aafa814b8bb
   languageName: node
   linkType: hard
 
@@ -11683,6 +11726,29 @@ __metadata:
   languageName: node
   linkType: hard
 
+"gatsby-core-utils@npm:^3.20.0":
+  version: 3.20.0
+  resolution: "gatsby-core-utils@npm:3.20.0"
+  dependencies:
+    "@babel/runtime": ^7.15.4
+    ci-info: 2.0.0
+    configstore: ^5.0.1
+    fastq: ^1.13.0
+    file-type: ^16.5.3
+    fs-extra: ^10.1.0
+    got: ^11.8.5
+    import-from: ^4.0.0
+    lmdb: 2.5.3
+    lock: ^1.1.0
+    node-object-hash: ^2.3.10
+    proper-lockfile: ^4.1.2
+    resolve-from: ^5.0.0
+    tmp: ^0.2.1
+    xdg-basedir: ^4.0.0
+  checksum: 9570a4fba57f14ee70229cfe1fd24191597c728520493303c42dd8ae3da5c0e50736ea7e554e9ac7e569fa12d00675a0988e2ee5d7b119a649ae3d4ca102dba0
+  languageName: node
+  linkType: hard
+
 "gatsby-graphiql-explorer@npm:^1.13.0":
   version: 1.13.0
   resolution: "gatsby-graphiql-explorer@npm:1.13.0"
@@ -11751,22 +11817,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby-plugin-image@npm:^2.18.0":
-  version: 2.18.0
-  resolution: "gatsby-plugin-image@npm:2.18.0"
+"gatsby-plugin-image@npm:^2.20.0":
+  version: 2.20.0
+  resolution: "gatsby-plugin-image@npm:2.20.0"
   dependencies:
     "@babel/code-frame": ^7.14.0
     "@babel/parser": ^7.15.5
     "@babel/runtime": ^7.15.4
     "@babel/traverse": ^7.15.4
     babel-jsx-utils: ^1.1.0
-    babel-plugin-remove-graphql-queries: ^4.18.0
+    babel-plugin-remove-graphql-queries: ^4.20.0
     camelcase: ^5.3.1
     chokidar: ^3.5.3
     common-tags: ^1.8.2
     fs-extra: ^10.1.0
-    gatsby-core-utils: ^3.18.0
-    gatsby-plugin-utils: ^3.12.0
+    gatsby-core-utils: ^3.20.0
+    gatsby-plugin-utils: ^3.14.0
     objectFitPolyfill: ^2.3.5
     prop-types: ^15.8.1
   peerDependencies:
@@ -11776,7 +11842,7 @@ __metadata:
     gatsby-source-filesystem: ^4.0.0-next
     react: ^16.9.0 || ^17.0.0 || ^18.0.0
     react-dom: ^16.9.0 || ^17.0.0 || ^18.0.0
-  checksum: 93798bb9c6b6227b449f495836e33d324a58a558d4d8a38d5577179c8b1955bad4fcb627533597673113546f123ee2e86610988c4ef3de7a836209b6a1fe19dd
+  checksum: 063f924c1fc1b8be7d7d7c5ee935a7f8911c8f924161e179e7b1601e3239e3f239ddd8e65ee5c820f453ebd5fbcb7ab779374c8f5009e0ac39d280b02fc9d80e
   languageName: node
   linkType: hard
 
@@ -11970,6 +12036,29 @@ __metadata:
   peerDependencies:
     gatsby: ^4.0.0-next
   checksum: b32505d581e856e853dc7d06f95021ed5739d58be21219342eb8cfd5346c757a94adad39a15541a2dcf15003061d48af8134abc79c91b70c5c1d9232f1943d50
+  languageName: node
+  linkType: hard
+
+"gatsby-plugin-utils@npm:^3.14.0":
+  version: 3.14.0
+  resolution: "gatsby-plugin-utils@npm:3.14.0"
+  dependencies:
+    "@babel/runtime": ^7.15.4
+    "@gatsbyjs/potrace": ^2.2.0
+    fastq: ^1.13.0
+    fs-extra: ^10.1.0
+    gatsby-core-utils: ^3.20.0
+    gatsby-sharp: ^0.14.0
+    graphql-compose: ^9.0.7
+    import-from: ^4.0.0
+    joi: ^17.4.2
+    mime: ^3.0.0
+    mini-svg-data-uri: ^1.4.4
+    svgo: ^2.8.0
+  peerDependencies:
+    gatsby: ^4.0.0-next
+    graphql: ^15.0.0
+  checksum: b194d10d5e2b6cf77144d019c1fb18e02360acb50e03e3b002c65e7ba1c702284d751ae7db297cd5c4db856e1a7dacd0790d63bc65b87f2168bf54ccb8b677c1
   languageName: node
   linkType: hard
 
@@ -12175,6 +12264,16 @@ __metadata:
     "@types/sharp": ^0.30.0
     sharp: ^0.30.3
   checksum: e2559c0059f0cc97a158ee836c13b17144f79157d22fed38f608edb989d8e43455cd2ce7e030e5d168e7cd124077a4dccd4b4574096a8e5e56b18fb5fdec09d1
+  languageName: node
+  linkType: hard
+
+"gatsby-sharp@npm:^0.14.0":
+  version: 0.14.0
+  resolution: "gatsby-sharp@npm:0.14.0"
+  dependencies:
+    "@types/sharp": ^0.30.0
+    sharp: ^0.30.3
+  checksum: 753e43bba753e73723987eb9cb0db909e01e1b0353ac0f0e732961050d23f97226aac2f329700ac366b5b33ede6f5100cdffefe537f890af2393d0d720d6e36d
   languageName: node
   linkType: hard
 
@@ -15747,6 +15846,39 @@ __metadata:
     "@lmdb/lmdb-win32-x64":
       optional: true
   checksum: 3362dc2b03c6fbdfc02291001007e4096767476e65fbf8d5e332ef473946a0d108319748ef5974ebb84cf6ffa4015c039920f130bcc09c03a751b03a9fd93dff
+  languageName: node
+  linkType: hard
+
+"lmdb@npm:2.5.3":
+  version: 2.5.3
+  resolution: "lmdb@npm:2.5.3"
+  dependencies:
+    "@lmdb/lmdb-darwin-arm64": 2.5.3
+    "@lmdb/lmdb-darwin-x64": 2.5.3
+    "@lmdb/lmdb-linux-arm": 2.5.3
+    "@lmdb/lmdb-linux-arm64": 2.5.3
+    "@lmdb/lmdb-linux-x64": 2.5.3
+    "@lmdb/lmdb-win32-x64": 2.5.3
+    msgpackr: ^1.5.4
+    node-addon-api: ^4.3.0
+    node-gyp: latest
+    node-gyp-build-optional-packages: 5.0.3
+    ordered-binary: ^1.2.4
+    weak-lru-cache: ^1.2.2
+  dependenciesMeta:
+    "@lmdb/lmdb-darwin-arm64":
+      optional: true
+    "@lmdb/lmdb-darwin-x64":
+      optional: true
+    "@lmdb/lmdb-linux-arm":
+      optional: true
+    "@lmdb/lmdb-linux-arm64":
+      optional: true
+    "@lmdb/lmdb-linux-x64":
+      optional: true
+    "@lmdb/lmdb-win32-x64":
+      optional: true
+  checksum: 8dd33d46878e28029d62cab8bfa491da0f06428eb9f3cc63b8b1d9464fb3bdb46bddaf4caa5b1a0af5815cec288102aae0cb411a48e79c5514df566ddcb3a4c4
   languageName: node
   linkType: hard
 

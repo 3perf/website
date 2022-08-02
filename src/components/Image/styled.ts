@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Container = styled.span<{ isSafari: boolean }>`
+export const Container = styled.span`
   display: inline-block;
   /* Copy default gatsby-image’s styles – this helps to easily apply border-radius */
   overflow: hidden;

@@ -6,17 +6,32 @@ import {
 import React from 'react';
 import { Container } from './styled';
 
-interface ImageProps {
+export interface ImageProps {
   imageData: IGatsbyImageData;
   alt?: string;
   className?: string;
   loading?: GatsbyImageProps['loading'];
+  style?: GatsbyImageProps['style'];
+  imgStyle?: GatsbyImageProps['imgStyle'];
 }
 
-const Image = ({ className, loading, imageData, alt = '' }: ImageProps) => {
+const Image = ({
+  className,
+  loading,
+  imageData,
+  alt = '',
+  style,
+  imgStyle,
+}: ImageProps) => {
   return (
-    <Container className={className} isSafari={false}>
-      <GatsbyImage image={imageData} alt={alt} loading={loading} />
+    <Container className={className}>
+      <GatsbyImage
+        image={imageData}
+        alt={alt}
+        loading={loading}
+        style={style}
+        imgStyle={imgStyle}
+      />
     </Container>
   );
 };

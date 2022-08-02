@@ -54,10 +54,7 @@ const ContentItem = ({
     <ItemLink href={link}>
       {image && (
         <ItemImage>
-          <GatsbyImage
-            alt=""
-            imageData={image.childImageSharp.gatsbyImageData}
-          />
+          <GatsbyImage imageData={image.childImageSharp.gatsbyImageData} />
         </ItemImage>
       )}
       <div>

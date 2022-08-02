@@ -63,12 +63,10 @@ const ServicesSection = ({ className = '', data }: ServicesSectionProps) => (
     >
       <MobileImageWrapper>
         <MobileImage
-          alt=""
           imageData={data.auditMobile.childImageSharp.gatsbyImageData}
         />
       </MobileImageWrapper>
       <DesktopImage
-        alt=""
         imageData={data.auditDesktop.childImageSharp.gatsbyImageData}
       />
       <Text>
@@ -93,7 +91,6 @@ const ServicesSection = ({ className = '', data }: ServicesSectionProps) => (
           <BlockquoteFooter>
             <BlockquoteImage
               imageData={data.piotrAvatar.childImageSharp.gatsbyImageData}
-              alt=""
             />
             <BlockquoteName>Piotr Krawiec</BlockquoteName> · Product Engineer @
             Framer
@@ -114,12 +111,10 @@ const ServicesSection = ({ className = '', data }: ServicesSectionProps) => (
     >
       <MobileImageWrapper>
         <MobileImage
-          alt=""
           imageData={data.optimizationMobile.childImageSharp.gatsbyImageData}
         />
       </MobileImageWrapper>
       <DesktopImage
-        alt=""
         imageData={data.optimizationDesktop.childImageSharp.gatsbyImageData}
       />
       <Text>
@@ -146,7 +141,6 @@ const ServicesSection = ({ className = '', data }: ServicesSectionProps) => (
             <BlockquoteName>
               <BlockquoteImage
                 imageData={data.davidAvatar.childImageSharp.gatsbyImageData}
-                alt=""
               />
               David Sigley
             </BlockquoteName>{' '}
@@ -164,12 +158,10 @@ const ServicesSection = ({ className = '', data }: ServicesSectionProps) => (
     >
       <MobileImageWrapper>
         <MobileImage
-          alt=""
           imageData={data.workshopMobile.childImageSharp.gatsbyImageData}
         />
       </MobileImageWrapper>
       <DesktopImage
-        alt=""
         imageData={data.workshopDesktop.childImageSharp.gatsbyImageData}
       />
       <Text>
@@ -198,7 +190,6 @@ const ServicesSection = ({ className = '', data }: ServicesSectionProps) => (
             <BlockquoteName>
               <BlockquoteImage
                 imageData={data.nicolasAvatar.childImageSharp.gatsbyImageData}
-                alt=""
               />
               Nicolás Delfino
             </BlockquoteName>{' '}
