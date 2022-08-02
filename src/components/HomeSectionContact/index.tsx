@@ -12,7 +12,6 @@ import {
 
 interface ContactSectionData {
   iamakulov: GraphqlImage;
-  christopherlarscarlson: GraphqlImage;
 }
 
 interface ContactSectionProps {
@@ -33,20 +32,9 @@ const ContactSection = ({
           Interested? We’d be glad to help. Drop us an email, and{' '}
           <Contact>
             <ContactImage
-              alt=""
               imageData={data.iamakulov.childImageSharp.gatsbyImageData}
             />{' '}
             Ivan
-          </Contact>{' '}
-          or{' '}
-          <Contact>
-            <ContactImage
-              alt=""
-              imageData={
-                data.christopherlarscarlson.childImageSharp.gatsbyImageData
-              }
-            />{' '}
-            Chris
           </Contact>{' '}
           will get back to you in 24 hours.
         </p>
@@ -72,12 +60,6 @@ const ContactSectionWithQuery = (props: ContactSectionProps) => (
       }
 
       {
-        christopherlarscarlson: file(
-          sourceInstanceName: { eq: "shared" }
-          relativePath: { eq: "christopherlarscarlson.jpg" }
-        ) {
-          ...ContactImage
-        }
         iamakulov: file(
           sourceInstanceName: { eq: "shared" }
           relativePath: { eq: "iamakulov.jpg" }
