@@ -1,6 +1,6 @@
 import { graphql, StaticQuery } from 'gatsby';
 import * as React from 'react';
-import { GraphqlImageFluid } from '../../types';
+import { GraphqlImage } from '../../types';
 import HomeLeftRightWrapper from '../HomeLeftRightWrapper';
 import Link from '../Link';
 import Section, { SectionKind } from '../Section';
@@ -13,7 +13,7 @@ import {
 } from './styled';
 
 interface MaterialsSectionData {
-  webPerf101: GraphqlImageFluid;
+  webPerf101: GraphqlImage;
 }
 
 interface MaterialsSectionProps {
@@ -25,7 +25,7 @@ const MaterialsSection = ({ data }: MaterialsSectionProps) => (
     <HomeLeftRightWrapper
       left={
         <LinkBlock href="/talks/web-perf-101">
-          <Image imageData={data.webPerf101.childImageSharp.fluid} />
+          <Image imageData={data.webPerf101.childImageSharp.gatsbyImageData} />
           <LinkText>Web Performance 101</LinkText>
           <LinkDescription>
             A comprehensive guide into modern web performance
@@ -73,14 +73,17 @@ const MaterialsSection = ({ data }: MaterialsSectionProps) => (
 const MaterialsSectionWithQuery = () => (
   <StaticQuery
     query={graphql`
-      query {
+      {
         webPerf101: file(
           relativePath: { eq: "HomeSectionMaterials/web-perf-101.png" }
         ) {
           childImageSharp {
-            fluid(maxWidth: 600) {
-              ...ImageFluid
-            }
+            gatsbyImageData(
+              width: 600
+              placeholder: NONE
+              layout: CONSTRAINED
+              formats: [AUTO]
+            )
           }
         }
       }

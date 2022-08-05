@@ -1,7 +1,7 @@
 import { graphql } from 'gatsby';
+import { IGatsbyImageData } from 'gatsby-plugin-image';
 import * as React from 'react';
 import { Helmet } from 'react-helmet';
-import { ImageFluid, ImageFixed } from '../../../components/Image';
 import Layout from '../../../components/Layout';
 import { LogoKind } from '../../../components/Logo';
 import WidthWrapper from '../../../components/WidthWrapper';
@@ -38,12 +38,12 @@ interface WebPerf101PageProps {
   data: {
     indexSlide: {
       childImageSharp: {
-        fluid: ImageFluid;
+        gatsbyImageData: IGatsbyImageData;
       };
     };
     iamakulovPhoto: {
       childImageSharp: {
-        fixed: ImageFixed;
+        gatsbyImageData: IGatsbyImageData;
       };
     };
     panda100: FileUrl;
@@ -57,7 +57,7 @@ interface WebPerf101PageProps {
         node: {
           name: string;
           childImageSharp: {
-            fluid: ImageFluid;
+            gatsbyImageData: IGatsbyImageData;
           };
         };
       }>;
@@ -67,7 +67,7 @@ interface WebPerf101PageProps {
         node: {
           name: string;
           childImageSharp: {
-            fluid: ImageFluid;
+            gatsbyImageData: IGatsbyImageData;
           };
         };
       }>;
@@ -83,13 +83,13 @@ const lastUpdatedDate = new Date(2022, 6, 16);
 const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
   const allSlidesByName = Object.fromEntries(
     data.allSlides.edges.map((edge) => {
-      return [edge.node.name, edge.node.childImageSharp.fluid];
+      return [edge.node.name, edge.node.childImageSharp.gatsbyImageData];
     }),
   );
 
   const sectionHeadersByName = Object.fromEntries(
     data.sectionHeaders.edges.map((edge) => {
-      return [edge.node.name, edge.node.childImageSharp.fluid];
+      return [edge.node.name, edge.node.childImageSharp.gatsbyImageData];
     }),
   );
 
@@ -181,7 +181,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
         </Helmet>
         <Nav logoKind={LogoKind.Black} />
         <TalkHeader
-          imageData={data.indexSlide.childImageSharp.fluid}
+          imageData={data.indexSlide.childImageSharp.gatsbyImageData}
           title="Web Performance 101"
           description={
             <>
@@ -203,7 +203,12 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
           <Slide
             slideId="contents"
             useImageBorder={true}
-            image={<SlideGatsbyImage imageData={allSlidesByName['contents']} />}
+            image={
+              <SlideGatsbyImage
+                alt=""
+                imageData={allSlidesByName['contents']}
+              />
+            }
           >
             <p>This is what we’ll talk about.</p>
             <Contents>
@@ -307,6 +312,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             isSectionHeader={true}
             image={
               <SlideGatsbyImage
+                alt=""
                 imageData={sectionHeadersByName['perf-importance-header']}
               />
             }
@@ -318,6 +324,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
+                alt="Slide demonstrating the level of stress caused by mobile delays"
                 imageData={allSlidesByName['perf-importance-horror']}
               />
             }
@@ -371,6 +378,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
+                alt=""
                 imageData={allSlidesByName['perf-importance-parts-1']}
               />
             }
@@ -392,6 +400,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
+                alt=""
                 imageData={allSlidesByName['perf-importance-parts-2']}
               />
             }
@@ -408,6 +417,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
+                alt=""
                 imageData={allSlidesByName['perf-importance-parts-3']}
               />
             }
@@ -430,6 +440,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             isSectionHeader={true}
             image={
               <SlideGatsbyImage
+                alt=""
                 imageData={sectionHeadersByName['javascript-header']}
               />
             }
@@ -444,6 +455,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
+                alt="Slide with an example of unminified JS code. The code reads: function logArrayItems(element, index) { console.log('a[' + index + '] = ' + element); } [2, 5, 9].forEach(logArrayItems);"
                 imageData={allSlidesByName['javascript-minification-source']}
               />
             }
@@ -460,6 +472,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
+                alt="Slide with an example of minified JS code. The code reads: function f(q,w){console.log('a['+w+'] = '+q)}[2, 5, 9].forEach(f);"
                 imageData={allSlidesByName['javascript-minification-result']}
               />
             }
@@ -482,6 +495,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
+                alt=""
                 imageData={allSlidesByName['javascript-minification-tools']}
               />
             }
@@ -510,7 +524,10 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             slideId="js-download-1"
             useImageBorder={true}
             image={
-              <SlideGatsbyImage imageData={allSlidesByName['js-download-1']} />
+              <SlideGatsbyImage
+                alt=""
+                imageData={allSlidesByName['js-download-1']}
+              />
             }
           >
             <p>
@@ -522,7 +539,10 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             slideId="js-download-2"
             useImageBorder={true}
             image={
-              <SlideGatsbyImage imageData={allSlidesByName['js-download-2']} />
+              <SlideGatsbyImage
+                alt=""
+                imageData={allSlidesByName['js-download-2']}
+              />
             }
           >
             <p>
@@ -552,6 +572,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
+                alt="HTML code and the corresponding DOM tree, side-by-side"
                 imageData={allSlidesByName['js-scripts-block-parsing-2']}
               />
             }
@@ -571,6 +592,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
+                alt="The DOM tree that’s been changed because a script with document.write() was executed"
                 imageData={allSlidesByName['js-scripts-block-parsing-3']}
               />
             }
@@ -590,6 +612,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
+                alt=""
                 imageData={allSlidesByName['js-scripts-block-parsing-4']}
               />
             }
@@ -610,6 +633,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
+                alt="Image of an empty page that’s still loading"
                 imageData={allSlidesByName['js-scripts-block-parsing-5']}
               />
             }
@@ -643,6 +667,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
+                alt=""
                 imageData={allSlidesByName['js-async-defer-1']}
               />
             }
@@ -676,6 +701,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
+                alt=""
                 imageData={allSlidesByName['js-async-defer-2']}
               />
             }
@@ -703,6 +729,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
+                alt=""
                 imageData={allSlidesByName['js-async-defer-3']}
               />
             }
@@ -719,6 +746,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
+                alt=""
                 imageData={allSlidesByName['js-code-splitting-1']}
               />
             }
@@ -736,6 +764,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
+                alt=""
                 imageData={allSlidesByName['js-code-splitting-2']}
               />
             }
@@ -752,6 +781,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
+                alt=""
                 imageData={allSlidesByName['js-code-splitting-3']}
               />
             }
@@ -772,6 +802,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
+                alt="Slide with a code example for browsers. The code reads: import('https://unpkg.com/lodash').then(_ => { /* Code that uses Lodash */ _.keys(...) })"
                 imageData={allSlidesByName['js-code-splitting-3-2']}
               />
             }
@@ -792,6 +823,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
+                alt="Slide with a code example for webpack. The code reads: import('./ChangeAvatarModal.js').then(module => { this.setState({ ChangeAvatarModal: module.default }); });"
                 imageData={allSlidesByName['js-code-splitting-4']}
               />
             }
@@ -824,6 +856,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
+                alt="Slide with a code example for react-loadable. The code reads: const LoadableComponent = Loadable({ loader: () => import('./modal.js'), }); class App extends React.Component { render() { return <LoadableComponent />; } }"
                 imageData={allSlidesByName['js-code-splitting-5']}
               />
             }
@@ -855,6 +888,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
+                alt=""
                 imageData={allSlidesByName['js-code-splitting-6']}
               />
             }
@@ -894,6 +928,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
+                alt=""
                 imageData={allSlidesByName['js-unused-dependencies-1']}
               />
             }
@@ -921,6 +956,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
+                alt=""
                 imageData={allSlidesByName['js-unused-dependencies-2']}
               />
             }
@@ -943,7 +979,10 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             slideId="js-summing-up-slide"
             useImageBorder={true}
             image={
-              <SlideGatsbyImage imageData={allSlidesByName['js-summing-up']} />
+              <SlideGatsbyImage
+                alt=""
+                imageData={allSlidesByName['js-summing-up']}
+              />
             }
           >
             <p>That’s all about JavaScript for now.</p>
@@ -967,6 +1006,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             isSectionHeader={true}
             image={
               <SlideGatsbyImage
+                alt=""
                 imageData={sectionHeadersByName['css-header']}
               />
             }
@@ -977,7 +1017,10 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             slideId="css-minify-1"
             useImageBorder={true}
             image={
-              <SlideGatsbyImage imageData={allSlidesByName['css-minify-2']} />
+              <SlideGatsbyImage
+                alt="Slide with an example of minified CSS code. The distinct feature of the code is there are no spaces or newlines in that code."
+                imageData={allSlidesByName['css-minify-2']}
+              />
             }
           >
             <p>
@@ -989,7 +1032,10 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             slideId="css-minify-2"
             useImageBorder={true}
             image={
-              <SlideGatsbyImage imageData={allSlidesByName['css-minify-3']} />
+              <SlideGatsbyImage
+                alt=""
+                imageData={allSlidesByName['css-minify-3']}
+              />
             }
           >
             <p>
@@ -1018,6 +1064,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
+                alt=""
                 imageData={allSlidesByName['css-block-rendering-1']}
               />
             }
@@ -1035,6 +1082,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
+                alt="Screenshot of a Wikipedia page without styles"
                 imageData={allSlidesByName['css-block-rendering-2']}
               />
             }
@@ -1050,6 +1098,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
+                alt="Screenshot of a Wikipedia page with styles"
                 imageData={allSlidesByName['css-block-rendering-3']}
               />
             }
@@ -1064,6 +1113,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
+                alt=""
                 imageData={allSlidesByName['css-block-rendering-4']}
               />
             }
@@ -1087,6 +1137,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
+                alt=""
                 imageData={allSlidesByName['css-critical-2-1']}
               />
             }
@@ -1105,6 +1156,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
+                alt=""
                 imageData={allSlidesByName['css-critical-2-2']}
               />
             }
@@ -1143,7 +1195,10 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             slideId="css-critical-3"
             useImageBorder={true}
             image={
-              <SlideGatsbyImage imageData={allSlidesByName['css-critical-1']} />
+              <SlideGatsbyImage
+                alt="Slide with text: Critical CSS: When it’s absent, the page looks funny. Critical style examples: styles for the page layout, styles reserving a place for non-critical elements. Non-critical style examples: styles for a popup which opens on a button click, styles for ads, styles for the image footer"
+                imageData={allSlidesByName['css-critical-1']}
+              />
             }
           >
             <p>
@@ -1167,7 +1222,10 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             slideId="css-critical-4"
             useImageBorder={true}
             image={
-              <SlideGatsbyImage imageData={allSlidesByName['css-critical-7']} />
+              <SlideGatsbyImage
+                alt=""
+                imageData={allSlidesByName['css-critical-7']}
+              />
             }
           >
             <p>
@@ -1203,7 +1261,10 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             slideId="css-critical-5"
             useImageBorder={true}
             image={
-              <SlideGatsbyImage imageData={allSlidesByName['css-critical-5']} />
+              <SlideGatsbyImage
+                alt=""
+                imageData={allSlidesByName['css-critical-5']}
+              />
             }
           >
             <p>
@@ -1226,7 +1287,10 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             slideId="css-summing-up-slide"
             useImageBorder={true}
             image={
-              <SlideGatsbyImage imageData={allSlidesByName['css-summing-up']} />
+              <SlideGatsbyImage
+                alt=""
+                imageData={allSlidesByName['css-summing-up']}
+              />
             }
           >
             <p>
@@ -1240,6 +1304,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             isSectionHeader={true}
             image={
               <SlideGatsbyImage
+                alt=""
                 imageData={sectionHeadersByName['http-header']}
               />
             }
@@ -1251,6 +1316,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
+                alt="Slide with an example of minified HTML code. The distinct feature of the code is there are no spaces or newlines in that code."
                 imageData={allSlidesByName['http-html-minify-2']}
               />
             }
@@ -1415,7 +1481,10 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             slideId="http-cdn-2"
             useImageBorder={true}
             image={
-              <SlideGatsbyImage imageData={allSlidesByName['http-cdn-2']} />
+              <SlideGatsbyImage
+                alt=""
+                imageData={allSlidesByName['http-cdn-2']}
+              />
             }
           >
             <p>
@@ -1439,7 +1508,10 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             slideId="http-preload-1"
             useImageBorder={true}
             image={
-              <SlideGatsbyImage imageData={allSlidesByName['http-preload-1']} />
+              <SlideGatsbyImage
+                alt=""
+                imageData={allSlidesByName['http-preload-1']}
+              />
             }
           >
             <p>
@@ -1460,7 +1532,10 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             slideId="http-preload-2"
             useImageBorder={true}
             image={
-              <SlideGatsbyImage imageData={allSlidesByName['http-preload-2']} />
+              <SlideGatsbyImage
+                alt=""
+                imageData={allSlidesByName['http-preload-2']}
+              />
             }
           >
             <p>
@@ -1533,6 +1608,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
+                alt=""
                 imageData={allSlidesByName['http-summing-up']}
               />
             }
@@ -1558,6 +1634,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
+                alt=""
                 imageData={sectionHeadersByName['images-and-fonts-header']}
               />
             }
@@ -1569,6 +1646,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
+                alt=""
                 imageData={allSlidesByName['images-and-fonts-format']}
               />
             }
@@ -1595,6 +1673,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
+                alt=""
                 imageData={allSlidesByName['images-and-fonts-svg']}
               />
             }
@@ -1607,6 +1686,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             slideId="images-jpg"
             image={
               <SlideGatsbyImage
+                alt=""
                 imageData={allSlidesByName['images-and-fonts-jpg']}
               />
             }
@@ -1621,6 +1701,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
+                alt=""
                 imageData={allSlidesByName['images-and-fonts-png']}
               />
             }
@@ -1636,6 +1717,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
+                alt=""
                 imageData={allSlidesByName['images-and-fonts-webp-1']}
               />
             }
@@ -1672,6 +1754,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
+                alt=""
                 imageData={allSlidesByName['images-and-fonts-webp-2']}
               />
             }
@@ -1693,6 +1776,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
+                alt=""
                 imageData={allSlidesByName['images-and-fonts-gif']}
               />
             }
@@ -1727,6 +1811,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
+                alt=""
                 imageData={allSlidesByName['images-and-fonts-compress']}
               />
             }
@@ -1741,6 +1826,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
+                alt=""
                 imageData={allSlidesByName['images-and-fonts-compress-svg-jpg']}
               />
             }
@@ -1781,6 +1867,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
+                alt=""
                 imageData={
                   allSlidesByName[
                     'images-and-fonts-compress-svg-jpg-exclamation'
@@ -1802,6 +1889,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
+                alt=""
                 imageData={
                   allSlidesByName['images-and-fonts-compress-jpg-dimensions']
                 }
@@ -1837,6 +1925,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
+                alt=""
                 imageData={
                   allSlidesByName['images-and-fonts-compress-jpg-size-1']
                 }
@@ -1858,6 +1947,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             slideId="images-compress-jpg-size-2"
             image={
               <SlideGatsbyImage
+                alt="3 images of a panda"
                 imageData={
                   allSlidesByName['images-and-fonts-compress-jpg-size-2']
                 }
@@ -1890,6 +1980,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             slideId="images-compress-jpg-size-3"
             image={
               <SlideGatsbyImage
+                alt="3 zoomed-in images of a panda"
                 imageData={
                   allSlidesByName['images-and-fonts-compress-jpg-size-3']
                 }
@@ -1915,6 +2006,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             slideId="images-compress-jpg-size-4"
             image={
               <SlideGatsbyImage
+                alt="The same 3 images of a panda. The first image is 669 kB, the second is 100 kB, and the third one is 74 kB."
                 imageData={
                   allSlidesByName['images-and-fonts-compress-jpg-size-4']
                 }
@@ -1945,6 +2037,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
+                alt=""
                 imageData={
                   allSlidesByName['images-and-fonts-compress-jpg-progressive-1']
                 }
@@ -1961,7 +2054,12 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
           <Slide
             slideId="images-compress-jpg-progressive-2"
             useImageBorder={true}
-            image={<BlockImage src={nonProgressiveGif} />}
+            image={
+              <BlockImage
+                alt="An animation of an image gradually loading from top to bottom"
+                src={nonProgressiveGif}
+              />
+            }
           >
             <p>
               E.g., this is how a non-progressive (<em>baseline</em>) image
@@ -1981,7 +2079,12 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
           <Slide
             slideId="images-compress-jpg-progressive-3"
             useImageBorder={true}
-            image={<BlockImage src={progressiveGif} />}
+            image={
+              <BlockImage
+                alt="An animation of an image slowly getting less pixelated"
+                src={progressiveGif}
+              />
+            }
           >
             <p>
               A progressive image, however, starts rendering with a smaller
@@ -2022,6 +2125,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
+                alt=""
                 imageData={allSlidesByName['images-and-fonts-compress-png']}
               />
             }
@@ -2065,6 +2169,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
+                alt=""
                 imageData={allSlidesByName['images-and-fonts-compress-tools']}
               />
             }
@@ -2099,6 +2204,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
+                alt=""
                 imageData={allSlidesByName['images-summing-up']}
               />
             }
@@ -2137,6 +2243,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
+                alt=""
                 imageData={sectionHeadersByName['fonts-header']}
               />
             }
@@ -2188,6 +2295,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
+                alt="Slide with a CSS rule. The rule reads: font-family: PT Sans, Arial, sans-serif. The “Arial, sans-serif” part is highlighted."
                 imageData={allSlidesByName['fonts-fallback-1']}
               />
             }
@@ -2219,6 +2327,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
+                alt="Two screenshots of a page side-by-side. The first screenshot uses a custom font, and the second screenshot uses Times New Roman. The fonts look vastly different"
                 imageData={allSlidesByName['fonts-fallback-2']}
               />
             }
@@ -2235,6 +2344,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
+                alt="Two screenshots of a page side-by-side. The first screenshot uses a custom font, and the second screenshot uses Calibri. The fonts look similar"
                 imageData={allSlidesByName['fonts-fallback-3']}
               />
             }
@@ -2250,6 +2360,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
+                alt=""
                 imageData={allSlidesByName['fonts-font-display-2']}
               />
             }
@@ -2285,6 +2396,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
+                alt=""
                 imageData={allSlidesByName['fonts-font-display-3']}
               />
             }
@@ -2318,6 +2430,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
+                alt=""
                 imageData={allSlidesByName['fonts-font-display-4']}
               />
             }
@@ -2341,6 +2454,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
+                alt=""
                 imageData={allSlidesByName['fonts-font-display-5']}
               />
             }
@@ -2383,6 +2497,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
+                alt=""
                 imageData={allSlidesByName['fonts-summing-up']}
               />
             }
@@ -2407,6 +2522,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
+                alt=""
                 imageData={sectionHeadersByName['tools-header']}
               />
             }
@@ -2421,6 +2537,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
+                alt=""
                 imageData={allSlidesByName['tools-pagespeed-insights']}
               />
             }
@@ -2447,6 +2564,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
+                alt=""
                 imageData={allSlidesByName['tools-lighthouse']}
               />
             }
@@ -2475,6 +2593,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
             useImageBorder={true}
             image={
               <SlideGatsbyImage
+                alt=""
                 imageData={allSlidesByName['tools-webpagetest']}
               />
             }
@@ -2536,7 +2655,9 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
           <Slide
             slideId="thanks"
             useImageBorder={true}
-            image={<SlideGatsbyImage imageData={allSlidesByName['thanks']} />}
+            image={
+              <SlideGatsbyImage alt="" imageData={allSlidesByName['thanks']} />
+            }
           >
             <p>Thanks!</p>
             <p>
@@ -2562,7 +2683,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
           authors={[
             {
               description: 'PerfPerfPerf founder',
-              imageData: data.iamakulovPhoto.childImageSharp.fixed,
+              imageData: data.iamakulovPhoto.childImageSharp.gatsbyImageData,
               link: 'https://twitter.com/iamakulov',
               name: 'Ivan Akulov',
             },
@@ -2585,18 +2706,20 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
 export default WebPerf101Page;
 
 export const query = graphql`
-  query {
+  {
     indexSlide: file(
       sourceInstanceName: { eq: "pages" }
       relativePath: { eq: "talks/web-perf-101/slides/index.png" }
     ) {
       childImageSharp {
-        fluid(maxWidth: 800) {
-          ...ImageFluid
-        }
+        gatsbyImageData(
+          width: 800
+          placeholder: NONE
+          layout: CONSTRAINED
+          formats: [AUTO]
+        )
       }
     }
-
     sectionHeaders: allFile(
       filter: {
         relativeDirectory: { eq: "talks/web-perf-101/slides" }
@@ -2607,14 +2730,16 @@ export const query = graphql`
         node {
           name
           childImageSharp {
-            fluid(maxWidth: 700) {
-              ...ImageFluid
-            }
+            gatsbyImageData(
+              width: 700
+              placeholder: NONE
+              layout: CONSTRAINED
+              formats: [AUTO]
+            )
           }
         }
       }
     }
-
     allSlides: allFile(
       filter: {
         relativeDirectory: { eq: "talks/web-perf-101/slides" }
@@ -2625,55 +2750,56 @@ export const query = graphql`
         node {
           name
           childImageSharp {
-            fluid(maxWidth: 500) {
-              ...ImageFluid
-            }
+            gatsbyImageData(
+              width: 500
+              placeholder: NONE
+              layout: CONSTRAINED
+              formats: [AUTO]
+            )
           }
         }
       }
     }
-
     iamakulovPhoto: file(
       sourceInstanceName: { eq: "shared" }
       relativePath: { eq: "iamakulov.jpg" }
     ) {
       childImageSharp {
-        fixed(width: 48, height: 48, quality: 90) {
-          ...ImageFixed
-        }
+        gatsbyImageData(
+          width: 48
+          height: 48
+          quality: 90
+          placeholder: NONE
+          layout: FIXED
+          formats: [AUTO]
+        )
       }
     }
-
     panda100: file(
       relativePath: { eq: "talks/web-perf-101/pandas/panda_100.jpg" }
     ) {
       publicURL
     }
-
     panda70: file(
       relativePath: { eq: "talks/web-perf-101/pandas/panda_70.jpg" }
     ) {
       publicURL
     }
-
     panda50: file(
       relativePath: { eq: "talks/web-perf-101/pandas/panda_50.jpg" }
     ) {
       publicURL
     }
-
     panda100Large: file(
       relativePath: { eq: "talks/web-perf-101/pandas/panda_100_large.png" }
     ) {
       publicURL
     }
-
     panda70Large: file(
       relativePath: { eq: "talks/web-perf-101/pandas/panda_70_large.png" }
     ) {
       publicURL
     }
-
     panda50Large: file(
       relativePath: { eq: "talks/web-perf-101/pandas/panda_50_large.png" }
     ) {

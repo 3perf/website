@@ -1,6 +1,6 @@
 import { graphql, StaticQuery } from 'gatsby';
 import * as React from 'react';
-import { GraphqlImageFixed } from '../../types';
+import { GraphqlImage } from '../../types';
 import { SectionKind } from '../Section';
 import {
   ActionButton,
@@ -25,21 +25,21 @@ import {
 interface ServicesSectionProps {
   className?: string;
   data: {
-    auditDesktop: GraphqlImageFixed & {
+    auditDesktop: GraphqlImage & {
+      childImageSharp: { gatsbyImageData: { height: number } };
+    };
+    optimizationDesktop: GraphqlImage & {
+      childImageSharp: { gatsbyImageData: { height: number } };
+    };
+    auditMobile: GraphqlImage;
+    optimizationMobile: GraphqlImage;
+    workshopMobile: GraphqlImage;
+    workshopDesktop: GraphqlImage & {
       childImageSharp: { fixed: { height: number } };
     };
-    optimizationDesktop: GraphqlImageFixed & {
-      childImageSharp: { fixed: { height: number } };
-    };
-    workshopDesktop: GraphqlImageFixed & {
-      childImageSharp: { fixed: { height: number } };
-    };
-    davidAvatar: GraphqlImageFixed;
-    nicolasAvatar: GraphqlImageFixed;
-    piotrAvatar: GraphqlImageFixed;
-    auditMobile: GraphqlImageFixed;
-    optimizationMobile: GraphqlImageFixed;
-    workshopMobile: GraphqlImageFixed;
+    davidAvatar: GraphqlImage;
+    nicolasAvatar: GraphqlImage;
+    piotrAvatar: GraphqlImage;
   };
 }
 
@@ -57,12 +57,18 @@ const ServicesSection = ({ className = '', data }: ServicesSectionProps) => (
     <ImageText
       id="audit"
       direction="forward"
-      desktopImageHeight={data.auditDesktop.childImageSharp.fixed.height}
+      desktopImageHeight={
+        data.auditDesktop.childImageSharp.gatsbyImageData.height
+      }
     >
       <MobileImageWrapper>
-        <MobileImage imageData={data.auditMobile.childImageSharp.fixed} />
+        <MobileImage
+          imageData={data.auditMobile.childImageSharp.gatsbyImageData}
+        />
       </MobileImageWrapper>
-      <DesktopImage imageData={data.auditDesktop.childImageSharp.fixed} />
+      <DesktopImage
+        imageData={data.auditDesktop.childImageSharp.gatsbyImageData}
+      />
       <Text>
         <H3>Find What To Improve&nbsp;🔬</H3>
         <p>
@@ -84,8 +90,7 @@ const ServicesSection = ({ className = '', data }: ServicesSectionProps) => (
           </BlockquoteTextWrapper>
           <BlockquoteFooter>
             <BlockquoteImage
-              imageData={data.piotrAvatar.childImageSharp.fixed}
-              alt=""
+              imageData={data.piotrAvatar.childImageSharp.gatsbyImageData}
             />
             <BlockquoteName>Piotr Krawiec</BlockquoteName> · Product Engineer @
             Framer
@@ -100,15 +105,17 @@ const ServicesSection = ({ className = '', data }: ServicesSectionProps) => (
     <ImageText
       id="optimize"
       direction="reverse"
-      desktopImageHeight={data.optimizationDesktop.childImageSharp.fixed.height}
+      desktopImageHeight={
+        data.optimizationDesktop.childImageSharp.gatsbyImageData.height
+      }
     >
       <MobileImageWrapper>
         <MobileImage
-          imageData={data.optimizationMobile.childImageSharp.fixed}
+          imageData={data.optimizationMobile.childImageSharp.gatsbyImageData}
         />
       </MobileImageWrapper>
       <DesktopImage
-        imageData={data.optimizationDesktop.childImageSharp.fixed}
+        imageData={data.optimizationDesktop.childImageSharp.gatsbyImageData}
       />
       <Text>
         <H3>Optimize the App&nbsp;🛠</H3>
@@ -133,8 +140,7 @@ const ServicesSection = ({ className = '', data }: ServicesSectionProps) => (
           <BlockquoteFooter>
             <BlockquoteName>
               <BlockquoteImage
-                imageData={data.davidAvatar.childImageSharp.fixed}
-                alt=""
+                imageData={data.davidAvatar.childImageSharp.gatsbyImageData}
               />
               David Sigley
             </BlockquoteName>{' '}
@@ -146,12 +152,18 @@ const ServicesSection = ({ className = '', data }: ServicesSectionProps) => (
     <ImageText
       id="workshop"
       direction="forward"
-      desktopImageHeight={data.workshopDesktop.childImageSharp.fixed.height}
+      desktopImageHeight={
+        data.workshopDesktop.childImageSharp.gatsbyImageData.height
+      }
     >
       <MobileImageWrapper>
-        <MobileImage imageData={data.workshopMobile.childImageSharp.fixed} />
+        <MobileImage
+          imageData={data.workshopMobile.childImageSharp.gatsbyImageData}
+        />
       </MobileImageWrapper>
-      <DesktopImage imageData={data.workshopDesktop.childImageSharp.fixed} />
+      <DesktopImage
+        imageData={data.workshopDesktop.childImageSharp.gatsbyImageData}
+      />
       <Text>
         <H3>Grow The Team&nbsp;🧑‍💻</H3>
         <p>
@@ -177,8 +189,7 @@ const ServicesSection = ({ className = '', data }: ServicesSectionProps) => (
           <BlockquoteFooter>
             <BlockquoteName>
               <BlockquoteImage
-                imageData={data.nicolasAvatar.childImageSharp.fixed}
-                alt=""
+                imageData={data.nicolasAvatar.childImageSharp.gatsbyImageData}
               />
               Nicolás Delfino
             </BlockquoteName>{' '}
@@ -219,67 +230,77 @@ const ServicesSection = ({ className = '', data }: ServicesSectionProps) => (
 const ServicesSectionWithQuery = () => (
   <StaticQuery
     query={graphql`
-      query {
+      {
         auditDesktop: file(
           relativePath: { eq: "HomeSectionServices/audit-desktop.png" }
         ) {
           childImageSharp {
-            fixed(width: 900) {
-              ...ImageFixed
-              height
-            }
+            gatsbyImageData(
+              width: 900
+              placeholder: NONE
+              layout: FIXED
+              formats: [AUTO]
+            )
           }
         }
-
         optimizationDesktop: file(
           relativePath: { eq: "HomeSectionServices/optimization-desktop.png" }
         ) {
           childImageSharp {
-            fixed(width: 900) {
-              ...ImageFixed
-              height
-            }
+            gatsbyImageData(
+              width: 900
+              placeholder: NONE
+              layout: FIXED
+              formats: [AUTO]
+            )
           }
         }
-
         workshopDesktop: file(
           relativePath: { eq: "HomeSectionServices/workshop-desktop.png" }
         ) {
           childImageSharp {
-            fixed(width: 900) {
-              ...ImageFixed
-              height
-            }
+            gatsbyImageData(
+              width: 900
+              placeholder: NONE
+              layout: FIXED
+              formats: [AUTO]
+            )
           }
         }
-
         auditMobile: file(
           relativePath: { eq: "HomeSectionServices/audit-mobile.png" }
         ) {
           childImageSharp {
-            fixed(width: 224) {
-              ...ImageFixed
-            }
+            gatsbyImageData(
+              width: 224
+              placeholder: NONE
+              layout: FIXED
+              formats: [AUTO]
+            )
           }
         }
-
         optimizationMobile: file(
           relativePath: { eq: "HomeSectionServices/optimization-mobile.png" }
         ) {
           childImageSharp {
-            fixed(width: 224) {
-              ...ImageFixed
-            }
+            gatsbyImageData(
+              width: 224
+              placeholder: NONE
+              layout: FIXED
+              formats: [AUTO]
+            )
           }
         }
-
         workshopMobile: file(
           relativePath: { eq: "HomeSectionServices/workshop-mobile.png" }
         ) {
           childImageSharp {
-            fixed(width: 224) {
-              ...ImageFixed
-            }
+            gatsbyImageData(
+              width: 224
+              placeholder: NONE
+              layout: FIXED
+              formats: [AUTO]
+            )
           }
         }
 
@@ -287,9 +308,12 @@ const ServicesSectionWithQuery = () => (
           relativePath: { eq: "HomeSectionServices/david.jpg" }
         ) {
           childImageSharp {
-            fixed(width: 20) {
-              ...ImageFixed
-            }
+            gatsbyImageData(
+              height: 20
+              placeholder: NONE
+              layout: FIXED
+              formats: [AUTO]
+            )
           }
         }
 
@@ -297,9 +321,12 @@ const ServicesSectionWithQuery = () => (
           relativePath: { eq: "HomeSectionServices/nicolas.jpg" }
         ) {
           childImageSharp {
-            fixed(width: 20) {
-              ...ImageFixed
-            }
+            gatsbyImageData(
+              height: 20
+              placeholder: NONE
+              layout: FIXED
+              formats: [AUTO]
+            )
           }
         }
 
@@ -307,9 +334,12 @@ const ServicesSectionWithQuery = () => (
           relativePath: { eq: "HomeSectionServices/piotr.jpg" }
         ) {
           childImageSharp {
-            fixed(width: 20) {
-              ...ImageFixed
-            }
+            gatsbyImageData(
+              height: 20
+              placeholder: NONE
+              layout: FIXED
+              formats: [AUTO]
+            )
           }
         }
       }
