@@ -24,7 +24,7 @@ module.exports = {
     logoUrl: `${siteUrl}/logo-black-raster.png`,
   },
   plugins: [
-    'gatsby-plugin-preact',
+    // 'gatsby-plugin-preact',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-styled-components',
     'gatsby-plugin-typescript',
@@ -38,7 +38,7 @@ module.exports = {
       resolve: `gatsby-plugin-page-creator`,
       options: {
         path: `${__dirname}/src/pages`,
-        ignore: ['**/styled.ts', '**/*.styled.ts'],
+        ignore: ['**/styled.ts', '**/*.styled.ts', 'talks/**/*.content.tsx'],
       },
     },
     {

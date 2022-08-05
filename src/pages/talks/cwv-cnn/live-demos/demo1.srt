@@ -1,0 +1,186 @@
+1
+00:00:00,110 --> 00:00:02,610
+WebPageTest is an advanced
+performance analysis tool.
+
+2
+00:00:02,640 --> 00:00:07,620
+It's available at webpagetest.org,
+it's free, and it traces how the
+
+3
+00:00:07,620 --> 00:00:11,330
+page loads and  gives back lots of
+information in an easy to consume share.
+
+4
+00:00:11,960 --> 00:00:16,549
+Yeah, it looks a bit dated and it
+could be too advanced at times, but
+
+5
+00:00:16,580 --> 00:00:19,879
+that's probably its only drawback,
+and I really love it, otherwise.
+
+6
+00:00:20,403 --> 00:00:23,883
+And in this case, I'm going to use
+WebPageTest to, and I'm going to
+
+7
+00:00:23,883 --> 00:00:27,433
+show you how to use WebPageTest,
+to look at the loading waterfall
+
+8
+00:00:27,663 --> 00:00:31,953
+and figure out why CNN’s largest
+contentful paint is so, well, large.
+
+9
+00:00:32,813 --> 00:00:37,563
+So in order to do that, what I'm going
+to do is I'm going to go to WebPageTest.
+
+10
+00:00:37,583 --> 00:00:38,513
+I am already here.
+
+11
+00:00:38,933 --> 00:00:45,246
+I'm going to copy the  URL
+of the page that we are going
+
+12
+00:00:45,246 --> 00:00:47,076
+to analyze and paste it here.
+
+13
+00:00:47,826 --> 00:00:52,576
+Then I'm going to change the browser
+settings to Moto G 4, Chrome.
+
+14
+00:00:52,806 --> 00:00:55,716
+So, one thing I love about
+WebPageTest is that it allows you
+
+15
+00:00:55,716 --> 00:00:57,576
+to test on real mobile device.
+
+16
+00:00:57,576 --> 00:01:00,696
+It's not just, not just simulated
+mobile, like in Lighthouse, but,
+
+17
+00:01:01,086 --> 00:01:03,666
+or real, cheap, slow mobile phones.
+
+18
+00:01:04,536 --> 00:01:04,836
+And.
+
+19
+00:01:05,556 --> 00:01:09,916
+I'm also going to change the connection
+settings to 4g,  to make it closer
+
+20
+00:01:09,946 --> 00:01:11,536
+to what PageSpeed Insights runs with.
+
+21
+00:01:12,226 --> 00:01:13,846
+And I'm going to start the test.
+
+22
+00:01:14,566 --> 00:01:18,046
+So, to save time, I'm not going
+to  wait until the test finishes,
+
+23
+00:01:18,086 --> 00:01:19,756
+I already have a completed test.
+
+24
+00:01:21,986 --> 00:01:26,871
+And the test page has a lot of things, it
+could be a bit  overwhelming initially,
+
+25
+00:01:27,231 --> 00:01:33,231
+but basically there are two pieces,
+there are two kinds of information
+
+26
+00:01:33,261 --> 00:01:36,531
+I'm currently caring about here.
+
+27
+00:01:36,591 --> 00:01:38,551
+And the first piece is web vitals.
+
+28
+00:01:39,381 --> 00:01:43,581
+What PageSpeed Insight does, it
+measures web vitals right on the device
+
+29
+00:01:43,581 --> 00:01:47,971
+we are doing the testing at, and in
+this case we can see that, well, web
+
+30
+00:01:47,991 --> 00:01:52,501
+vitals measured at this Moto G4 phone,
+actually, yeah, look not so good.
+
+31
+00:01:53,111 --> 00:01:57,551
+And the second piece that I'm currently
+interested in is the network waterfall.
+
+32
+00:01:57,957 --> 00:02:01,647
+Network waterfall is waterfall of all
+resources that are loaded over network.
+
+33
+00:02:01,707 --> 00:02:03,377
+And it's located right here.
+
+34
+00:02:04,627 --> 00:02:06,647
+It'spretty large.
+
+35
+00:02:07,007 --> 00:02:08,807
+CNN downloads quite a lot of stuff.
+
+36
+00:02:08,867 --> 00:02:11,367
+And I'm pretty sure most
+of that  is third parties.
+
+37
+00:02:11,367 --> 00:02:13,497
+That's, like, it's
+typically third parties.
+
+38
+00:02:13,857 --> 00:02:16,437
+And that's probably the reason
+why total blocking time is
+
+39
+00:02:16,467 --> 00:02:19,647
+high, but we'll get to that.
+
+40
+00:02:19,767 --> 00:02:22,727
+Right now, we're talking about largest
+contentful paint, so let’s focus on that
+
