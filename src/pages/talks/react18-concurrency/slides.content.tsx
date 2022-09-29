@@ -973,7 +973,8 @@ const SlidesContent = ({
           <a href="https://twitter.com/iamakulov">@iamakulov</a>)
         </p>
         <SmallParagraph>
-          Thanks to Vadim Mashnitsky for help with publishing this talk.
+          Thanks to <a href="https://github.com/vadikmash">Vadim Mashnitsky</a>{' '}
+          for help with publishing this talk.
         </SmallParagraph>
       </Slide>
     </>
