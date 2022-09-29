@@ -23,7 +23,7 @@ const LiveDemo = ({
   <Figure className={className} id={slideId}>
     <Caption>
       <Link href={`#${slideId}`}>
-        <CaptionHeader>{titlePrefix}</CaptionHeader> {title}
+        <CaptionHeader>Live Demo:</CaptionHeader> {title}
       </Link>
     </Caption>
     <Video
