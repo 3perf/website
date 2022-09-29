@@ -1,7 +1,7 @@
 import '@fontsource/fira-code/latin-600.css';
 import '@fontsource/fira-code/latin-400.css';
 import '@fontsource/montserrat/latin-900.css';
-import '@fontsource/montserrat/latin-600.css';
+import '@fontsource/montserrat/latin-700.css';
 import '@fontsource/montserrat/latin-400.css';
 import '@fontsource/montserrat/latin-400-italic.css';
 import '@fontsource/merriweather/latin-700.css';
