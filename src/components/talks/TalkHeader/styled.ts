@@ -19,6 +19,7 @@ export const Image = styled(GatsbyImage)`
 
 export const Title = styled.h1`
   font-size: 2em;
+  line-height: 1.2;
   margin-top: ${gridSize * 4}px;
   margin-bottom: ${gridSize * 2}px;
 `;

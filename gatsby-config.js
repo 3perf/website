@@ -1,7 +1,13 @@
 const createImageMarkup = require('./gatsby-config-create-image-markup.js');
 
 let siteUrl = 'https://3perf.com';
-if (process.env.NETLIFY) {
+if (process.env.DEV_SITE_HOSTNAME_OVERRIDE) {
+  siteUrl = `http://${process.env.DEV_SITE_HOSTNAME_OVERRIDE}`;
+  console.log(
+    'gatsby-config.js: Due to process.env.DEV_SITE_HOSTNAME_OVERRIDE, setting the siteUrl to:',
+    siteUrl,
+  );
+} else if (process.env.NETLIFY) {
   siteUrl =
     process.env.BRANCH === 'master'
       ? // Primary site url
@@ -135,11 +141,14 @@ module.exports = {
       },
     },
     {
-      resolve: `@redocly/favicons-webpack-plugin`,
+      resolve: `gatsby-plugin-manifest`,
       options: {
-        logo: './src/components/Logo/logo-black-raster.png',
-        appName: 'PerfPerfPerf',
-        icons: {},
+        name: 'PerfPerfPerf',
+        short_name: 'PerfPerfPerf',
+        start_url: '/',
+        display: 'browser',
+        background_color: '#000',
+        icon: './static/3perf-logo-favicon.png',
       },
     },
     {

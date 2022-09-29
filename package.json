@@ -15,6 +15,7 @@
     "gatsby": "^3.8.0",
     "gatsby-link": "^3.8.0",
     "gatsby-plugin-image": "^2.20.0",
+    "gatsby-plugin-manifest": "^4.24.0",
     "gatsby-plugin-netlify-cms": "^5.13.0",
     "gatsby-react-router-scroll": "^4.8.0",
     "gatsby-remark-reading-time": "^1.1.0",
@@ -41,8 +42,8 @@
   },
   "scripts": {
     "build": "gatsby build",
-    "develop": "cross-env GATSBY_MAILCHIMP_3PERF_SUBSCRIBERS=FAKE_URL gatsby develop",
-    "build-locally": "cross-env GATSBY_MAILCHIMP_3PERF_SUBSCRIBERS=FAKE_URL yarn build",
+    "develop": "cross-env GATSBY_MAILCHIMP_3PERF_SUBSCRIBERS=FAKE_URL DEV_SITE_HOSTNAME_OVERRIDE=localhost:8000 gatsby develop",
+    "build-locally": "cross-env GATSBY_MAILCHIMP_3PERF_SUBSCRIBERS=FAKE_URL DEV_SITE_HOSTNAME_OVERRIDE=localhost:3000 yarn build",
     "format": "prettier --write 'src/**/*.{ts,tsx}'",
     "lint": "eslint --fix 'src/**/*.{ts,tsx}'"
   },
@@ -56,7 +57,6 @@
     "@babel/preset-env": "^7.10.2",
     "@babel/preset-typescript": "^7.10.1",
     "@netlify/plugin-gatsby": "^1.0.3",
-    "@redocly/gatsby-plugin-favicon": "^3.1.9",
     "@types/aws-lambda": "^8.10.53",
     "@types/cheerio": "^0.22.18",
     "@types/classnames": "^2.2.10",
