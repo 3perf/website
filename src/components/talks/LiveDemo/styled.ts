@@ -96,4 +96,9 @@ export const CaptionHeader = styled.span`
 
 export const Video = styled.video`
   width: 100%;
+
+  ${media.small`
+    width: 100vw;
+    margin-left: -${sizes.contentPadding}px;
+  `}
 `;
