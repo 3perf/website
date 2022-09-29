@@ -135,11 +135,14 @@ module.exports = {
       },
     },
     {
-      resolve: `@redocly/favicons-webpack-plugin`,
+      resolve: `gatsby-plugin-manifest`,
       options: {
-        logo: './src/components/Logo/logo-black-raster.png',
-        appName: 'PerfPerfPerf',
-        icons: {},
+        name: 'PerfPerfPerf',
+        short_name: 'PerfPerfPerf',
+        start_url: '/',
+        display: 'browser',
+        background_color: '#000',
+        icon: './static/3perf-logo-favicon.png',
       },
     },
     {
