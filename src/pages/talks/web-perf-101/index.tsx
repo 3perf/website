@@ -36,6 +36,11 @@ interface FileUrl {
 
 interface WebPerf101PageProps {
   data: {
+    site: {
+      siteMetadata: {
+        siteUrl: string;
+      };
+    };
     indexSlide: {
       childImageSharp: {
         gatsbyImageData: IGatsbyImageData;
@@ -75,12 +80,12 @@ interface WebPerf101PageProps {
   };
 }
 
-const fullSocialCoverUrl = `https://3perf.com${socialCoverUrl}`;
-
 const publishedDate = new Date(2018, 9, 25);
 const lastUpdatedDate = new Date(2022, 6, 16);
 
 const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
+  const fullSocialCoverUrl = `${data.site.siteMetadata.siteUrl}${socialCoverUrl}`;
+
   const allSlidesByName = Object.fromEntries(
     data.allSlides.edges.map((edge) => {
       return [edge.node.name, edge.node.childImageSharp.gatsbyImageData];
@@ -2706,6 +2711,12 @@ export default WebPerf101Page;
 
 export const query = graphql`
   {
+    site {
+      siteMetadata {
+        siteUrl
+      }
+    }
+
     indexSlide: file(
       sourceInstanceName: { eq: "pages" }
       relativePath: { eq: "talks/web-perf-101/slides/index.png" }

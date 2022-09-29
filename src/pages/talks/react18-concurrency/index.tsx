@@ -13,6 +13,11 @@ import SlidesContent from './slides.content';
 
 interface React18ConcurrencyPageProps {
   data: {
+    site: {
+      siteMetadata: {
+        siteUrl: string;
+      };
+    };
     indexSlide: {
       childImageSharp: {
         gatsbyImageData: IGatsbyImageData;
@@ -29,16 +34,16 @@ interface React18ConcurrencyPageProps {
 const publishedDate = new Date(2022, 8, 29);
 const lastUpdatedDate = new Date(2022, 8, 29);
 
-const fullSocialCoverUrl = `https://3perf.com${socialCoverUrl}`;
-
 const meta = {
   title: 'React 18 Concurrency, Explained',
   description:
-    'Learn how Concurrent Rendering works under the hood and what are its drawbacks',
+    'Concurrent Rendering: when it helps, how it works under the hood, and why Vue.js/Preact refused to ship anything similar',
   url: 'https://3perf.com/talks/react18-concurrency',
 };
 
 const React18ConcurrencyPage = ({ data }: React18ConcurrencyPageProps) => {
+  const fullSocialCoverUrl = `${data.site.siteMetadata.siteUrl}${socialCoverUrl}`;
+
   return (
     <Layout>
       <WidthWrapper>
@@ -159,6 +164,12 @@ export default React18ConcurrencyPage;
 
 export const query = graphql`
   {
+    site {
+      siteMetadata {
+        siteUrl
+      }
+    }
+
     indexSlide: file(
       sourceInstanceName: { eq: "pages" }
       relativePath: { eq: "talks/react18-concurrency/slides/title.png" }
@@ -172,6 +183,7 @@ export const query = graphql`
         )
       }
     }
+
     iamakulovPhoto: file(
       sourceInstanceName: { eq: "shared" }
       relativePath: { eq: "iamakulov.jpg" }
