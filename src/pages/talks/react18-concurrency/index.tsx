@@ -49,6 +49,7 @@ const React18ConcurrencyPage = ({ data }: React18ConcurrencyPageProps) => {
 
           <meta name="description" content={meta.description} />
           <meta name="image" content={fullSocialCoverUrl} />
+          <link rel="canonical" href={meta.url} />
           <meta itemProp="name" content={meta.title} />
           <meta itemProp="description" content={meta.description} />
           <meta itemProp="image" content={fullSocialCoverUrl} />
