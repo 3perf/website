@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Container, Caption, CaptionHeader, Video } from './styled';
+import { Caption, CaptionHeader, Figure, Link, Video } from './styled';
 
 interface LiveDemoProps {
   slideId: string;
@@ -11,7 +11,6 @@ interface LiveDemoProps {
   className?: string;
 }
 
-// TODO: #-link to the demo
 const LiveDemo = ({
   slideId,
   title,
@@ -21,9 +20,11 @@ const LiveDemo = ({
   videoWidth,
   videoHeight,
 }: LiveDemoProps) => (
-  <Container className={className} id={slideId}>
+  <Figure className={className} id={slideId}>
     <Caption>
-      <CaptionHeader>Live Demo:</CaptionHeader> {title}
+      <Link href={`#${slideId}`}>
+        <CaptionHeader>{titlePrefix}</CaptionHeader> {title}
+      </Link>
     </Caption>
     <Video
       controls
@@ -34,7 +35,7 @@ const LiveDemo = ({
     >
       <source src={videoSource} type={videoType} />
     </Video>
-  </Container>
+  </Figure>
 );
 
 export default LiveDemo;

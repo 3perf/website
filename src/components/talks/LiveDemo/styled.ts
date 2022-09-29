@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import media from '../../../styles/media';
 import { colors, gridSize, sizes } from '../../../styles/variables';
 
-export const Container = styled.figure`
+export const Figure = styled.figure`
   position: relative;
   margin: 0;
   padding: ${gridSize * 4}px 0 ${gridSize * 6}px;
@@ -41,12 +41,57 @@ export const Caption = styled.figcaption`
   `}
 `;
 
+export const Link = styled.a`
+  color: inherit;
+  border: none;
+  position: relative;
+
+  &::before {
+    content: '#';
+
+    position: absolute;
+    left: -135px;
+    top: -20px;
+
+    /* Increase the area to allow moving the mouse from the image to the element */
+    width: 180px;
+    text-align: center;
+    font-size: 60px;
+    font-weight: bold;
+
+    color: #ccc;
+
+    /* Hide & animate the element */
+    opacity: 0;
+    transform: scale(0.8);
+    pointer-events: none;
+    transition: all 0.15s ease-out;
+  }
+
+  &:hover,
+  &:focus,
+  &:active {
+    &::before {
+      opacity: 1;
+      transform: scale(1);
+      pointer-events: auto;
+      transition: none;
+    }
+  }
+`;
+
 export const CaptionHeader = styled.span`
   font-weight: 900;
   background: ${colors.brightYellow};
   color: black;
   padding: 0 ${gridSize}px;
   margin-left: -${gridSize}px;
+
+  /* Inherit link hover styles */
+  transition: inherit;
+  ${Link}:is(:hover, :focus, :active) & {
+    color: inherit;
+  }
 `;
 
 export const Video = styled.video`
