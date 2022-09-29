@@ -177,7 +177,6 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
               },
             })}
           </script>
-          <meta property="foo" content="test" />
         </Helmet>
         <Nav logoKind={LogoKind.Black} />
         <TalkHeader
