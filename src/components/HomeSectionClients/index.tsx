@@ -147,7 +147,8 @@ const ClientsSection = () => (
         </p>
         <p>
           We jumped in and made the design system load faster. We also optimized
-          the runtime performance of a few critical components.
+          the runtime performance of a few critical components, increasing their
+          responsiveness <Mark>from 1..2 to 20..30 FPS</Mark>.
         </p>
         <blockquote>
           <p>
