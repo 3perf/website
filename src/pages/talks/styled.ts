@@ -122,12 +122,13 @@ export const ContentsInner = styled.div`
 `;
 
 export const LiveDemo = styled(_LiveDemo)`
-  /* TODO: remove && */
-  && {
-    margin-top: ${gridSize * 6}px;
-  }
+  margin-top: ${gridSize * 6}px;
 `;
 
 export const Mark = styled.mark`
   background: ${colors.softYellow};
+`;
+
+export const SmallParagraph = styled.p`
+  font-size: ${sizes.fontSmall}px;
 `;

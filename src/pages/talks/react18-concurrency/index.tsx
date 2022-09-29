@@ -8,8 +8,8 @@ import WidthWrapper from '../../../components/WidthWrapper';
 import TalkHeader from '../../../components/talks/TalkHeader';
 import TalkMeta from '../../../components/talks/TalkMeta';
 import { Footer, Footnote, Nav, Slides } from '../styled';
+import socialCoverUrl from './cover.png';
 import SlidesContent from './slides.content';
-import socialCoverUrl from './slides/title.png';
 
 interface React18ConcurrencyPageProps {
   data: {
@@ -26,15 +26,16 @@ interface React18ConcurrencyPageProps {
   };
 }
 
-const publishedDate = new Date(2022, 8, 27);
-const lastUpdatedDate = new Date(2022, 8, 27);
+const publishedDate = new Date(2022, 8, 29);
+const lastUpdatedDate = new Date(2022, 8, 29);
 
 const fullSocialCoverUrl = `https://3perf.com${socialCoverUrl}`;
 
 const meta = {
   title: 'React 18 Concurrency, Explained',
-  description: "Learn about React 18 Concurrency, it's benefits and drawbacks",
-  url: 'https://3perf.com/3perf-logo-black-raster.png',
+  description:
+    'Learn how Concurrent Rendering works under the hood and what are its drawbacks',
+  url: 'https://3perf.com/talks/react18-concurrency',
 };
 
 const React18ConcurrencyPage = ({ data }: React18ConcurrencyPageProps) => {
@@ -104,18 +105,27 @@ const React18ConcurrencyPage = ({ data }: React18ConcurrencyPageProps) => {
           description={
             <>
               <p>
-                This is an introduction React 18 concurrency. Learn why it is
-                important, what performance optimizations it provides, and when
-                should you use it to make your app perform better.
+                React 18! Concurrent features! Maybe you’re already using{' '}
+                <code>useTransition</code> in production, or maybe you’ve just
+                heard about it. But do you know how React 18 actually achieves
+                the performance wins it brings with itself?
               </p>
               <p>
-                <strong>Want to apply this advice to your site?</strong> We help
-                companies like Framer, Toggl, SitePoint to get faster – and we’d
-                be happy to help you as well! <a href="/#services">Reach out</a>
+                In this talk, let’s peek under the hood of React 18’s
+                <code>useTransition</code>, see how it works, and figure out
+                what drawbacks it has (there’s no free lunch!).
               </p>
             </>
           }
         />
+        <Footnote>
+          <p>
+            <strong>Need help with React performance?</strong> We’ve helped
+            product companies like Appsmith, Hugo, and Castor to get React apps{' '}
+            <a href="/#clients">two, three, or even ten times faster</a> and
+            improve customer satisfaction. <a href="/#services">Get a quote</a>
+          </p>
+        </Footnote>
         <Slides>
           <SlidesContent />
         </Slides>
@@ -132,9 +142,10 @@ const React18ConcurrencyPage = ({ data }: React18ConcurrencyPageProps) => {
         />
         <Footnote>
           <p>
-            <strong>Want to apply this advice to your site?</strong> We’ve
-            worked with Google, Framer, SitePoint, and other companies.{' '}
-            <a href="/#services">Reach out</a>
+            <strong>Need help with React performance?</strong> We’ve helped
+            product companies like Appsmith, Hugo, and Castor to get React apps{' '}
+            <a href="/#clients">two, three, or even ten times faster</a> and
+            improve customer satisfaction. <a href="/#services">Get a quote</a>
           </p>
         </Footnote>
         <Footer />
