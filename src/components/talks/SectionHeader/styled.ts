@@ -11,7 +11,6 @@ export const Link = styled.a`
   font-size: 60px;
   font-weight: bold;
   white-space: nowrap;
-  letter-spacing: -1px;
 
   ${media.small`
     font-size: 48px;
