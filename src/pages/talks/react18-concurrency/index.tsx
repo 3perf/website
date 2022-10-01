@@ -117,7 +117,7 @@ const React18ConcurrencyPage = ({ data }: React18ConcurrencyPageProps) => {
                 the performance wins it brings with itself?
               </p>
               <p>
-                In this talk, let’s peek under the hood of React 18’s
+                In this talk, let’s peek under the hood of React 18’s{' '}
                 <code>useTransition</code>, see how it works, and figure out
                 what drawbacks it has (there’s no free lunch!).
               </p>

@@ -8,6 +8,7 @@ interface LiveDemoProps {
   videoType: 'video/mp4'; // Add new types if necessary
   videoWidth: number;
   videoHeight: number;
+  subtitlesSource?: string;
   className?: string;
 }
 
@@ -19,6 +20,7 @@ const LiveDemo = ({
   videoType,
   videoWidth,
   videoHeight,
+  subtitlesSource,
 }: LiveDemoProps) => (
   <Figure className={className} id={slideId}>
     <Caption>
@@ -34,6 +36,15 @@ const LiveDemo = ({
       }}
     >
       <source src={videoSource} type={videoType} />
+      {subtitlesSource && (
+        <track
+          label="English"
+          kind="subtitles"
+          srcLang="en"
+          src={subtitlesSource}
+          default
+        />
+      )}
     </Video>
   </Figure>
 );
