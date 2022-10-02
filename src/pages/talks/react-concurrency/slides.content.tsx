@@ -1002,7 +1002,7 @@ const SlidesContentWithQuery = () => (
       query {
         sectionHeaders: allFile(
           filter: {
-            relativeDirectory: { eq: "talks/react18-concurrency/slides" }
+            relativeDirectory: { eq: "talks/react-concurrency/slides" }
             name: { glob: "*-header" }
           }
         ) {
@@ -1022,7 +1022,7 @@ const SlidesContentWithQuery = () => (
         }
         allSlides: allFile(
           filter: {
-            relativeDirectory: { eq: "talks/react18-concurrency/slides" }
+            relativeDirectory: { eq: "talks/react-concurrency/slides" }
             extension: { nin: ["svg", "mp4"] }
           }
         ) {
