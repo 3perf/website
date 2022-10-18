@@ -1,0 +1,44 @@
+WEBVTT
+
+00:00.000 --> 00:02.280
+ So if I switch to Chrome DevTools,
+
+00:02.280 --> 00:07.360
+ and if I compare the time it took for the list
+
+00:07.360 --> 00:16.800
+ to re-render in the blocking version that was 600 milliseconds
+
+00:16.800 --> 00:29.480
+ versus non-blocking version, this took 900 milliseconds.
+
+00:29.480 --> 00:33.080
+ So the numbers would vary every time.
+
+00:33.080 --> 00:38.800
+ It's not always 30 milliseconds longer, like 50% longer.
+
+00:38.800 --> 00:40.400
+ Sometimes it's just a little bit.
+
+00:40.400 --> 00:47.440
+ What you see in this case, when the update was urgent,
+
+00:47.440 --> 00:52.560
+ the list of notes re-rendered faster, sooner.
+
+00:52.560 --> 00:56.320
+ And when the update was non-urgent,
+
+00:56.320 --> 00:58.360
+ it took more time for React to finish
+
+00:58.360 --> 00:59.920
+ re-rendering the whole list and to display
+
+00:59.920 --> 01:02.240
+ the result on the screen.
+
+01:02.240 --> 01:18.600
+ So non-urgent updates take a bit longer.
+

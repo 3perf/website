@@ -11,7 +11,7 @@ import { Footer, Footnote, Nav, Slides } from '../styled';
 import socialCoverUrl from './cover.png';
 import SlidesContent from './slides.content';
 
-interface React18ConcurrencyPageProps {
+interface ReactConcurrencyPageProps {
   data: {
     site: {
       siteMetadata: {
@@ -35,13 +35,13 @@ const publishedDate = new Date(2022, 8, 29);
 const lastUpdatedDate = new Date(2022, 8, 29);
 
 const meta = {
-  title: 'React 18 Concurrency, Explained',
+  title: 'React Concurrency, Explained',
   description:
     'Concurrent Rendering: when it helps, how it works under the hood, and why Vue.js/Preact refused to ship anything similar',
-  url: 'https://3perf.com/talks/react18-concurrency',
+  url: 'https://3perf.com/talks/react-concurrency',
 };
 
-const React18ConcurrencyPage = ({ data }: React18ConcurrencyPageProps) => {
+const ReactConcurrencyPage = ({ data }: ReactConcurrencyPageProps) => {
   const fullSocialCoverUrl = `${data.site.siteMetadata.siteUrl}${socialCoverUrl}`;
 
   return (
@@ -50,7 +50,7 @@ const React18ConcurrencyPage = ({ data }: React18ConcurrencyPageProps) => {
         {/* ! Suggestion: move basic meta tags for article to a separate component,
               that takes props like title, description, url, author, etc. */}
         <Helmet>
-          <title>React 18 Concurrency, Explained | PerfPerfPerf</title>
+          <title>{meta.title} | PerfPerfPerf</title>
 
           <meta name="description" content={meta.description} />
           <meta name="image" content={fullSocialCoverUrl} />
@@ -117,7 +117,7 @@ const React18ConcurrencyPage = ({ data }: React18ConcurrencyPageProps) => {
                 the performance wins it brings with itself?
               </p>
               <p>
-                In this talk, let’s peek under the hood of React 18’s
+                In this talk, let’s peek under the hood of React 18’s{' '}
                 <code>useTransition</code>, see how it works, and figure out
                 what drawbacks it has (there’s no free lunch!).
               </p>
@@ -160,7 +160,7 @@ const React18ConcurrencyPage = ({ data }: React18ConcurrencyPageProps) => {
   );
 };
 
-export default React18ConcurrencyPage;
+export default ReactConcurrencyPage;
 
 export const query = graphql`
   {
@@ -172,7 +172,7 @@ export const query = graphql`
 
     indexSlide: file(
       sourceInstanceName: { eq: "pages" }
-      relativePath: { eq: "talks/react18-concurrency/slides/title.png" }
+      relativePath: { eq: "talks/react-concurrency/slides/title.png" }
     ) {
       childImageSharp {
         gatsbyImageData(

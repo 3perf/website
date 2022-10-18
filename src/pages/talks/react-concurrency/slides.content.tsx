@@ -14,6 +14,14 @@ import demo1 from './live-demos/demo1.mp4';
 import demo3 from './live-demos/demo3.mp4';
 import demo4 from './live-demos/demo4.mp4';
 import demo5 from './live-demos/demo5.mp4';
+/* eslint-disable import/order */
+/* eslint-disable import/no-unresolved */
+import subtitlesDemo1 from 'file-loader!./live-demos/subtitles/demo1.mp4.vtt';
+import subtitlesDemo3 from 'file-loader!./live-demos/subtitles/demo3.mp4.vtt';
+import subtitlesDemo4 from 'file-loader!./live-demos/subtitles/demo4.mp4.vtt';
+import subtitlesDemo5 from 'file-loader!./live-demos/subtitles/demo5.mp4.vtt';
+/* eslint-disable import/no-unresolved */
+/* eslint-disable import/order */
 
 const SlidesContent = ({
   allSlides,
@@ -208,6 +216,7 @@ const SlidesContent = ({
         videoType="video/mp4"
         videoWidth={1920}
         videoHeight={832}
+        subtitlesSource={subtitlesDemo1}
       />
 
       <Slide
@@ -367,6 +376,7 @@ const SlidesContent = ({
         videoType="video/mp4"
         videoWidth={1920}
         videoHeight={832}
+        subtitlesSource={subtitlesDemo3}
       />
 
       <Slide
@@ -394,6 +404,7 @@ const SlidesContent = ({
         videoType="video/mp4"
         videoWidth={1920}
         videoHeight={832}
+        subtitlesSource={subtitlesDemo4}
       />
 
       <SectionHeader id="under-the-hood">
@@ -642,6 +653,7 @@ const SlidesContent = ({
         videoType="video/mp4"
         videoWidth={1920}
         videoHeight={832}
+        subtitlesSource={subtitlesDemo5}
       />
 
       <Slide
@@ -973,8 +985,11 @@ const SlidesContent = ({
           <a href="https://twitter.com/iamakulov">@iamakulov</a>)
         </p>
         <SmallParagraph>
-          Thanks to <a href="https://github.com/vadikmash">Vadim Mashnitsky</a>{' '}
-          for help with publishing this talk.
+          Thanks to{' '}
+          <strong>
+            <a href="https://github.com/vadikmash">Vadim Mashnitsky</a>
+          </strong>{' '}
+          for the help with publishing this talk.
         </SmallParagraph>
       </Slide>
     </>
@@ -987,7 +1002,7 @@ const SlidesContentWithQuery = () => (
       query {
         sectionHeaders: allFile(
           filter: {
-            relativeDirectory: { eq: "talks/react18-concurrency/slides" }
+            relativeDirectory: { eq: "talks/react-concurrency/slides" }
             name: { glob: "*-header" }
           }
         ) {
@@ -1007,7 +1022,7 @@ const SlidesContentWithQuery = () => (
         }
         allSlides: allFile(
           filter: {
-            relativeDirectory: { eq: "talks/react18-concurrency/slides" }
+            relativeDirectory: { eq: "talks/react-concurrency/slides" }
             extension: { nin: ["svg", "mp4"] }
           }
         ) {

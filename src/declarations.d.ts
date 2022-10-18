@@ -33,6 +33,11 @@ declare module '*.mp4' {
   export default url;
 }
 
+declare module '*.vtt' {
+  const url: string;
+  export default url;
+}
+
 declare module 'react-script-tag';
 
 declare let graphql: (query: TemplateStringsArray) => void;
