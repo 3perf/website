@@ -1,4 +1,4 @@
 /blog /content
 /talks /content
 /blog/runtime-perf /blog/react-monitoring
-/talks/foobar /talks/react-concurrency
+/foobar /talks/react-concurrency
