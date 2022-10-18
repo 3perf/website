@@ -30,6 +30,7 @@ module.exports = {
     logoUrl: `${siteUrl}/logo-black-raster.png`,
   },
   plugins: [
+    'gatsby-plugin-netlify',
     'gatsby-plugin-preact',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-styled-components',
