@@ -521,7 +521,7 @@ const SlidesContent = ({
             object and posts a message through it. This works just like
             <code>setTimeout()</code> with a parameter of 0, but avoids{' '}
             <a href="https://softwareengineering.stackexchange.com/questions/269462/why-do-browsers-clamp-timeouts-and-intervals">
-              the minimal 4ms delay imposed by browsers
+              the minimal 4ms delay imposed by browsers²
             </a>
             .
           </li>
@@ -535,6 +535,14 @@ const SlidesContent = ({
           to update on the screen, the browser won’t paint a new frame. However,
           the browser will definitely be able to handle pending user input
           in-between the tasks.
+        </SmallParagraph>
+        <SmallParagraph>
+          ² — The delay is technically called “setTimeout clamping”. It has also
+          been{' '}
+          <a href="https://chromestatus.com/feature/4889002157015040">
+            recently removed from Chrome
+          </a>
+          .
         </SmallParagraph>
         <SmallParagraph>
           Actual code of <code>schedulePerformWorkUntilDeadline()</code>:{' '}
