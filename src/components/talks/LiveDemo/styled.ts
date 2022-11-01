@@ -94,8 +94,9 @@ export const CaptionHeader = styled.span`
   }
 `;
 
-export const Video = styled.video`
+export const Video = styled.div`
   width: 100%;
+  display: flex;
 
   ${media.small`
     width: 100vw;

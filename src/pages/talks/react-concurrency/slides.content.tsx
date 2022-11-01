@@ -10,18 +10,6 @@ import {
   Slide,
   SmallParagraph,
 } from '../styled';
-import demo1 from './live-demos/demo1.mp4';
-import demo3 from './live-demos/demo3.mp4';
-import demo4 from './live-demos/demo4.mp4';
-import demo5 from './live-demos/demo5.mp4';
-/* eslint-disable import/order */
-/* eslint-disable import/no-unresolved */
-import subtitlesDemo1 from 'file-loader!./live-demos/subtitles/demo1.mp4.vtt';
-import subtitlesDemo3 from 'file-loader!./live-demos/subtitles/demo3.mp4.vtt';
-import subtitlesDemo4 from 'file-loader!./live-demos/subtitles/demo4.mp4.vtt';
-import subtitlesDemo5 from 'file-loader!./live-demos/subtitles/demo5.mp4.vtt';
-/* eslint-disable import/no-unresolved */
-/* eslint-disable import/order */
 
 const SlidesContent = ({
   allSlides,
@@ -212,11 +200,9 @@ const SlidesContent = ({
       <LiveDemo
         slideId="live-demo-1"
         title="Slow app"
-        videoSource={demo1}
-        videoType="video/mp4"
+        videoSource={'https://www.youtube.com/embed/Y6J1-vYD1ro'}
         videoWidth={1920}
         videoHeight={832}
-        subtitlesSource={subtitlesDemo1}
       />
 
       <Slide
@@ -372,11 +358,9 @@ const SlidesContent = ({
       <LiveDemo
         slideId="live-demo-3"
         title="How non-urgent updates work"
-        videoSource={demo3}
-        videoType="video/mp4"
+        videoSource={'https://www.youtube.com/embed/i9hXIvLOt_k'}
         videoWidth={1920}
         videoHeight={832}
-        subtitlesSource={subtitlesDemo3}
       />
 
       <Slide
@@ -400,11 +384,9 @@ const SlidesContent = ({
       <LiveDemo
         slideId="live-demo-4"
         title="React Concurrency through DevTools"
-        videoSource={demo4}
-        videoType="video/mp4"
+        videoSource={'https://www.youtube.com/embed/wVLRBSJERTY'}
         videoWidth={1920}
         videoHeight={832}
-        subtitlesSource={subtitlesDemo4}
       />
 
       <SectionHeader id="under-the-hood">
@@ -657,11 +639,9 @@ const SlidesContent = ({
       <LiveDemo
         slideId="live-demo-5"
         title="Non-urgent updates take longer"
-        videoSource={demo5}
-        videoType="video/mp4"
+        videoSource={'https://www.youtube.com/embed/-M87trOp0cU'}
         videoWidth={1920}
         videoHeight={832}
-        subtitlesSource={subtitlesDemo5}
       />
 
       <Slide
