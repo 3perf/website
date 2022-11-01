@@ -5,10 +5,8 @@ interface LiveDemoProps {
   slideId: string;
   title: string;
   videoSource: string;
-  videoType: 'video/mp4'; // Add new types if necessary
   videoWidth: number;
   videoHeight: number;
-  subtitlesSource?: string;
   className?: string;
 }
 
@@ -17,10 +15,8 @@ const LiveDemo = ({
   title,
   className,
   videoSource,
-  videoType,
   videoWidth,
   videoHeight,
-  subtitlesSource,
 }: LiveDemoProps) => (
   <Figure className={className} id={slideId}>
     <Caption>
@@ -29,22 +25,20 @@ const LiveDemo = ({
       </Link>
     </Caption>
     <Video
-      controls
       style={{
         aspectRatio: `${videoWidth} / ${videoHeight}`,
         maxWidth: videoWidth,
       }}
     >
-      <source src={videoSource} type={videoType} />
-      {subtitlesSource && (
-        <track
-          label="English"
-          kind="subtitles"
-          srcLang="en"
-          src={subtitlesSource}
-          default
-        />
-      )}
+      <iframe
+        width="100%"
+        src={`${videoSource}?rel=0&modestbranding=1&cc_load_policy=1`}
+        title={title}
+        frameBorder={0}
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+        loading="lazy"
+      ></iframe>
     </Video>
   </Figure>
 );
