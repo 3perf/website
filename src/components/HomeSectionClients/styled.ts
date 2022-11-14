@@ -10,8 +10,7 @@ import hugoUrl from './hugo.svg';
 import ndaUrl from './nda.svg';
 
 export const CasesItemsContainer = styled.div`
-  display: grid;
-  gap: ${6 * gridSize}px ${9 * gridSize}px;
+  column-gap: ${6 * gridSize}px;
 
   /* Keep the font size consistent across desktop and mobile */
   --homepage-font-size-regular: ${sizes.fontDefault}px;
@@ -19,15 +18,25 @@ export const CasesItemsContainer = styled.div`
   font-size: var(--homepage-font-size-regular);
 
   ${media.small`
-    grid-template-columns: 1fr;
+    columns: unset;
   `}
 
   ${media.notSmall`
-    grid-template-columns: 1fr 1fr;
+    columns: 2;
   `}
 `;
 
-export const Content = styled.div``;
+export const Content = styled.div`
+  margin-bottom: ${9 * gridSize}px;
+  break-inside: avoid;
+  page-break-inside: avoid;
+
+  ${media.small`
+    &:last-child {
+      margin-bottom: 0;
+    }
+  `}
+`;
 
 export const LogoText = styled.div`
   margin-bottom: ${sizes.paragraphSpacing}px;
