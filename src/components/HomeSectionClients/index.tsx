@@ -9,6 +9,7 @@ import {
   FramerLogo,
   GoogleLogo,
   HugoLogo,
+  NdaLogo,
   LogoText,
   Mark,
   Tag,
@@ -187,10 +188,52 @@ const ClientsSection = () => (
 
       <Content>
         <LogoText>
+          <NdaLogo />
+          <p>
+            This customer was an enterprise marketing agency with an undisclosed
+            name.
+          </p>
+          <TagContainer>
+            <Tag>lighthouse score</Tag>
+          </TagContainer>
+        </LogoText>
+        <p>
+          PerfPerfPerf worked with an enterprise marketing agency to push its
+          site’s <Mark>PageSpeed Insights score from ~50 to ~95</Mark>. This was
+          critical for converting customers – before the optimizations, some
+          customers would see a poor score and churn away.
+        </p>
+        <p>
+          We analyzed the site, found every issue affecting the score, figured
+          out how to solve them, and guided the team through implementing the
+          solutions.
+        </p>
+        <blockquote>
+          <p>
+            Ivan’s advice was all exceptionally clear.{' '}
+            <Mark>
+              I really appreciated Ivan including his whole thought process,
+            </Mark>{' '}
+            including what he tried that may not have worked – before arriving
+            at a final solution.
+          </p>
+          <p>
+            <Mark>
+              Ivan’s responsiveness was a godsend and a clear cut above any
+              other consultants
+            </Mark>{' '}
+            we’ve used in the past, and the overall level of organization +
+            timetable he brought was truly fantastic!
+          </p>
+          <footer>Ryan, Marketing Consultant</footer>
+        </blockquote>
+      </Content>
+
+      <Content>
+        <LogoText>
           <FramerLogo />
           <p>
-            <a href="https://framer.com/">Framer</a> is an interface prototyping
-            product.
+            <a href="https://framer.com/">Framer</a> is an website design tool.
           </p>
           <TagContainer>
             <Tag>react performance</Tag>
@@ -199,16 +242,18 @@ const ClientsSection = () => (
           </TagContainer>
         </LogoText>
         <p>
-          We worked with Framer to perfect loading speed of Framer Web, Framer
-          Desktop and Framer Sites.
+          For Framer, higher performance means happier users and better
+          retention.
         </p>
         <p>
-          By working together,{' '}
+          We worked with Framer to perfect the loading speed of Framer UI and
+          Framer Sites. At the Framer UI,{' '}
           <Mark>
-            we reduced Speed Index and First CPU Idle of Framer Web by 40-45%
+            we reduced Speed Index and First CPU Idle of the UI by 40-45%
           </Mark>
-          . We also set up tooling around runtime perf – to help Framer keep
-          &amp; maintain achieved results in the future.
+          . With Framer Sites, we’ve been working together to improve the Core
+          Web Vitals and the Lighthouse score. We also improved the performance
+          of internal tools, to make engineers more productive and save costs.
         </p>
         <blockquote>
           <p>

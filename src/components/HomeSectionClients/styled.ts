@@ -7,6 +7,7 @@ import finderUrl from './finder.svg';
 import framerUrl from './framer.svg';
 import googleUrl from './google.svg';
 import hugoUrl from './hugo.svg';
+import ndaUrl from './nda.svg';
 
 export const CasesItemsContainer = styled.div`
   display: grid;
@@ -85,4 +86,8 @@ export const FramerLogo = styled(Logo).attrs({
 
 export const FinderLogo = styled(Logo).attrs({
   src: finderUrl,
+})``;
+
+export const NdaLogo = styled(Logo).attrs({
+  src: ndaUrl,
 })``;
