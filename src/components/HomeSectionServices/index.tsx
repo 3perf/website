@@ -77,8 +77,8 @@ const ServicesSection = ({ className = '', data }: ServicesSectionProps) => (
           to fix them.
         </p>
         <p>
-          <strong>Great when:</strong> you want to learn how to improve your
-          Core Web Vitals, conversion, or user experience.
+          <strong>Great when:</strong> you need a step-by-step guide into
+          improving your Core Web Vitals or app responsiveness.
         </p>
         <Blockquote>
           <BlockquoteTextWrapper>
@@ -96,6 +96,11 @@ const ServicesSection = ({ className = '', data }: ServicesSectionProps) => (
             Framer
           </BlockquoteFooter>
         </Blockquote>
+        <Note>
+          <strong>Format:</strong> An audit document with concrete actionable
+          steps · Takes one-two weeks · One month of support afterwards (to make
+          sure the implementation goes smoothly)
+        </Note>
         <Note>
           <strong>Want an example?</strong> See this{' '}
           <a href="/blog/notion/">public Notion case study</a>.
@@ -168,13 +173,16 @@ const ServicesSection = ({ className = '', data }: ServicesSectionProps) => (
         <H3>Grow The Team&nbsp;🧑‍💻</H3>
         <p>
           <strong>What:</strong> we’ll teach your team everything we know about
-          React performance or Core Web Vitals. We’ll take a bunch of slow
-          sites, figure out what makes them slow, and gradually fix every
-          performance issue we encounter.
+          React performance or Core Web Vitals.
         </p>
         <p>
-          <strong>Great when:</strong> your team needs to learn how to keep you
-          fast on their own.
+          <strong>How this looks:</strong> we’ll take a bunch of slow sites or
+          apps, profile each one, figure out what makes them slow, and gradually
+          fix every performance issue.
+        </p>
+        <p>
+          <strong>Great when:</strong> you want to learn how to keep your site
+          fast on your own.
         </p>
         <Blockquote>
           <BlockquoteTextWrapper>
@@ -193,7 +201,7 @@ const ServicesSection = ({ className = '', data }: ServicesSectionProps) => (
               />
               Nicolás Delfino
             </BlockquoteName>{' '}
-            · Lead consultant & Performance competence lead @ 1337
+            · Lead consultant & Performance competence lead @ 13|37
           </BlockquoteFooter>
         </Blockquote>
         <Note>
@@ -223,7 +231,7 @@ const ServicesSection = ({ className = '', data }: ServicesSectionProps) => (
         </p>
       </Column>
     </Columns>
-    <ActionButton href="#contact">Get a quote</ActionButton>
+    <ActionButton href="#contact">Get a Quote</ActionButton>
   </Section>
 );
 

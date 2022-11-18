@@ -23,7 +23,7 @@ interface AboutSectionProps {
 }
 
 const AboutSection = ({ data }: AboutSectionProps) => (
-  <Section title="About us" sectionKind={SectionKind.VERTICAL}>
+  <Section title="About Us" sectionKind={SectionKind.VERTICAL}>
     <Wrapper>
       <Primary>
         <Intro>
