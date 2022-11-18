@@ -1,10 +1,6 @@
-import {
-  IGatsbyImageData,
-  GatsbyImage,
-  GatsbyImageProps,
-} from 'gatsby-plugin-image';
+import { IGatsbyImageData, GatsbyImageProps } from 'gatsby-plugin-image';
 import React from 'react';
-import { Container } from './styled';
+import { Container, Img } from './styled';
 
 export interface ImageProps {
   imageData: IGatsbyImageData;
@@ -25,17 +21,29 @@ const Image = ({
 }: ImageProps) => {
   return (
     <Container className={className} style={style}>
-      <GatsbyImage
-        // as="span" ensures the image doesn’t break markup when it’s used inside a <p>
-        as="span"
-        // display: inline-block ensures browsers respect the width and height Gatsby sets on the image
-        // (this is needed because a span is `display: inline` by default)
-        style={{ display: 'inline-block' }}
-        image={imageData}
-        alt={alt}
-        loading={loading}
-        imgStyle={imgStyle}
-      />
+      <picture>
+        {imageData.images.sources?.map((source) => (
+          <source
+            key={source.srcSet}
+            srcSet={source.srcSet}
+            sizes={source.sizes}
+            type={source.type}
+          />
+        ))}
+        {imageData.images.fallback && (
+          <Img
+            src={imageData.images.fallback.src}
+            srcSet={imageData.images.fallback.srcSet}
+            sizes={imageData.images.fallback.sizes}
+            loading={loading || 'lazy'}
+            alt={alt}
+            style={imgStyle}
+            width={imageData.width}
+            height={imageData.height}
+            layout={imageData.layout}
+          />
+        )}
+      </picture>
     </Container>
   );
 };

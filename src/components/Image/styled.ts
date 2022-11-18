@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+import { IGatsbyImageData } from 'gatsby-plugin-image';
+import styled, { css } from 'styled-components';
 
 export const Container = styled.span`
   display: inline-block;
@@ -6,4 +7,28 @@ export const Container = styled.span`
   overflow: hidden;
   /* Remove extra spacing below the image: https://stackoverflow.com/a/13961130 */
   line-height: 0;
+`;
+
+export const Img = styled.img<{
+  layout: IGatsbyImageData['layout'];
+  width: number;
+}>`
+  ${(props) => {
+    if (props.layout === 'constrained') {
+      return css`
+        width: 100%;
+        height: auto;
+        max-width: ${props.width}px;
+      `;
+    }
+
+    if (props.layout === 'fullWidth') {
+      return css`
+        width: 100%;
+        height: auto;
+      `;
+    }
+
+    return '';
+  }}
 `;

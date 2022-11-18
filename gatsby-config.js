@@ -37,7 +37,15 @@ module.exports = {
     'gatsby-plugin-typescript',
     'gatsby-plugin-netlify-cms',
     `gatsby-plugin-image`,
-    `gatsby-plugin-sharp`,
+    {
+      resolve: 'gatsby-plugin-sharp',
+      options: {
+        defaults: {
+          // Disable the placeholder since we don’t use it in our custom image implementation
+          placeholder: 'none',
+        },
+      },
+    },
     `gatsby-transformer-sharp`,
     'gatsby-plugin-lodash',
     // Ignore .styled.ts files
