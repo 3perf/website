@@ -1001,7 +1001,6 @@ const SlidesContentWithQuery = () => (
                   width: 700
                   placeholder: NONE
                   layout: CONSTRAINED
-                  formats: [AUTO]
                 )
               }
             }
@@ -1021,7 +1020,6 @@ const SlidesContentWithQuery = () => (
                   width: 500
                   placeholder: NONE
                   layout: CONSTRAINED
-                  formats: [AUTO]
                 )
               }
             }

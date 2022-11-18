@@ -259,64 +259,34 @@ export const query = graphql`
       relativePath: { eq: "talks/web-perf-101/slides/index.png" }
     ) {
       childImageSharp {
-        gatsbyImageData(
-          height: 150
-          placeholder: NONE
-          layout: FIXED
-          formats: [AUTO]
-        )
+        gatsbyImageData(height: 150, placeholder: NONE, layout: FIXED)
       }
     }
     notion: file(relativePath: { eq: "content/notion-social.png" }) {
       childImageSharp {
-        gatsbyImageData(
-          height: 150
-          placeholder: NONE
-          layout: FIXED
-          formats: [AUTO]
-        )
+        gatsbyImageData(height: 150, placeholder: NONE, layout: FIXED)
       }
     }
     webpackLibs: file(relativePath: { eq: "content/webpack-libs.png" }) {
       childImageSharp {
-        gatsbyImageData(
-          height: 150
-          placeholder: NONE
-          layout: FIXED
-          formats: [AUTO]
-        )
+        gatsbyImageData(height: 150, placeholder: NONE, layout: FIXED)
       }
     }
     reexports: file(relativePath: { eq: "content/reexports.png" }) {
       childImageSharp {
-        gatsbyImageData(
-          height: 150
-          placeholder: NONE
-          layout: FIXED
-          formats: [AUTO]
-        )
+        gatsbyImageData(height: 150, placeholder: NONE, layout: FIXED)
       }
     }
     polyfills: file(relativePath: { eq: "content/polyfills.png" }) {
       childImageSharp {
-        gatsbyImageData(
-          height: 150
-          placeholder: NONE
-          layout: FIXED
-          formats: [AUTO]
-        )
+        gatsbyImageData(height: 150, placeholder: NONE, layout: FIXED)
       }
     }
     awesomeWebpackPerf: file(
       relativePath: { eq: "content/awesome-webpack-perf.png" }
     ) {
       childImageSharp {
-        gatsbyImageData(
-          height: 150
-          placeholder: NONE
-          layout: FIXED
-          formats: [AUTO]
-        )
+        gatsbyImageData(height: 150, placeholder: NONE, layout: FIXED)
       }
     }
   }

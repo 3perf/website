@@ -243,72 +243,42 @@ const ServicesSectionWithQuery = () => (
           relativePath: { eq: "HomeSectionServices/audit-desktop.png" }
         ) {
           childImageSharp {
-            gatsbyImageData(
-              width: 900
-              placeholder: NONE
-              layout: FIXED
-              formats: [AUTO]
-            )
+            gatsbyImageData(width: 900, placeholder: NONE, layout: FIXED)
           }
         }
         optimizationDesktop: file(
           relativePath: { eq: "HomeSectionServices/optimization-desktop.png" }
         ) {
           childImageSharp {
-            gatsbyImageData(
-              width: 900
-              placeholder: NONE
-              layout: FIXED
-              formats: [AUTO]
-            )
+            gatsbyImageData(width: 900, placeholder: NONE, layout: FIXED)
           }
         }
         workshopDesktop: file(
           relativePath: { eq: "HomeSectionServices/workshop-desktop.png" }
         ) {
           childImageSharp {
-            gatsbyImageData(
-              width: 900
-              placeholder: NONE
-              layout: FIXED
-              formats: [AUTO]
-            )
+            gatsbyImageData(width: 900, placeholder: NONE, layout: FIXED)
           }
         }
         auditMobile: file(
           relativePath: { eq: "HomeSectionServices/audit-mobile.png" }
         ) {
           childImageSharp {
-            gatsbyImageData(
-              width: 224
-              placeholder: NONE
-              layout: FIXED
-              formats: [AUTO]
-            )
+            gatsbyImageData(width: 224, placeholder: NONE, layout: FIXED)
           }
         }
         optimizationMobile: file(
           relativePath: { eq: "HomeSectionServices/optimization-mobile.png" }
         ) {
           childImageSharp {
-            gatsbyImageData(
-              width: 224
-              placeholder: NONE
-              layout: FIXED
-              formats: [AUTO]
-            )
+            gatsbyImageData(width: 224, placeholder: NONE, layout: FIXED)
           }
         }
         workshopMobile: file(
           relativePath: { eq: "HomeSectionServices/workshop-mobile.png" }
         ) {
           childImageSharp {
-            gatsbyImageData(
-              width: 224
-              placeholder: NONE
-              layout: FIXED
-              formats: [AUTO]
-            )
+            gatsbyImageData(width: 224, placeholder: NONE, layout: FIXED)
           }
         }
 
@@ -316,12 +286,7 @@ const ServicesSectionWithQuery = () => (
           relativePath: { eq: "HomeSectionServices/david.jpg" }
         ) {
           childImageSharp {
-            gatsbyImageData(
-              height: 20
-              placeholder: NONE
-              layout: FIXED
-              formats: [AUTO]
-            )
+            gatsbyImageData(height: 20, placeholder: NONE, layout: FIXED)
           }
         }
 
@@ -329,12 +294,7 @@ const ServicesSectionWithQuery = () => (
           relativePath: { eq: "HomeSectionServices/nicolas.jpg" }
         ) {
           childImageSharp {
-            gatsbyImageData(
-              height: 20
-              placeholder: NONE
-              layout: FIXED
-              formats: [AUTO]
-            )
+            gatsbyImageData(height: 20, placeholder: NONE, layout: FIXED)
           }
         }
 
@@ -342,12 +302,7 @@ const ServicesSectionWithQuery = () => (
           relativePath: { eq: "HomeSectionServices/piotr.jpg" }
         ) {
           childImageSharp {
-            gatsbyImageData(
-              height: 20
-              placeholder: NONE
-              layout: FIXED
-              formats: [AUTO]
-            )
+            gatsbyImageData(height: 20, placeholder: NONE, layout: FIXED)
           }
         }
       }

@@ -55,7 +55,6 @@ const ContactSectionWithQuery = (props: ContactSectionProps) => (
             quality: 75
             placeholder: NONE
             layout: FIXED
-            formats: [AUTO]
           )
         }
       }

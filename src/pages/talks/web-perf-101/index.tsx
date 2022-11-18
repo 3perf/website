@@ -2726,7 +2726,6 @@ export const query = graphql`
           width: 800
           placeholder: NONE
           layout: CONSTRAINED
-          formats: [AUTO]
         )
       }
     }
@@ -2744,7 +2743,6 @@ export const query = graphql`
               width: 700
               placeholder: NONE
               layout: CONSTRAINED
-              formats: [AUTO]
             )
           }
         }
@@ -2764,7 +2762,6 @@ export const query = graphql`
               width: 500
               placeholder: NONE
               layout: CONSTRAINED
-              formats: [AUTO]
             )
           }
         }
@@ -2781,7 +2778,6 @@ export const query = graphql`
           quality: 90
           placeholder: NONE
           layout: FIXED
-          formats: [AUTO]
         )
       }
     }

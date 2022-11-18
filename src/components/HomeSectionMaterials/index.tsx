@@ -78,12 +78,7 @@ const MaterialsSectionWithQuery = () => (
           relativePath: { eq: "HomeSectionMaterials/web-perf-101.png" }
         ) {
           childImageSharp {
-            gatsbyImageData(
-              width: 600
-              placeholder: NONE
-              layout: CONSTRAINED
-              formats: [AUTO]
-            )
+            gatsbyImageData(width: 600, placeholder: NONE, layout: CONSTRAINED)
           }
         }
       }

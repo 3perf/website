@@ -35,36 +35,21 @@ const BlogFooterAccordion = ({ className }: BlogFooterAccordionProps) => (
           relativePath: { eq: "BlogFooterAccordion/web-perf-101.png" }
         ) {
           childImageSharp {
-            gatsbyImageData(
-              height: 130
-              placeholder: NONE
-              layout: FIXED
-              formats: [AUTO]
-            )
+            gatsbyImageData(height: 130, placeholder: NONE, layout: FIXED)
           }
         }
         services: file(
           relativePath: { eq: "BlogFooterAccordion/services.png" }
         ) {
           childImageSharp {
-            gatsbyImageData(
-              height: 130
-              placeholder: NONE
-              layout: FIXED
-              formats: [AUTO]
-            )
+            gatsbyImageData(height: 130, placeholder: NONE, layout: FIXED)
           }
         }
         content: file(
           relativePath: { eq: "BlogFooterAccordion/content-views.png" }
         ) {
           childImageSharp {
-            gatsbyImageData(
-              height: 130
-              placeholder: NONE
-              layout: FIXED
-              formats: [AUTO]
-            )
+            gatsbyImageData(height: 130, placeholder: NONE, layout: FIXED)
           }
         }
       }

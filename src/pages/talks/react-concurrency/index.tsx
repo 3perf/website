@@ -175,12 +175,7 @@ export const query = graphql`
       relativePath: { eq: "talks/react-concurrency/slides/title.png" }
     ) {
       childImageSharp {
-        gatsbyImageData(
-          width: 800
-          placeholder: NONE
-          layout: CONSTRAINED
-          formats: [AUTO]
-        )
+        gatsbyImageData(width: 800, placeholder: NONE, layout: CONSTRAINED)
       }
     }
 
@@ -195,7 +190,6 @@ export const query = graphql`
           quality: 90
           placeholder: NONE
           layout: FIXED
-          formats: [AUTO]
         )
       }
     }
