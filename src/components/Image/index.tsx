@@ -24,12 +24,11 @@ const Image = ({
   imgStyle,
 }: ImageProps) => {
   return (
-    <Container className={className}>
+    <Container className={className} style={style}>
       <GatsbyImage
         image={imageData}
         alt={alt}
         loading={loading}
-        style={style}
         imgStyle={imgStyle}
       />
     </Container>
