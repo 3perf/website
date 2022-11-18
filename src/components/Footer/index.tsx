@@ -25,8 +25,8 @@ const Footer = ({
   <Container className={className}>
     <Credentials>
       <span>
-        {linkToHome ? <Link href="/">PerfPerfPerf</Link> : 'PerfPerfPerf'} ·{' '}
-        2018–2022
+        {linkToHome ? <Link href="/">PerfPerfPerf</Link> : 'PerfPerfPerf'} ·
+        2017–2022
         {license && (
           <span>
             {' '}
