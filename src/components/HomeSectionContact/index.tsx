@@ -6,9 +6,7 @@ import {
   Container,
   Contact,
   ContactImage,
-  Dot,
   Link,
-  Prompt,
 } from './styled';
 
 interface ContactSectionData {
@@ -25,20 +23,22 @@ const ContactSection = ({
 }: ContactSectionProps & { data: ContactSectionData }) => (
   <div className={className}>
     <Container>
-      <Link href="mailto:perf@3perf.com">
-        perf@3perf<Dot>.</Dot>com
-      </Link>
+      <Link href="https://savvycal.com/3perf/intake">book a call</Link>
       <PromptContainer>
-        <Prompt>
-          Interested? We’d be glad to help. Drop us an email, and{' '}
+        <p>
+          Interested? We’d be glad to help. Book a call with{' '}
           <Contact>
             <ContactImage
               imageData={data.iamakulov.childImageSharp.gatsbyImageData}
             />{' '}
             Ivan
-          </Contact>{' '}
-          will get back to you in 24 hours.
-        </Prompt>
+          </Contact>
+          , and we’ll figure out how to get you fast.
+        </p>
+        <p>
+          Or, prefer emails? Drop us a message at{' '}
+          <a href="mailto:perf@3perf.com">perf@3perf.com</a>.
+        </p>
       </PromptContainer>
     </Container>
   </div>

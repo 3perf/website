@@ -22,19 +22,27 @@ export const Logo = styled(_Logo)`
   width: 50px;
 `;
 
-export const ItemsWrapper = styled.div`
+interface ItemsWrapperExtraProps {
+  navKind: NavKind;
+}
+
+export const ItemsWrapper = styled.div<ItemsWrapperExtraProps>`
   flex: 1 0 auto;
   max-width: calc(100% - ${containerChildrenSpacingHorizontal}px);
+
+  ${(props) =>
+    props.navKind === NavKind.Light &&
+    css`
+      color: white;
+      --link-color: white;
+      --link-border-color: rgba(255, 255, 255, 0.25);
+    `};
 `;
 
 export const Items = styled.div`
   display: flex;
-  margin: -3px -12px;
+  gap: 3px 12px;
   flex-wrap: wrap;
-
-  > * {
-    margin: 3px 12px;
-  }
 `;
 
 export enum NavKind {
@@ -42,30 +50,13 @@ export enum NavKind {
   Light,
 }
 
-interface ItemExtraProps {
-  navKind: NavKind;
-}
-
-const Item = styled(Link)`
-  ${(props: ItemExtraProps) =>
-    props.navKind === NavKind.Light &&
-    css`
-      color: white;
-      border-bottom-color: rgba(255, 255, 255, 0.25);
-    `};
-`;
-
-export const PrimaryItem = styled(Item)``;
-
-export const SecondaryItem = styled(Item)`
-  ${media.notSmall`
-    ${PrimaryItem} + & {
-      margin-left: auto;
-    }
-  `};
-`;
-
 export const BlockLink = styled(Link)`
   display: block;
   border: none;
+`;
+
+export const SecondaryItems = styled.div`
+  ${media.notSmall`
+      margin-left: auto;
+  `};
 `;

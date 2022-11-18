@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Link from '../Link';
 import { LogoKind } from '../Logo';
 import {
   BlockLink,
@@ -7,8 +8,7 @@ import {
   ItemsWrapper,
   Logo,
   NavKind,
-  PrimaryItem,
-  SecondaryItem,
+  SecondaryItems,
 } from './styled';
 
 export interface NavBaseProps {
@@ -44,20 +44,24 @@ const NavBase = ({
     ) : (
       <Logo logoKind={logoKind} isPlayful={isLogoPlayful} />
     )}
-    <ItemsWrapper>
+    <ItemsWrapper navKind={navKind}>
       <Items>
         {primaryItems &&
           primaryItems.map((item) => (
-            <PrimaryItem key={item.href} href={item.href} navKind={navKind}>
+            <Link key={item.href} href={item.href}>
               {item.title}
-            </PrimaryItem>
+            </Link>
           ))}
-        {secondaryItems &&
-          secondaryItems.map((item) => (
-            <SecondaryItem key={item.href} href={item.href} navKind={navKind}>
-              {item.title}
-            </SecondaryItem>
-          ))}
+        <SecondaryItems>
+          {secondaryItems &&
+            secondaryItems.map((item) => (
+              <React.Fragment key={item.href}>
+                <Link href={item.href}>{item.title}</Link>
+                {item.href !== secondaryItems[secondaryItems.length - 1].href &&
+                  ' or '}
+              </React.Fragment>
+            ))}
+        </SecondaryItems>
       </Items>
     </ItemsWrapper>
   </Container>

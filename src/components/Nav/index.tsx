@@ -11,6 +11,7 @@ const Nav = (props: NavBaseProps) => (
     ]}
     secondaryItems={[
       { title: 'perf@3perf.com', href: 'mailto:perf@3perf.com' },
+      { title: 'book a call', href: 'https://savvycal.com/3perf/intake' },
     ]}
     {...props}
   />
