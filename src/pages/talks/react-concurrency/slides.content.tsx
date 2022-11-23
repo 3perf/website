@@ -1,6 +1,7 @@
 import { graphql, StaticQuery } from 'gatsby';
 import { IGatsbyImageData } from 'gatsby-plugin-image';
 import React from 'react';
+import AnimatedSlide from '../../../components/talks/AnimatedSlide';
 import { SlideGatsbyImage } from '../../../components/talks/Slide';
 import {
   Contents,
@@ -10,6 +11,8 @@ import {
   Slide,
   SmallParagraph,
 } from '../styled';
+import Slide27_12 from './slides/slide27-12.component.svg';
+import Slide27_9 from './slides/slide27-9.component.svg';
 
 const SlidesContent = ({
   allSlides,
@@ -55,6 +58,9 @@ const SlidesContent = ({
                 <a href="#under-the-hood">
                   Under the hood of <code>useTransition</code>
                 </a>
+              </li>
+              <li>
+                <a href="#hydration">Hydration</a>
               </li>
               <li style={{ breakInside: 'avoid' }}>
                 <a href="#drawbacks">Drawbacks</a>
@@ -187,11 +193,18 @@ const SlidesContent = ({
           Working with these things – especially with stuff like{' '}
           <code>useTransition</code> – might sometimes feel like magic. So
           today, I want to show you what actually happens in the app whenever
-          you use <code>useTransition()</code> – and how React achieves this
-          “magic” which is actually not magic at all.
+          you use the first and the second performance features.
+        </p>
+        <ul>
+          <li>Which, by the way, together are called “concurrent features”.</li>
+        </ul>
+        <p>
+          How React makes this work under the hood – and what are the drawbacks.
         </p>
         <p>
-          And to dive into <code>useTransition</code>, let’s see a slow app.
+          So, let’s dive into into useTransition/useDeferredValue hooks. And to
+          show them, let me show you a slow app. [Show slow typing and what
+          happens in DevTools.]
         </p>
       </Slide>
 
@@ -610,6 +623,284 @@ const SlidesContent = ({
         </p>
       </Slide>
 
+      <Slide
+        slideId="27-1"
+        image={
+          <SlideGatsbyImage imageData={getSlideSafe(allSlides, 'slide27-1')} />
+        }
+      >
+        <p>
+          Also, there’s another reason why I’m so excited for the React 18
+          release. Sooner or later, Google would likely make{' '}
+          <a href="https://web.dev/inp">INP</a> (Interaction to Next Paint) the
+          next Core Web Vital.
+        </p>
+        <p>
+          Interaction to Next Paint measures how much the page lags after a
+          click or a keypress. And, right now, every React client I work with
+          has their INP all the way in red.
+        </p>
+        <p>
+          <code>useTransition()</code> is a solid way to make interactions
+          cheaper, so it might move the needle into a better direction.
+        </p>
+      </Slide>
+
+      <SectionHeader id="hydration">Hydration</SectionHeader>
+
+      <Slide
+        slideId="27-2"
+        image={
+          <SlideGatsbyImage imageData={getSlideSafe(allSlides, 'slide27-2')} />
+        }
+      >
+        <p>
+          That’s how concurrent rendering works with the useTransition hook.
+          Now, let’s talk about React hydration.
+        </p>
+      </Slide>
+
+      <Slide
+        slideId="27-3"
+        image={
+          <SlideGatsbyImage imageData={getSlideSafe(allSlides, 'slide27-3')} />
+        }
+      >
+        <p>
+          If you’re not familiar with{' '}
+          <a href="https://beta.reactjs.org/apis/react-dom/hydrate">
+            React hydration
+          </a>
+          , it’s a process when you
+        </p>
+        <ul>
+          <li>server-render a site</li>
+          <li>
+            then, on the client, hydrate that site (rendering every component
+            again and attaching generated event listeners to the already
+            existing DOM),
+          </li>
+          <li>and get a live site.</li>
+        </ul>
+        <p>
+          Hydration, in my experience, is typically the most expensive
+          JavaScript operation in a React app. That’s because, during hydration,
+          React renders every component on the page in one go.
+        </p>
+      </Slide>
+
+      <Slide
+        slideId="27-4"
+        image={
+          <SlideGatsbyImage imageData={getSlideSafe(allSlides, 'slide27-4')} />
+        }
+      >
+        <p>
+          Like, here’s the <a href="https://deliveroo.co.uk/">Deliveroo</a> site
+          spending 1.55s hydrating the site with 4× CPU throttling.
+        </p>
+        <SmallParagraph>Screenshots captured in Oct 2022. </SmallParagraph>
+      </Slide>
+
+      <Slide
+        slideId="27-5"
+        image={
+          <SlideGatsbyImage imageData={getSlideSafe(allSlides, 'slide27-5')} />
+        }
+      >
+        <p>
+          Or here’s <a href="https://walmart.com">Walmart</a>, spending 1.10s
+          hydrating its site.
+        </p>
+      </Slide>
+
+      <Slide
+        slideId="27-6"
+        image={
+          <SlideGatsbyImage imageData={getSlideSafe(allSlides, 'slide27-6')} />
+        }
+      >
+        <p>
+          Or, here’s <a href="https://notion.so">Notion</a>, spending 1.8s on
+          hydration.
+        </p>
+        <p>
+          And I don’t mean these sites are bad. This is a typical scenario with
+          React 17. Every client I work with experiences a similar issue.
+        </p>
+      </Slide>
+
+      <Slide
+        slideId="27-7"
+        image={
+          <SlideGatsbyImage imageData={getSlideSafe(allSlides, 'slide27-7')} />
+        }
+      >
+        <p>Now, React 18 changes it a bit. With React 18, you could now</p>
+        <ul>
+          <li>take your site – like this notion site, for example –</li>
+          <li>
+            figure out which parts of it are non-interactive or non-critical
+          </li>
+          <li>
+            and wrap them with a{' '}
+            <a href="https://beta.reactjs.org/apis/react/Suspense">
+              <code>{'<Suspense>'}</code>
+            </a>{' '}
+            component
+          </li>
+        </ul>
+        <SmallParagraph>
+          More reading about how <code>{'<Suspense>'}</code> changes in React
+          18:
+          <ul>
+            <li>
+              <a href="https://github.com/reactwg/react-18/discussions/37">
+                Server-side rendering
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/reactwg/react-18/discussions/130">
+                Selective Hydration
+              </a>
+            </li>
+          </ul>
+        </SmallParagraph>
+      </Slide>
+
+      <Slide
+        slideId="27-8"
+        image={
+          <SlideGatsbyImage imageData={getSlideSafe(allSlides, 'slide27-8')} />
+        }
+      >
+        <p>Here’s how this would look when implemented.</p>
+      </Slide>
+
+      <AnimatedSlide slideId="27-9" Svg={Slide27_9} hasControls>
+        <p>Here’s how hydration will work now:</p>
+        <ol>
+          <li>
+            You’d call <code>hydrateRoot()</code>.
+          </li>
+          <li>React will start rendering components, one by one.</li>
+          <li>
+            Until it, at some point, stumbles upon the{' '}
+            <code>{'<Suspense>'}</code> boundary. React understands that
+            “Suspense” means “non-urgent hydration”, so it wouldn’t proceed past
+            that Suspense boundary just yet.
+          </li>
+          <li>
+            Instead, React would keep rendering urgent components – until it’s
+            done – and then will render non-urgent ones, yielding back to the
+            browser every 5ms.
+          </li>
+        </ol>
+      </AnimatedSlide>
+
+      <Slide
+        slideId="27-10"
+        image={
+          <SlideGatsbyImage imageData={getSlideSafe(allSlides, 'slide27-10')} />
+        }
+      >
+        <p>Here’s how this looks in DevTools.</p>
+      </Slide>
+
+      <Slide
+        slideId="27-11"
+        image={
+          <SlideGatsbyImage imageData={getSlideSafe(allSlides, 'slide27-11')} />
+        }
+      >
+        <p>
+          And, just like <code>useTransition()</code>, this helps to improve{' '}
+          <a href="https://web.dev/inp/">Interaction to Next Paint</a> too!
+        </p>
+        <p>
+          Because now, you have an urgent part of the hydration, and a
+          non-urgent part of the hydration.
+        </p>
+        <p>
+          Previously, hydration might’ve taken 600 ms at once. Now, the urgent
+          part will take, say, 300 ms instead of 600 ms. So if the user tries to
+          interact with the page during the urgent hydration, the page will
+          remain frozen for a smaller time, because the hydration will be
+          shorter.
+        </p>
+      </Slide>
+
+      <AnimatedSlide slideId="27-12" Svg={Slide27_12} autoplay="enabled">
+        <p>
+          Now, you might ask “Okay, but if this is so good, if this makes the
+          page so responsive, why don’t I wrap the whole app with Suspense?”
+        </p>
+      </AnimatedSlide>
+
+      <Slide
+        slideId="27-13"
+        image={
+          <SlideGatsbyImage imageData={getSlideSafe(allSlides, 'slide27-13')} />
+        }
+      >
+        <p>The answer is: this would actually flop your INP. Why?</p>
+      </Slide>
+
+      <Slide
+        slideId="27-14"
+        image={
+          <SlideGatsbyImage imageData={getSlideSafe(allSlides, 'slide27-14')} />
+        }
+      >
+        <p>
+          Because – if you wrap a large part of the site – or the whole site –
+          with Suspense – that part of the site would start rendering is this
+          nice, non-blocking, reponsive manner.
+        </p>
+        <p>
+          But then, the moment user tries to interact with something inside{' '}
+          <code>{'<Suspense>'}</code>, React would realize “OMG, the user tried
+          click something in the app, and some component needs to handle that
+          click event. But if I keep rendering concurrently, this event would be
+          forever lost”.
+        </p>
+        <p>
+          So when the user clicks something inside <code>{'<Suspense>'}</code>,
+          React will switch back to urgent rendering and render the remaining
+          part of the <code>{'<Suspense>'}</code> boundary immediately.
+        </p>
+        <p>
+          This means the click will still lag – just like it did in React 17.
+        </p>
+        <SmallParagraph>
+          To be clear, React switches to urgent rendering only within a single{' '}
+          <code>{'<Suspense>'}</code> boundary. If your site has multiple{' '}
+          <code>{'<Suspense>'}</code> parts, only one of them will hydrate
+          urgently.
+        </SmallParagraph>
+      </Slide>
+
+      <Slide
+        slideId="27-15"
+        image={
+          <SlideGatsbyImage imageData={getSlideSafe(allSlides, 'slide27-15')} />
+        }
+      >
+        <p>Here’s how this looks in DevTools.</p>
+      </Slide>
+
+      <Slide
+        slideId="27-16"
+        image={
+          <SlideGatsbyImage imageData={getSlideSafe(allSlides, 'slide27-16')} />
+        }
+      >
+        <p>
+          And this is the second concurrent feature in React 18 –{' '}
+          <code>{'<Suspense>'}</code> and hydration.
+        </p>
+      </Slide>
+
       <SectionHeader id="drawbacks">Drawbacks</SectionHeader>
 
       <Slide
@@ -714,6 +1005,21 @@ const SlidesContent = ({
           non-urgent updates take longer. This might be fixed with a new{' '}
           <code>shouldYieldToHost()</code>, but it relies on a Chromium-only
           API, for now.
+        </p>
+      </Slide>
+
+      <Slide
+        slideId="32-1"
+        image={
+          <SlideGatsbyImage imageData={getSlideSafe(allSlides, 'slide32-1')} />
+        }
+      >
+        <p>
+          But also – I’m not putting high hopes on this change. Because, per{' '}
+          <a href="https://twitter.com/acdlite/status/1585829304256053255">
+            Andrew Clark (React team)
+          </a>
+          , the perf experiments were inconclusive.
         </p>
       </Slide>
 
