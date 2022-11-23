@@ -1,0 +1,10 @@
+[build]
+publish = "public"
+functions = "functions"
+
+[build.environment]
+NODE_VERSION = "16.15.1"
+YARN_VERSION = "1.22.19"
+
+[[plugins]]
+package = "@netlify/plugin-gatsby"

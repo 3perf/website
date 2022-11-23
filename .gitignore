@@ -1,0 +1,25 @@
+# Project dependencies
+.cache
+node_modules
+yarn-error.log
+
+# Build directory
+/public/*
+/dist
+.DS_Store
+/functions
+
+.env.*
+.vscode
+
+# Local Netlify folder
+.netlify
+
+# Yarn stuff
+.yarn/*
+!.yarn/cache
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions

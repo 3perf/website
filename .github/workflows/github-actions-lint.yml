@@ -1,0 +1,42 @@
+name: Lint
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  run-linters:
+    name: Run linters
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'yarn'
+
+        # Automatically installs npm or yarn
+        # and runs "npm ci" or "yarn install --frozen-lockfile" respectively
+      - name: Install dependencies
+        run: yarn --immutable --immutable-cache
+
+      - name: Run eslint
+        run: yarn lint
+
+      - name: Run prettier
+        run: yarn format
+
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v9
+        with:
+          message: Apply linting and formatting changes
+          commit: --amend --no-edit
+          push: origin HEAD:${{ github.head_ref }} --force

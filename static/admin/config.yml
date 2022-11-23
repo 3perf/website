@@ -1,0 +1,87 @@
+backend:
+  name: git-gateway
+  branch: master
+
+media_folder: ''
+
+publish_mode: editorial_workflow
+
+site_url: https://3perf.com
+
+collections:
+  - name: 'blog'
+    label: 'Blog'
+    folder: 'src/content/blog'
+    create: true
+    slug: 'index'
+    media_folder: ''
+    public_folder: ''
+    path: '{{url-slug}}/index'
+    extension: 'md'
+    format: 'frontmatter'
+    editor:
+      preview: false
+    fields:
+      - { label: 'Body', name: 'body', widget: 'markdown' }
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - label: 'URL Slug'
+        name: 'url-slug'
+        widget: 'string'
+        hint: 'This is the article URL slug. For example, if you write “perf-for-seo” here, the article will be available at 3perf.com/blog/perf-for-seo'
+      - label: 'Alternative Titles'
+        name: 'alternativeTitles'
+        widget: 'object'
+        fields:
+          - label: 'Social'
+            name: 'social'
+            widget: 'string'
+            required: false
+          - label: 'SEO'
+            name: 'seo'
+            widget: 'string'
+            required: false
+      - label: 'Author Info'
+        name: 'author'
+        widget: 'object'
+        fields:
+          - { label: 'ID', name: 'id', widget: 'string', default: 'iamakulov' }
+          - label: 'Name'
+            name: 'name'
+            widget: 'string'
+            default: 'Ivan Akulov'
+          - label: 'Link'
+            name: 'link'
+            widget: 'string'
+            default: 'https://twitter.com/iamakulov'
+          - label: 'Twitter ID'
+            name: 'twitterId'
+            widget: 'string'
+            default: 'iamakulov'
+          - label: 'Facebook ID'
+            name: 'facebookId'
+            widget: 'string'
+            default: '100002052594007'
+      - label: 'Social & SEO Description'
+        name: 'description'
+        widget: 'string'
+      - { label: 'RSS Description', name: 'rssDescription', widget: 'text' }
+      - label: 'Social Images'
+        name: 'socialImage'
+        widget: 'object'
+        fields:
+          - label: 'Facebook'
+            name: 'facebook'
+            widget: 'file'
+            media_library: { allow_multiple: false, choose_url: false }
+            required: false
+          - label: 'Twitter'
+            name: 'twitter'
+            widget: 'file'
+            media_library: { allow_multiple: false, choose_url: false }
+            required: false
+      - label: 'Published & Modified'
+        name: 'date'
+        widget: 'object'
+        fields:
+          - { label: 'Published At', name: 'published', widget: 'datetime' }
+          - { label: 'Modified At', name: 'modified', widget: 'datetime' }
