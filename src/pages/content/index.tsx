@@ -79,7 +79,7 @@ const ContentPage = (props: ContentPageProps) => {
             <meta name="og:image" content={facebookCoverUrl} />
           </Helmet>
           <Nav logoKind={LogoKind.White} navKind={NavKind.Light} />
-          <Header>Here’s all you’ll need for faster sites.</Header>
+          <Header>Perf&shy;Perf&shy;Perf Guides and Tools</Header>
           <SectionHeader>Case Studies</SectionHeader>
           <Section>
             <ContentItem
@@ -87,6 +87,14 @@ const ContentPage = (props: ContentPageProps) => {
               link="/blog/notion/"
               title="Analyzing Notion app performance"
               description="How to make a React app load ~30% faster – just by tuning some configs and delaying some scripts"
+            />
+            <ContentItem
+              link="/blog/causal/"
+              title="Making React interactions in Causal 4× faster"
+            />
+            <ContentItem
+              link="https://twitter.com/iamakulov/status/1522008502398554113"
+              title="A dive into Spotify performance at 1 am"
             />
             <ContentItem
               link="https://iamakulov.com/notes/walmart/"
@@ -131,7 +139,7 @@ const ContentPage = (props: ContentPageProps) => {
             />
             <ContentItem
               link="/blog/react-monitoring/"
-              title="How To Monitor React Render Performance"
+              title="How to monitor React render performance"
               description="So you just made your app fast. Now, how do you ensure it doesn’t get slow again?"
             />
             <ContentItem
