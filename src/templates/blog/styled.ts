@@ -117,8 +117,8 @@ const listStyles = css`
 
 // Media styles
 const mediaStyles = css`
-  *:is(p, ul, ol) + .media-container,
-  .media-container + *:is(p, ul, ol),
+  *:is(p, ul, ol, .sidenote) + .media-container,
+  .media-container + *:is(p, ul, ol, .sidenote),
   .media-container + .media-container {
     margin-top: ${sizes.paragraphSpacing}px;
   }
