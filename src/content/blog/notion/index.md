@@ -89,12 +89,7 @@ Here’s what’s going on:
 
 6.2 seconds for a desktop computer is quite a lot. However, with a medium-tier phone like Nexus 5, this time [increases to 12.6 seconds](https://webpagetest.org/video/compare.php?tests=200420_7E_24739856690fea9cbdadeea3e0b934a2-r%3A1-c%3A0&thumbSize=200&ival=100&end=visual). Here’s how that feels:
 
-<p>
-<video controls muted>
-  <source src="./notion-video.mp4" type="video/mp4">
-  <source src="./notion-video.webm" type="video/webm">
-</video>
-</p>
+![{sources:[{src:"./notion-video.webm", type:"video/webm"}]}](./notion-video.mp4)
 
 Let’s see how we can improve it.
 
@@ -430,12 +425,7 @@ Here’s how to optimize that.
 [[sidenote|[How to block third party requests in WebPageTest](https://andydavies.me/blog/2018/02/19/using-webpagetest-to-measure-the-impact-of-3rd-party-tags/)]]
 | In Notion, third parties (Intercom, Segment, and Amplitude) hurt performance by executing JavaScript and blocking the main thread when it’s most needed – when the app is still initializing. If we block them in WebPageTest, our Nexus 5 [will render the content a whole second earlier](https://webpagetest.org/video/compare.php?tests=200509_WD_694540be3e401cb9c7ee047049645625-l%3AWith+third+parties%2C200509_CQ_e1f940ff9233f0936af303918df8e298-l%3AWithout+third+parties&thumbSize=200&ival=100&end=visual):
 
-<p>
-<video controls muted>
-  <source src="./third-parties.mp4" type="video/mp4">
-  <source src="./third-parties.webm" type="video/webm">
-</video>
-</p>
+![{sources:[{src:"./third-parties.webm", type:"video/webm"}]}](./third-parties.mp4)
 
 In the real life, we can’t simply remove all the Notion third parties. But we can defer them – like this:
 
