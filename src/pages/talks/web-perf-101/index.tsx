@@ -2722,11 +2722,7 @@ export const query = graphql`
       relativePath: { eq: "talks/web-perf-101/slides/index.png" }
     ) {
       childImageSharp {
-        gatsbyImageData(
-          width: 800
-          placeholder: NONE
-          layout: CONSTRAINED
-        )
+        gatsbyImageData(width: 800, placeholder: NONE, layout: CONSTRAINED)
       }
     }
     sectionHeaders: allFile(
@@ -2739,11 +2735,7 @@ export const query = graphql`
         node {
           name
           childImageSharp {
-            gatsbyImageData(
-              width: 700
-              placeholder: NONE
-              layout: CONSTRAINED
-            )
+            gatsbyImageData(width: 700, placeholder: NONE, layout: CONSTRAINED)
           }
         }
       }
@@ -2758,11 +2750,7 @@ export const query = graphql`
         node {
           name
           childImageSharp {
-            gatsbyImageData(
-              width: 500
-              placeholder: NONE
-              layout: CONSTRAINED
-            )
+            gatsbyImageData(width: 500, placeholder: NONE, layout: CONSTRAINED)
           }
         }
       }
