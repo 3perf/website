@@ -102,7 +102,7 @@ const listStyles = css`
 
   /* Duplicating the class to increase specificity */
   p + .list_compact.list_compact,
-  p + .list_compact.list_compact {
+  .list_compact.list_compact + p {
     margin-top: ${sizes.paragraphSpacing / 2}px;
   }
 
@@ -117,12 +117,19 @@ const listStyles = css`
 
 // Media styles
 const mediaStyles = css`
-  .image-container {
+  *:is(p, ul, ol) + .media-container,
+  .media-container + *:is(p, ul, ol),
+  .media-container + .media-container {
+    margin-top: ${sizes.paragraphSpacing}px;
+  }
+
+  .media-container {
     /* Reset figure styles */
     margin: 0;
   }
 
-  .image-container img {
+  .media-container img,
+  .media-container video {
     /* clamp(100%, 80vw, 900px) won’t work for scrollable images.
      * In scrollable images on wide screens,
      * 100% is more than 900px, and clamp() returns 100% */
@@ -130,18 +137,22 @@ const mediaStyles = css`
     height: auto;
   }
 
-  .sidenote .custom-block-heading .image-container img,
-  .note .image-container img {
+  .sidenote .custom-block-heading .media-container img,
+  .note .media-container img {
     width: 100%;
   }
 
-  .image-container__caption {
+  .media-container__caption {
     font-size: ${sizes.fontSmall}px;
     font-style: italic;
     margin-top: ${gridSize / 2}px;
+
+    em {
+      font-style: normal;
+    }
   }
 
-  .image-container_scrollable {
+  .media-container_scrollable {
     width: 100vw;
     overflow-x: auto;
     margin-left: -${sizes.contentPadding}px;
@@ -159,11 +170,6 @@ const mediaStyles = css`
       background: #ccc;
       border-radius: 4px;
     }
-  }
-
-  video {
-    max-width: 100%;
-    height: auto;
   }
 `;
 

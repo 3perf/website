@@ -1,4 +1,4 @@
-const createImageMarkup = require('./gatsby-config-create-image-markup.js');
+const createMediaMarkup = require('./plugins/gatsby-remark-3perf-transformer/createMediaMarkup.js');
 
 let siteUrl = 'https://3perf.com';
 if (process.env.DEV_SITE_HOSTNAME_OVERRIDE) {
@@ -124,7 +124,39 @@ module.exports = {
               withWebp: { quality: 100 },
 
               // Custom image markup (simplified & with support for `scrollable`)
-              createMarkup: createImageMarkup,
+              // Passed options are listed at https://www.gatsbyjs.org/packages/gatsby-remark-images-anywhere/#writing-your-own-markup
+              createMarkup: function createImageMarkup({
+                alt,
+                src,
+                srcSet,
+                srcWebp,
+                srcSetWebp,
+                sizes,
+                presentationWidth,
+                presentationHeight,
+              }) {
+                return createMediaMarkup({
+                  kind: 'image',
+                  alt,
+                  fallback: {
+                    src,
+                    srcSet,
+                    sizes,
+                  },
+                  sources: srcWebp
+                    ? [
+                        {
+                          src: srcWebp,
+                          srcSet: srcSetWebp,
+                          sizes,
+                          type: 'image/webp',
+                        },
+                      ]
+                    : [],
+                  presentationWidth,
+                  presentationHeight,
+                });
+              },
             },
           },
           {
