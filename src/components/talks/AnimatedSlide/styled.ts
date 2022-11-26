@@ -135,6 +135,7 @@ export const PlayControlButton = styled.span`
   color: #06c;
 
   cursor: pointer;
+  user-select: none;
 
   &:hover {
     text-decoration: underline;
