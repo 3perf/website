@@ -3,10 +3,13 @@ import { createGlobalStyle } from 'styled-components';
 import { linkActiveStyles, linkStyles } from '../../styles/shared-styles';
 import { colors, sizes } from '../../styles/variables';
 import { JSXChildrenProp } from '../../types';
+import { getGlobalFonts } from './getGlobalFonts';
 import './fonts';
 
 // tslint:disable-next-line no-unused-expression
 const GlobalStyle = createGlobalStyle`
+  ${getGlobalFonts()}
+
   *,
   *::before,
   *::after {
