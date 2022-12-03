@@ -25,7 +25,6 @@ interface ImageWrapperProps {
 export const ImageWrapper = styled.a`
   position: relative;
   display: block;
-  border: none;
   width: 100%;
   max-width: 500px;
   border: thin solid
