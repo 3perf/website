@@ -2,7 +2,8 @@ import * as React from 'react';
 import { FC, SVGProps } from 'react';
 import { Helmet } from 'react-helmet';
 import { JSXChildrenProp } from '../../../types';
-import { Container, ImageWrapper, PlayControlButton, Text } from './styled';
+import { ImageWrapper, Text } from '../Slide/styled';
+import { Container, PlayControlButton } from './styled';
 
 interface SlideProps {
   slideId: string;
