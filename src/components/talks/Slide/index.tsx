@@ -19,7 +19,7 @@ const Slide = ({
   useImageBorder = false,
   isSectionHeader = false,
 }: SlideProps) => (
-  <Container className={className} id={`slide${slideId}`}>
+  <Container className={className} id={slideId}>
     <ImageWrapper
       href={`#${slideId}`}
       useImageBorder={useImageBorder}

@@ -27,7 +27,7 @@ const AnimatedSlide = ({
   autoplay = 'on-viewport-entry',
 }: SlideProps) => {
   return (
-    <Container className={className} id={`slide${slideId}`}>
+    <Container className={className} id={slideId}>
       <div>
         <ImageWrapper
           href={`#${slideId}`}
@@ -57,7 +57,7 @@ const AnimatedSlide = ({
             let isFirstEntry = true;
 
             function initAnimation() {
-              const containerNode = document.querySelector('#slide${slideId}');
+              const containerNode = document.querySelector('#${slideId}');
               const svgNode = containerNode?.querySelector('#svg-animation');
               const animatedElements = svgNode?.querySelectorAll('g g');
               const playControlButton = containerNode?.querySelector('#play-control-button');
@@ -124,7 +124,7 @@ const AnimatedSlide = ({
 
               changeAnimationPlayState(isPaused);
             }
-          
+
             if (document.readyState === 'loading') {
               document.addEventListener('DOMContentLoaded', initAnimation);
             } else {
