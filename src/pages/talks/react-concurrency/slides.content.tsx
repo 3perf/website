@@ -34,7 +34,7 @@ const SlidesContent = ({
   return (
     <>
       <Slide
-        slideId="contents"
+        slideId="slide-contents"
         useImageBorder={true}
         image={
           <SlideGatsbyImage
@@ -89,7 +89,7 @@ const SlidesContent = ({
       </Slide>
 
       <Slide
-        slideId="3"
+        slideId="slide-3"
         image={
           <SlideGatsbyImage imageData={getSlideSafe(allSlides, 'slide3')} />
         }
@@ -108,7 +108,7 @@ const SlidesContent = ({
       </Slide>
 
       <Slide
-        slideId="5"
+        slideId="slide-5"
         image={
           <SlideGatsbyImage imageData={getSlideSafe(allSlides, 'slide5')} />
         }
@@ -139,7 +139,7 @@ const SlidesContent = ({
       </Slide>
 
       <Slide
-        slideId="10"
+        slideId="slide-10"
         image={
           <SlideGatsbyImage imageData={getSlideSafe(allSlides, 'slide10')} />
         }
@@ -184,7 +184,7 @@ const SlidesContent = ({
       </Slide>
 
       <Slide
-        slideId="11"
+        slideId="slide-11"
         image={
           <SlideGatsbyImage imageData={getSlideSafe(allSlides, 'slide11')} />
         }
@@ -219,7 +219,7 @@ const SlidesContent = ({
       />
 
       <Slide
-        slideId="13"
+        slideId="slide-13"
         image={
           <SlideGatsbyImage imageData={getSlideSafe(allSlides, 'slide13')} />
         }
@@ -236,7 +236,7 @@ const SlidesContent = ({
       </Slide>
 
       <Slide
-        slideId="14"
+        slideId="slide-14"
         image={
           <SlideGatsbyImage imageData={getSlideSafe(allSlides, 'slide14')} />
         }
@@ -253,7 +253,7 @@ const SlidesContent = ({
       </Slide>
 
       <Slide
-        slideId="15"
+        slideId="slide-15"
         image={
           <SlideGatsbyImage imageData={getSlideSafe(allSlides, 'slide15')} />
         }
@@ -265,7 +265,7 @@ const SlidesContent = ({
       </Slide>
 
       <Slide
-        slideId="15-1"
+        slideId="slide-15-1"
         image={
           <SlideGatsbyImage imageData={getSlideSafe(allSlides, 'slide15-1')} />
         }
@@ -286,7 +286,7 @@ const SlidesContent = ({
       </Slide>
 
       <Slide
-        slideId="16"
+        slideId="slide-16"
         image={
           <SlideGatsbyImage imageData={getSlideSafe(allSlides, 'slide16')} />
         }
@@ -320,7 +320,7 @@ const SlidesContent = ({
       <SectionHeader id="react-18">React 18: Concurrent Updates</SectionHeader>
 
       <Slide
-        slideId="17"
+        slideId="slide-17"
         image={
           <SlideGatsbyImage imageData={getSlideSafe(allSlides, 'slide17')} />
         }
@@ -377,7 +377,7 @@ const SlidesContent = ({
       />
 
       <Slide
-        slideId="20"
+        slideId="slide-20"
         image={
           <SlideGatsbyImage imageData={getSlideSafe(allSlides, 'slide20')} />
         }
@@ -407,7 +407,7 @@ const SlidesContent = ({
       </SectionHeader>
 
       <Slide
-        slideId="21"
+        slideId="slide-21"
         image={
           <SlideGatsbyImage imageData={getSlideSafe(allSlides, 'slide21')} />
         }
@@ -430,7 +430,7 @@ const SlidesContent = ({
       </Slide>
 
       <Slide
-        slideId="21-1"
+        slideId="slide-21-1"
         image={
           <SlideGatsbyImage imageData={getSlideSafe(allSlides, 'slide21-1')} />
         }
@@ -463,7 +463,7 @@ const SlidesContent = ({
       </Slide>
 
       <Slide
-        slideId="22"
+        slideId="slide-22"
         image={
           <SlideGatsbyImage imageData={getSlideSafe(allSlides, 'slide22')} />
         }
@@ -485,7 +485,7 @@ const SlidesContent = ({
       </Slide>
 
       <Slide
-        slideId="23"
+        slideId="slide-23"
         image={
           <SlideGatsbyImage imageData={getSlideSafe(allSlides, 'slide23')} />
         }
@@ -548,7 +548,7 @@ const SlidesContent = ({
       </Slide>
 
       <Slide
-        slideId="24"
+        slideId="slide-24"
         image={
           <SlideGatsbyImage imageData={getSlideSafe(allSlides, 'slide24')} />
         }
@@ -563,7 +563,7 @@ const SlidesContent = ({
       </Slide>
 
       <Slide
-        slideId="25"
+        slideId="slide-25"
         image={
           <SlideGatsbyImage imageData={getSlideSafe(allSlides, 'slide25')} />
         }
@@ -598,7 +598,7 @@ const SlidesContent = ({
       </Slide>
 
       <Slide
-        slideId="26"
+        slideId="slide-26"
         image={
           <SlideGatsbyImage imageData={getSlideSafe(allSlides, 'slide26')} />
         }
@@ -612,7 +612,7 @@ const SlidesContent = ({
       </Slide>
 
       <Slide
-        slideId="27"
+        slideId="slide-27"
         image={
           <SlideGatsbyImage imageData={getSlideSafe(allSlides, 'slide27')} />
         }
@@ -624,7 +624,7 @@ const SlidesContent = ({
       </Slide>
 
       <Slide
-        slideId="27-1"
+        slideId="slide-27-1"
         image={
           <SlideGatsbyImage imageData={getSlideSafe(allSlides, 'slide27-1')} />
         }
@@ -649,7 +649,7 @@ const SlidesContent = ({
       <SectionHeader id="hydration">Hydration</SectionHeader>
 
       <Slide
-        slideId="27-2"
+        slideId="slide-27-2"
         image={
           <SlideGatsbyImage imageData={getSlideSafe(allSlides, 'slide27-2')} />
         }
@@ -661,7 +661,7 @@ const SlidesContent = ({
       </Slide>
 
       <Slide
-        slideId="27-3"
+        slideId="slide-27-3"
         image={
           <SlideGatsbyImage imageData={getSlideSafe(allSlides, 'slide27-3')} />
         }
@@ -690,7 +690,7 @@ const SlidesContent = ({
       </Slide>
 
       <Slide
-        slideId="27-4"
+        slideId="slide-27-4"
         image={
           <SlideGatsbyImage imageData={getSlideSafe(allSlides, 'slide27-4')} />
         }
@@ -703,7 +703,7 @@ const SlidesContent = ({
       </Slide>
 
       <Slide
-        slideId="27-5"
+        slideId="slide-27-5"
         image={
           <SlideGatsbyImage imageData={getSlideSafe(allSlides, 'slide27-5')} />
         }
@@ -715,7 +715,7 @@ const SlidesContent = ({
       </Slide>
 
       <Slide
-        slideId="27-6"
+        slideId="slide-27-6"
         image={
           <SlideGatsbyImage imageData={getSlideSafe(allSlides, 'slide27-6')} />
         }
@@ -731,7 +731,7 @@ const SlidesContent = ({
       </Slide>
 
       <Slide
-        slideId="27-7"
+        slideId="slide-27-7"
         image={
           <SlideGatsbyImage imageData={getSlideSafe(allSlides, 'slide27-7')} />
         }
@@ -769,7 +769,7 @@ const SlidesContent = ({
       </Slide>
 
       <Slide
-        slideId="27-8"
+        slideId="slide-27-8"
         image={
           <SlideGatsbyImage imageData={getSlideSafe(allSlides, 'slide27-8')} />
         }
@@ -777,7 +777,7 @@ const SlidesContent = ({
         <p>Here’s how this would look when implemented.</p>
       </Slide>
 
-      <AnimatedSlide slideId="27-9" Svg={Slide27_9} hasControls>
+      <AnimatedSlide slideId="slide-27-9" Svg={Slide27_9} hasControls>
         <p>Here’s how hydration will work now:</p>
         <ol>
           <li>
@@ -799,7 +799,7 @@ const SlidesContent = ({
       </AnimatedSlide>
 
       <Slide
-        slideId="27-10"
+        slideId="slide-27-10"
         image={
           <SlideGatsbyImage imageData={getSlideSafe(allSlides, 'slide27-10')} />
         }
@@ -808,7 +808,7 @@ const SlidesContent = ({
       </Slide>
 
       <Slide
-        slideId="27-11"
+        slideId="slide-27-11"
         image={
           <SlideGatsbyImage imageData={getSlideSafe(allSlides, 'slide27-11')} />
         }
@@ -830,7 +830,7 @@ const SlidesContent = ({
         </p>
       </Slide>
 
-      <AnimatedSlide slideId="27-12" Svg={Slide27_12} autoplay="enabled">
+      <AnimatedSlide slideId="slide-27-12" Svg={Slide27_12} autoplay="enabled">
         <p>
           Now, you might ask “Okay, but if this is so good, if this makes the
           page so responsive, why don’t I wrap the whole app with Suspense?”
@@ -838,7 +838,7 @@ const SlidesContent = ({
       </AnimatedSlide>
 
       <Slide
-        slideId="27-13"
+        slideId="slide-27-13"
         image={
           <SlideGatsbyImage imageData={getSlideSafe(allSlides, 'slide27-13')} />
         }
@@ -847,7 +847,7 @@ const SlidesContent = ({
       </Slide>
 
       <Slide
-        slideId="27-14"
+        slideId="slide-27-14"
         image={
           <SlideGatsbyImage imageData={getSlideSafe(allSlides, 'slide27-14')} />
         }
@@ -881,7 +881,7 @@ const SlidesContent = ({
       </Slide>
 
       <Slide
-        slideId="27-15"
+        slideId="slide-27-15"
         image={
           <SlideGatsbyImage imageData={getSlideSafe(allSlides, 'slide27-15')} />
         }
@@ -890,7 +890,7 @@ const SlidesContent = ({
       </Slide>
 
       <Slide
-        slideId="27-16"
+        slideId="slide-27-16"
         image={
           <SlideGatsbyImage imageData={getSlideSafe(allSlides, 'slide27-16')} />
         }
@@ -904,7 +904,7 @@ const SlidesContent = ({
       <SectionHeader id="drawbacks">Drawbacks</SectionHeader>
 
       <Slide
-        slideId="28"
+        slideId="slide-28"
         image={
           <SlideGatsbyImage imageData={getSlideSafe(allSlides, 'slide28')} />
         }
@@ -915,7 +915,7 @@ const SlidesContent = ({
       </Slide>
 
       <Slide
-        slideId="29"
+        slideId="slide-29"
         image={
           <SlideGatsbyImage imageData={getSlideSafe(allSlides, 'slide29')} />
         }
@@ -936,7 +936,7 @@ const SlidesContent = ({
       />
 
       <Slide
-        slideId="30"
+        slideId="slide-30"
         image={
           <SlideGatsbyImage imageData={getSlideSafe(allSlides, 'slide30')} />
         }
@@ -954,7 +954,7 @@ const SlidesContent = ({
       </Slide>
 
       <Slide
-        slideId="31"
+        slideId="slide-31"
         image={
           <SlideGatsbyImage imageData={getSlideSafe(allSlides, 'slide31')} />
         }
@@ -977,7 +977,7 @@ const SlidesContent = ({
       </Slide>
 
       <Slide
-        slideId="32"
+        slideId="slide-32"
         image={
           <SlideGatsbyImage imageData={getSlideSafe(allSlides, 'slide32')} />
         }
@@ -1009,7 +1009,7 @@ const SlidesContent = ({
       </Slide>
 
       <Slide
-        slideId="32-1"
+        slideId="slide-32-1"
         image={
           <SlideGatsbyImage imageData={getSlideSafe(allSlides, 'slide32-1')} />
         }
@@ -1024,7 +1024,7 @@ const SlidesContent = ({
       </Slide>
 
       <Slide
-        slideId="33"
+        slideId="slide-33"
         image={
           <SlideGatsbyImage imageData={getSlideSafe(allSlides, 'slide33')} />
         }
@@ -1042,7 +1042,7 @@ const SlidesContent = ({
       </Slide>
 
       <Slide
-        slideId="34"
+        slideId="slide-34"
         image={
           <SlideGatsbyImage imageData={getSlideSafe(allSlides, 'slide34')} />
         }
@@ -1098,7 +1098,7 @@ const SlidesContent = ({
       </Slide>
 
       <Slide
-        slideId="35"
+        slideId="slide-35"
         image={
           <SlideGatsbyImage imageData={getSlideSafe(allSlides, 'slide35')} />
         }
@@ -1131,7 +1131,7 @@ const SlidesContent = ({
       </Slide>
 
       <Slide
-        slideId="36"
+        slideId="slide-36"
         image={
           <SlideGatsbyImage imageData={getSlideSafe(allSlides, 'slide36')} />
         }
@@ -1180,7 +1180,7 @@ const SlidesContent = ({
       </Slide>
 
       <Slide
-        slideId="38"
+        slideId="slide-38"
         image={
           <SlideGatsbyImage imageData={getSlideSafe(allSlides, 'slide38')} />
         }
@@ -1192,7 +1192,7 @@ const SlidesContent = ({
       </Slide>
 
       <Slide
-        slideId="39"
+        slideId="slide-39"
         image={
           <SlideGatsbyImage imageData={getSlideSafe(allSlides, 'slide39')} />
         }
@@ -1214,7 +1214,7 @@ const SlidesContent = ({
       </Slide>
 
       <Slide
-        slideId="40"
+        slideId="slide-40"
         image={
           <SlideGatsbyImage imageData={getSlideSafe(allSlides, 'slide40')} />
         }
@@ -1223,7 +1223,7 @@ const SlidesContent = ({
       </Slide>
 
       <Slide
-        slideId="41"
+        slideId="slide-41"
         image={
           <SlideGatsbyImage imageData={getSlideSafe(allSlides, 'slide41')} />
         }
@@ -1240,7 +1240,7 @@ const SlidesContent = ({
       <SectionHeader id="summary">Summary</SectionHeader>
 
       <Slide
-        slideId="42"
+        slideId="slide-42"
         image={
           <SlideGatsbyImage imageData={getSlideSafe(allSlides, 'slide42')} />
         }
@@ -1259,7 +1259,7 @@ const SlidesContent = ({
       </Slide>
 
       <Slide
-        slideId="43"
+        slideId="slide-43"
         image={
           <SlideGatsbyImage imageData={getSlideSafe(allSlides, 'slide43')} />
         }
@@ -1268,7 +1268,7 @@ const SlidesContent = ({
       </Slide>
 
       <Slide
-        slideId="credits"
+        slideId="slide-credits"
         image={
           <SlideGatsbyImage imageData={getSlideSafe(allSlides, 'credits')} />
         }
