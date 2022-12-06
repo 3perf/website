@@ -1,9 +1,9 @@
 import { graphql, StaticQuery } from 'gatsby';
 import { IGatsbyImageData } from 'gatsby-plugin-image';
 import React from 'react';
-import AnimatedSlide from '../../../components/talks/AnimatedSlide';
 import { SlideGatsbyImage } from '../../../components/talks/Slide';
 import {
+  AnimatedSlide,
   Contents,
   ContentsInner,
   LiveDemo,

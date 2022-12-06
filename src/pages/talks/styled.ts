@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import _Footer from '../../components/Footer';
 import _Nav from '../../components/Nav';
+import _AnimatedSlide from '../../components/talks/AnimatedSlide';
 import _LiveDemo from '../../components/talks/LiveDemo';
 import _SectionHeader from '../../components/talks/SectionHeader';
 import _Slide from '../../components/talks/Slide';
@@ -17,9 +18,13 @@ export const Slides = styled.div`
   margin-top: ${gridSize * 10}px;
 `;
 
-// prettier-ignore
 export const Slide = styled(_Slide)`
-  margin-top: ${props => props.isSectionHeader ? gridSize * 8 : gridSize * 6}px;
+  margin-top: ${(props) =>
+    props.isSectionHeader ? gridSize * 8 : gridSize * 6}px;
+`;
+
+export const AnimatedSlide = styled(_AnimatedSlide)`
+  margin-top: ${gridSize * 6}px;
 `;
 
 export const BlockImage = styled.img`
