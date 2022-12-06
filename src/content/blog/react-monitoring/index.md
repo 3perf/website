@@ -1,5 +1,5 @@
 ---
-title: 'Get Fast, Stay Fast: How To Monitor React Render Performance'
+title: 'How To Measure and Monitor React Render Performance'
 description: 'So you just made your app fast. Now, how do you ensure it doesn’t get slow again?'
 author:
   id: iamakulov
