@@ -1,9 +1,7 @@
 import styled from 'styled-components';
 import { Container as _Container } from '../Slide/styled';
 
-export const Container = styled(_Container)`
-  margin: 48px -8px -8px -8px;
-`;
+export const Container = styled(_Container)``;
 
 export const PlayControlButton = styled.span`
   display: inline-block;
