@@ -631,7 +631,7 @@ However, weirdly, the overall JS cost will increase. That’s because the main t
 
 ![{caption:"Main thread"}](./image30.png)
 
-It turns out that moving stuff to a web worker isn’t free. Whenever you pass data from and to a web worker, the browser [has to serialize and deserialize it](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm). Typically, this is cheap; however, for large objects, this may take some time. For us, because our model is large, this takes _a lot_ of time. Serializing and deserializing end up longer than the actual parsing operation!
+It turns out that moving stuff to a web worker isn’t free. Whenever you pass data from and to a web worker, the browser [has to serialize and deserialize it](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm). Typically, this is cheap; however, for large objects, this may take some time. For Causal, because the model was so large, this took longer than actually parsing the model!
 
 Unfortunately, this optimization didn’t work for Causal. Instead, as an experiment, Causal has started working on selective data loading (fetching only visible rows instead of the whole model). In our tests, with selective data loading, the parsing costs go down from 500-1500 ms to 1-5 ms
 
