@@ -17,7 +17,7 @@ date:
 rssForceGuid: https://3perf.com/blog/runtime-perf/
 ---
 
-Say you just finished optimizing your React app and making every button click as fast as possible. Now, you want to keep an eye on the app’s performance – and learn if the app gets slower again so you can fix it.
+Say you just finished optimizing your React app and making every button click as fast as possible. Now, you want to keep an eye on the app’s performance – set up measurements around interactions and learn if the app gets slower again.
 
 Here’s how to do that.
 
