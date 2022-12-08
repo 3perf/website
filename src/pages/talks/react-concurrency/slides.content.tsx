@@ -642,7 +642,9 @@ const SlidesContent = ({
         </p>
       </Slide>
 
-      <SectionHeader id="suspense">{`<Suspense>`}</SectionHeader>
+      <SectionHeader id="suspense">
+        <code>{`<Suspense>`}</code>
+      </SectionHeader>
 
       <Slide
         slideId="slide-27-2"
@@ -734,7 +736,7 @@ const SlidesContent = ({
       >
         <p>Now, React 18 changes it a bit. With React 18, you could now</p>
         <ul>
-          <li>take your site – like this notion site, for example –</li>
+          <li>take your site – like the Notion site, for example –</li>
           <li>
             figure out which parts of it are non-interactive or non-critical
           </li>
@@ -748,19 +750,14 @@ const SlidesContent = ({
         </ul>
         <SmallParagraph>
           More reading about how <code>{'<Suspense>'}</code> changes in React
-          18:
-          <ul>
-            <li>
-              <a href="https://github.com/reactwg/react-18/discussions/37">
-                Server-side rendering
-              </a>
-            </li>
-            <li>
-              <a href="https://github.com/reactwg/react-18/discussions/130">
-                Selective Hydration
-              </a>
-            </li>
-          </ul>
+          18:{' '}
+          <a href="https://github.com/reactwg/react-18/discussions/37">
+            Server-side rendering
+          </a>{' '}
+          ·{' '}
+          <a href="https://github.com/reactwg/react-18/discussions/130">
+            Selective Hydration
+          </a>
         </SmallParagraph>
       </Slide>
 
@@ -774,7 +771,7 @@ const SlidesContent = ({
       </Slide>
 
       <AnimatedSlide slideId="slide-27-9" Svg={Slide27_9} hasControls>
-        <p>Here’s how hydration will work now:</p>
+        <p>With this change, here’s how hydration will work:</p>
         <ol>
           <li>
             You’d call <code>hydrateRoot()</code>.
@@ -789,7 +786,7 @@ const SlidesContent = ({
           <li>
             Instead, React would keep rendering urgent components – until it’s
             done – and then will render non-urgent ones, yielding back to the
-            browser every 5ms.
+            browser every ~5ms.
           </li>
         </ol>
       </AnimatedSlide>
@@ -814,15 +811,18 @@ const SlidesContent = ({
           <a href="https://web.dev/inp/">Interaction to Next Paint</a> too!
         </p>
         <p>
-          Because now, you have an urgent part of the hydration, and a
-          non-urgent part of the hydration.
+          Because now, the hydration is split into two parts: an urgent one and
+          a non-urgent one.
         </p>
         <p>
-          Previously, hydration might’ve taken 600 ms at once. Now, the urgent
-          part will take, say, 300 ms instead of 600 ms. So if the user tries to
-          interact with the page during the urgent hydration, the page will
-          remain frozen for a smaller time, because the hydration will be
-          shorter.
+          Without <code>{`<Suspense>`}</code>, the whole hydration process was
+          treated an urgent. If hydration was taking 600 ms, the browser would
+          spend 600 ms hydrating the whole app at once.
+        </p>
+        <p>
+          Now, with <code>{`<Suspense>`}</code>, the urgent part might take just
+          300 ms instead of 600 ms. So no matter when the user tries to interact
+          with the app, the interaction will get blocked for 300 ms at most.
         </p>
       </Slide>
 
@@ -849,30 +849,81 @@ const SlidesContent = ({
         }
       >
         <p>
-          Because – if you wrap a large part of the site – or the whole site –
-          with Suspense – that part of the site would start rendering is this
-          nice, non-blocking, reponsive manner.
+          If you wrap a large part of the site (or the whole site) with
+          Suspense, that part of the site will start rendering in a non-urgent
+          manner, in 5 ms chunks.
         </p>
         <p>
-          But then, the moment user tries to interact with something inside{' '}
-          <code>{'<Suspense>'}</code>, React would realize “OMG, the user tried
-          click something in the app, and some component needs to handle that
-          click event. But if I keep rendering concurrently, this event would be
-          forever lost”.
+          However, if, during this time, the user tries to interact with
+          something inside <code>{'<Suspense>'}</code>, React won’t ignore that
+          click. Ignoring the click would be a bad user experience! Instead,
+          React will try to figure out which component has a matching{' '}
+          <code>onClick</code>.
         </p>
         <p>
-          So when the user clicks something inside <code>{'<Suspense>'}</code>,
-          React will switch back to urgent rendering and render the remaining
-          part of the <code>{'<Suspense>'}</code> boundary immediately.
+          But how can React learn which component has the right{' '}
+          <code>onClick</code> before every component is hydrated? Early in the
+          React 18 development cycle, the React team tried to solve this by
+          introducing{' '}
+          <a href="https://github.com/reactwg/react-18/discussions/37#discussioncomment-833682">
+            event replaying
+          </a>
+          . If a user tried to click something inside a Suspense boundary while
+          it was being hydrated, React would remember the event. Then, once the
+          hydration was over, it would re-dispatch the event, letting the right
+          component handle it.
         </p>
         <p>
-          This means the click will still lag – just like it did in React 17.
+          However, that didn’t quite work out – as it turned out,{' '}
+          <a href="https://github.com/reactwg/react-18/discussions/83">
+            some events can’t be replayed well
+          </a>
+          .
+        </p>
+      </Slide>
+
+      <Slide
+        slideId="slide-27-14-1"
+        image={
+          <SlideGatsbyImage
+            imageData={getSlideSafe(allSlides, 'slide27-14-1')}
+          />
+        }
+      >
+        <p>
+          Because event replaying didn’t work out, the React team had to switch
+          to a different approach.
+        </p>
+        <p>
+          In the final React 18.0 release, when the user clicks something inside{' '}
+          <code>{'<Suspense>'}</code>, React will switch to urgent rendering. It
+          will hydrate the remaining part of the <code>{'<Suspense>'}</code>{' '}
+          boundary immediately, without breaks – and <em>then</em> will call the
+          right event handler.
+        </p>
+        <p>
+          Between the user’s click and the event handler’s call, the app will
+          stay frozen. This is why wrapping the whole site with a single{' '}
+          <code>{`<Suspense>`}</code> won’t improve INP. The moment the user
+          clicks something inside <code>{'<Suspense>'}</code>, that{' '}
+          <code>{'<Suspense>'}</code> boundary will switch to blocking
+          rendering, just like in React 17.
         </p>
         <SmallParagraph>
           To be clear, React switches to urgent rendering only within a single{' '}
-          <code>{'<Suspense>'}</code> boundary. If your site has multiple{' '}
-          <code>{'<Suspense>'}</code> parts, only one of them will hydrate
-          urgently.
+          <code>{'<Suspense>'}</code> boundary. This means it should be okay to
+          have multiple parts of the site wrapped with{' '}
+          <code>{'<Suspense>'}</code>. If a user clicks something inside one of
+          them, only that part will hydrate urgently.
+        </SmallParagraph>
+        <SmallParagraph>
+          Note: not every event triggers an urgent hydration. Most common –{' '}
+          <code>click</code> or <code>keypress</code> – do, but events like{' '}
+          <code>focusin</code> or <code>pointerover</code>{' '}
+          <a href="https://github.com/reactwg/react-18/discussions/130">
+            are still replayed
+          </a>
+          , like before the change.
         </SmallParagraph>
       </Slide>
 
@@ -892,8 +943,8 @@ const SlidesContent = ({
         }
       >
         <p>
-          And this is the second concurrent feature in React 18 –{' '}
-          <code>{'<Suspense>'}</code> and hydration.
+          So, this is the second concurrent feature in React 18 –{' '}
+          <code>{'<Suspense>'}</code> and its effects on hydration.
         </p>
       </Slide>
 
@@ -979,44 +1030,31 @@ const SlidesContent = ({
         }
       >
         <p>
-          This relies on one of my favorite lesser-known browser APIs:{' '}
+          The behind-the-flag implementation relies on one of my favorite
+          lesser-known browser APIs:{' '}
           <a href="https://web.dev/isinputpending/">
             <code>navigator.scheduling.isInputPending()</code>
           </a>
-          .
+          . <code>isInputPending()</code> is a function that returns{' '}
+          <code>true</code> if the user tried to interact with the page (e.g.,
+          click or type something) since you started running the current piece
+          of JavaScript. This is useful to finish executing this piece of
+          JavaScript early, just like React does!
         </p>
         <p>
-          <code>isInputPending()</code> is a function that you could call at any
-          moment from any piece of JavaScript. It will return true if the user
-          tried to interact with the page (e.g., click or type something) since
-          you started running the current piece of JavaScript. This function
-          shipped in Chromium 87; however, unfortunately, as of Sep 2022, it’s{' '}
-          <a href="https://caniuse.com/mdn-api_scheduling_isinputpending">
-            still Chromium-only
-          </a>
-          .
-        </p>
-        <p>
-          Anyway, this is the first drawback of React 18’s concurrent rendering:
+          So this is the first drawback of React 18’s concurrent rendering:
           non-urgent updates take longer. This might be fixed with a new{' '}
           <code>shouldYieldToHost()</code>, but it relies on a Chromium-only
           API, for now.
         </p>
-      </Slide>
-
-      <Slide
-        slideId="slide-32-1"
-        image={
-          <SlideGatsbyImage imageData={getSlideSafe(allSlides, 'slide32-1')} />
-        }
-      >
-        <p>
-          But also – I’m not putting high hopes on this change. Because, per{' '}
+        <SmallParagraph>
+          Unfortunately, I’m not putting high hopes on this change.{' '}
           <a href="https://twitter.com/acdlite/status/1585829304256053255">
-            Andrew Clark (React team)
+            Per Andrew Clark (React team)
           </a>
-          , the perf experiments were inconclusive.
-        </p>
+          , the performance tests of this experiment were inconclusive, so it’s
+          unclear whether it would ship.
+        </SmallParagraph>
       </Slide>
 
       <Slide
