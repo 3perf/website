@@ -24,7 +24,7 @@ const TalkMeta = ({ authors, className, lastUpdatedDate }: TalkMetaProps) => (
   <Container className={className}>
     {lastUpdatedDate && (
       <Date>
-        Last updated on{' '}
+        Last updated:{' '}
         <time dateTime={lastUpdatedDate.toISOString()}>
           {formatDate(lastUpdatedDate)}
         </time>
