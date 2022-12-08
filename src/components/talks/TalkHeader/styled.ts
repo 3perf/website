@@ -24,6 +24,4 @@ export const Title = styled.h1`
   margin-bottom: ${gridSize * 2}px;
 `;
 
-export const Description = styled.div`
-  font-family: 'Merriweather', Georgia, serif;
-`;
+export const Description = styled.div``;
