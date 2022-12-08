@@ -6,6 +6,7 @@ import {
   AnimatedSlide,
   Contents,
   ContentsInner,
+  Footnote,
   LiveDemo,
   SectionHeader,
   Slide,
@@ -310,6 +311,18 @@ const SlidesContent = ({
           as “non-urgent”.
         </p>
       </Slide>
+
+      <Footnote>
+        <p>
+          <strong>
+            <mark>By the way – need help with React performance?</mark>
+          </strong>{' '}
+          We helped product companies like Appsmith, Hugo, and Castor to get
+          React apps{' '}
+          <a href="/#clients">two, three, or even ten times faster</a> and
+          improve customer satisfaction. <a href="/#services">Let’s chat!</a>
+        </p>
+      </Footnote>
 
       <SectionHeader id="react-18">
         React 18 &amp; Non-Urgent Updates
