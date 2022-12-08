@@ -2684,14 +2684,11 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
           </Slide>
         </Slides>
         <TalkMeta
-          authors={[
-            {
-              description: 'PerfPerfPerf founder',
-              imageData: data.iamakulovPhoto.childImageSharp.gatsbyImageData,
-              link: 'https://twitter.com/iamakulov',
-              name: 'Ivan Akulov',
-            },
-          ]}
+          author={{
+            imageData: data.iamakulovPhoto.childImageSharp.gatsbyImageData,
+            link: 'https://twitter.com/iamakulov',
+            name: 'Ivan Akulov',
+          }}
           lastUpdatedDate={lastUpdatedDate}
         />
         <Footnote>
@@ -2761,8 +2758,8 @@ export const query = graphql`
     ) {
       childImageSharp {
         gatsbyImageData(
-          width: 48
-          height: 48
+          width: 24
+          height: 24
           quality: 90
           placeholder: NONE
           layout: FIXED
