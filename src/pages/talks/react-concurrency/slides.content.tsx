@@ -49,18 +49,20 @@ const SlidesContent = ({
           <ContentsInner>
             <ol>
               <li>
-                <a href="#react-17">React 17: blocking rendering</a>
+                <a href="#react-17">React 17 &amp; blocking rendering</a>
               </li>
               <li>
-                <a href="#react-18">React 18: concurrent updates</a>
+                <a href="#react-18">React 18 &amp; concurrent updates</a>
               </li>
               <li>
                 <a href="#under-the-hood">
-                  Under the hood of <code>useTransition</code>
+                  <code>useTransition</code>
                 </a>
               </li>
               <li>
-                <a href="#hydration">Hydration</a>
+                <a href="#suspense">
+                  <code>{`<Suspense>`}</code>
+                </a>
               </li>
               <li style={{ breakInside: 'avoid' }}>
                 <a href="#drawbacks">Drawbacks</a>
@@ -193,22 +195,14 @@ const SlidesContent = ({
           Working with these things – especially with stuff like{' '}
           <code>useTransition</code> – might sometimes feel like magic. So
           today, I want to show you what actually happens in the app whenever
-          you use the first and the second performance features.
+          you use <code>useTransition</code> and <code>{`<Suspense>`}</code>.
         </p>
-        <ul>
-          <li>Which, by the way, together are called “concurrent features”.</li>
-        </ul>
-        <p>
-          How React makes this work under the hood – and what are the drawbacks.
-        </p>
-        <p>
-          So, let’s dive into into useTransition/useDeferredValue hooks. And to
-          show them, let me show you a slow app. [Show slow typing and what
-          happens in DevTools.]
-        </p>
+        <p>And to show that, let’s take a look at a slow app.</p>
       </Slide>
 
-      <SectionHeader id="react-17">React 17: Blocking Rendering</SectionHeader>
+      <SectionHeader id="react-17">
+        React 17 &amp; Blocking Updates
+      </SectionHeader>
 
       <LiveDemo
         slideId="live-demo-1"
@@ -317,7 +311,9 @@ const SlidesContent = ({
         </p>
       </Slide>
 
-      <SectionHeader id="react-18">React 18: Concurrent Updates</SectionHeader>
+      <SectionHeader id="react-18">
+        React 18 &amp; Non-Urgent Updates
+      </SectionHeader>
 
       <Slide
         slideId="slide-17"
@@ -403,7 +399,7 @@ const SlidesContent = ({
       />
 
       <SectionHeader id="under-the-hood">
-        Under The Hood of <code>useTran&shy;sition</code>
+        <code>useTran&shy;sition</code>
       </SectionHeader>
 
       <Slide
@@ -646,7 +642,7 @@ const SlidesContent = ({
         </p>
       </Slide>
 
-      <SectionHeader id="hydration">Hydration</SectionHeader>
+      <SectionHeader id="suspense">{`<Suspense>`}</SectionHeader>
 
       <Slide
         slideId="slide-27-2"
