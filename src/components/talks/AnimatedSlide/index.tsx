@@ -3,7 +3,12 @@ import { FC, SVGProps } from 'react';
 import { Helmet } from 'react-helmet';
 import { JSXChildrenProp } from '../../../types';
 import { ImageWrapper, Text } from '../Slide/styled';
-import { Container, Controls, ControlButton } from './styled';
+import {
+  Container,
+  Controls,
+  ControlButton,
+  ControlButtonState,
+} from './styled';
 
 // Icons from https://heroicons.com/. License: MIT
 const PlayIcon = () => (
@@ -96,14 +101,16 @@ const AnimatedSlide = ({
         </ImageWrapper>
         {hasControls && (
           <Controls>
-            <ControlButton data-control-button="play">
-              <PlayIcon /> Play
-            </ControlButton>
-            <ControlButton data-control-button="pause">
-              <PauseIcon /> Pause
-            </ControlButton>
-            <ControlButton data-control-button="replay">
-              <ReplayIcon /> Replay
+            <ControlButton data-control-button>
+              <ControlButtonState data-control-button-state="play">
+                <PlayIcon /> Play
+              </ControlButtonState>
+              <ControlButtonState data-control-button-state="pause">
+                <PauseIcon /> Pause
+              </ControlButtonState>
+              <ControlButtonState data-control-button-state="replay">
+                <ReplayIcon /> Replay
+              </ControlButtonState>
             </ControlButton>
           </Controls>
         )}
@@ -172,15 +179,20 @@ const AnimatedSlide = ({
               });
 
               // Make buttons interactive
-              containerNode.querySelector('[data-control-button="play"]')?.addEventListener('click', function() {
-                setAnimationState('running');
-              });
-              containerNode.querySelector('[data-control-button="pause"]')?.addEventListener('click', function() {
-                setAnimationState('paused');
-              });
-              containerNode.querySelector('[data-control-button="replay"]')?.addEventListener('click', function() {
-                rewindAnimation();
-                setAnimationState('running');
+              containerNode.querySelector('[data-control-button]')?.addEventListener('click', function() {
+                const animationState = containerNode.dataset.animationState;
+
+                // This MUST mimic styles in styled.ts
+                if (animationState === 'idle') {
+                  setAnimationState('running');
+                } else if (animationState === 'running') {
+                  setAnimationState('paused');
+                } else if (animationState === 'paused') {
+                  setAnimationState('running');
+                } else if (animationState === 'finished') {
+                  rewindAnimation();
+                  setAnimationState('running');
+                }
               });
             }
 
