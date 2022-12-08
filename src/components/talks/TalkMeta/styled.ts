@@ -10,12 +10,11 @@ export const Container = styled.div`
 export const Date = styled.time``;
 
 export const AuthorLink = styled.a`
-  ${linkStyles};
-  font-weight: bold;
+  ${linkStyles}
 
   :hover &,
   :focus &,
   :active & {
-    ${linkActiveStyles};
+    ${linkActiveStyles}
   }
 `;
