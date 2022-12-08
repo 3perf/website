@@ -70,17 +70,17 @@ export const Footnote = styled.div`
   margin-top: ${gridSize * 5}px;
   padding: ${gridSize * 3}px ${gridSize * 4}px ${gridSize * 3}px;
   border-radius: 8px;
-  background: black;
-  color: white;
+  background: ${colors.softYellow};
   max-width: 600px;
+  border: 1px solid black;
 
-  > p > strong {
-    color: ${colors.brightYellow};
+  mark {
+    background: ${colors.brightYellow};
   }
 
   a {
-    --link-color: white;
-    --link-border-color: rgba(255, 255, 255, 0.25);
+    --link-color: black;
+    --link-border-color: rgba(0, 0, 0, 0.25);
   }
 
   ${media.small`

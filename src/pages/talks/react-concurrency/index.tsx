@@ -18,7 +18,7 @@ interface ReactConcurrencyPageProps {
         siteUrl: string;
       };
     };
-    indexSlide: {
+    cover: {
       childImageSharp: {
         gatsbyImageData: IGatsbyImageData;
       };
@@ -32,7 +32,7 @@ interface ReactConcurrencyPageProps {
 }
 
 const publishedDate = new Date(2022, 8, 29);
-const lastUpdatedDate = new Date(2022, 8, 29);
+const lastUpdatedDate = new Date(2022, 11, 8);
 
 const meta = {
   title: 'React Concurrency, Explained',
@@ -106,32 +106,29 @@ const ReactConcurrencyPage = ({ data }: ReactConcurrencyPageProps) => {
         </Helmet>
         <Nav logoKind={LogoKind.Black} />
         <TalkHeader
-          imageData={data.indexSlide.childImageSharp.gatsbyImageData}
+          imageData={data.cover.childImageSharp.gatsbyImageData}
           title={meta.title}
           description={
             <>
               <p>
-                React 18! Concurrent features! Maybe you’re already using{' '}
-                <code>useTransition</code> in production, or maybe you’ve just
-                heard about it. But do you know how React 18 actually achieves
-                the performance wins it brings with itself?
+                When the author of this talk first played with{' '}
+                <code>useTransition</code>, the way it worked felt almost
+                magical. An expensive render got butter-smooth, as if there was
+                no JS to run!
+              </p>
+              <p>
+                However, as the author later learned, to make this magic happen,
+                React has to do a lot of heavy engineering.
               </p>
               <p>
                 In this talk, let’s peek under the hood of React 18’s{' '}
-                <code>useTransition</code>, see how it works, and figure out
-                what drawbacks it has (there’s no free lunch!).
+                <code>useTransition</code> and <code>{`<Suspense>`}</code>, see
+                how they work, and figure out what drawbacks they have (there’s
+                no free lunch!).
               </p>
             </>
           }
         />
-        <Footnote>
-          <p>
-            <strong>Need help with React performance?</strong> We’ve helped
-            product companies like Appsmith, Hugo, and Castor to get React apps{' '}
-            <a href="/#clients">two, three, or even ten times faster</a> and
-            improve customer satisfaction. <a href="/#services">Get a quote</a>
-          </p>
-        </Footnote>
         <TalkMeta
           author={{
             imageData: data.iamakulovPhoto.childImageSharp.gatsbyImageData,
@@ -145,10 +142,15 @@ const ReactConcurrencyPage = ({ data }: ReactConcurrencyPageProps) => {
         <TalkMeta lastUpdatedDate={lastUpdatedDate} />
         <Footnote>
           <p>
-            <strong>Need help with React performance?</strong> We’ve helped
-            product companies like Appsmith, Hugo, and Castor to get React apps{' '}
-            <a href="/#clients">two, three, or even ten times faster</a> and
-            improve customer satisfaction. <a href="/#services">Get a quote</a>
+            <strong>
+              <mark>Want to apply this advice (& more) to your app?</mark>
+            </strong>{' '}
+            We helped React apps like Appsmith, Hugo, and Castor to get two,
+            three, or even ten times faster and make customers happier.
+          </p>
+          <p>
+            Check out <a href="/blog/causal/">a case study</a>, or{' '}
+            <a href="/#services">let’s chat!</a>
           </p>
         </Footnote>
         <Footer />
@@ -167,9 +169,9 @@ export const query = graphql`
       }
     }
 
-    indexSlide: file(
+    cover: file(
       sourceInstanceName: { eq: "pages" }
-      relativePath: { eq: "talks/react-concurrency/slides/title.png" }
+      relativePath: { eq: "talks/react-concurrency/cover.png" }
     ) {
       childImageSharp {
         gatsbyImageData(width: 800, placeholder: NONE, layout: CONSTRAINED)
