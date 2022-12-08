@@ -49,9 +49,12 @@ export const ControlButton = styled.button`
   font-size: ${sizes.fontSmall}px;
 
   &:hover,
-  &:focus,
   &:active {
     ${linkActiveStyles}
+  }
+
+  &:focus {
+    border-color: var(--link-active-border-color);
   }
 `;
 
