@@ -4,26 +4,27 @@ import { gridSize, sizes } from '../../../styles/variables';
 import { Container as SlideContainer } from '../Slide/styled';
 
 export const Container = styled(SlideContainer)`
+  // This MUST mimic the button click logic in index.tsx
   &[data-animation-state='idle'] {
-    [data-control-button='play'] {
+    [data-control-button-state='play'] {
       display: flex;
     }
   }
 
   &[data-animation-state='running'] {
-    [data-control-button='pause'] {
+    [data-control-button-state='pause'] {
       display: flex;
     }
   }
 
   &[data-animation-state='paused'] {
-    [data-control-button='play'] {
+    [data-control-button-state='play'] {
       display: flex;
     }
   }
 
   &[data-animation-state='finished'] {
-    [data-control-button='replay'] {
+    [data-control-button-state='replay'] {
       display: flex;
     }
   }
@@ -34,16 +35,12 @@ export const Controls = styled.div`
 `;
 
 export const ControlButton = styled.button`
-  display: none;
-
   // Mimic link styles but without the underline and blue color
   --link-color: black;
   --link-border-color: rgba(0, 0, 0, 0.25);
   border: 1px solid;
 
   ${linkStyles}
-
-  align-items: center;
 
   margin-left: 2px;
   padding: 2px 4px;
@@ -56,6 +53,11 @@ export const ControlButton = styled.button`
   &:active {
     ${linkActiveStyles}
   }
+`;
+
+export const ControlButtonState = styled.span`
+  display: none;
+  align-items: center;
 
   svg {
     width: 16px;
