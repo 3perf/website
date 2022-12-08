@@ -132,20 +132,17 @@ const ReactConcurrencyPage = ({ data }: ReactConcurrencyPageProps) => {
             improve customer satisfaction. <a href="/#services">Get a quote</a>
           </p>
         </Footnote>
+        <TalkMeta
+          author={{
+            imageData: data.iamakulovPhoto.childImageSharp.gatsbyImageData,
+            link: 'https://twitter.com/iamakulov',
+            name: 'Ivan Akulov',
+          }}
+        />
         <Slides>
           <SlidesContent />
         </Slides>
-        <TalkMeta
-          authors={[
-            {
-              description: 'PerfPerfPerf founder',
-              imageData: data.iamakulovPhoto.childImageSharp.gatsbyImageData,
-              link: 'https://twitter.com/iamakulov',
-              name: 'Ivan Akulov',
-            },
-          ]}
-          lastUpdatedDate={lastUpdatedDate}
-        />
+        <TalkMeta lastUpdatedDate={lastUpdatedDate} />
         <Footnote>
           <p>
             <strong>Need help with React performance?</strong> We’ve helped
@@ -190,8 +187,8 @@ export const query = graphql`
     ) {
       childImageSharp {
         gatsbyImageData(
-          width: 48
-          height: 48
+          width: 24
+          height: 24
           quality: 90
           placeholder: NONE
           layout: FIXED
