@@ -78,7 +78,7 @@ __metadata:
     mime-types: ^2.1.35
     netlify-cms-app: ^2.15.40
     netlify-lambda: ^1.6.3
-    node-fetch: ^3.1.1
+    node-fetch: ^3.2.10
     polished: ^3.6.4
     posthtml-parser: ^0.11.0
     posthtml-render: ^3.0.0
@@ -10431,13 +10431,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fetch-blob@npm:^3.1.2, fetch-blob@npm:^3.1.3":
+"fetch-blob@npm:^3.1.2":
   version: 3.1.4
   resolution: "fetch-blob@npm:3.1.4"
   dependencies:
     node-domexception: ^1.0.0
     web-streams-polyfill: ^3.0.3
   checksum: 81b074f38a2dbfd546dd58e482cefe14e605abd609e272804bf089d588d84f39e3e95b35640bfb376f71d5038c123d4d41be49d9cdf87e5ec8939d37738df0b6
+  languageName: node
+  linkType: hard
+
+"fetch-blob@npm:^3.1.4":
+  version: 3.2.0
+  resolution: "fetch-blob@npm:3.2.0"
+  dependencies:
+    node-domexception: ^1.0.0
+    web-streams-polyfill: ^3.0.3
+  checksum: f19bc28a2a0b9626e69fd7cf3a05798706db7f6c7548da657cbf5026a570945f5eeaedff52007ea35c8bcd3d237c58a20bf1543bc568ab2422411d762dd3d5bf
   languageName: node
   linkType: hard
 
@@ -18010,14 +18020,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"node-fetch@npm:^3.1.1":
-  version: 3.1.1
-  resolution: "node-fetch@npm:3.1.1"
+"node-fetch@npm:^3.2.10":
+  version: 3.3.0
+  resolution: "node-fetch@npm:3.3.0"
   dependencies:
     data-uri-to-buffer: ^4.0.0
-    fetch-blob: ^3.1.3
+    fetch-blob: ^3.1.4
     formdata-polyfill: ^4.0.10
-  checksum: 2e03f9a309a0a3e20758045e5eea5f1a0961be236f01cf9caecfd2224a1388a59a5c7fa3809d16f76cce1b5b7411a61db146fd265b7af5a6c9e5920a18eeef63
+  checksum: e9936908d2783d3c48a038e187f8062de294d75ef43ec8ab812d7cbd682be2b67605868758d2e9cad6103706dcfe4a9d21d78f6df984e8edf10e7a5ce2e665f8
   languageName: node
   linkType: hard
 
