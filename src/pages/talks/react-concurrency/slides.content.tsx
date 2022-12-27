@@ -100,13 +100,13 @@ const SlidesContent = ({
         <p>
           1489 days. This is how much time passed between Dan Abramov{' '}
           <a href="https://reactjs.org/blog/2018/03/01/sneak-peek-beyond-react-16.html">
-            showed the first preview
+            showing the first preview
           </a>{' '}
           of what, back then, was called “Time Slicing” – and{' '}
           <a href="https://reactjs.org/blog/2022/03/29/react-v18.html">
             the React 18 release
-          </a>{' '}
-          which finally made these capabilities available for everyone.
+          </a>
+          , which finally made these capabilities available for everyone.
         </p>
       </Slide>
 
@@ -130,7 +130,7 @@ const SlidesContent = ({
           <a href="https://github.com/reactwg/react-18/discussions/86">
             changes
           </a>
-          , and, today, became known as “Concurrent Rendering”.
+          , and, today, became known as “Concurrent Rendering.”
         </p>
         <SmallParagraph>
           See also:{' '}
@@ -242,7 +242,7 @@ const SlidesContent = ({
         </p>
         <p>
           So if a user tries to interact with the app in any way, they’ll have
-          to wait until the rerender is done. If re-rendering the app takes 2
+          to wait until the rerender is done. If rerendering the app takes 2
           seconds, the user will have to wait for two seconds.
         </p>
       </Slide>
@@ -254,8 +254,8 @@ const SlidesContent = ({
         }
       >
         <p>
-          This is how React 17 works, React 16 works, even React 18 works out of
-          the box.
+          This is how React 17 works, React 16 works, and even React 18 works
+          out of the box.
         </p>
       </Slide>
 
@@ -290,7 +290,7 @@ const SlidesContent = ({
         <ul>
           <li>
             wrap some components with <code>React.memo()</code> – assuming the
-            primary reason the input is slow is because a lot of components are
+            primary reason the input is slow is that a lot of components are
             rerendering unnecessarily,
           </li>
           <li>try finding expensive components and optimizing them,</li>
@@ -303,12 +303,12 @@ const SlidesContent = ({
             <a href="https://css-tricks.com/debouncing-throttling-explained-examples/">
               debounce or throttle
             </a>{' '}
-            the input, so the UI rererenders less frequently.
+            the input so the UI rererenders less frequently.
           </li>
         </ul>
         <p>
           However, React 18 introduces another solution: marking the UI update
-          as “non-urgent”.
+          as “non-urgent.”
         </p>
       </Slide>
 
@@ -354,16 +354,16 @@ const SlidesContent = ({
         </ul>
         <p>Let’s see how this looks.</p>
         <SmallParagraph>
-          ¹ — <em>typically</em> don’t block the page. See{' '}
+          ¹ — <em>typically,</em> don’t block the page. See{' '}
           <a href="#slide38">
-            the third drawback of concurrent rendering below
+            the third drawback of Concurrent Rendering below
           </a>
           .
         </SmallParagraph>
         <SmallParagraph>
-          To learn more about how React 18 handles priorities, see:{' '}
+          To learn more about how React 18 handles priorities, see{' '}
           <a href="https://twitter.com/swyx/status/1402351584533573634">
-            a twitter thread by @swyx
+            a Twitter thread by @swyx
           </a>
           ,{' '}
           <a href="https://github.com/reactwg/react-18/discussions/27">
@@ -393,9 +393,9 @@ const SlidesContent = ({
       >
         <p>This looks pretty magical – so how does this work?</p>
         <p>
-          The way this works is giving the control back to the browser. React
+          The way this works is by giving the control back to the browser. React
           starts rendering the app – and then gives back control to the browser
-          approximately after every frame.
+          approximately every 5 ms.
         </p>
         <p>
           This allows the browser to handle user input immediately. Let’s see
@@ -445,9 +445,9 @@ const SlidesContent = ({
         }
       >
         <p>
-          In React 17, this was pretty much it. You’d start processing the
-          queue, and you’d keep processing it until you’re done. All this time,
-          the thread would be blocked.
+          In React 17, this was it. You’d start processing the queue, and you’d
+          keep processing it until you’re done. All this time, the main thread
+          would be blocked.
         </p>
         <p>But React 18 added two critical changes:</p>
         <ol start={3}>
@@ -457,8 +457,8 @@ const SlidesContent = ({
             should give control back to the browser.
           </li>
           <li>
-            And after the loop, React started to check whether there are still
-            any pending unprocessed updates – and schedule another
+            And after the loop, React 18 now checks whether there are still any
+            pending unprocessed updates – and schedules another
             <code>performWorkUntilDeadline()</code> function to be executed in
             the next frame.
           </li>
@@ -478,12 +478,12 @@ const SlidesContent = ({
         }
       >
         <p>
-          Now, <code>shouldYieldToHost()</code> – the function that decides when
-          React should return control back to the browser – is basically a
-          one-liner.
+          Now, <code>shouldYieldToHost()</code> (the function that decides when
+          React should return control to the browser) has only one condition.
         </p>
         <p>
-          It returns true if the current render has been taking more than 5 ms.
+          It returns true when more than 5 ms have passed since the start of the
+          current render.
         </p>
         <SmallParagraph>
           Actual code of <code>shouldYieldToHost()</code>:{' '}
@@ -500,8 +500,8 @@ const SlidesContent = ({
         }
       >
         <p>
-          <code>schedulePerformWorkUntilDeadline()</code> – the function that
-          schedules the next 5 ms chunk of JavaScript activity – is also pretty
+          <code>schedulePerformWorkUntilDeadline()</code> (the function that
+          schedules the next 5 ms chunk of JavaScript activity) is also pretty
           short.
         </p>
         <ol>
@@ -537,16 +537,15 @@ const SlidesContent = ({
           </a>
           . A new task doesn’t necessarily mean a new frame: if there’s nothing
           to update on the screen, the browser won’t paint a new frame. However,
-          the browser will definitely be able to handle pending user input
-          in-between the tasks.
+          the browser <em>will</em> be able to handle pending user input between
+          the tasks.
         </SmallParagraph>
         <SmallParagraph>
-          ² — The delay is technically called “setTimeout clamping”. It has also
-          been{' '}
+          ² — The delay is technically called “setTimeout clamping.” It was{' '}
           <a href="https://chromestatus.com/feature/4889002157015040">
             recently removed from Chrome
           </a>
-          .
+          , although other browsers still have it.
         </SmallParagraph>
         <SmallParagraph>
           Actual code of <code>schedulePerformWorkUntilDeadline()</code>:{' '}
@@ -566,8 +565,8 @@ const SlidesContent = ({
         <p>
           If you remember <a href="#slide13">this slide</a> from earlier, this
           is how React 17 behaved when I tried typing into the filter field. I
-          typed into the field, that changed the state in a bunch of components,
-          and React rendered all components in one single pass.
+          typed into the field, which changed the state, and React rendered the
+          changed component and all its children in a single pass.
         </p>
       </Slide>
 
@@ -583,21 +582,21 @@ const SlidesContent = ({
           immediately after, calls <code>setFilterValue()</code>.
         </p>
         <ol>
-          <li>That causes the state to update in a bunch of components.</li>
+          <li>That makes React schedule an update to a bunch of components.</li>
           <li>
-            But now, some of these state updates are marked as urgent, and other
-            ones are marked as not.
+            But now, some of these updates are marked as urgent, while others
+            are marked as non-urgent.
           </li>
           <li>
-            So now, React renders the urgent updates in the old, blocking
-            manner. But then, it starts rendering non-urgent updates using the
-            new, non-blocking approach – giving the control back to the browser
-            every 5 ms.
+            So now, React renders the urgent updates in a single pass (like
+            before). But then, non-urgent updates start rendering using the new,
+            non-blocking approach – giving the control back to the browser every
+            5 ms.
           </li>
         </ol>
         <SmallParagraph>
           Curious why React doesn’t use web workers to render non-urgent
-          updates? That’s because they’re a) too limited, and b) bring
+          updates? That’s because they’re a) too limited and b) bring
           initialization, memory, and serialization overheads. See{' '}
           <a href="https://twitter.com/dan_abramov/status/1234297789938589696">
             a thread by Dan Abramov
@@ -614,9 +613,9 @@ const SlidesContent = ({
       >
         <p>
           And so, now, if the user tries to click something during rendering,
-          that click will be handled pretty much immediately. Because every
-          non-urgent render would typically be blocking the main thread only for
-          5-10 milliseconds.
+          the browser will handle that click immediately. That’s because every
+          non-urgent render will typically block the main thread only for 5-10
+          milliseconds.
         </p>
       </Slide>
 
@@ -627,8 +626,8 @@ const SlidesContent = ({
         }
       >
         <p>
-          This is React 18’s Concurrent Rendering, and this is how it works
-          under the hood.
+          This is React 18’s Concurrent Rendering – and how it works under the
+          hood.
         </p>
       </Slide>
 
@@ -639,19 +638,20 @@ const SlidesContent = ({
         }
       >
         <p>
-          Also, there’s another reason why I’m so excited for the React 18
+          There’s also another reason why I’m so excited about the React 18
           release. Sooner or later, Google would likely make{' '}
           <a href="https://web.dev/inp">INP</a> (Interaction to Next Paint) the
           next Core Web Vital.
         </p>
         <p>
           Interaction to Next Paint measures how much the page lags after a
-          click or a keypress. And, right now, every React client I work with
-          has their INP all the way in red.
+          click or a keypress. And right now, every React client I work with has
+          their INP in the red.
         </p>
         <p>
-          <code>useTransition()</code> is a solid way to make interactions
-          cheaper, so it might move the needle into a better direction.
+          <code>useTransition()</code> is a reliable way to make interactions
+          cheaper. So there’s a chance this API will move the INP needle in a
+          better direction.
         </p>
       </Slide>
 
@@ -694,9 +694,9 @@ const SlidesContent = ({
           <li>and get a live site.</li>
         </ul>
         <p>
-          Hydration, in my experience, is typically the most expensive
-          JavaScript operation in a React app. That’s because, during hydration,
-          React renders every component on the page in one go.
+          Hydration is typically the most expensive JavaScript operation in a
+          React app. That’s because, during hydration, React renders every
+          component on the page in one go.
         </p>
       </Slide>
 
@@ -747,7 +747,7 @@ const SlidesContent = ({
           <SlideGatsbyImage imageData={getSlideSafe(allSlides, 'slide27-7')} />
         }
       >
-        <p>Now, React 18 changes it a bit. With React 18, you could now</p>
+        <p>Now, React 18 changes this. With React 18, you can</p>
         <ul>
           <li>take your site – like the Notion site, for example –</li>
           <li>
@@ -789,11 +789,11 @@ const SlidesContent = ({
           <li>
             You’d call <code>hydrateRoot()</code>.
           </li>
-          <li>React will start rendering components, one by one.</li>
+          <li>React will start rendering components in a single pass.</li>
           <li>
             Until it, at some point, stumbles upon the{' '}
             <code>{'<Suspense>'}</code> boundary. React understands that
-            “Suspense” means “non-urgent hydration”, so it wouldn’t proceed past
+            “Suspense” means “non-urgent hydration,” so it wouldn’t proceed past
             that Suspense boundary just yet.
           </li>
           <li>
@@ -828,20 +828,21 @@ const SlidesContent = ({
           a non-urgent one.
         </p>
         <p>
-          Without <code>{`<Suspense>`}</code>, the whole hydration process was
-          treated an urgent. If hydration was taking 600 ms, the browser would
-          spend 600 ms hydrating the whole app at once.
+          Without <code>{`<Suspense>`}</code>, React treated the whole hydration
+          process as urgent. If hydration took 600 ms, the main thread would
+          stay stay blocked for 600 ms.
         </p>
         <p>
           Now, with <code>{`<Suspense>`}</code>, the urgent part might take just
-          300 ms instead of 600 ms. So no matter when the user tries to interact
-          with the app, the interaction will get blocked for 300 ms at most.
+          300 ms instead of 600 ms. The main thread will stay blocked only for
+          300 ms – so if the user tries to interact with the app during
+          hydration, the interaction will get blocked for 300 ms at most.
         </p>
       </Slide>
 
       <AnimatedSlide slideId="slide-27-12" Svg={Slide27_12} autoplay="enabled">
         <p>
-          Now, you might ask “Okay, but if this is so good, if this makes the
+          Now, you might ask, “Okay, but if this is so good, if this makes the
           page so responsive, why don’t I wrap the whole app with Suspense?”
         </p>
       </AnimatedSlide>
@@ -863,35 +864,34 @@ const SlidesContent = ({
       >
         <p>
           If you wrap a large part of the site (or the whole site) with
-          Suspense, that part of the site will start rendering in a non-urgent
-          manner, in 5 ms chunks.
+          <code>{'<Suspense>'}</code>, that part of the site will start
+          rendering non-urgently, in 5 ms chunks. And this is precisely what we
+          want, right?
         </p>
         <p>
-          However, if, during this time, the user tries to interact with
-          something inside <code>{'<Suspense>'}</code>, React won’t ignore that
-          click. Ignoring the click would be a bad user experience! Instead,
-          React will try to figure out which component has a matching{' '}
-          <code>onClick</code>.
+          However, if, during hydration, the user tries to interact with
+          something inside <code>{'<Suspense>'}</code>, React will immediately
+          switch back to the blocking mode.
         </p>
         <p>
-          But how can React learn which component has the right{' '}
-          <code>onClick</code> before every component is hydrated? Early in the
-          React 18 development cycle, the React team tried to solve this by
-          introducing{' '}
-          <a href="https://github.com/reactwg/react-18/discussions/37#discussioncomment-833682">
-            event replaying
-          </a>
-          . If a user tried to click something inside a Suspense boundary while
-          it was being hydrated, React would remember the event. Then, once the
-          hydration was over, it would re-dispatch the event, letting the right
-          component handle it.
+          Why? The non-hydrated part of the app is not interactive. By default,
+          if you were to click a non-hydrated button, nothing would happen. But
+          this is a bad user experience!
         </p>
         <p>
-          However, that didn’t quite work out – as it turned out,{' '}
+          So, as soon as React starts hydration, it overrides this experience.
+          If you click a non-hydrated button while hydration is ongoing, React
+          will try to execute the <code>onClick</code> listener on that button.
+        </p>
+        <p>
+          But how can React learn which <code>onClick</code> that button has
+          before the button is hydrated? It can’t. It would be cool if React
+          finished the hydration, then found the right <code>onClick</code>, and
+          executed it, replaying the click event – but{' '}
           <a href="https://github.com/reactwg/react-18/discussions/83">
-            some events can’t be replayed well
+            that’s not possible due to browser limitations
           </a>
-          .
+          . So instead, React switches back to urgent rendering.
         </p>
       </Slide>
 
@@ -904,15 +904,9 @@ const SlidesContent = ({
         }
       >
         <p>
-          Because event replaying didn’t work out, the React team had to switch
-          to a different approach.
-        </p>
-        <p>
-          In the final React 18.0 release, when the user clicks something inside{' '}
-          <code>{'<Suspense>'}</code>, React will switch to urgent rendering. It
-          will hydrate the remaining part of the <code>{'<Suspense>'}</code>{' '}
-          boundary immediately, without breaks – and <em>then</em> will call the
-          right event handler.
+          With urgent rendering, React will hydrate the remaining part of the{' '}
+          <code>{'<Suspense>'}</code> boundary in a single pass – and{' '}
+          <em>then</em> will call the right event handler.
         </p>
         <p>
           Between the user’s click and the event handler’s call, the app will
@@ -922,7 +916,27 @@ const SlidesContent = ({
           <code>{'<Suspense>'}</code> boundary will switch to blocking
           rendering, just like in React 17.
         </p>
+
         <SmallParagraph>
+          <strong>Note: more details on event replaying.</strong> Early in the
+          React 18 development cycle, the React team tried to introduce{' '}
+          <a href="https://github.com/reactwg/react-18/discussions/37#discussioncomment-833682">
+            event replaying
+          </a>
+          . If a user clicked something inside a Suspense boundary while it was
+          being hydrated, React would remember the event. Then, once the
+          hydration was over, it would re-dispatch the event, letting the right
+          component handle it. However, that didn’t quite work out – as it
+          turned out,{' '}
+          <a href="https://github.com/reactwg/react-18/discussions/83">
+            some events can’t be replayed well
+          </a>
+          .
+        </SmallParagraph>
+        <SmallParagraph>
+          <strong>
+            Note: only a single <code>{'<Suspense>'}</code>.
+          </strong>{' '}
           To be clear, React switches to urgent rendering only within a single{' '}
           <code>{'<Suspense>'}</code> boundary. This means it should be okay to
           have multiple parts of the site wrapped with{' '}
@@ -930,9 +944,9 @@ const SlidesContent = ({
           them, only that part will hydrate urgently.
         </SmallParagraph>
         <SmallParagraph>
-          Note: not every event triggers an urgent hydration. Most common –{' '}
-          <code>click</code> or <code>keypress</code> – do, but events like{' '}
-          <code>focusin</code> or <code>pointerover</code>{' '}
+          <strong>Note: not every event triggers urgent hydration.</strong> Most
+          common events – <code>click</code> or <code>keypress</code> – do, but
+          events like <code>focusin</code> or <code>pointerover</code>{' '}
           <a href="https://github.com/reactwg/react-18/discussions/130">
             are still replayed
           </a>
@@ -956,7 +970,7 @@ const SlidesContent = ({
         }
       >
         <p>
-          So, this is the second concurrent feature in React 18 –{' '}
+          This is the second concurrent feature in React 18:{' '}
           <code>{'<Suspense>'}</code> and its effects on hydration.
         </p>
       </Slide>
@@ -970,7 +984,8 @@ const SlidesContent = ({
         }
       >
         <p>
-          Now, what about drawbacks? Because, of course, there’s no free lunch.
+          Now, what about the drawbacks? Because, of course, there’s no free
+          lunch.
         </p>
       </Slide>
 
@@ -981,9 +996,9 @@ const SlidesContent = ({
         }
       >
         <p>
-          The first drawback is that non-urgent updates take longer. React has
-          to yield the control back to the browser all the time, and that
-          introduces some delays.
+          The first drawback is that non-urgent updates take longer. This is
+          because React has to yield the control back to the browser all the
+          time, which introduces some delays.
         </p>
       </Slide>
 
@@ -1007,9 +1022,9 @@ const SlidesContent = ({
           implemented behind a flag.
         </p>
         <p>
-          In React 18.0, <a href="#slide22">as we talked</a>,{' '}
+          In React 18, <a href="#slide22">as we talked</a>,{' '}
           <code>shouldYieldToHost()</code> is basically a one-liner. React
-          returns the control back to the browser every 5 ms.
+          returns the control to the browser every 5 ms.
         </p>
       </Slide>
 
@@ -1028,20 +1043,6 @@ const SlidesContent = ({
           interacting with the app – and yields back to the browser only if the
           user did. (Or if the render is taking longer than 300 ms.)
         </p>
-        <SmallParagraph>
-          Actual code:{' '}
-          <a href="https://github.com/facebook/react/blob/f0efa1164b7ca8523b081223954d05c88e92053b/packages/scheduler/src/forks/Scheduler.js#L452-L483">
-            <code>scheduler/src/forks/Scheduler.js#L452-L483</code>
-          </a>
-        </SmallParagraph>
-      </Slide>
-
-      <Slide
-        slideId="slide-32"
-        image={
-          <SlideGatsbyImage imageData={getSlideSafe(allSlides, 'slide32')} />
-        }
-      >
         <p>
           The behind-the-flag implementation relies on one of my favorite
           lesser-known browser APIs:{' '}
@@ -1055,18 +1056,19 @@ const SlidesContent = ({
           JavaScript early, just like React does!
         </p>
         <p>
-          So this is the first drawback of React 18’s concurrent rendering:
-          non-urgent updates take longer. This might be fixed with a new{' '}
-          <code>shouldYieldToHost()</code>, but it relies on a Chromium-only
-          API, for now.
-        </p>
-        <SmallParagraph>
-          Unfortunately, I’m not putting high hopes on this change.{' '}
+          However, unfortunately, I’m not putting high hopes on the alternative
+          implementation.{' '}
           <a href="https://twitter.com/acdlite/status/1585829304256053255">
             Per Andrew Clark (React team)
           </a>
-          , the performance tests of this experiment were inconclusive, so it’s
-          unclear whether it would ship.
+          , the performance tests for this experiment were inconclusive, so it’s
+          unclear whether it would ship or help at all.
+        </p>
+        <SmallParagraph>
+          Actual code:{' '}
+          <a href="https://github.com/facebook/react/blob/f0efa1164b7ca8523b081223954d05c88e92053b/packages/scheduler/src/forks/Scheduler.js#L452-L483">
+            <code>scheduler/src/forks/Scheduler.js#L452-L483</code>
+          </a>
         </SmallParagraph>
       </Slide>
 
@@ -1078,7 +1080,7 @@ const SlidesContent = ({
       >
         <p>
           The second drawback of React 18’s concurrent rendering is: it’s
-          compex, and this extra complexity doesn’t come for free.
+          complex, and this extra complexity doesn’t come for free.
         </p>
         <p>
           To make concurrent rendering possible, React had to make its
@@ -1152,7 +1154,7 @@ const SlidesContent = ({
       >
         <p>
           The React team, however, seems to play a long game – and is explicit
-          about it. Mostly on Twitter, though, because that’s where all the real
+          about it. Mainly on Twitter, though, because that’s where all the real
           documentation lives nowadays:
         </p>
         <ul>
@@ -1188,7 +1190,7 @@ const SlidesContent = ({
           the upcoming Offscreen API.
         </p>
         <p>
-          The Offscreen API will allow to pre-render stuff like inactive routes
+          The Offscreen API will allow pre-rendering stuff like inactive routes
           or tabs in the background. Every part of the app you’ll wrap with{' '}
           <code>{'<Offscreen mode="hidden">'}</code> (note: not a final API)
           will render{' '}
@@ -1248,15 +1250,15 @@ const SlidesContent = ({
           Let’s look at React’s rendering loop again. The{' '}
           <code>performUnitOfWork()</code> function renders one component from
           the queue, and the <code>shouldYieldToHost()</code> function tells
-          React when it should give the control to the browser.
+          React when it should give control to the browser.
         </p>
         <p>
           The pitfall is: <code>shouldYieldToHost()</code> is only called when{' '}
           <code>performUnitOfWork()</code> completes. And{' '}
           <code>performUnitOfWork()</code> doesn’t complete until the component
           is rendered. (It physically can’t: “rendering” a component means
-          calling the component’s function; once you called a function, you
-          can’t interrupt its execution.)
+          calling the component’s function; once you call a function, you can’t
+          interrupt its execution.)
         </p>
       </Slide>
 

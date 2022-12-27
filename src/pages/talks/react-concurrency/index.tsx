@@ -111,16 +111,6 @@ const ReactConcurrencyPage = ({ data }: ReactConcurrencyPageProps) => {
           description={
             <>
               <p>
-                When the author of this talk first played with{' '}
-                <code>useTransition</code>, the way it worked felt almost
-                magical. An expensive render got butter-smooth, as if there was
-                no JS to run!
-              </p>
-              <p>
-                However, as the author later learned, to make this magic happen,
-                React has to do a lot of heavy engineering.
-              </p>
-              <p>
                 In this talk, let’s peek under the hood of React 18’s{' '}
                 <code>useTransition</code> and <code>{`<Suspense>`}</code>, see
                 how they work, and figure out what drawbacks they have (there’s
@@ -135,6 +125,15 @@ const ReactConcurrencyPage = ({ data }: ReactConcurrencyPageProps) => {
             link: 'https://twitter.com/iamakulov',
             name: 'Ivan Akulov',
           }}
+          presentedAt={
+            <>
+              <a href="https://smashingconf.com/freiburg-2022/schedule/#day2-ivan-akulov">
+                Smashing Conf
+              </a>{' '}
+              and{' '}
+              <a href="https://perfnow.nl/speakers#ivan">performance.now()</a>
+            </>
+          }
         />
         <Slides>
           <SlidesContent />
