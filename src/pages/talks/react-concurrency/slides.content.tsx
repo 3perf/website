@@ -543,9 +543,13 @@ const SlidesContent = ({
         <SmallParagraph>
           ² — The delay is technically called “setTimeout clamping.” It was{' '}
           <a href="https://chromestatus.com/feature/4889002157015040">
-            recently removed from Chrome
+            recently removed from modern browsers
           </a>
-          , although other browsers still have it.
+          . For example, Chrome now enables it only{' '}
+          <a href="https://chromestatus.com/feature/5710690097561600">
+            when <code>setTimeout()</code> is nested more than 15 levels deep
+          </a>
+          .
         </SmallParagraph>
         <SmallParagraph>
           Actual code of <code>schedulePerformWorkUntilDeadline()</code>:{' '}
