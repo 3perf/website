@@ -69,15 +69,15 @@ const SlidesContent = ({
                 <a href="#drawbacks">Drawbacks</a>
                 <ol>
                   <li>
-                    <a href="#slide29">
+                    <a href="#slide-29">
                       Non-urgent updates take (a bit) longer
                     </a>
                   </li>
                   <li>
-                    <a href="#slide33">Extra CPU cost</a>
+                    <a href="#slide-33">Extra CPU cost</a>
                   </li>
                   <li>
-                    <a href="#slide38">
+                    <a href="#slide-38">
                       Doesn’t help to optimize expensive components
                     </a>
                   </li>
