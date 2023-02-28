@@ -98,19 +98,18 @@ export const BadgeImage = styled.img`
 `;
 
 export const Badge = styled.span`
-  border-radius: 2px;
+  border-radius: 999px;
   padding: 2px 8px;
 
-  background: url(${backgroundUrl}) center bottom;
+  border: 1px solid ${colors.brightYellow};
   background-size: 100px;
-  color: #222;
+  color: ${colors.brightYellow};
 
-  font-size: ${sizes.fontSmall}px;
+  font-size: 10px;
   text-transform: uppercase;
   letter-spacing: 1px;
   white-space: nowrap;
-
-  transform: translateX(${gridSize}px);
+  vertical-align: middle;
 `;
 
 export const MailchimpSubscribe = styled(_MailchimpSubscribe)`

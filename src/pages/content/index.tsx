@@ -27,7 +27,7 @@ import twitterCoverUrl from './twitter-cover.png';
 
 interface ContentPageProps {
   data: {
-    webPerf101: GraphqlImage;
+    reactConcurrency: GraphqlImage;
     webpackLibs: GraphqlImage;
     notion: GraphqlImage;
     reexports: GraphqlImage;
@@ -40,15 +40,15 @@ interface ContentItemProps {
   image?: GraphqlImage;
   title: string | JSXChildrenProp;
   description?: string | JSXChildrenProp;
+  badge?: string | JSXChildrenProp;
   link: string;
-  isTopHit?: boolean;
 }
 const ContentItem = ({
   image,
   title,
   description,
   link,
-  isTopHit,
+  badge,
 }: ContentItemProps) => {
   return (
     <ItemLink href={link}>
@@ -60,7 +60,7 @@ const ContentItem = ({
       <div>
         <ItemTitle>{title}</ItemTitle>
         &nbsp;
-        {isTopHit && <Badge>Top Hit</Badge>}
+        {badge && <Badge>{badge}</Badge>}
       </div>
       {description && <ItemDescription>{description}</ItemDescription>}
     </ItemLink>
@@ -91,6 +91,7 @@ const ContentPage = (props: ContentPageProps) => {
             <ContentItem
               link="/blog/causal/"
               title="Making React interactions in Causal 4× faster"
+              badge="New"
             />
             <ContentItem
               link="https://twitter.com/iamakulov/status/1522008502398554113"
@@ -113,8 +114,14 @@ const ContentPage = (props: ContentPageProps) => {
           <SectionHeader>Guides</SectionHeader>
           <Section>
             <ContentItem
+              link="/talks/react-concurrency/"
+              image={props.data.reactConcurrency}
+              title="React Concurrency, Explained"
+              badge="New"
+            />
+
+            <ContentItem
               link="/talks/web-perf-101/"
-              image={props.data.webPerf101}
               title="Web Performance 101"
               description="A comprehencive guide into modern loading performance"
             />
@@ -183,14 +190,29 @@ const ContentPage = (props: ContentPageProps) => {
               link="https://github.com/GoogleChromeLabs/webpack-libs-optimizations"
               image={props.data.webpackLibs}
               title="webpack-libs-optimizations"
-              description="Performance tips &amp; tricks
-              for popular JS libraries. Created in collaboration with the
-              Google Chrome team"
+              description={
+                <>
+                  Performance tips &amp; tricks for popular JS libraries.
+                  Created in collaboration with the Google Chrome team
+                  <BadgeImage src="https://img.shields.io/github/stars/GoogleChromeLabs/webpack-libs-optimizations" />
+                </>
+              }
             />
             <ContentItem
               link="https://github.com/iamakulov/awesome-webpack-perf"
               title="awesome-webpack-perf"
-              description="A curated list of webpack tools for web performance"
+              description={
+                <>
+                  A curated list of webpack tools for web performance
+                  <BadgeImage src="https://img.shields.io/github/stars/iamakulov/awesome-webpack-perf" />
+                </>
+              }
+            />
+            <ContentItem
+              link="https://github.com/iamakulov/devtools-perf-features"
+              title="devtools-perf-features"
+              badge="New"
+              description="Chrome DevTools’ little known features for performance debugging"
             />
             <ContentItem
               link="https://twitter.com/iamakulov/status/1372562184199364614"
@@ -263,8 +285,8 @@ export default ContentPage;
 
 export const query = graphql`
   {
-    webPerf101: file(
-      relativePath: { eq: "talks/web-perf-101/slides/index.png" }
+    reactConcurrency: file(
+      relativePath: { eq: "talks/react-concurrency/cover.png" }
     ) {
       childImageSharp {
         gatsbyImageData(height: 150, placeholder: NONE, layout: FIXED)
