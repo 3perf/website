@@ -62,7 +62,7 @@ const SlidesContent = ({
               </li>
               <li>
                 <a href="#suspense">
-                  <code>{`<Suspense>`}</code>
+                  <code>{`<Suspense>`}</code> and Hydration
                 </a>
               </li>
               <li style={{ breakInside: 'avoid' }}>
@@ -660,7 +660,7 @@ const SlidesContent = ({
       </Slide>
 
       <SectionHeader id="suspense">
-        <code>{`<Suspense>`}</code>
+        <code>{`<Suspense>`}</code> and Hydration
       </SectionHeader>
 
       <Slide
@@ -867,15 +867,11 @@ const SlidesContent = ({
         }
       >
         <p>
-          If you wrap a large part of the site (or the whole site) with
+          If you wrap a large part of the site (or the whole site) with{' '}
           <code>{'<Suspense>'}</code>, that part of the site will start
-          rendering non-urgently, in 5 ms chunks. And this is precisely what we
-          want, right?
-        </p>
-        <p>
-          However, if, during hydration, the user tries to interact with
-          something inside <code>{'<Suspense>'}</code>, React will immediately
-          switch back to the blocking mode.
+          rendering non-urgently, in 5 ms chunks. But if then the user tries to
+          interact with something inside <code>{'<Suspense>'}</code>, React will
+          immediately switch back to the blocking mode.
         </p>
         <p>
           Why? The non-hydrated part of the app is not interactive. By default,
