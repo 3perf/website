@@ -26,7 +26,7 @@ const Footer = ({
     <Credentials>
       <span>
         {linkToHome ? <Link href="/">PerfPerfPerf</Link> : 'PerfPerfPerf'} ·
-        2017–2022
+        2017–{new Date().getFullYear()}
         {license && (
           <span>
             {' '}
