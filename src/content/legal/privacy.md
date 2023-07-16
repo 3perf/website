@@ -26,7 +26,7 @@ For the purposes of this Privacy Policy:
 
 - **Business**, for the purpose of the CCPA (California Consumer Privacy Act), refers to the Company as the legal entity that collects Consumers' personal information and determines the purposes and means of the processing of Consumers' personal information, or on behalf of which such information is collected and that alone, or jointly with others, determines the purposes and means of the processing of consumers' personal information, that does business in the State of California.
 
-- **Company** (referred to as either “the Company”, “We”, “Us” or “Our” in this Agreement) refers to PerfPerfPerf, Herengracht 551, 1017 BW Amsterdam, Netherlands.
+- **Company** (referred to as either “the Company”, “We”, “Us” or “Our” in this Agreement) refers to PerfPerfPerf, a sole proprietorship registered in Amsterdam, Netherlands.
 
   For the purpose of the GDPR, the Company is the Data Controller.
 
@@ -283,4 +283,4 @@ You are advised to review this Privacy Policy periodically for any changes. Chan
 If you have any questions about this Privacy Policy, You can contact us:
 
 - By email: [legal@3perf.com](mailto:legal@3perf.com)
-- By mail: Herengracht 551, 1017 BW Amsterdam, Netherlands
+- By mail: Postbus 15881, 1001NJ Amsterdam, Netherlands

@@ -24,7 +24,7 @@ For the purposes of these Terms and Conditions:
 
 - **Country** refers to: Netherlands
 
-- **Company** (referred to as either “the Company”, “We”, “Us” or “Our” in this Agreement) refers to PerfPerfPerf, Herengracht 551, 1017 BW Amsterdam, Netherlands.
+- **Company** (referred to as either “the Company”, “We”, “Us” or “Our” in this Agreement) refers to PerfPerfPerf, a sole proprietorship registered in Amsterdam, Netherlands.
 
 - **Device** means any device that can access the Website such as a computer, a cellphone or a digital tablet.
 
@@ -173,4 +173,4 @@ By continuing to access or use Our Website after those revisions become effectiv
 If you have any questions about these Terms and Conditions, You can contact us:
 
 - By email: [legal@3perf.com](mailto:legal@3perf.com)
-- By mail: Herengracht 551, 1017 BW Amsterdam, Netherlands
+- By mail: Postbus 15881, 1001NJ Amsterdam, Netherlands
