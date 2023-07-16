@@ -1,7 +1,5 @@
 import { graphql } from 'gatsby';
 import { IGatsbyImageData } from 'gatsby-plugin-image';
-import * as React from 'react';
-import { Helmet } from 'react-helmet';
 import Layout from '../../../components/Layout';
 import { LogoKind } from '../../../components/Logo';
 import WidthWrapper from '../../../components/WidthWrapper';
@@ -10,14 +8,10 @@ import TalkMeta from '../../../components/talks/TalkMeta';
 import { Footer, Footnote, Nav, Slides } from '../styled';
 import socialCoverUrl from './cover.png';
 import SlidesContent from './slides.content';
+import { useSiteMetadata } from '../../../shared/useSiteMetadata';
 
 interface ReactConcurrencyPageProps {
   data: {
-    site: {
-      siteMetadata: {
-        siteUrl: string;
-      };
-    };
     cover: {
       childImageSharp: {
         gatsbyImageData: IGatsbyImageData;
@@ -41,69 +35,76 @@ const meta = {
   url: 'https://3perf.com/talks/react-concurrency',
 };
 
-const ReactConcurrencyPage = ({ data }: ReactConcurrencyPageProps) => {
-  const fullSocialCoverUrl = `${data.site.siteMetadata.siteUrl}${socialCoverUrl}`;
+// TODO: move basic meta tags for article to a separate component that will take
+// props like title, description, url, author, etc.
+export const Head = () => {
+  const siteMetadata = useSiteMetadata();
 
+  const fullSocialCoverUrl = `${siteMetadata.siteUrl}${socialCoverUrl}`;
+
+  return (
+    <>
+      <title>{meta.title} | PerfPerfPerf</title>
+
+      <meta name="description" content={meta.description} />
+      <meta name="image" content={fullSocialCoverUrl} />
+      <link rel="canonical" href={meta.url} />
+      <meta itemProp="name" content={meta.title} />
+      <meta itemProp="description" content={meta.description} />
+      <meta itemProp="image" content={fullSocialCoverUrl} />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content={meta.title} />
+      <meta name="twitter:description" content={meta.description} />
+      <meta name="twitter:site" content="@3perfcom" />
+      <meta name="twitter:creator" content="@iamakulov" />
+      <meta name="twitter:image:src" content={fullSocialCoverUrl} />
+      <meta name="og:title" content={meta.title} />
+      <meta name="og:description" content={meta.description} />
+      <meta property="og:url" content={meta.url} />
+      <meta property="og:image" content={fullSocialCoverUrl} />
+      <meta property="og:site_name" content="PerfPerfPerf" />
+      <meta property="fb:admins" content="100002052594007" />
+      <meta property="og:type" content="article" />
+      <meta property="article:author" content="Ivan Akulov" />
+      <script type="application/ld+json">
+        {JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'TechArticle',
+          headline: meta.title,
+          description: meta.description,
+          image: fullSocialCoverUrl,
+          author: {
+            '@type': 'Person',
+            name: 'Ivan Akulov',
+            url: 'https://twitter.com/iamakulov',
+          },
+          publisher: {
+            '@type': 'Organization',
+            name: 'PerfPerfPerf',
+            url: 'https://3perf.com',
+            logo: {
+              '@type': 'ImageObject',
+              url: 'https://3perf.com/3perf-logo-black-raster.png',
+              width: 1500,
+              height: 1500,
+            },
+          },
+          datePublished: publishedDate.toISOString(),
+          dateModified: lastUpdatedDate.toISOString(),
+          mainEntityOfPage: {
+            '@type': 'WebPage',
+            url: meta.url,
+          },
+        })}
+      </script>
+    </>
+  );
+};
+
+const ReactConcurrencyPage = ({ data }: ReactConcurrencyPageProps) => {
   return (
     <Layout>
       <WidthWrapper>
-        {/* ! Suggestion: move basic meta tags for article to a separate component,
-              that takes props like title, description, url, author, etc. */}
-        <Helmet>
-          <title>{meta.title} | PerfPerfPerf</title>
-
-          <meta name="description" content={meta.description} />
-          <meta name="image" content={fullSocialCoverUrl} />
-          <link rel="canonical" href={meta.url} />
-          <meta itemProp="name" content={meta.title} />
-          <meta itemProp="description" content={meta.description} />
-          <meta itemProp="image" content={fullSocialCoverUrl} />
-          <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:title" content={meta.title} />
-          <meta name="twitter:description" content={meta.description} />
-          <meta name="twitter:site" content="@3perfcom" />
-          <meta name="twitter:creator" content="@iamakulov" />
-          <meta name="twitter:image:src" content={fullSocialCoverUrl} />
-          <meta name="og:title" content={meta.title} />
-          <meta name="og:description" content={meta.description} />
-          <meta property="og:url" content={meta.url} />
-          <meta property="og:image" content={fullSocialCoverUrl} />
-          <meta property="og:site_name" content="PerfPerfPerf" />
-          <meta property="fb:admins" content="100002052594007" />
-          <meta property="og:type" content="article" />
-          <meta property="article:author" content="Ivan Akulov" />
-          <script type="application/ld+json">
-            {JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'TechArticle',
-              headline: meta.title,
-              description: meta.description,
-              image: fullSocialCoverUrl,
-              author: {
-                '@type': 'Person',
-                name: 'Ivan Akulov',
-                url: 'https://twitter.com/iamakulov',
-              },
-              publisher: {
-                '@type': 'Organization',
-                name: 'PerfPerfPerf',
-                url: 'https://3perf.com',
-                logo: {
-                  '@type': 'ImageObject',
-                  url: 'https://3perf.com/3perf-logo-black-raster.png',
-                  width: 1500,
-                  height: 1500,
-                },
-              },
-              datePublished: publishedDate.toISOString(),
-              dateModified: lastUpdatedDate.toISOString(),
-              mainEntityOfPage: {
-                '@type': 'WebPage',
-                url: meta.url,
-              },
-            })}
-          </script>
-        </Helmet>
         <Nav logoKind={LogoKind.Black} />
         <TalkHeader
           imageData={data.cover.childImageSharp.gatsbyImageData}
@@ -162,12 +163,6 @@ export default ReactConcurrencyPage;
 
 export const query = graphql`
   {
-    site {
-      siteMetadata {
-        siteUrl
-      }
-    }
-
     cover: file(
       sourceInstanceName: { eq: "pages" }
       relativePath: { eq: "talks/react-concurrency/cover.png" }

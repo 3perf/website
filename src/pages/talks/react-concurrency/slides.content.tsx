@@ -1,6 +1,5 @@
-import { graphql, StaticQuery } from 'gatsby';
+import { graphql, useStaticQuery } from 'gatsby';
 import { IGatsbyImageData } from 'gatsby-plugin-image';
-import React from 'react';
 import { SlideGatsbyImage } from '../../../components/talks/Slide';
 import {
   AnimatedSlide,
@@ -787,7 +786,7 @@ const SlidesContent = ({
         <p>Here’s how this would look when implemented.</p>
       </Slide>
 
-      <AnimatedSlide slideId="slide-27-9" Svg={Slide27_9} hasControls>
+      <AnimatedSlide slideId="slide-27-9" svg={<Slide27_9 />} hasControls>
         <p>With this change, here’s how hydration will work:</p>
         <ol>
           <li>
@@ -844,7 +843,11 @@ const SlidesContent = ({
         </p>
       </Slide>
 
-      <AnimatedSlide slideId="slide-27-12" Svg={Slide27_12} autoplay="enabled">
+      <AnimatedSlide
+        slideId="slide-27-12"
+        svg={<Slide27_12 />}
+        autoplay="enabled"
+      >
         <p>
           Now, you might ask, “Okay, but if this is so good, if this makes the
           page so responsive, why don’t I wrap the whole app with Suspense?”
@@ -1338,81 +1341,78 @@ const SlidesContent = ({
   );
 };
 
-const SlidesContentWithQuery = () => (
-  <StaticQuery
-    query={graphql`
-      query {
-        sectionHeaders: allFile(
-          filter: {
-            relativeDirectory: { eq: "talks/react-concurrency/slides" }
-            name: { glob: "*-header" }
-          }
-        ) {
-          edges {
-            node {
-              name
-              childImageSharp {
-                gatsbyImageData(
-                  width: 700
-                  placeholder: NONE
-                  layout: CONSTRAINED
-                )
-              }
-            }
-          }
+const SlidesContentWithQuery = () => {
+  const data = useStaticQuery<{
+    allSlides: {
+      edges: Array<{
+        node: {
+          name: string;
+          childImageSharp: {
+            gatsbyImageData: IGatsbyImageData;
+          };
+        };
+      }>;
+    };
+    sectionHeaders: {
+      edges: Array<{
+        node: {
+          name: string;
+          childImageSharp: {
+            gatsbyImageData: IGatsbyImageData;
+          };
+        };
+      }>;
+    };
+  }>(graphql`
+    query {
+      sectionHeaders: allFile(
+        filter: {
+          relativeDirectory: { eq: "talks/react-concurrency/slides" }
+          name: { glob: "*-header" }
         }
-        allSlides: allFile(
-          filter: {
-            relativeDirectory: { eq: "talks/react-concurrency/slides" }
-            extension: { nin: ["svg", "mp4"] }
-          }
-        ) {
-          edges {
-            node {
-              name
-              childImageSharp {
-                gatsbyImageData(
-                  width: 500
-                  placeholder: NONE
-                  layout: CONSTRAINED
-                )
-              }
+      ) {
+        edges {
+          node {
+            name
+            childImageSharp {
+              gatsbyImageData(
+                width: 700
+                placeholder: NONE
+                layout: CONSTRAINED
+              )
             }
           }
         }
       }
-    `}
-    render={(data: {
-      allSlides: {
-        edges: Array<{
-          node: {
-            name: string;
-            childImageSharp: {
-              gatsbyImageData: IGatsbyImageData;
-            };
-          };
-        }>;
-      };
-      sectionHeaders: {
-        edges: Array<{
-          node: {
-            name: string;
-            childImageSharp: {
-              gatsbyImageData: IGatsbyImageData;
-            };
-          };
-        }>;
-      };
-    }) => {
-      const allSlidesByName = Object.fromEntries(
-        data.allSlides.edges.map((edge) => {
-          return [edge.node.name, edge.node.childImageSharp.gatsbyImageData];
-        }),
-      );
+      allSlides: allFile(
+        filter: {
+          relativeDirectory: { eq: "talks/react-concurrency/slides" }
+          extension: { nin: ["svg", "mp4"] }
+        }
+      ) {
+        edges {
+          node {
+            name
+            childImageSharp {
+              gatsbyImageData(
+                width: 500
+                placeholder: NONE
+                layout: CONSTRAINED
+              )
+            }
+          }
+        }
+      }
+    }
+  `);
 
-      return <SlidesContent allSlides={allSlidesByName} />;
-    }}
-  />
-);
+  const allSlidesByName = Object.fromEntries(
+    data.allSlides.edges.map((edge) => {
+      return [edge.node.name, edge.node.childImageSharp.gatsbyImageData];
+    }),
+  );
+
+  return <SlidesContent allSlides={allSlidesByName} />;
+};
 
 export default SlidesContentWithQuery;

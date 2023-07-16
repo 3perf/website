@@ -6,12 +6,13 @@
     "module": "esnext",
     "moduleResolution": "node",
     "target": "esnext",
-    "jsx": "react",
+    "jsx": "react-jsx",
     "lib": ["dom", "es2020"],
     "esModuleInterop": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "allowJs": true
+    "allowJs": true,
+    "skipLibCheck": true
   },
   "include": ["./src/**/*", "gatsby-config.js"]
 }

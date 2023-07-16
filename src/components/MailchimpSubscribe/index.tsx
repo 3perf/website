@@ -1,4 +1,3 @@
-import React from 'react';
 import assertExists from 'ts-assert-exists';
 import {
   Container,

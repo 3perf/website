@@ -16,32 +16,30 @@ export const Container = styled.figure`
   }
 `;
 
-interface ImageWrapperProps {
-  useImageBorder: boolean;
-  isSectionHeader: boolean;
-}
-
-// prettier-ignore
-export const ImageWrapper = styled.a`
+export const ImageWrapper = styled.a<{
+  $useImageBorder: boolean;
+  $isSectionHeader: boolean;
+}>`
   position: relative;
   display: block;
   width: 100%;
   max-width: 500px;
   border: thin solid
-    ${(props: ImageWrapperProps) =>
-      props.useImageBorder ? '#ccc' : 'transparent'};
+    ${(props) => (props.$useImageBorder ? '#ccc' : 'transparent')};
 
-  ${(props: ImageWrapperProps) => props.isSectionHeader && css`
-    ${media.notSmall`
-      max-width: 700px;
-    `}
+  ${(props) =>
+    props.$isSectionHeader &&
+    css`
+      ${media.notSmall`
+        max-width: 700px;
+      `}
 
-    ${media.small`
-      margin: 0 -${sizes.contentPadding}px;
-      width: calc(100% + ${sizes.contentPadding}px * 2);
-      max-width: none;
+      ${media.small`
+        margin: 0 -${sizes.contentPadding}px;
+        width: calc(100% + ${sizes.contentPadding}px * 2);
+        max-width: none;
+      `}
     `}
-  `}
 
   &::before {
     content: '#';
@@ -84,17 +82,15 @@ export const ImageWrapper = styled.a`
   }
 `;
 
-interface TextWrapperProps {
-  isSectionHeader: boolean;
-}
-
-export const Text = styled.figcaption`
+export const Text = styled.figcaption<{
+  $isSectionHeader: boolean;
+}>`
   flex: 1 1 300px;
   margin-top: calc(10px + 4px);
   word-break: break-word;
 
-  ${(props: TextWrapperProps) =>
-    props.isSectionHeader &&
+  ${(props) =>
+    props.$isSectionHeader &&
     css`
       ${media.notSmall`
       font-size: 1.25em;

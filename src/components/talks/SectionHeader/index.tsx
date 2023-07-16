@@ -1,4 +1,3 @@
-import React from 'react';
 import { JSXChildrenProp } from '../../../types';
 import { Container, Link } from './styled';
 

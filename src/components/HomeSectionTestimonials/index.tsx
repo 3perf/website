@@ -1,4 +1,3 @@
-import * as React from 'react';
 import appsmithLogo from './appsmith.svg';
 import castorLogo from './castor.svg';
 import commonLogo from './common.svg';

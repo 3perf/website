@@ -10,19 +10,19 @@ export const Container = styled.span`
 `;
 
 export const Img = styled.img<{
-  layout: IGatsbyImageData['layout'];
-  width: number;
+  $layout: IGatsbyImageData['layout'];
+  $width: number;
 }>`
   ${(props) => {
-    if (props.layout === 'constrained') {
+    if (props.$layout === 'constrained') {
       return css`
         width: 100%;
         height: auto;
-        max-width: ${props.width}px;
+        max-width: ${props.$width}px;
       `;
     }
 
-    if (props.layout === 'fullWidth') {
+    if (props.$layout === 'fullWidth') {
       return css`
         width: 100%;
         height: auto;

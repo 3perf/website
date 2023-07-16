@@ -1,5 +1,4 @@
-import { graphql, StaticQuery } from 'gatsby';
-import * as React from 'react';
+import { graphql, useStaticQuery } from 'gatsby';
 import { GraphqlImage } from '../../types';
 import Section, { SectionKind } from '../Section';
 import {
@@ -52,21 +51,19 @@ const AboutSection = ({ data }: AboutSectionProps) => (
   </Section>
 );
 
-const AboutSectionWithQuery = () => (
-  <StaticQuery
-    query={graphql`
-      {
-        talkImage: file(
-          relativePath: { eq: "HomeSectionAbout/talk_cropped.jpg" }
-        ) {
-          childImageSharp {
-            gatsbyImageData(width: 727, placeholder: NONE, layout: CONSTRAINED)
-          }
+const AboutSectionWithQuery = () => {
+  const data: AboutSectionData = useStaticQuery(graphql`
+    {
+      talkImage: file(
+        relativePath: { eq: "HomeSectionAbout/talk_cropped.jpg" }
+      ) {
+        childImageSharp {
+          gatsbyImageData(width: 727, placeholder: NONE, layout: CONSTRAINED)
         }
       }
-    `}
-    render={(data: AboutSectionData) => <AboutSection data={data} />}
-  />
-);
+    }
+  `);
+  return <AboutSection data={data} />;
+};
 
 export default AboutSectionWithQuery;

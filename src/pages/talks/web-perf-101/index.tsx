@@ -1,7 +1,5 @@
 import { graphql } from 'gatsby';
 import { IGatsbyImageData } from 'gatsby-plugin-image';
-import * as React from 'react';
-import { Helmet } from 'react-helmet';
 import Layout from '../../../components/Layout';
 import { LogoKind } from '../../../components/Logo';
 import WidthWrapper from '../../../components/WidthWrapper';
@@ -29,6 +27,7 @@ import httpCdnUrl from './slides/http-cdn.svg';
 import jsScriptsBlockParsing1Url from './slides/js-scripts-block-parsing-1.svg';
 import perfImportanceDigitsUrl from './slides/perf-importance-digits.svg';
 import toolsWebpackBundleAnalyzer from './slides/tools-webpack-bundle-analyzer.mp4';
+import { useSiteMetadata } from '../../../shared/useSiteMetadata';
 
 interface FileUrl {
   publicURL: string;
@@ -36,11 +35,6 @@ interface FileUrl {
 
 interface WebPerf101PageProps {
   data: {
-    site: {
-      siteMetadata: {
-        siteUrl: string;
-      };
-    };
     indexSlide: {
       childImageSharp: {
         gatsbyImageData: IGatsbyImageData;
@@ -83,9 +77,94 @@ interface WebPerf101PageProps {
 const publishedDate = new Date(2018, 9, 25);
 const lastUpdatedDate = new Date(2022, 6, 16);
 
-const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
-  const fullSocialCoverUrl = `${data.site.siteMetadata.siteUrl}${socialCoverUrl}`;
+export const Head = () => {
+  const siteMetadata = useSiteMetadata();
 
+  const fullSocialCoverUrl = `${siteMetadata.siteUrl}${socialCoverUrl}`;
+
+  return (
+    <>
+      <title>
+        Web Performance 101: JS, CSS, HTTP, images &amp; fonts | PerfPerfPerf
+      </title>
+      {/* Hooray! Meta tags! */}
+      <meta
+        name="description"
+        content="Learn how (and why) to make your app faster by optimizing JS, CSS, images/fonts and other things"
+      />
+      <meta name="image" content={fullSocialCoverUrl} />
+      <meta
+        itemProp="name"
+        content="Web Performance 101: JS, CSS, HTTP, images & fonts"
+      />
+      <meta
+        itemProp="description"
+        content="Learn how (and why) to make your app faster by optimizing JS, CSS, images/fonts and other things"
+      />
+      <meta itemProp="image" content={fullSocialCoverUrl} />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta
+        name="twitter:title"
+        content="Web Performance 101: JS, CSS, HTTP, images & fonts"
+      />
+      <meta
+        name="twitter:description"
+        content="Learn how (and why) to make your app faster by optimizing JS, CSS, images/fonts and other things"
+      />
+      <meta name="twitter:site" content="@3perfcom" />
+      <meta name="twitter:creator" content="@iamakulov" />
+      <meta name="twitter:image:src" content={fullSocialCoverUrl} />
+      <meta
+        name="og:title"
+        content="Web Performance 101: JS, CSS, HTTP, images & fonts"
+      />
+      <meta
+        name="og:description"
+        content="Learn how (and why) to make your app faster by optimizing JS, CSS, images/fonts and other things"
+      />
+      <meta property="og:url" content="https://3perf.com/talks/web-perf-101/" />
+      <meta property="og:image" content={fullSocialCoverUrl} />
+      <meta property="og:site_name" content="PerfPerfPerf" />
+      <meta property="fb:admins" content="100002052594007" />
+      <meta property="og:type" content="article" />
+      <meta property="article:author" content="Ivan Akulov" />
+      <script type="application/ld+json">
+        {JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'TechArticle',
+          headline: 'Web Performance 101: JS, CSS, HTTP, images & fonts',
+          description:
+            'Learn how (and why) to make your app faster by optimizing JS, CSS, images/fonts and other things',
+          image: fullSocialCoverUrl,
+          author: {
+            '@type': 'Person',
+            name: 'Ivan Akulov',
+            url: 'https://twitter.com/iamakulov',
+          },
+          publisher: {
+            '@type': 'Organization',
+            name: 'PerfPerfPerf',
+            url: 'https://3perf.com',
+            logo: {
+              '@type': 'ImageObject',
+              url: 'https://3perf.com/3perf-logo-black-raster.png',
+              width: 1500,
+              height: 1500,
+            },
+          },
+          datePublished: publishedDate.toISOString(),
+          dateModified: lastUpdatedDate.toISOString(),
+          mainEntityOfPage: {
+            '@type': 'WebPage',
+            url: 'https://3perf.com/talks/web-perf-101/',
+          },
+        })}
+      </script>
+    </>
+  );
+};
+
+const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
   const allSlidesByName = Object.fromEntries(
     data.allSlides.edges.map((edge) => {
       return [edge.node.name, edge.node.childImageSharp.gatsbyImageData];
@@ -101,88 +180,6 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
   return (
     <Layout>
       <WidthWrapper>
-        <Helmet>
-          <title>
-            Web Performance 101: JS, CSS, HTTP, images &amp; fonts |
-            PerfPerfPerf
-          </title>
-          {/* Hooray! Meta tags! */}
-          <meta
-            name="description"
-            content="Learn how (and why) to make your app faster by optimizing JS, CSS, images/fonts and other things"
-          />
-          <meta name="image" content={fullSocialCoverUrl} />
-          <meta
-            itemProp="name"
-            content="Web Performance 101: JS, CSS, HTTP, images & fonts"
-          />
-          <meta
-            itemProp="description"
-            content="Learn how (and why) to make your app faster by optimizing JS, CSS, images/fonts and other things"
-          />
-          <meta itemProp="image" content={fullSocialCoverUrl} />
-          <meta name="twitter:card" content="summary_large_image" />
-          <meta
-            name="twitter:title"
-            content="Web Performance 101: JS, CSS, HTTP, images & fonts"
-          />
-          <meta
-            name="twitter:description"
-            content="Learn how (and why) to make your app faster by optimizing JS, CSS, images/fonts and other things"
-          />
-          <meta name="twitter:site" content="@3perfcom" />
-          <meta name="twitter:creator" content="@iamakulov" />
-          <meta name="twitter:image:src" content={fullSocialCoverUrl} />
-          <meta
-            name="og:title"
-            content="Web Performance 101: JS, CSS, HTTP, images & fonts"
-          />
-          <meta
-            name="og:description"
-            content="Learn how (and why) to make your app faster by optimizing JS, CSS, images/fonts and other things"
-          />
-          <meta
-            property="og:url"
-            content="https://3perf.com/talks/web-perf-101/"
-          />
-          <meta property="og:image" content={fullSocialCoverUrl} />
-          <meta property="og:site_name" content="PerfPerfPerf" />
-          <meta property="fb:admins" content="100002052594007" />
-          <meta property="og:type" content="article" />
-          <meta property="article:author" content="Ivan Akulov" />
-          <script type="application/ld+json">
-            {JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'TechArticle',
-              headline: 'Web Performance 101: JS, CSS, HTTP, images & fonts',
-              description:
-                'Learn how (and why) to make your app faster by optimizing JS, CSS, images/fonts and other things',
-              image: fullSocialCoverUrl,
-              author: {
-                '@type': 'Person',
-                name: 'Ivan Akulov',
-                url: 'https://twitter.com/iamakulov',
-              },
-              publisher: {
-                '@type': 'Organization',
-                name: 'PerfPerfPerf',
-                url: 'https://3perf.com',
-                logo: {
-                  '@type': 'ImageObject',
-                  url: 'https://3perf.com/3perf-logo-black-raster.png',
-                  width: 1500,
-                  height: 1500,
-                },
-              },
-              datePublished: publishedDate.toISOString(),
-              dateModified: lastUpdatedDate.toISOString(),
-              mainEntityOfPage: {
-                '@type': 'WebPage',
-                url: 'https://3perf.com/talks/web-perf-101/',
-              },
-            })}
-          </script>
-        </Helmet>
         <Nav logoKind={LogoKind.Black} />
         <TalkHeader
           imageData={data.indexSlide.childImageSharp.gatsbyImageData}
@@ -2710,12 +2707,6 @@ export default WebPerf101Page;
 
 export const query = graphql`
   {
-    site {
-      siteMetadata {
-        siteUrl
-      }
-    }
-
     indexSlide: file(
       sourceInstanceName: { eq: "pages" }
       relativePath: { eq: "talks/web-perf-101/slides/index.png" }

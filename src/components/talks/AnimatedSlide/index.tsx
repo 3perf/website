@@ -1,14 +1,9 @@
-import * as React from 'react';
-import { FC, SVGProps } from 'react';
-import { Helmet } from 'react-helmet';
+'use client';
+
+import { SVGProps, useEffect, useRef, useState } from 'react';
 import { JSXChildrenProp } from '../../../types';
 import { ImageWrapper, Text } from '../Slide/styled';
-import {
-  Container,
-  Controls,
-  ControlButton,
-  ControlButtonState,
-} from './styled';
+import { Container, Controls, ControlButton } from './styled';
 
 // Icons from https://heroicons.com/. License: MIT
 const PlayIcon = () => (
@@ -58,7 +53,7 @@ const ReplayIcon = () => (
 
 interface SlideProps {
   slideId: string;
-  Svg: FC<SVGProps<SVGSVGElement>>;
+  svg: React.ReactElement<SVGProps<SVGSVGElement>>;
   children: JSXChildrenProp;
   className?: string;
   useImageBorder?: boolean;
@@ -69,7 +64,7 @@ interface SlideProps {
 
 const AnimatedSlide = ({
   slideId,
-  Svg,
+  svg,
   children,
   className,
   useImageBorder = false,
@@ -77,112 +72,93 @@ const AnimatedSlide = ({
   hasControls = false,
   autoplay = 'on-viewport-entry',
 }: SlideProps) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const [animationState, setAnimationState] = useState<AnimationPlayState>(
+    autoplay === 'enabled' ? 'running' : 'idle',
+  );
+
+  useEffect(() => {
+    getAnimatedElements().forEach(function (element) {
+      element.style.animationPlayState =
+        animationState === 'running' ? 'running' : 'paused';
+    });
+  }, [animationState]);
+
+  // Init the intersection observer if needed
+  useEffect(() => {
+    if (autoplay !== 'on-viewport-entry') return;
+    if (!containerRef.current) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setAnimationState('running');
+
+            // Don’t trigger the animation anymore, even if the user scrolls back up
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 1 },
+    );
+
+    observer.observe(containerRef.current);
+
+    return () => observer.disconnect();
+  }, []);
+
+  function getAnimatedElements() {
+    const containerNode = containerRef.current;
+    if (!containerNode) return [];
+
+    const svgNode = containerNode.querySelector('[data-svg-container]');
+    if (!svgNode) return [];
+
+    const animatedElements: SVGGElement[] = Array.from(
+      svgNode.querySelectorAll('g g') ?? [],
+    );
+
+    return animatedElements;
+  }
+
+  function rewindAnimation() {
+    getAnimatedElements().forEach(function (element) {
+      element.getAnimations().forEach(function (animation) {
+        animation.currentTime = 0;
+      });
+    });
+  }
+
   return (
-    <Container
-      // idle | running | paused | finished, to mimic https://developer.mozilla.org/en-US/docs/Web/API/Animation/playState
-      data-animation-state="idle"
-      className={className}
-      id={slideId}
-    >
-      <div>
+    <Container ref={containerRef} className={className} id={slideId}>
+      <div
+        // The onAnimationEnd event bubbles up from the svg element
+        onAnimationEnd={() => {
+          const allAnimationsFinished = getAnimatedElements().every((element) =>
+            element.getAnimations().every(function (animation) {
+              return animation.playState === 'finished';
+            }),
+          );
+
+          if (allAnimationsFinished) {
+            setAnimationState('finished');
+          }
+        }}
+      >
         <ImageWrapper
+          data-svg-container
           href={`#${slideId}`}
-          useImageBorder={useImageBorder}
-          isSectionHeader={isSectionHeader}
+          $useImageBorder={useImageBorder}
+          $isSectionHeader={isSectionHeader}
         >
-          <Svg
-            data-svg-animation
-            style={{
-              height: 'auto',
-              display: 'block',
-            }}
-            viewBox="0 0 1280 720"
-          />
+          {svg}
         </ImageWrapper>
         {hasControls && (
           <Controls>
-            <ControlButton data-control-button>
-              <ControlButtonState data-control-button-state="play">
-                <PlayIcon /> Play
-              </ControlButtonState>
-              <ControlButtonState data-control-button-state="pause">
-                <PauseIcon /> Pause
-              </ControlButtonState>
-              <ControlButtonState data-control-button-state="replay">
-                <ReplayIcon /> Replay
-              </ControlButtonState>
-            </ControlButton>
-          </Controls>
-        )}
-      </div>
-      <Text isSectionHeader={isSectionHeader}>{children}</Text>
-      <Helmet>
-        <script>
-          {`
-          (function() {
-            function initAnimation() {
-              const containerNode = document.querySelector('#${slideId}');
-              const svgNode = containerNode.querySelector('[data-svg-animation]');
-              const animatedElements = [...svgNode.querySelectorAll('g g')];
-
-              function rewindAnimation() {
-                animatedElements.forEach(function(element) {
-                  element.getAnimations().forEach(function(animation) {
-                    animation.currentTime = 0;
-                  });
-                });
-              }
-
-              function setAnimationState(animationState) {
-                containerNode.dataset.animationState = animationState;
-
-                animatedElements.forEach(function(element) {
-                  element.style.animationPlayState = animationState === 'running' ? 'running' : 'paused';
-                });
-              }
-
-              // Start the animation if necessary
-              if (${JSON.stringify(autoplay)} === 'on-viewport-entry') {
-                const threshold = 1;
-                const observer = new IntersectionObserver(
-                  function(entries) {
-                    entries.forEach(function(entry) {
-                      if (entry.isIntersecting) {
-                        setAnimationState('running');
-
-                        // Don’t trigger the animation anymore, even if the user scrolls back up
-                        observer.unobserve(entry.target);
-                      }
-                    });
-                  },
-                  { threshold },
-                );
-
-                observer.observe(svgNode);
-              } else if (${JSON.stringify(autoplay)} === 'enabled') {
-                setAnimationState('running');
-              }
-
-              // Switch the button to “Replay” when the animation is finished
-              animatedElements.forEach(function(element) {
-                element.addEventListener('animationend', function() {
-                  const allAnimationsFinished = animatedElements.every(function(element) {
-                    return element.getAnimations().every(function(animation) {
-                      return animation.playState === 'finished';
-                    });
-                  });
-
-                  if (allAnimationsFinished) {
-                    setAnimationState('finished');
-                  }
-                });
-              });
-
-              // Make buttons interactive
-              containerNode.querySelector('[data-control-button]')?.addEventListener('click', function() {
-                const animationState = containerNode.dataset.animationState;
-
-                // This MUST mimic styles in styled.ts
+            <ControlButton
+              onClick={() => {
                 if (animationState === 'idle') {
                   setAnimationState('running');
                 } else if (animationState === 'running') {
@@ -193,20 +169,44 @@ const AnimatedSlide = ({
                   rewindAnimation();
                   setAnimationState('running');
                 }
-              });
-            }
-
-            if (document.readyState === 'loading') {
-              document.addEventListener('DOMContentLoaded', initAnimation);
-            } else {
-              initAnimation();
-            }
-          })()
-          `}
-        </script>
-      </Helmet>
+              }}
+            >
+              {getControlButtonContents(animationState)}
+            </ControlButton>
+          </Controls>
+        )}
+      </div>
+      <Text $isSectionHeader={isSectionHeader}>{children}</Text>
     </Container>
   );
 };
+
+function getControlButtonContents(animationState: AnimationPlayState) {
+  if (animationState === 'idle' || animationState === 'paused') {
+    return (
+      <>
+        <PlayIcon /> Play
+      </>
+    );
+  }
+
+  if (animationState === 'running') {
+    return (
+      <>
+        <PauseIcon /> Pause
+      </>
+    );
+  }
+
+  if (animationState === 'finished') {
+    return (
+      <>
+        <ReplayIcon /> Replay
+      </>
+    );
+  }
+
+  throw new Error(`Unknown animation state: ${animationState}`);
+}
 
 export default AnimatedSlide;

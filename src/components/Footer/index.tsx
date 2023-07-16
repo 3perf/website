@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { JSXChildrenProp } from '../../types';
 import Link from '../Link';
 import { Container, Credentials, Legal, LicenseName } from './styled';
@@ -31,7 +30,7 @@ const Footer = ({
           <span>
             {' '}
             · License:{' '}
-            <LicenseName useFontSpacing={useLicenseFontSpacing}>
+            <LicenseName $useFontSpacing={useLicenseFontSpacing}>
               {license}
             </LicenseName>
           </span>

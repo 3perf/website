@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { JSXChildrenProp } from '../../types';
 import { Left, Right, Wrapper } from './styled';
 
@@ -15,7 +14,7 @@ const HomeLeftRightWrapper = ({
   className = '',
   alwaysVertical = false,
 }: HomeLeftRightWrapperProps) => (
-  <Wrapper className={className} alwaysVertical={alwaysVertical}>
+  <Wrapper className={className} $alwaysVertical={alwaysVertical}>
     <Left>{left}</Left>
     <Right>{right}</Right>
   </Wrapper>

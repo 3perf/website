@@ -1,5 +1,5 @@
 import { IGatsbyImageData } from 'gatsby-plugin-image';
-import * as React from 'react';
+import { Fragment } from 'react';
 import { JSXChildrenProp } from '../../../types';
 import { Container, Date, AuthorImage, AuthorLink, AuthorName } from './styled';
 
@@ -43,21 +43,19 @@ const TalkMeta = ({
 
   if (author) {
     items.push(
-      <React.Fragment key="author">
+      <Fragment key="author">
         Author:{' '}
         <AuthorLink href={author.link} rel="author">
           <AuthorImage imageData={author.imageData} />
           <AuthorName>{author.name}</AuthorName>
         </AuthorLink>
-      </React.Fragment>,
+      </Fragment>,
     );
   }
 
   if (presentedAt) {
     items.push(
-      <React.Fragment key="presented-at">
-        Presented at {presentedAt}
-      </React.Fragment>,
+      <Fragment key="presented-at">Presented at {presentedAt}</Fragment>,
     );
   }
 

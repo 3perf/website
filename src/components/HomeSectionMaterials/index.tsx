@@ -1,5 +1,4 @@
-import { graphql, StaticQuery } from 'gatsby';
-import * as React from 'react';
+import { graphql, useStaticQuery } from 'gatsby';
 import { GraphqlImage } from '../../types';
 import HomeLeftRightWrapper from '../HomeLeftRightWrapper';
 import Link from '../Link';
@@ -70,21 +69,19 @@ const MaterialsSection = ({ data }: MaterialsSectionProps) => (
   </Section>
 );
 
-const MaterialsSectionWithQuery = () => (
-  <StaticQuery
-    query={graphql`
-      {
-        webPerf101: file(
-          relativePath: { eq: "HomeSectionMaterials/web-perf-101.png" }
-        ) {
-          childImageSharp {
-            gatsbyImageData(width: 600, placeholder: NONE, layout: CONSTRAINED)
-          }
+const MaterialsSectionWithQuery = () => {
+  const data: MaterialsSectionData = useStaticQuery(graphql`
+    {
+      webPerf101: file(
+        relativePath: { eq: "HomeSectionMaterials/web-perf-101.png" }
+      ) {
+        childImageSharp {
+          gatsbyImageData(width: 600, placeholder: NONE, layout: CONSTRAINED)
         }
       }
-    `}
-    render={(data: MaterialsSectionData) => <MaterialsSection data={data} />}
-  />
-);
+    }
+  `);
+  return <MaterialsSection data={data} />;
+};
 
 export default MaterialsSectionWithQuery;

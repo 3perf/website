@@ -1,32 +1,12 @@
 import styled from 'styled-components';
 import { linkActiveStyles, linkStyles } from '../../../styles/shared-styles';
 import { gridSize, sizes } from '../../../styles/variables';
-import { Container as SlideContainer } from '../Slide/styled';
+import { Container as _Container } from '../Slide/styled';
 
-export const Container = styled(SlideContainer)`
-  // This MUST mimic the button click logic in index.tsx
-  &[data-animation-state='idle'] {
-    [data-control-button-state='play'] {
-      display: flex;
-    }
-  }
-
-  &[data-animation-state='running'] {
-    [data-control-button-state='pause'] {
-      display: flex;
-    }
-  }
-
-  &[data-animation-state='paused'] {
-    [data-control-button-state='play'] {
-      display: flex;
-    }
-  }
-
-  &[data-animation-state='finished'] {
-    [data-control-button-state='replay'] {
-      display: flex;
-    }
+export const Container = styled(_Container)`
+  svg {
+    height: auto;
+    display: block;
   }
 `;
 
@@ -35,6 +15,9 @@ export const Controls = styled.div`
 `;
 
 export const ControlButton = styled.button`
+  display: flex;
+  align-items: center;
+
   // Mimic link styles but without the underline and blue color
   --link-color: black;
   --link-border-color: rgba(0, 0, 0, 0.25);
@@ -56,11 +39,6 @@ export const ControlButton = styled.button`
   &:focus {
     border-color: var(--link-active-border-color);
   }
-`;
-
-export const ControlButtonState = styled.span`
-  display: none;
-  align-items: center;
 
   svg {
     width: 16px;

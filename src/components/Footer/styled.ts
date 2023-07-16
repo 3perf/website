@@ -17,12 +17,10 @@ export const Legal = styled.div`
   letter-spacing: 1px;
 `;
 
-interface LicenseNameProps {
-  useFontSpacing: boolean;
-}
-export const LicenseName = styled.span`
-  letter-spacing: ${(props: LicenseNameProps) =>
-    props.useFontSpacing ? 1 : 0}px;
+export const LicenseName = styled.span<{
+  $useFontSpacing: boolean;
+}>`
+  letter-spacing: ${(props) => (props.$useFontSpacing ? 1 : 0)}px;
 `;
 
 export const PaymentDetails = styled.img.attrs({

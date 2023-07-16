@@ -24,8 +24,8 @@ export const DesktopImage = styled(_Image)``;
 export const Text = styled.div``;
 
 interface ImageTextProps {
-  direction: 'forward' | 'reverse';
-  desktopImageHeight: number;
+  $direction: 'forward' | 'reverse';
+  $desktopImageHeight: number;
 }
 
 export const ImageText = styled.div<ImageTextProps>`
@@ -58,7 +58,7 @@ export const ImageText = styled.div<ImageTextProps>`
   `}
 
   ${media.notSmall`
-    min-height: ${(props: ImageTextProps) => props.desktopImageHeight}px;
+    min-height: ${(props: ImageTextProps) => props.$desktopImageHeight}px;
 
     ${MobileImageWrapper} {
       display: none;
@@ -70,14 +70,14 @@ export const ImageText = styled.div<ImageTextProps>`
       align-self: flex-start;
 
       ${(props: ImageTextProps) =>
-        props.direction === 'forward' &&
+        props.$direction === 'forward' &&
         css`
           right: 350px;
           margin-right: ${gridSize * 2}px;
         `}
 
       ${(props: ImageTextProps) =>
-        props.direction === 'reverse' &&
+        props.$direction === 'reverse' &&
         css`
           left: 350px;
           margin-left: ${gridSize * 2}px;
@@ -86,7 +86,7 @@ export const ImageText = styled.div<ImageTextProps>`
 
     ${Text} {
       margin: ${(props: ImageTextProps) =>
-        props.direction === 'forward' ? '0 0 0 auto' : '0 auto 0 0'};
+        props.$direction === 'forward' ? '0 0 0 auto' : '0 auto 0 0'};
       margin-top: ${gridSize * 4}px;
       width: 350px;
     }

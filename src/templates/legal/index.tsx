@@ -1,6 +1,4 @@
 import { graphql } from 'gatsby';
-import * as React from 'react';
-import { Helmet } from 'react-helmet';
 import Layout from '../../components/Layout';
 import { LogoKind } from '../../components/Logo';
 import WidthWrapper from '../../components/WidthWrapper';
@@ -27,8 +25,20 @@ interface ComponentProps {
   };
 }
 
-const Component = ({ data }: ComponentProps) => {
+export const Head = ({ data }: ComponentProps) => {
+  const title = data.markdownRemark.frontmatter.title;
   const siteMetadata = data.site.siteMetadata;
+
+  return (
+    <>
+      <title>
+        {title} · {siteMetadata.title}
+      </title>
+    </>
+  );
+};
+
+const Component = ({ data }: ComponentProps) => {
   const page = data.markdownRemark;
 
   const title = data.markdownRemark.frontmatter.title;
@@ -36,11 +46,6 @@ const Component = ({ data }: ComponentProps) => {
   return (
     <Layout>
       <WidthWrapper>
-        <Helmet>
-          <title>
-            {title} · {siteMetadata.title}
-          </title>
-        </Helmet>
         <Nav logoKind={LogoKind.Black} />
         <Header>
           <Title>{title}</Title>

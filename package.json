@@ -2,6 +2,10 @@
   "name": "3perf.com",
   "version": "1.0.0",
   "private": true,
+  "browserslist": [
+    "defaults and supports es6-module",
+    "maintained node versions"
+  ],
   "dependencies": {
     "@fontsource/fira-code": "^4.5.10",
     "@fontsource/merriweather": "^4.5.12",
@@ -23,14 +27,13 @@
     "polished": "^3.6.4",
     "prismjs": "^1.27.0",
     "query-string": "^6.12.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-helmet": "^6.0.0",
+    "react": "canary",
+    "react-dom": "canary",
     "react-is": "^18.2.0",
     "react-script-tag": "^1.1.2",
     "react-twitter-widgets": "^1.7.1",
     "strip-indent": "^3.0.0",
-    "styled-components": "^5.3.0",
+    "styled-components": "^6.0.4",
     "ts-assert-exists": "^1.0.4"
   },
   "scripts": {
@@ -41,11 +44,11 @@
     "lint": "eslint --fix 'src/**/*.{ts,tsx}'"
   },
   "devDependencies": {
-    "@babel/plugin-proposal-class-properties": "^7.10.1",
-    "@babel/plugin-proposal-object-rest-spread": "^7.10.1",
-    "@babel/plugin-transform-object-assign": "^7.10.1",
-    "@babel/preset-env": "^7.10.2",
-    "@babel/preset-typescript": "^7.10.1",
+    "@babel/plugin-proposal-class-properties": "^7.18.6",
+    "@babel/plugin-proposal-object-rest-spread": "^7.20.7",
+    "@babel/plugin-transform-object-assign": "^7.22.5",
+    "@babel/preset-env": "^7.22.9",
+    "@babel/preset-typescript": "^7.22.5",
     "@netlify/plugin-gatsby": "^1.0.3",
     "@types/aws-lambda": "^8.10.53",
     "@types/cheerio": "^0.22.18",
@@ -57,11 +60,9 @@
     "@types/reach__router": "^1.3.5",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
-    "@types/react-helmet": "^6.0.0",
     "@types/react-mailchimp-subscribe": "^2.0.1",
-    "@types/styled-components": "^5.1.3",
     "@weknow/gatsby-remark-twitter": "^0.2.3",
-    "babel-plugin-styled-components": "^1.8.0",
+    "babel-plugin-styled-components": "^2.1.4",
     "block-elements": "^1.2.0",
     "cross-env": "^7.0.2",
     "eslint": "^7.30.0",
@@ -71,7 +72,6 @@
     "gatsby-plugin-feed": "^5.11.0",
     "gatsby-plugin-lodash": "^6.11.0",
     "gatsby-plugin-netlify": "^5.1.0",
-    "gatsby-plugin-react-helmet": "^6.11.0",
     "gatsby-plugin-react-svg": "^3.3.0",
     "gatsby-plugin-sharp": "^5.11.0",
     "gatsby-plugin-styled-components": "^6.11.0",
@@ -96,7 +96,7 @@
     "remark-directive": "^1",
     "remark-image-attributes": "^0.2.1",
     "subfont": "^5.0.2",
-    "typescript": "^4.3.4",
+    "typescript": "^5.1.6",
     "unist-util-visit": "^2.0.2",
     "unist-util-visit-parents": "^3.0.2"
   }

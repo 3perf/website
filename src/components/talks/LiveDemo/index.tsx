@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { Caption, CaptionHeader, Figure, Link, Video } from './styled';
 
 interface LiveDemoProps {

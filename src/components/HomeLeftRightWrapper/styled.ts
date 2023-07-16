@@ -5,13 +5,11 @@ export const Left = styled.div``;
 
 export const Right = styled.div``;
 
-interface WrapperExtraProps {
-  alwaysVertical: boolean;
-}
-
-export const Wrapper = styled.section`
-  ${(props: WrapperExtraProps) =>
-    !props.alwaysVertical &&
+export const Wrapper = styled.section<{
+  $alwaysVertical: boolean;
+}>`
+  ${(props) =>
+    !props.$alwaysVertical &&
     css`
       ${media.notSmall`
       display: flex;

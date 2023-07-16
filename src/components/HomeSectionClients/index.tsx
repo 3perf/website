@@ -1,4 +1,3 @@
-import * as React from 'react';
 import Section, { SectionKind } from '../Section';
 import {
   AppsmithLogo,

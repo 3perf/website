@@ -22,6 +22,10 @@ if (process.env.DEV_SITE_HOSTNAME_OVERRIDE) {
 }
 
 module.exports = {
+  jsxRuntime: 'automatic',
+  flags: {
+    PARTIAL_HYDRATION: true,
+  },
   siteMetadata: {
     title: 'PerfPerfPerf',
     description: 'We help companies to earn more by making web apps faster',
@@ -31,7 +35,6 @@ module.exports = {
   },
   plugins: [
     'gatsby-plugin-netlify',
-    'gatsby-plugin-react-helmet',
     'gatsby-plugin-styled-components',
     'gatsby-plugin-typescript',
     `gatsby-plugin-image`,

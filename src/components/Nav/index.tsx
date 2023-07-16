@@ -1,4 +1,3 @@
-import * as React from 'react';
 import NavBase, { NavBaseProps } from '../NavBase';
 
 const Nav = (props: NavBaseProps) => (

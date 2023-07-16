@@ -1,5 +1,4 @@
 import { IGatsbyImageData } from 'gatsby-plugin-image';
-import * as React from 'react';
 import { JSXChildrenProp } from '../../../types';
 import { Container, Description, Image, Title } from './styled';
 

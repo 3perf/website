@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { Fragment } from 'react';
 import Link from '../Link';
 import { LogoKind } from '../Logo';
 import {
@@ -44,7 +44,7 @@ const NavBase = ({
     ) : (
       <Logo logoKind={logoKind} isPlayful={isLogoPlayful} />
     )}
-    <ItemsWrapper navKind={navKind}>
+    <ItemsWrapper $navKind={navKind}>
       <Items>
         {primaryItems &&
           primaryItems.map((item) => (
@@ -55,11 +55,11 @@ const NavBase = ({
         <SecondaryItems>
           {secondaryItems &&
             secondaryItems.map((item) => (
-              <React.Fragment key={item.href}>
+              <Fragment key={item.href}>
                 <Link href={item.href}>{item.title}</Link>
                 {item.href !== secondaryItems[secondaryItems.length - 1].href &&
                   ' or '}
-              </React.Fragment>
+              </Fragment>
             ))}
         </SecondaryItems>
       </Items>

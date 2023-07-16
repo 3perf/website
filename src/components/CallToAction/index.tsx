@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { Inner, Link, Outer } from './styled';
 
 interface CallToActionProps {

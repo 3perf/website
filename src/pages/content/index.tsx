@@ -1,6 +1,4 @@
 import { graphql } from 'gatsby';
-import * as React from 'react';
-import { Helmet } from 'react-helmet';
 import GatsbyImage from '../../components/Image';
 import Layout from '../../components/Layout';
 import { LogoKind } from '../../components/Logo';
@@ -67,17 +65,22 @@ const ContentItem = ({
   );
 };
 
+export function Head() {
+  return (
+    <>
+      <title>Talks, articles and tools by PerfPerfPerf</title>
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:image:src" content={twitterCoverUrl} />
+      <meta name="og:image" content={facebookCoverUrl} />
+    </>
+  );
+}
+
 const ContentPage = (props: ContentPageProps) => {
   return (
     <Background>
       <Layout>
         <WidthWrapper>
-          <Helmet>
-            <title>Talks, articles and tools by PerfPerfPerf</title>
-            <meta name="twitter:card" content="summary_large_image" />
-            <meta name="twitter:image:src" content={twitterCoverUrl} />
-            <meta name="og:image" content={facebookCoverUrl} />
-          </Helmet>
           <Nav logoKind={LogoKind.White} navKind={NavKind.Light} />
           <Header>Web Perf Guides &amp; Tools</Header>
           <SectionHeader>Case Studies</SectionHeader>

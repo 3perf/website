@@ -1,5 +1,3 @@
-import * as React from 'react';
-import { Helmet } from 'react-helmet';
 import styled from 'styled-components';
 import Layout from '../../../components/Layout';
 import { LogoKind } from '../../../components/Logo';
@@ -16,18 +14,17 @@ const IFrame = styled.iframe`
   `}
 `;
 
+export const Head = () => (
+  <>
+    <title>Building quick apps in 2019</title>
+    <meta property="og:url" content="https://3perf.com/talks/quick-apps/" />
+  </>
+);
+
 const QuickAppsPage = () => {
   return (
     <Layout>
       <WidthWrapper>
-        <Helmet>
-          <title>Building quick apps in 2019</title>
-          {/* Hooray! Meta tags! */}
-          <meta
-            property="og:url"
-            content="https://3perf.com/talks/quick-apps/"
-          />
-        </Helmet>
         <Nav logoKind={LogoKind.Black} />
         <IFrame
           src="https://onedrive.live.com/embed?cid=A2820C2EF7555CB4&amp;resid=A2820C2EF7555CB4%211660501&amp;authkey=AHqpMrgQkHFQKdQ&amp;em=2&amp;wdAr=1.7777777777777777"

@@ -22,16 +22,14 @@ export const Logo = styled(_Logo)`
   width: 50px;
 `;
 
-interface ItemsWrapperExtraProps {
-  navKind: NavKind;
-}
-
-export const ItemsWrapper = styled.div<ItemsWrapperExtraProps>`
+export const ItemsWrapper = styled.div<{
+  $navKind: NavKind;
+}>`
   flex: 1 0 auto;
   max-width: calc(100% - ${containerChildrenSpacingHorizontal}px);
 
   ${(props) =>
-    props.navKind === NavKind.Light &&
+    props.$navKind === NavKind.Light &&
     css`
       color: white;
       --link-color: white;

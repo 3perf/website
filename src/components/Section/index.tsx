@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { JSXChildrenProp } from '../../types';
 import HomeLeftRightWrapper from '../HomeLeftRightWrapper';
 import { Content, H2 } from './styled';

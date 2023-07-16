@@ -1,5 +1,4 @@
-import { graphql, StaticQuery } from 'gatsby';
-import * as React from 'react';
+import { graphql, useStaticQuery } from 'gatsby';
 import { GraphqlImage } from '../../types';
 import { SectionKind } from '../Section';
 import {
@@ -56,8 +55,8 @@ const ServicesSection = ({ className = '', data }: ServicesSectionProps) => (
     </SvgMask>
     <ImageText
       id="audit"
-      direction="forward"
-      desktopImageHeight={
+      $direction="forward"
+      $desktopImageHeight={
         data.auditDesktop.childImageSharp.gatsbyImageData.height
       }
     >
@@ -109,8 +108,8 @@ const ServicesSection = ({ className = '', data }: ServicesSectionProps) => (
     </ImageText>
     <ImageText
       id="optimize"
-      direction="reverse"
-      desktopImageHeight={
+      $direction="reverse"
+      $desktopImageHeight={
         data.optimizationDesktop.childImageSharp.gatsbyImageData.height
       }
     >
@@ -156,8 +155,8 @@ const ServicesSection = ({ className = '', data }: ServicesSectionProps) => (
     </ImageText>
     <ImageText
       id="workshop"
-      direction="forward"
-      desktopImageHeight={
+      $direction="forward"
+      $desktopImageHeight={
         data.workshopDesktop.childImageSharp.gatsbyImageData.height
       }
     >
@@ -235,82 +234,75 @@ const ServicesSection = ({ className = '', data }: ServicesSectionProps) => (
   </Section>
 );
 
-const ServicesSectionWithQuery = () => (
-  <StaticQuery
-    query={graphql`
-      {
-        auditDesktop: file(
-          relativePath: { eq: "HomeSectionServices/audit-desktop.png" }
-        ) {
-          childImageSharp {
-            gatsbyImageData(width: 900, placeholder: NONE, layout: FIXED)
-          }
-        }
-        optimizationDesktop: file(
-          relativePath: { eq: "HomeSectionServices/optimization-desktop.png" }
-        ) {
-          childImageSharp {
-            gatsbyImageData(width: 900, placeholder: NONE, layout: FIXED)
-          }
-        }
-        workshopDesktop: file(
-          relativePath: { eq: "HomeSectionServices/workshop-desktop.png" }
-        ) {
-          childImageSharp {
-            gatsbyImageData(width: 900, placeholder: NONE, layout: FIXED)
-          }
-        }
-        auditMobile: file(
-          relativePath: { eq: "HomeSectionServices/audit-mobile.png" }
-        ) {
-          childImageSharp {
-            gatsbyImageData(width: 224, placeholder: NONE, layout: FIXED)
-          }
-        }
-        optimizationMobile: file(
-          relativePath: { eq: "HomeSectionServices/optimization-mobile.png" }
-        ) {
-          childImageSharp {
-            gatsbyImageData(width: 224, placeholder: NONE, layout: FIXED)
-          }
-        }
-        workshopMobile: file(
-          relativePath: { eq: "HomeSectionServices/workshop-mobile.png" }
-        ) {
-          childImageSharp {
-            gatsbyImageData(width: 224, placeholder: NONE, layout: FIXED)
-          }
-        }
-
-        davidAvatar: file(
-          relativePath: { eq: "HomeSectionServices/david.jpg" }
-        ) {
-          childImageSharp {
-            gatsbyImageData(height: 20, placeholder: NONE, layout: FIXED)
-          }
-        }
-
-        nicolasAvatar: file(
-          relativePath: { eq: "HomeSectionServices/nicolas.jpg" }
-        ) {
-          childImageSharp {
-            gatsbyImageData(height: 20, placeholder: NONE, layout: FIXED)
-          }
-        }
-
-        piotrAvatar: file(
-          relativePath: { eq: "HomeSectionServices/piotr.jpg" }
-        ) {
-          childImageSharp {
-            gatsbyImageData(height: 20, placeholder: NONE, layout: FIXED)
-          }
+const ServicesSectionWithQuery = () => {
+  const data: ServicesSectionProps['data'] = useStaticQuery(graphql`
+    {
+      auditDesktop: file(
+        relativePath: { eq: "HomeSectionServices/audit-desktop.png" }
+      ) {
+        childImageSharp {
+          gatsbyImageData(width: 900, placeholder: NONE, layout: FIXED)
         }
       }
-    `}
-    render={(data: ServicesSectionProps['data']) => (
-      <ServicesSection data={data} />
-    )}
-  />
-);
+      optimizationDesktop: file(
+        relativePath: { eq: "HomeSectionServices/optimization-desktop.png" }
+      ) {
+        childImageSharp {
+          gatsbyImageData(width: 900, placeholder: NONE, layout: FIXED)
+        }
+      }
+      workshopDesktop: file(
+        relativePath: { eq: "HomeSectionServices/workshop-desktop.png" }
+      ) {
+        childImageSharp {
+          gatsbyImageData(width: 900, placeholder: NONE, layout: FIXED)
+        }
+      }
+      auditMobile: file(
+        relativePath: { eq: "HomeSectionServices/audit-mobile.png" }
+      ) {
+        childImageSharp {
+          gatsbyImageData(width: 224, placeholder: NONE, layout: FIXED)
+        }
+      }
+      optimizationMobile: file(
+        relativePath: { eq: "HomeSectionServices/optimization-mobile.png" }
+      ) {
+        childImageSharp {
+          gatsbyImageData(width: 224, placeholder: NONE, layout: FIXED)
+        }
+      }
+      workshopMobile: file(
+        relativePath: { eq: "HomeSectionServices/workshop-mobile.png" }
+      ) {
+        childImageSharp {
+          gatsbyImageData(width: 224, placeholder: NONE, layout: FIXED)
+        }
+      }
+
+      davidAvatar: file(relativePath: { eq: "HomeSectionServices/david.jpg" }) {
+        childImageSharp {
+          gatsbyImageData(height: 20, placeholder: NONE, layout: FIXED)
+        }
+      }
+
+      nicolasAvatar: file(
+        relativePath: { eq: "HomeSectionServices/nicolas.jpg" }
+      ) {
+        childImageSharp {
+          gatsbyImageData(height: 20, placeholder: NONE, layout: FIXED)
+        }
+      }
+
+      piotrAvatar: file(relativePath: { eq: "HomeSectionServices/piotr.jpg" }) {
+        childImageSharp {
+          gatsbyImageData(height: 20, placeholder: NONE, layout: FIXED)
+        }
+      }
+    }
+  `);
+
+  return <ServicesSection data={data} />;
+};
 
 export default ServicesSectionWithQuery;

@@ -1,6 +1,7 @@
+'use client';
+
 import classnames from 'classnames';
-import * as React from 'react';
-import { Helmet } from 'react-helmet';
+import { useRef } from 'react';
 import { LogoSvg } from './styled';
 
 interface LogoProps {
@@ -19,42 +20,38 @@ const Logo = ({
   isPlayful = false,
   className,
 }: LogoProps) => {
+  const logoSvgRef = useRef<HTMLDivElement>(null);
+
+  const playAnimation = () => {
+    const letters = Array.from(
+      logoSvgRef.current?.querySelectorAll('#perf-letters path') ?? [],
+    );
+    for (const [index, letter] of letters.entries()) {
+      letter.animate(
+        [
+          { transform: 'translateY(0)' },
+          { transform: 'translateY(-3px)' },
+          { transform: 'translateY(0)' },
+        ],
+        {
+          duration: 150,
+          easing: 'ease-in-out',
+          delay: index * 30,
+          iterations: 1,
+        },
+      );
+    }
+  };
+
   return (
-    <div>
+    <div ref={logoSvgRef}>
       <LogoSvg
         className={classnames(className, 'js--site-logo')}
-        color={logoKind === LogoKind.Black ? 'black' : 'white'}
+        $color={logoKind === LogoKind.Black ? 'black' : 'white'}
+        // isAnimationPlaying={animationEnabled}
+        onClick={isPlayful ? playAnimation : undefined}
+        onMouseEnter={isPlayful ? playAnimation : undefined}
       />
-      {isPlayful && (
-        <Helmet>
-          <script>
-            {`
-              function initLogoAnimation() {
-                const playAnimation = () => document.querySelector('.js--site-logo').classList.add('js--site-logo_animation-enabled');
-                const stopAnimation = () => document.querySelector('.js--site-logo').classList.remove('js--site-logo_animation-enabled');
-                // This callback listens to all animationEnd events
-                // and removes the animation as soon as the last element’s animation completes
-                const stopAnimationIfAllDone = (event) => {
-                  const target = event.target;
-
-                  if (target === target.parentNode.lastChild) {
-                    stopAnimation();
-                  }
-                }
-
-                document.querySelector('.js--site-logo').addEventListener('click', playAnimation);
-                document.querySelector('.js--site-logo').addEventListener('mouseenter', playAnimation);
-                document.querySelector('.js--site-logo').addEventListener('animationend', stopAnimationIfAllDone);
-              }
-
-              if (document.readyState === 'loading')
-                document.addEventListener('DOMContentLoaded', initLogoAnimation)
-              else
-                initLogoAnimation()
-            `}
-          </script>
-        </Helmet>
-      )}
     </div>
   );
 };

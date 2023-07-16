@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { JSXChildrenProp } from '../../../types';
 import { Container, ImageWrapper, Text } from './styled';
 
@@ -22,12 +21,12 @@ const Slide = ({
   <Container className={className} id={slideId}>
     <ImageWrapper
       href={`#${slideId}`}
-      useImageBorder={useImageBorder}
-      isSectionHeader={isSectionHeader}
+      $useImageBorder={useImageBorder}
+      $isSectionHeader={isSectionHeader}
     >
       {image}
     </ImageWrapper>
-    <Text isSectionHeader={isSectionHeader}>{children}</Text>
+    <Text $isSectionHeader={isSectionHeader}>{children}</Text>
   </Container>
 );
 

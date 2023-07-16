@@ -1,7 +1,5 @@
 import { RouteComponentProps } from '@reach/router';
 import { parse } from 'query-string';
-import * as React from 'react';
-import { Helmet } from 'react-helmet';
 import Layout from '../../components/Layout';
 import { LogoKind } from '../../components/Logo';
 import WidthWrapper from '../../components/WidthWrapper';
@@ -29,14 +27,17 @@ const getEmailFromQueryString = (queryString: string) => {
   return email;
 };
 
+export const Head = () => (
+  <>
+    <title>Subscribe | PerfPerfPerf</title>
+  </>
+);
+
 const SubscribePage = ({ location }: RouteComponentProps) => {
   return (
     <Layout>
       <Background>
         <WidthWrapper>
-          <Helmet>
-            <title>Subscribe | PerfPerfPerf</title>
-          </Helmet>
           <Container>
             <div>
               <Nav

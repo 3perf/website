@@ -1,5 +1,4 @@
 import { IGatsbyImageData, GatsbyImageProps } from 'gatsby-plugin-image';
-import React from 'react';
 import { Container, Img } from './styled';
 
 export interface ImageProps {
@@ -38,9 +37,9 @@ const Image = ({
             loading={loading || 'lazy'}
             alt={alt}
             style={imgStyle}
-            width={imageData.width}
+            $width={imageData.width}
             height={imageData.height}
-            layout={imageData.layout}
+            $layout={imageData.layout}
           />
         )}
       </picture>

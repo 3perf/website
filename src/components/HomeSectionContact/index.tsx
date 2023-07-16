@@ -1,5 +1,4 @@
-import { StaticQuery, graphql } from 'gatsby';
-import * as React from 'react';
+import { graphql, useStaticQuery } from 'gatsby';
 import { GraphqlImage } from '../../types';
 import {
   PromptContainer,
@@ -44,34 +43,31 @@ const ContactSection = ({
   </div>
 );
 
-const ContactSectionWithQuery = (props: ContactSectionProps) => (
-  <StaticQuery
-    query={graphql`
-      fragment ContactImage on File {
-        childImageSharp {
-          gatsbyImageData(
-            width: 24
-            height: 24
-            quality: 75
-            placeholder: NONE
-            layout: FIXED
-          )
-        }
+const ContactSectionWithQuery = (props: ContactSectionProps) => {
+  const data: ContactSectionData = useStaticQuery(graphql`
+    fragment ContactImage on File {
+      childImageSharp {
+        gatsbyImageData(
+          width: 24
+          height: 24
+          quality: 75
+          placeholder: NONE
+          layout: FIXED
+        )
       }
+    }
 
-      {
-        iamakulov: file(
-          sourceInstanceName: { eq: "shared" }
-          relativePath: { eq: "iamakulov.jpg" }
-        ) {
-          ...ContactImage
-        }
+    {
+      iamakulov: file(
+        sourceInstanceName: { eq: "shared" }
+        relativePath: { eq: "iamakulov.jpg" }
+      ) {
+        ...ContactImage
       }
-    `}
-    render={(data: ContactSectionData) => (
-      <ContactSection data={data} {...props} />
-    )}
-  />
-);
+    }
+  `);
+
+  return <ContactSection data={data} {...props} />;
+};
 
 export default ContactSectionWithQuery;

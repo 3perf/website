@@ -1,3 +1,5 @@
+'use client';
+
 import styled, { createGlobalStyle } from 'styled-components';
 import _ActionButton from '../components/ActionButton';
 import _ContactSection from '../components/HomeSectionContact';
@@ -127,13 +129,9 @@ export const Mark = styled.mark`
   font: inherit;
 `;
 
-interface SectionWrapperExtraProps {
-  marginBottom?: number;
-}
-
-export const SectionWrapper = styled.div`
-  margin-bottom: ${(props: SectionWrapperExtraProps) =>
-    props.marginBottom === undefined ? 80 : props.marginBottom}px;
+export const SectionWrapper = styled.div<{ $marginBottom?: number }>`
+  margin-bottom: ${(props) =>
+    props.$marginBottom === undefined ? 80 : props.$marginBottom}px;
 `;
 
 export const ContactSection = styled(_ContactSection)`

@@ -1,6 +1,4 @@
 import { graphql } from 'gatsby';
-import * as React from 'react';
-import { Helmet } from 'react-helmet';
 import Footer from '../components/Footer';
 import AboutSection from '../components/HomeSectionAbout';
 import ClientsSection from '../components/HomeSectionClients';
@@ -37,9 +35,7 @@ interface IndexPageProps {
               slug: string;
             };
             frontmatter: {
-              title: {
-                visible: string;
-              };
+              title: string;
             };
           };
         },
@@ -48,10 +44,9 @@ interface IndexPageProps {
   };
 }
 
-const IndexPage = ({ data }: IndexPageProps) => (
-  <Layout>
-    <IndexPageGlobalStyles />
-    <Helmet>
+export function Head() {
+  return (
+    <>
       <title>PerfPerfPerf · Web performance consulting</title>
       <meta
         name="description"
@@ -61,7 +56,13 @@ const IndexPage = ({ data }: IndexPageProps) => (
         name="keywords"
         content="perf perf perf, performance, performance consulting, performance optimization, performance agency, performance company, web performance, web performance optimization, web performance consulting, react performance consulting, react performance optimization"
       />
-    </Helmet>
+    </>
+  );
+}
+
+const IndexPage = ({ data }: IndexPageProps) => (
+  <Layout>
+    <IndexPageGlobalStyles />
     <HeaderBackground>
       <WidthWrapper>
         <Nav
@@ -114,7 +115,7 @@ const IndexPage = ({ data }: IndexPageProps) => (
         <SectionWrapper id="about">
           <AboutSection />
         </SectionWrapper>
-        <SectionWrapper id="contact" marginBottom={0}>
+        <SectionWrapper id="contact" $marginBottom={0}>
           <ContactSection />
         </SectionWrapper>
         <FooterWrapper>

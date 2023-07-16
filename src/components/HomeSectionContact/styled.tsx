@@ -1,7 +1,5 @@
-import React from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import media from '../../styles/media';
-import { linkStyles, linkActiveStyles } from '../../styles/shared-styles';
 import { gridSize } from '../../styles/variables';
 import Image, { ImageProps } from '../Image';
 
