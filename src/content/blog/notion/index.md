@@ -45,17 +45,19 @@ header: Contents
 
 Notion is a React web app embedded into a native shell. This means its “startup time” is largely the “loading time of the web part”.
 
-[[note]]
-| **To be concrete.** On the desktop, the Notion app is a web app wrapped with Electron. On mobile, from my understanding, the Notion app runs both React Native parts (likely responsible for some mobile experiences) and web parts (likely responsible for the overall editing UI).
-|
-| Due to (apparently) HTTPS certificate pinning in the Android Notion app, I wasn’t able to verify whether the mobile app runs the same bundles the desktop app does. But even if the bundles are different, issues they are having are, likely, similar.
+:::note
+**To be concrete.** On the desktop, the Notion app is a web app wrapped with Electron. On mobile, from my understanding, the Notion app runs both React Native parts (likely responsible for some mobile experiences) and web parts (likely responsible for the overall editing UI).
+
+Due to (apparently) HTTPS certificate pinning in the Android Notion app, I wasn’t able to verify whether the mobile app runs the same bundles the desktop app does. But even if the bundles are different, issues they are having are, likely, similar.
+:::
 
 To understand how the web part is loading, let’s create [a public Notion page](https://www.notion.so/iamakulov/Job-Board-f96cfe500e7d47108f44e0b6102e7c01):
 
 ![](./notion.png)
 
-[[sidenote|[WebPageTest](https://webpagetest.org) is an advanced performance testing tool.]]
-| and run a WebPageTest audit over it. (This works because public pages run the same code the whole app runs.)
+:::sidenote[[WebPageTest](https://webpagetest.org) is an advanced performance testing tool.]
+and run a WebPageTest audit over it. (This works because public pages run the same code the whole app runs.)
+:::
 
 WebPageTest returns a lot of useful information, but the most interesting part is [the loading waterfall](https://webpagetest.org/result/200418_KE_d8c556d0fa8e60a79cd2370f224b3ad7/1/details/#waterfall_view_step1):
 
@@ -127,33 +129,34 @@ Turns out that’s bundle initialization:
 
 - _Functions with four-character names_, like `bkwR` or `Cycz`, are application modules.
 
-  <!-- prettier-ignore -->
-  [[sidenote | Four-character IDs (like `bkwR` or `Cycz`) are used when [`optimization.moduleIds: 'hashed'`](https://v4.webpack.js.org/configuration/optimization/#optimizationmoduleids) or [`HashedModuleIdsPlugin`](https://webpack.js.org/plugins/hashed-module-ids-plugin/) is enabled.]]
-    |
-    | When webpack builds a bundle, it wraps each module with a function – and assigns it an ID. That ID becomes the function name. In the bundle, this looks as follows:
-    |
-    | _Before:_
-    |
-    | ```js
-    | import formatDate from './formatDate.js';
-    |
-    | // ...
-    | ```
-    |
-    | _After:_
-    |
-    | ```js
-    | fOpr: function(module, __webpack_exports__, __webpack_require__) {
-    |   "use strict";
-    |
-    |   __webpack_require__.r(__webpack_exports__);
-    |
-    |   var _formatDate__WEBPACK_IMPORTED_MODULE_0__ =
-    |     __webpack_require__("xN6P");
-    |
-    |   // ...
-    | },
-    | ```
+  :::sidenote[Four-character IDs (like `bkwR` or `Cycz`) are used when [`optimization.moduleIds: 'hashed'`](https://v4.webpack.js.org/configuration/optimization/#optimizationmoduleids) or [`HashedModuleIdsPlugin`](https://webpack.js.org/plugins/hashed-module-ids-plugin/) is enabled.]
+
+  When webpack builds a bundle, it wraps each module with a function – and assigns it an ID. That ID becomes the function name. In the bundle, this looks as follows:
+
+  _Before:_
+
+  ```js
+  import formatDate from './formatDate.js';
+
+  // ...
+  ```
+
+  _After:_
+
+  ```js
+  fOpr: function(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+
+    var _formatDate__WEBPACK_IMPORTED_MODULE_0__ =
+      __webpack_require__("xN6P");
+
+    // ...
+  },
+  ```
+
+  :::
 
 - _And the `s` function_ is actually `__webpack_require__`.
 
@@ -207,21 +210,23 @@ To confirm that module concatenation is working:
 
 - run the production webpack build with [`--display-optimization-bailout`](https://webpack.js.org/plugins/module-concatenation-plugin/#debugging-optimization-bailouts) to see if there are any cases where module concatenation bails out
 
-[[note]]
-| **Fun fact.** Remember that all imports are transformed into the `__webpack_require__` function?
-|
-| Well, what happens when the same function is called 1100 times throughout initialization? Right, it becomes a hot path taking 26.8% of the total time:
-|
-| ![](./hot-path.png)
-|
-| (`s` is the minified name of `__webpack_require__`.)
-|
-| Unfortunately, apart from concatenating more modules, [there’s not much to optimize there](https://github.com/webpack/webpack/issues/2219).
+:::note
+**Fun fact.** Remember that all imports are transformed into the `__webpack_require__` function?
+
+Well, what happens when the same function is called 1100 times throughout initialization? Right, it becomes a hot path taking 26.8% of the total time:
+
+![](./hot-path.png)
+
+(`s` is the minified name of `__webpack_require__`.)
+
+Unfortunately, apart from concatenating more modules, [there’s not much to optimize there](https://github.com/webpack/webpack/issues/2219).
+:::
 
 ## Try the `lazy` option of Babel’s `plugin-transform-modules-commonjs`
 
-[[note]]
-| **Note:** this suggestion relies on disabling module concatenation. Because of that, it’s incompatible with the previous one.
+:::note
+**Note:** this suggestion relies on disabling module concatenation. Because of that, it’s incompatible with the previous one.
+:::
 
 [`@babel/plugin-transform-modules-commonjs`](https://babeljs.io/docs/en/babel-plugin-transform-modules-commonjs#lazy) is an official Babel plugin that transforms ES imports into CommonJS `require()`s:
 
@@ -254,19 +259,21 @@ There are a few drawbacks, however:
 
 - Switching the existing codebase to `lazy` might be tricky. Some modules may rely on side effects from other modules, which we’re delaying here. Also, [the plugin docs](https://babeljs.io/docs/en/babel-plugin-transform-modules-commonjs#lazy) warn that the `lazy` option breaks cyclic dependencies
 
-- [[sidenote | This doesn’t affect webpack 5, as it [will add support for CommonJS tree shaking](https://github.com/webpack/changelog-v5/blob/df28f37494ee62967623af75d8f3fe45bd70fe5b/README.md#commonjs-tree-shaking).]]
-  | Switching to CommonJS modules disables [tree shaking in webpack](https://webpack.js.org/guides/tree-shaking/). This means some unused code may be kept in the bundle
+- :::sidenote[This doesn’t affect webpack 5, as it [will add support for CommonJS tree shaking](https://github.com/webpack/changelog-v5/blob/df28f37494ee62967623af75d8f3fe45bd70fe5b/README.md#commonjs-tree-shaking).]
+  Switching to CommonJS modules disables [tree shaking in webpack](https://webpack.js.org/guides/tree-shaking/). This means some unused code may be kept in the bundle
+  :::
 
 - Switching to CommonJS modules disables [module concatenation](https://webpack.js.org/plugins/module-concatenation-plugin/). This means the module processing overhead will be higher
 
 These drawbacks make this option riskier compared to others – but if it plays right, its benefits might far outweigh its costs.
 
-[[note]]
-| <strong id="note-coverage">How many modules could be deferred like this?</strong> Chrome DevTools let us find an easy answer. Open any JS-heavy page (e.g. [the Notion one](https://www.notion.so/iamakulov/Job-Board-f96cfe500e7d47108f44e0b6102e7c01)), go to DevTools, press <kbd>Ctrl+Shift+P</kbd> (Windows) or <kbd>⌘⇧P</kbd> (macOS), type in “start coverage”, and press Enter. The page will reload, and you’ll see how much code was executed in the initial render.
-|
-| In Notion, 39% of the vendor bundle and 61% of the app bundle are unused after the page renders:
-|
-| ![](./coverage.png)
+:::note
+<strong id="note-coverage">How many modules could be deferred like this?</strong> Chrome DevTools let us find an easy answer. Open any JS-heavy page (e.g. [the Notion one](https://www.notion.so/iamakulov/Job-Board-f96cfe500e7d47108f44e0b6102e7c01)), go to DevTools, press <kbd>Ctrl+Shift+P</kbd> (Windows) or <kbd>⌘⇧P</kbd> (macOS), type in “start coverage”, and press Enter. The page will reload, and you’ll see how much code was executed in the initial render.
+
+In Notion, 39% of the vendor bundle and 61% of the app bundle are unused after the page renders:
+
+![](./coverage.png)
+:::
 
 # Remove unused JS code
 
@@ -280,8 +287,9 @@ V8 (Chrome’s JS engine), just like other JS engines, [uses just-in-time compil
 
 And the more code there is, the more time it takes to compile it. In 2018, on average, V8 was spending [10-30% of total execution time](https://medium.com/@addyosmani/the-cost-of-javascript-in-2018-7d8950fbb5d4) in parsing and compiling JavaScript. In our case, the compilation step takes 1.6s out of a total of 4.9s – a whopping 32%.
 
-[[sidenote | Another great approach would be to precompile JavaScript into machine code – and avoid parsing costs altogether by running compiled JavaScript. However, [this is not currently possible.](https://gist.github.com/addyosmani/4009ee1238c4b1ff6f2a2d8a5057c181)]]
-| The only way to reduce the compilation time is to serve less JavaScript.
+:::sidenote[Another great approach would be to precompile JavaScript into machine code – and avoid parsing costs altogether by running compiled JavaScript. However, [this is not currently possible.](https://gist.github.com/addyosmani/4009ee1238c4b1ff6f2a2d8a5057c181)]
+The only way to reduce the compilation time is to serve less JavaScript.
+:::
 
 ## Use code splitting
 
@@ -301,19 +309,22 @@ Notion doesn’t publish source maps, which means we can’t use [`source-map-ex
 
 Based on my analysis, here’re the 10 largest modules in the `vendor` bundle:
 
-[[sidenote | This list does not include libraries that are composed of multiple small files.<br />For example, the bundle also includes [`core-js`](https://github.com/zloirock/core-js), which [occupies 154 KB](https://bundlephobia.com/result?p=core-js@3.6.5) but consists of 300+ small files.]]
-| <ol class="list list_compact" reversed>
-| <li><code>fingerprintjs2</code> → 29 KB</li>
-| <li><code>moment-timezone</code> → 32 KB</li>
-| <li><code>chroma-js</code> → 35 KB</li>
-| <li><code>tinymce</code> → 48 KB</li>
-| <li><code>diff-match-patch</code> → 54 KB</li>
-| <li><code>amplitude-js</code> → 55 KB</li>
-| <li><code>lodash</code> → 71 KB</li>
-| <li><code>libphonenumber-js/metadata.min.json</code> → 81 KB</li>
-| <li><code>react-dom</code> → 111 KB</li>
-| <li><code>moment</code> with all locales → 227 KB</li>
-| </ol>
+:::sidenote[This list does not include libraries that are composed of multiple small files.<br />For example, the bundle also includes [`core-js`](https://github.com/zloirock/core-js), which [occupies 154 KB](https://bundlephobia.com/result?p=core-js@3.6.5) but consists of 300+ small files.]
+
+<ol class="list list_compact" reversed>
+<li><code>fingerprintjs2</code> → 29 KB</li>
+<li><code>moment-timezone</code> → 32 KB</li>
+<li><code>chroma-js</code> → 35 KB</li>
+<li><code>tinymce</code> → 48 KB</li>
+<li><code>diff-match-patch</code> → 54 KB</li>
+<li><code>amplitude-js</code> → 55 KB</li>
+<li><code>lodash</code> → 71 KB</li>
+<li><code>libphonenumber-js/metadata.min.json</code> → 81 KB</li>
+<li><code>react-dom</code> → 111 KB</li>
+<li><code>moment</code> with all locales → 227 KB</li>
+</ol>
+
+:::
 
 Out of all these modules, the most significant _and_ easy to optimize ones are <code>moment</code>, <code>lodash</code> and <code>libphonenumber-js</code>.
 
@@ -323,8 +334,9 @@ What can one do here?
 
 - First, drop unused `moment` locales using [`moment-locales-webpack-plugin`](https://www.npmjs.com/package/moment-locales-webpack-plugin).
 
-- [[sidenote|[You-Dont-Meed-Momentjs](https://github.com/you-dont-need/You-Dont-Need-Momentjs): List of functions which you can use to replace moment.js]]
-  | Second, consider switching from `moment` to [`date-fns`](https://date-fns.org/). Unlike with `moment`, when you’re using `date-fns`, you’re importing only specific date manipulation methods you need. So if you only use `addDays(date, 5)`, you won’t end up bundling the date parser.
+- :::sidenote[[You-Dont-Meed-Momentjs](https://github.com/you-dont-need/You-Dont-Need-Momentjs): List of functions which you can use to replace moment.js]
+  Second, consider switching from `moment` to [`date-fns`](https://date-fns.org/). Unlike with `moment`, when you’re using `date-fns`, you’re importing only specific date manipulation methods you need. So if you only use `addDays(date, 5)`, you won’t end up bundling the date parser.
+  :::
 
 **[`lodash`](https://github.com/lodash/lodash)**, a set of data manipulation utilities, bundles 300+ functions for working with data. That’s too much – from what I’ve seen, apps typically use 5-30 of those methods at most.
 
@@ -415,15 +427,18 @@ Here’s how to optimize that.
 
 ## Defer third parties
 
-[[sidenote|Harry Roberts has a great talk about third parties: [It’s my (third) party, and I’ll cry if I want to](https://vimeo.com/302785171)]]
-| Third parties are scripts from other domains we add for ads, analytics, or similar functionality. Business-wise, they’re both useful _and_ problematic:
-|
-| - _Useful:_ we add third parties for a concrete business value (e.g., analyzing how users use the app) that we won’t get otherwise
-|
-| - _Problematic:_ third parties typically hurt loading performance [which negatively affects conversion and user satisfaction](https://wpostats.com)
+:::sidenote[Harry Roberts has a great talk about third parties: [It’s my (third) party, and I’ll cry if I want to](https://vimeo.com/302785171)]
+Third parties are scripts from other domains we add for ads, analytics, or similar functionality. Business-wise, they’re both useful _and_ problematic:
 
-[[sidenote|[How to block third party requests in WebPageTest](https://andydavies.me/blog/2018/02/19/using-webpagetest-to-measure-the-impact-of-3rd-party-tags/)]]
-| In Notion, third parties (Intercom, Segment, and Amplitude) hurt performance by executing JavaScript and blocking the main thread when it’s most needed – when the app is still initializing. If we block them in WebPageTest, our Nexus 5 [will render the content a whole second earlier](https://webpagetest.org/video/compare.php?tests=200509_WD_694540be3e401cb9c7ee047049645625-l%3AWith+third+parties%2C200509_CQ_e1f940ff9233f0936af303918df8e298-l%3AWithout+third+parties&thumbSize=200&ival=100&end=visual):
+- _Useful:_ we add third parties for a concrete business value (e.g., analyzing how users use the app) that we won’t get otherwise
+
+- _Problematic:_ third parties typically hurt loading performance [which negatively affects conversion and user satisfaction](https://wpostats.com)
+
+:::
+
+:::sidenote[[How to block third party requests in WebPageTest](https://andydavies.me/blog/2018/02/19/using-webpagetest-to-measure-the-impact-of-3rd-party-tags/)]
+In Notion, third parties (Intercom, Segment, and Amplitude) hurt performance by executing JavaScript and blocking the main thread when it’s most needed – when the app is still initializing. If we block them in WebPageTest, our Nexus 5 [will render the content a whole second earlier](https://webpagetest.org/video/compare.php?tests=200509_WD_694540be3e401cb9c7ee047049645625-l%3AWith+third+parties%2C200509_CQ_e1f940ff9233f0936af303918df8e298-l%3AWithout+third+parties&thumbSize=200&ival=100&end=visual):
+:::
 
 ![{sources:[{src:"./third-parties.webm", type:"video/webm"}]}](./third-parties.mp4)
 
@@ -453,17 +468,19 @@ async function installThirdParties() {
 
 This would make sure they are not loaded until the app has fully initialized.
 
-[[note]]
-| **`setTimeout` vs `requestIdleCallback` vs events.** `setTimeout` is not the best approach (hard-coding the timeout is hacky), but it’s good enough.
-|
-| The best approach would be to listen for some kind of a “page fully rendered” in-app event, but I’m not sure whether Notion has one.
-|
-| [`requestIdleCallback`](https://developer.mozilla.org/en-US/docs/Web/API/Window/requestIdleCallback) might sound like the perfect tool for the job, but it’s not. In my tests in Chromium, it triggers too early – merely 60 ms after the main thread becomes idle.
+:::note
+**`setTimeout` vs `requestIdleCallback` vs events.** `setTimeout` is not the best approach (hard-coding the timeout is hacky), but it’s good enough.
 
-[[note]]
-| **Loading analytics on interaction.** Another great approach to defer analytics is to avoid loading it until the first user’s interaction – the first click or tap.
-|
-| However, note that this makes analytics invisible for synthetic tests (like Lighthouse or PageSpeed Insights). To measure the real JavaScript cost for users, you should install a Real User Monitoring library – e.g. [LUX from SpeedCurve](https://speedcurve.com/features/lux/) or [Browser Insights from Cloudflare](https://blog.cloudflare.com/introducing-browser-insights/).
+The best approach would be to listen for some kind of a “page fully rendered” in-app event, but I’m not sure whether Notion has one.
+
+[`requestIdleCallback`](https://developer.mozilla.org/en-US/docs/Web/API/Window/requestIdleCallback) might sound like the perfect tool for the job, but it’s not. In my tests in Chromium, it triggers too early – merely 60 ms after the main thread becomes idle.
+:::
+
+:::note
+**Loading analytics on interaction.** Another great approach to defer analytics is to avoid loading it until the first user’s interaction – the first click or tap.
+
+However, note that this makes analytics invisible for synthetic tests (like Lighthouse or PageSpeed Insights). To measure the real JavaScript cost for users, you should install a Real User Monitoring library – e.g. [LUX from SpeedCurve](https://speedcurve.com/features/lux/) or [Browser Insights from Cloudflare](https://blog.cloudflare.com/introducing-browser-insights/).
+:::
 
 ## Preload API data
 
@@ -479,39 +496,40 @@ But how can we remove the latency in the real app?
 
 **Inline page data into the HTML.** The best approach would be to calculate the API data on the server side – and include it directly into the HTML response. E.g., like this:
 
-<!-- prettier-ignore -->
-[[sidenote|Make sure to: <br />a) encode data as JSON [for best performance](https://joreteg.com/blog/improving-redux-state-transfer-performance); <br />b) escape data with [`jsesc`](https://github.com/mathiasbynens/jsesc) (`json: true, isScriptContext: true`) to avoid XSS attacks.<br><br>Also, note that bundles have the `defer` attribute. We need it to execute bundles _after_ the `__INITIAL_STATE__` script.]]
-| ```js
-| app.get('*', (req, res) => {
-|   /* ... */
-|
-|   // Send the bundles so the browser can start loading them
-|   res.write(`
-|     <div id="notion-app"></div>
-|     <script src="/vendors-2b1c131a5683b1af62d9.js" defer></script>
-|     <script src="/app-c87b8b1572429828e701.js" defer></script>
-|   `);
-|
-|   // Send the initial state when it’s ready
-|   const stateJson = await getStateAsJsonObject();
-|   res.write(`
-|     <script>
-|       window.__INITIAL_STATE__ = JSON.parse(${stateString})
-|     </script>
-|   `);
-| })
-| ```
+:::sidenote[Make sure to: <br />a) encode data as JSON [for best performance](https://joreteg.com/blog/improving-redux-state-transfer-performance); <br />b) escape data with [`jsesc`](https://github.com/mathiasbynens/jsesc) (`json: true, isScriptContext: true`) to avoid XSS attacks.<br><br>Also, note that bundles have the `defer` attribute. We need it to execute bundles _after_ the `__INITIAL_STATE__` script.]
+
+```js
+app.get('*', (req, res) => {
+  /* ... */
+  // Send the bundles so the browser can start loading them
+  res.write(`
+    <div id="notion-app"></div>
+    <script src="/vendors-2b1c131a5683b1af62d9.js" defer></script>
+    <script src="/app-c87b8b1572429828e701.js" defer></script>
+  `);
+  // Send the initial state when it’s ready
+  const stateJson = await getStateAsJsonObject();
+  res.write(`
+    <script>
+      window.__INITIAL_STATE__ = JSON.parse(${stateString})
+    </script>
+  `);
+});
+```
+
+:::
 
 With this approach, the app won’t need to wait for API responses. It will retrieve the initial state from the `window` and start rendering immediately.
 
-[[note]]
-| **Cloudflare workers.** Notion uses Cloudflare as a CDN provider. If Notion’s HTML pages are static (e.g., they’re served by AWS S3), [Cloudflare workers](https://workers.cloudflare.com/) might be useful instead.
-|
-| With Cloudflare workers, you can intercept the page, fetch dynamic data straight from the CDN worker, and append the data into the end of the page. See:
-|
-| - [Streams documentation](https://developers.cloudflare.com/workers/reference/apis/streams/) for details on how to transform the response on the go
-|
-| - [Streaming recipes](https://developers.cloudflare.com/workers/archive/recipes/streaming-responses/) and [Fast Google Fonts](https://github.com/cloudflare/worker-examples/tree/master/examples/fast-google-fonts) for some examples of how this can be done
+:::note
+**Cloudflare workers.** Notion uses Cloudflare as a CDN provider. If Notion’s HTML pages are static (e.g., they’re served by AWS S3), [Cloudflare workers](https://workers.cloudflare.com/) might be useful instead.
+
+With Cloudflare workers, you can intercept the page, fetch dynamic data straight from the CDN worker, and append the data into the end of the page. See:
+
+- [Streams documentation](https://developers.cloudflare.com/workers/reference/apis/streams/) for details on how to transform the response on the go
+
+- [Streaming recipes](https://developers.cloudflare.com/workers/archive/recipes/streaming-responses/) and [Fast Google Fonts](https://github.com/cloudflare/worker-examples/tree/master/examples/fast-google-fonts) for some examples of how this can be done
+  :::
 
 **Inline a script to prefetch page data.** Another approach is to write an inline script that will request the data ahead of time:
 

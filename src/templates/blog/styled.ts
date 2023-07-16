@@ -117,12 +117,6 @@ const listStyles = css`
 
 // Media styles
 const mediaStyles = css`
-  *:is(p, ul, ol, .sidenote) + .media-container,
-  .media-container + *:is(p, ul, ol, .sidenote),
-  .media-container + .media-container {
-    margin-top: ${sizes.paragraphSpacing}px;
-  }
-
   .media-container {
     /* Reset figure styles */
     margin: 0;
@@ -137,7 +131,7 @@ const mediaStyles = css`
     height: auto;
   }
 
-  .sidenote .custom-block-heading .media-container img,
+  .sidenote__heading .media-container img,
   .note .media-container img {
     width: 100%;
   }
@@ -198,7 +192,7 @@ const sidenoteWidth = 300;
 const sidenoteMargin = 48;
 const sidenoteStyles = css`
   /* Reset blockquote styles */
-  .sidenote .custom-block-heading {
+  .sidenote__heading {
     margin: unset;
     font-style: unset;
     padding: unset;
@@ -213,11 +207,11 @@ const sidenoteStyles = css`
     }
 
     /* Bring text’s width back to 100% */
-    .sidenote .custom-block-body {
+    .sidenote__body {
       width: calc(100% - ${sidenoteWidth}px - ${sidenoteMargin}px);
     }
 
-    .sidenote .custom-block-heading {
+    .sidenote__heading {
       /* Position the sidenote to the right of the text */
       margin-left: ${sidenoteMargin}px;
       width: ${sidenoteWidth}px;
@@ -232,7 +226,7 @@ const sidenoteStyles = css`
   `}
 
   ${media.medium`
-    .sidenote .custom-block-heading {
+    .sidenote__heading {
       background: ${colors.softYellow};
       margin: ${sizes.paragraphSpacing}px -${gridSize * 2}px 0;
       padding: ${gridSize}px ${gridSize * 2}px;
@@ -338,7 +332,7 @@ export const Content = styled.article`
   ${noteStyles}
 
   /* Random */
-  *:is(p, .custom-block, .gatsby-highlight, ul, ol) + *:is(p, .custom-block, .gatsby-highlight, ul, ol) {
+  *:is(p, .note, .sidenote, .gatsby-highlight, ul, ol, .media-container) + *:is(p, .note, .sidenote, .gatsby-highlight, ul, ol, .media-container) {
     margin-top: ${sizes.paragraphSpacing}px;
   }
 

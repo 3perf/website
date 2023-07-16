@@ -30,11 +30,11 @@ A colleague asked me:
 
 I know three ready-to-use approaches for that:
 
-- [_polyfill.io_](#polyfillio)
-
-- [the `module`/`nomodule` pattern](#modulenomodule)
-
-- [the `useBuiltIns` option in `@babel/preset-env`](#babels-usebuiltins)
+- [polyfill.io](#polyfillio)
+  
+- [module/nomodule](#modulenomodule)
+  
+- [Babel’s `useBuiltIns`](#babels-usebuiltins)
 
 # polyfill.io
 
@@ -49,8 +49,9 @@ With _polyfill.io_, you add a single script in front of your bundle:
 
 and the script serves exactly the polyfills the visitor needs.
 
-[[note]]
-| _polyfill.io_ also [supports picking a subset of polyfills.](https://polyfill.io/v3/url-builder/) This is useful when, out of all modern JS features, you only use a few – e.g. `Map` and `Promise` – and don’t want to burden IE11 users with extra code.
+:::note
+_polyfill.io_ also [supports picking a subset of polyfills.](https://polyfill.io/v3/url-builder/) This is useful when, out of all modern JS features, you only use a few – e.g. `Map` and `Promise` – and don’t want to burden IE11 users with extra code.
+:::
 
 ## Tricky parts
 
@@ -88,19 +89,21 @@ So, in the snippet above:
 
 - the `/bundle.min.js` script will load in all browsers.
 
-[[note]]
-| Philip Walton wrote [a great detailed article about the `module`/`nomodule` approach](https://philipwalton.com/articles/deploying-es2015-code-in-production-today/).
+:::note
+Philip Walton wrote [a great detailed article about the `module`/`nomodule` approach](https://philipwalton.com/articles/deploying-es2015-code-in-production-today/).
+:::
 
-[[note]]
-| There’s a bunch of guides and plugins for bundles and frameworks that help to implement the `module`/`nomodule` pattern, e.g.:
-|
-| - [for webpack](https://dev.to/thejohnstew/differential-serving-3dkf)
-| - [for Babel](https://babeljs.io/docs/en/babel-preset-env#targetsesmodules)
-| - [for Next.js](https://github.com/zeit/next.js/issues/7563#issuecomment-568569235)
+:::note
+There’s a bunch of guides and plugins for bundles and frameworks that help to implement the `module`/`nomodule` pattern, e.g.:
+
+- [for webpack](https://dev.to/thejohnstew/differential-serving-3dkf)
+- [for Babel](https://babeljs.io/docs/en/babel-preset-env#targetsesmodules)
+- [for Next.js](https://github.com/zeit/next.js/issues/7563#issuecomment-568569235)
+:::
 
 ## Tricky parts
 
-1. Safari 10.1 is a quirk. It supports `type="module"` but doesn’t support the `nomodule` attribute. If you support this Safari version, [you’ll have to work around that](https://gist.github.com/samthor/64b114e4a4f539915a95b91ffd340acc).
+1. Safari 10.1 has a quirk. It supports `type="module"` but doesn’t support the `nomodule` attribute. If you support this Safari version, [you’ll have to work around that](https://gist.github.com/samthor/64b114e4a4f539915a95b91ffd340acc).
 
 2. The `module`/`nomodule` patters draws a split only between ES5 and ES2015+ browsers. ES2016 and newer standards added a bunch of other polyfillable features like `Array.prototype.includes()` or `Object.values()`. You’ll have to serve their polyfills to all ES2015+ browsers – even though most of these browsers won’t need them.
 

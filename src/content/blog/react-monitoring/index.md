@@ -32,12 +32,13 @@ Tracking React render performance is challenging. With loading performance, ther
 
 To track how your app behaves _after_ it loads, you’d need to do some work.
 
-[[note]]
-| **Disclaimer: the solution below is not battle-tested.** These steps are based on the experiences of clients I worked with, plus my experiments in the field. It’s how I would approach setting up performance tests today. However, I haven’t had a chance to implement this in a real-world app myself yet.
-|
-| This means I might not be aware of some edge cases or pitfalls. This guide should be a good starting point for setting up your monitoring system, but it might (or might not!) need fine-tuning to be useful.
-|
-| (Have your experience to add? Please [share it on Twitter](https://twitter.com/iamakulov/status/1533885339168714752)!)
+:::note
+**Disclaimer: the solution below is not battle-tested.** These steps are based on the experiences of clients I worked with, plus my experiments in the field. It’s how I would approach setting up performance tests today. However, I haven’t had a chance to implement this in a real-world app myself yet.
+
+This means I might not be aware of some edge cases or pitfalls. This guide should be a good starting point for setting up your monitoring system, but it might (or might not!) need fine-tuning to be useful.
+
+(Have your experience to add? Please [share it on Twitter](https://twitter.com/iamakulov/status/1533885339168714752)!)
+:::
 
 # Step 1: Pick the Most Important Interactions
 
@@ -57,40 +58,42 @@ For every interaction, find the moment when it starts – and wrap it with code 
 
 Here’s how this might look with Gmail’s Compose button:
 
-<!-- prettier-ignore -->
-[[sidenote|[afterFrame docs](https://github.com/andrewiggins/afterframe)]]
-| ```js
-| import afterFrame from 'afterframe';
-|
-| function measureInteraction() {
-|   // performance.now() returns the number of ms
-|   // elapsed since the page was opened
-|   const startTimestamp = performance.now();
-|
-|   return {
-|     end() {
-|       const endTimestamp = performance.now();
-|       console.log('The interaction took', endTimestamp - startTimestamp, 'ms');
-|     },
-|   };
-| }
-|
-| const ComposeButton = () => {
-|   const handleClick = () => {
-|     const interaction = measureInteraction();
-|
-|     // The afterFrame library calls the function
-|     // when the next frame starts
-|     afterFrame(() => {
-|       interaction.end();
-|     });
-|
-|     openComposePane();
-|   };
-|
-|   return <Button onClick={handleClick}>Compose</Button>;
-| };
-| ```
+:::sidenote[[afterFrame docs](https://github.com/andrewiggins/afterframe)]
+
+```js
+import afterFrame from 'afterframe';
+
+function measureInteraction() {
+  // performance.now() returns the number of ms
+  // elapsed since the page was opened
+  const startTimestamp = performance.now();
+
+  return {
+    end() {
+      const endTimestamp = performance.now();
+      console.log('The interaction took', endTimestamp - startTimestamp, 'ms');
+    },
+  };
+}
+
+const ComposeButton = () => {
+  const handleClick = () => {
+    const interaction = measureInteraction();
+
+    // The afterFrame library calls the function
+    // when the next frame starts
+    afterFrame(() => {
+      interaction.end();
+    });
+
+    openComposePane();
+  };
+
+  return <Button onClick={handleClick}>Compose</Button>;
+};
+```
+
+:::
 
 This code will execute `measureInteraction()`, then open the compose pane, then paint the update on the screen, and _then_ call `interaction.end()`:
 
@@ -204,8 +207,9 @@ With concurrent rendering, you’d probably need to use `useEffect` instead, eve
 
 # Step 3: Collect Measured Durations
 
-[[sidenote|Other teams I’ve worked with also used [DataDog](https://www.datadoghq.com), [New Relic](https://newrelic.com), and custom solutions built upon [Google BigQuery](https://cloud.google.com/bigquery) or [AWS DynamoDB](https://aws.amazon.com/dynamodb/)]]
-| With interaction measurements in place, it’s time to collect and send them somewhere. My favorite tool for this is [Sentry](https://docs.sentry.io/product/performance/).
+:::sidenote[Other teams I’ve worked with also used [DataDog](https://www.datadoghq.com), [New Relic](https://newrelic.com), and custom solutions built upon [Google BigQuery](https://cloud.google.com/bigquery) or [AWS DynamoDB](https://aws.amazon.com/dynamodb/)]
+With interaction measurements in place, it’s time to collect and send them somewhere. My favorite tool for this is [Sentry](https://docs.sentry.io/product/performance/).
+:::
 
 To collect performance data into Sentry, update `measureInteraction()` to use [`Sentry.startTransaction` and `transaction.finish()`](https://docs.sentry.io/platforms/javascript/guides/react/performance/instrumentation/custom-instrumentation/):
 
@@ -317,8 +321,9 @@ In this case, you’ll need to do synthetic testing instead. Synthetic testing m
 
    Otherwise, try running Lighthouse [in the Timespan mode](https://github.com/GoogleChrome/lighthouse/blob/master/docs/user-flows.md#timespan). The Timespan mode is like the regular Lighthouse – except that it measures the performance of interactions, not the loading speed.
 
-   [[sidenote|Why use Interaction to Next Paint? Because it’s specifically designed for what we’re trying to achieve: to measure how quickly an interaction takes. [Docs](https://web.dev/inp/)]]
-   | For example, here’s how to measure how fast the Gmail’s “Compose” button is. Open Gmail → start a timespan recording → click the “Compose” button → stop the recording → read the _Interaction to Next Paint_ value:
+   :::sidenote[Why use Interaction to Next Paint? Because it’s specifically designed for what we’re trying to achieve: to measure how quickly an interaction takes. [Docs](https://web.dev/inp/)]
+   For example, here’s how to measure how fast the Gmail’s “Compose” button is. Open Gmail → start a timespan recording → click the “Compose” button → stop the recording → read the _Interaction to Next Paint_ value:
+   :::
 
    ![{caption:"This is a human-readable Lighthouse report. In case you need to extract Interaction to Next Paint automatically, Lighthouse also returns data in the JSON format. See <a href='https://github.com/GoogleChrome/lighthouse/blob/master/docs/readme.md#using-programmatically'>“Using Lighthouse Programmatically”</a> for details."}](./timespans.png)
 
@@ -329,14 +334,16 @@ In this case, you’ll need to do synthetic testing instead. Synthetic testing m
 
 4. **Run tests and collect measurements.** Every time you need to run a synthetic test, run it on that machine and collect the measurements. Use a tool like [Playwright](https://playwright.dev) or [Puppeteer](https://github.com/puppeteer/puppeteer) to launch the app in a headless browser and click it around like a user would do.
 
-   - [[sidenote|`page.evaluate()`: [Playwright docs](https://playwright.dev/docs/evaluating) · [Puppeteer docs](https://puppeteer.github.io/puppeteer/docs/next/puppeteer.page.evaluate/)]]
-     | **If you instrumented interactions manually:** store measurements in a global variable (like `window.myPerfMeasurements`) and then read them with `page.evaluate()`
+   - :::sidenote[`page.evaluate()`: [Playwright docs](https://playwright.dev/docs/evaluating) · [Puppeteer docs](https://puppeteer.github.io/puppeteer/docs/next/puppeteer.page.evaluate/)]
+     **If you instrumented interactions manually:** store measurements in a global variable (like `window.myPerfMeasurements`) and then read them with `page.evaluate()`
+     :::
    - **If you use Lighthouse’s Timespan mode:** Playwright and Puppeteer work well with Lighthouse. [Code example](https://web.dev/lighthouse-user-flows/#timespans)
 
 5. **Compare with the last 4-40 runs.** _Do not_ compare the measurements to the previous run. Instead, compare measurements with an average of the last 4-40 runs. (See [“Fixing Performance Regressions Before they Happen”](https://netflixtechblog.com/fixing-performance-regressions-before-they-happen-eab2602b86fe) in Netflix Tech Blog for why this matters.)
 
-[[note]]
-| **Disclaimer:** my previous experiments with synthetic testing failed: there’s been too much noise to catch any regressions. But that was before I learned [how Netflix dealt with the same issue](https://netflixtechblog.com/fixing-performance-regressions-before-they-happen-eab2602b86fe).
+:::note
+**Disclaimer:** my previous experiments with synthetic testing failed: there’s been too much noise to catch any regressions. But that was before I learned [how Netflix dealt with the same issue](https://netflixtechblog.com/fixing-performance-regressions-before-they-happen-eab2602b86fe).
+:::
 
 # Others’ Experiences
 

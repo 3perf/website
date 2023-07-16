@@ -132,7 +132,7 @@ export const query = graphql`
   query {
     allMarkdownRemark(
       filter: { fields: { slug: {}, sourceName: { eq: "blog" } } }
-      sort: { fields: frontmatter___date___published, order: DESC }
+      sort: { frontmatter: { date: { published: DESC } } }
       limit: 1
     ) {
       edges {

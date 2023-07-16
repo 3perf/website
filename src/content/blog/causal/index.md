@@ -72,13 +72,15 @@ Across the recording, four chunks of JavaScript start with `GridApi.refreshServe
 
 ![](./image9.png)
 
-[[sidenote|Hunting for component names works because to render a functional component, React just calls it. (For class components, React calls the `.render()` method.)]]
-| Down the flame chart, these chunks of JavaScript cause many React rerenders. To figure out which components are being rendered, let’s scroll down and hunt for component names.
+:::sidenote[Hunting for component names works because to render a functional component, React just calls it. (For class components, React calls the `.render()` method.)]
+Down the flame chart, these chunks of JavaScript cause many React rerenders. To figure out which components are being rendered, let’s scroll down and hunt for component names.
+:::
 
 ![{scrollable:{height:600}}](./image10.png)
 
-[[note]]
-| **Why not use React Profiler?** Another way to see which components are rendered is to record a trace [in React Profiler](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en). However, when you have a lot of rerenders, matching that trace with the DevTools Performance trace is hard – and if you make a mistake, you’ll end up optimizing the wrong rerenders.
+:::note
+**Why not use React Profiler?** Another way to see which components are rendered is to record a trace [in React Profiler](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en). However, when you have a lot of rerenders, matching that trace with the DevTools Performance trace is hard – and if you make a mistake, you’ll end up optimizing the wrong rerenders.
+:::
 
 If you click through the component names in the recording, you’ll realize every component is `RowContainerComp`. This is [a component from AG Grid](https://github.com/ag-grid/ag-grid/blob/760be3ac7b86716780f58645e8113720f2f63bc2/community-modules/react/src/reactUi/rows/rowContainerComp.tsx):
 
@@ -88,10 +90,11 @@ Why do these components render? To answer that, let’s [switch to React Profile
 
 ![{caption:"Open the React Profiler and <a href="https://share.cleanshot.com/ICgcZg">enable “Record why each component rendered while profiling.”</a> Then, click “Record” → update a variable → wait a bit → stop the recording → find any <code>RowContainerComp</code> in the recording. This isn’t perfect (you might pick up a wrong rerender) but is mostly precise."}](./image12.png)
 
-[[note]]
-| **Why use React Profiler this time?** This time, we _are_ using React Profiler. We’ve learned the component names, so we don’t need to match the trace with the DevTools performance pane anymore.
-|
-| Other ways to learn why a component rerenders are [why-did-you-render](https://github.com/welldone-software/why-did-you-render) and [useWhyDidYouUpdate](https://usehooks.com/useWhyDidYouUpdate/). They work great with first-party code but are harder to configure for third-party one (like AG Grid components).
+:::note
+**Why use React Profiler this time?** This time, we _are_ using React Profiler. We’ve learned the component names, so we don’t need to match the trace with the DevTools performance pane anymore.
+
+Other ways to learn why a component rerenders are [why-did-you-render](https://github.com/welldone-software/why-did-you-render) and [useWhyDidYouUpdate](https://usehooks.com/useWhyDidYouUpdate/). They work great with first-party code but are harder to configure for third-party one (like AG Grid components).
+:::
 
 As we see, `RowContainerComp` components rerender because their hook 2 changed. To find that hook, let’s switch from the Profiler to the Components pane – and match component hooks [with the source code](https://github.com/ag-grid/ag-grid/blob/760be3ac7b86716780f58645e8113720f2f63bc2/community-modules/react/src/reactUi/rows/rowContainerComp.tsx):
 
@@ -103,12 +106,15 @@ Hook no. 2 is this:
 const [rowCtrlsOrdered, setRowCtrlsOrdered] = useState<RowCtrl[]>([]);
 ```
 
-[[note]]
-| **Why won’t we just count hooks in the source code?** That’s the most obvious approach, but it rarely works. That’s because:
-|
-| - React skips `useContext` when counting hooks. (This is probably because `useContext` [is implemented differently from other hooks](https://twitter.com/acdlite/status/1586779571290275840).)
-|
-| - React doesn’t keep track of custom hooks. Instead, it counts every built-in hook inside a custom hook (except `useContext`). For example, if a component calls [`useSelector` from Redux](https://react-redux.js.org/api/hooks#useselector), and `useSelector` uses four React hooks inside, React profiler might show you “Hook 3 changed.”
+:::note
+
+**Why won’t we just count hooks in the source code?** That’s the most obvious approach, but it rarely works. That’s because:
+
+- React skips `useContext` when counting hooks. (This is probably because `useContext` [is implemented differently from other hooks](https://twitter.com/acdlite/status/1586779571290275840).)
+
+- React doesn’t keep track of custom hooks. Instead, it counts every built-in hook inside a custom hook (except `useContext`). For example, if a component calls [`useSelector` from Redux](https://react-redux.js.org/api/hooks#useselector), and `useSelector` uses four React hooks inside, React profiler might show you “Hook 3 changed.”
+
+:::
 
 So, we figured out that our interaction renders a bunch of `RowContainerComp` components from AG Grid. These components rerender because their hooks no. 2 (the `rowCtrlsOrdered` state) change. Now, if you look through the component’s source code, you’ll notice that `rowCtrlsOrdered` is updated inside a `useEffect`:
 
@@ -138,8 +144,9 @@ This is not optimal! AG Grid is setting state from inside a `useEffect`. This me
 
 We’re rerendering (💥) the component twice just to update hook no. 2! This isn’t great. If AG Grid updated `rowCtrlsOrdered` immediately at step 2 instead of 5, we’d be able to avoid an extra render.
 
-[[sidenote|With npm, [`patch-package`](https://www.npmjs.com/package/patch-package) works just as well.]]
-|So why don’t we make AG Grid do this? Using [`yarn patch`](https://yarnpkg.com/cli/patch), let’s patch the `@ag-grid-community/react` package to eliminate the extra render:
+:::sidenote[With npm, [`patch-package`](https://www.npmjs.com/package/patch-package) works just as well.]
+So why don’t we make AG Grid do this? Using [`yarn patch`](https://yarnpkg.com/cli/patch), let’s patch the `@ag-grid-community/react` package to eliminate the extra render:
+:::
 
 ![{caption:"<a href='https://gist.github.com/6762c0e25368d57bb8b8bd334a14cd6d'>Full patch</a>. We’ve notified the AG Grid team – unfortunately, they’re not accepting PRs from the community."}](./image17.png)
 
@@ -506,8 +513,9 @@ useEffect(() => {
 
 We’ve identified this improvement with Causal, and Causal is currently working on solving these extra renders (e.g., by [moving logic away from `useEffect`s](https://www.youtube.com/watch?v=RW9TVhmxu6Q)). In our tests, this should cut another 10-30% off the JavaScript cost. But this will take some time.
 
-[[note]]
-| **React Forget.** To be fair, React is also working on [an auto-memoizing compiler](https://reactjs.org/blog/2022/06/15/react-labs-what-we-have-been-working-on-june-2022.html#react-compiler) which should reduce recalculations.
+:::note
+**React Forget.** To be fair, React is also working on [an auto-memoizing compiler](https://reactjs.org/blog/2022/06/15/react-labs-what-we-have-been-working-on-june-2022.html#react-compiler) which should reduce recalculations.
+:::
 
 ## `useSelector` vs `useStore`
 
@@ -563,8 +571,9 @@ This approach relies on Redux’s [`useStore()`](https://react-redux.js.org/api/
 
 Causal has a bunch of components using `useCallback` and `useSelector` like above. They would benefit from this optimization, so Causal is gradually implementing it. We didn’t see any immediate improvements in the interaction we were optimizing, but we expect this to reduce rerenders in a few other places.
 
-[[note]]
-| **`useEvent`.** In the future, wrapping the callback with [`useEvent`](https://github.com/reactjs/rfcs/pull/220) instead of `useCallback` might help solve this issue too.
+:::note
+**`useEvent`.** In the future, wrapping the callback with [`useEvent`](https://github.com/reactjs/rfcs/pull/220) instead of `useCallback` might help solve this issue too.
+:::
 
 # What Didn’t Work
 
@@ -576,8 +585,9 @@ Here’s another bit of the performance trace:
 
 In this part of the trace, we receive a new binary-encoded model from the server and parse it using [protobuf](https://github.com/protobufjs/protobuf.js/). This is a self-contained operation (you call a single function, and it returns 400-800 ms later), and it doesn’t need to access DOM. This makes it a perfect candidate for a Web Worker.
 
-[[note]]
-| **Web What?** [Web Workers](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers) are a way to run some expensive JavaScript in a separate thread. This allows to keep the page responsive while that JavaScript is running.
+:::note
+**Web What?** [Web Workers](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers) are a way to run some expensive JavaScript in a separate thread. This allows to keep the page responsive while that JavaScript is running.
+:::
 
 The easiest way to move a function into a web worker is to wrap it with [comlink](https://github.com/GoogleChromeLabs/comlink):
 
@@ -605,21 +615,22 @@ Comlink.expose({
 });
 ```
 
-<!-- prettier-ignore -->
-[[sidenote|The `new Worker()` syntax works [with webpack 5](https://webpack.js.org/guides/web-workers/), [Vite](https://vitejs.dev/guide/features.html#web-workers), and [will be supported in esbuild soon](https://github.com/evanw/esbuild/issues/312#issuecomment-1232418832).]]
-|
-| ```tsx
-| // index.ts
-|
-| // In the original file, create a worker...
-| import * as Comlink from 'comlink';
-| const worker = Comlink.wrap(
-|   new Worker(new URL('./worker.ts', import.meta.url)),
-| );
-|
-| // And just prefix the original function call with `await worker.`
-| const response = await worker.decodeResponse(rawResponse);
-| ```
+:::sidenote[The `new Worker()` syntax works [with webpack 5](https://webpack.js.org/guides/web-workers/), [Vite](https://vitejs.dev/guide/features.html#web-workers), and [will be supported in esbuild soon](https://github.com/evanw/esbuild/issues/312#issuecomment-1232418832).]
+
+```tsx
+// index.ts
+
+// In the original file, create a worker...
+import * as Comlink from 'comlink';
+const worker = Comlink.wrap(
+  new Worker(new URL('./worker.ts', import.meta.url)),
+);
+
+// And just prefix the original function call with `await worker.`
+const response = await worker.decodeResponse(rawResponse);
+```
+
+:::
 
 If we do that and record a new trace, we’ll discover that parsing was successfully moved to the worker thread:
 
@@ -649,8 +660,9 @@ With these optimizations, updating category cells becomes a much smoother experi
 
 ![](./image34.mp4)
 
-[[sidenote|Yellow/red = main thread is busy. Blue = main thread is free.]]
-| We still have chunks of yellow/red in the recording, but they’re much smaller – and interwined with blue!
+:::sidenote[Yellow/red = main thread is busy. Blue = main thread is free.]
+We still have chunks of yellow/red in the recording, but they’re much smaller – and interwined with blue!
+:::
 
 In a couple weeks of work, PerfPerfPerf helped Causal to improve the responsiveness by almost four times. Other PerfPerfPerf clients had a similar experience – e.g., we helped [Appsmith](https://www.appsmith.com/) to reduce the cost of several interactions 1.9×...2.8×, and [Hugo](https://www.hugo.team/) to make JS init time 2.5× lower. If you’d like to make your React app load or execute faster too, <a href="https://3perf.com/#contact">reach out!</a>
 

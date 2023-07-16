@@ -68,15 +68,54 @@ module.exports = ({ markdownAST }) => {
   //  - make sure that in HTML, sidenote text (“block heading”) follows the primary text (“block body”)
   //  - make the sidenote text a <blockquote> for better rendering in Pocket/Feedly/etc
   //  - add a “Sidenote:” remark that’s visible on mobile and in Pocket/Feedly/etc
-  visit(markdownAST, 'sidenoteCustomBlock', (node) => {
-    const [heading, body] = node.children;
-    heading.data.hName = 'blockquote';
-    heading.children.unshift({
-      type: 'html',
-      value: '<strong class="sidenote__remark">Sidenote:</strong> ',
-    });
-    node.children = [body, heading];
-  });
+  visit(
+    markdownAST,
+    (node) => node.type === 'containerDirective' && node.name === 'sidenote',
+    (node) => {
+      const heading = node.children.find(
+        (child) => child.data.directiveLabel === true,
+      );
+      const body = node.children.filter((child) => child !== heading);
+
+      heading.data ??= {};
+      heading.data.hName = 'blockquote';
+      heading.data.hProperties ??= {};
+      heading.data.hProperties.className = 'sidenote__heading';
+
+      heading.children.unshift({
+        type: 'html',
+        value: '<strong class="sidenote__remark">Sidenote:</strong> ',
+      });
+
+      node.data ??= {};
+      node.data.hProperties ??= {};
+      node.data.hProperties.className = 'sidenote';
+      node.children = [
+        {
+          type: '_3perfContainer',
+          data: {
+            hName: 'div',
+            hProperties: { className: 'sidenote__body' },
+          },
+          children: body,
+        },
+        heading,
+      ];
+    },
+  );
+
+  // Note:
+  //  - make the note render a <blockquote> for better rendering in Pocket/Feedly/etc
+  visit(
+    markdownAST,
+    (node) => node.type === 'containerDirective' && node.name === 'note',
+    (node) => {
+      node.data ??= {};
+      node.data.hName = 'blockquote';
+      node.data.hProperties ??= {};
+      node.data.hProperties.className = 'note';
+    },
+  );
 
   // Spread lists that have new lines between list items
   visitWithAncestors(markdownAST, 'list', (node, ancestors) => {

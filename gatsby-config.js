@@ -31,11 +31,9 @@ module.exports = {
   },
   plugins: [
     'gatsby-plugin-netlify',
-    'gatsby-plugin-preact',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-styled-components',
     'gatsby-plugin-typescript',
-    'gatsby-plugin-netlify-cms',
     `gatsby-plugin-image`,
     {
       resolve: 'gatsby-plugin-sharp',
@@ -102,9 +100,6 @@ module.exports = {
     {
       resolve: 'gatsby-transformer-remark',
       options: {
-        // Disable `pedantic` as it’s a) buggy and deprecated, per https://github.com/remarkjs/remark/pull/477,
-        // b) breaks code indents inside list items
-        pedantic: false,
         plugins: [
           `gatsby-remark-3perf-table-of-contents`,
           `gatsby-remark-autolink-headers`,
@@ -159,16 +154,7 @@ module.exports = {
               },
             },
           },
-          {
-            resolve: 'gatsby-remark-custom-blocks',
-            options: {
-              blocks: {
-                sidenote: { classes: 'sidenote', title: 'required' },
-                // make a `note` a <blockquote> for better rendering in Pocket/Feedly/etc
-                note: { classes: 'note', containerElement: 'blockquote' },
-              },
-            },
-          },
+          `gatsby-remark-3perf-directive`,
           {
             resolve: `gatsby-remark-copy-linked-files`,
             options: {
@@ -267,7 +253,7 @@ module.exports = {
               {
                 allMarkdownRemark(
                   filter: {fields: { sourceName: { eq: "blog" } }},
-                  sort: { order: DESC, fields: [frontmatter___date___published] }
+                  sort: {frontmatter: {date: {published: DESC}}}
                 ) {
                   edges {
                     node {
@@ -300,9 +286,6 @@ module.exports = {
           },
         ],
       },
-    },
-    {
-      resolve: 'gatsby-plugin-no-javascript',
     },
   ],
 };

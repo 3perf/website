@@ -50,8 +50,9 @@ pages/about/index.jsx
 
 A good place to start is [a performance-oriented Next.js introduction at `web.dev`](https://web.dev/performance-as-a-default-with-nextjs/).
 
-[[note]]
-| [Nuxt.js](https://nuxtjs.org/) is a similar framework for Vue.js.
+:::note
+[Nuxt.js](https://nuxtjs.org/) is a similar framework for Vue.js.
+:::
 
 ## 2️⃣ Connect Cloudflare (or another CDN service)
 
