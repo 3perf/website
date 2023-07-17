@@ -33,7 +33,6 @@ export const Container = styled.div`
 `;
 
 export const Nav = styled(_Nav)`
-  margin-right: auto;
   margin-top: ${sizes.navTopMargin}px;
   margin-bottom: ${gridSize * 6}px;
   font-size: 16px;

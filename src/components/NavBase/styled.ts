@@ -8,12 +8,7 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-
-  margin: -6px -${containerChildrenSpacingHorizontal / 2}px;
-
-  > * {
-    margin: 6px ${containerChildrenSpacingHorizontal / 2}px;
-  }
+  gap: 12px ${containerChildrenSpacingHorizontal}px;
 `;
 
 export const Logo = styled(_Logo)`
