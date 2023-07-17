@@ -44,7 +44,7 @@ interface ServicesSectionProps {
 
 const ServicesSection = ({ className = '', data }: ServicesSectionProps) => (
   <Section
-    title="Let’s make you fast&nbsp;🚀"
+    title="Let’s Make You Fast&nbsp;🚀"
     className={className}
     sectionKind={SectionKind.VERTICAL}
   >
@@ -101,8 +101,9 @@ const ServicesSection = ({ className = '', data }: ServicesSectionProps) => (
           sure the implementation goes smoothly)
         </Note>
         <Note>
-          <strong>Want an example?</strong> See this{' '}
-          <a href="/blog/notion/">public Notion case study</a>.
+          <strong>Want an example?</strong> See these public case studies:{' '}
+          <a href="/blog/notion/">Notion app</a> ·{' '}
+          <a href="/blog/causal">Causal app</a>
         </Note>
       </Text>
     </ImageText>
@@ -176,8 +177,8 @@ const ServicesSection = ({ className = '', data }: ServicesSectionProps) => (
         </p>
         <p>
           <strong>How this looks:</strong> we’ll take a bunch of slow sites or
-          apps, profile each one, figure out what makes them slow, and gradually
-          fix every performance issue.
+          apps → profile each one → and make each one faster, learning multiple
+          performance tools and techniques in the process.
         </p>
         <p>
           <strong>Great when:</strong> you want to learn how to keep your site
@@ -204,12 +205,9 @@ const ServicesSection = ({ className = '', data }: ServicesSectionProps) => (
           </BlockquoteFooter>
         </Blockquote>
         <Note>
-          <strong>Format:</strong> Online or offline&nbsp;· For either Junior or
-          Senior engineers&nbsp;· Takes 12-16 hours
-        </Note>
-        <Note>
-          <strong>32% of all respondents</strong> so far told the workshop was
-          “even better than expected”
+          <strong>Format:</strong> Covers React performance or Core Web
+          Vitals&nbsp;· Online or offline&nbsp;· Takes 12-16 hours.{' '}
+          <a href="/workshops">More details</a>
         </Note>
       </Text>
     </ImageText>
