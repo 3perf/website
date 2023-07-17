@@ -17,26 +17,33 @@ import {
   PhotoImage,
 } from './styled';
 import Image from '../../components/Image';
-import { graphql } from 'gatsby';
+import { HeadProps, graphql } from 'gatsby';
 import { GraphqlImage } from '../../types';
-import facebookCoverUrl from './conference.jpg';
+import facebookCoverUrl from './cover.png';
+import { useSiteMetadata } from '../../shared/useSiteMetadata';
 
-export const Head = () => (
-  <>
-    <title>
-      React Performance and Core Web Vitals Workshops | PerfPerfPerf
-    </title>
-    <meta
-      name="description"
-      content="Learn how to improve your React app performance and Core Web Vitals with these workshops."
-    />
-    <meta
-      name="keywords"
-      content="react performance workshop, core web vitals workshop, loading performance workshop, react interaction performance workshop, runtime react speed workshop"
-    />
-    <meta name="og:image" content={facebookCoverUrl} />
-  </>
-);
+export const Head = ({ location }: HeadProps) => {
+  const siteMetadata = useSiteMetadata();
+
+  return (
+    <>
+      <title>
+        React Performance and Core Web Vitals Workshops | PerfPerfPerf
+      </title>
+      <meta
+        name="description"
+        content="Learn how to make your app faster with these workshops from Ivan Akulov. Featured at Smashing Conf, React Summit, and more."
+      />
+      <meta
+        name="keywords"
+        content="react performance workshop, core web vitals workshop, loading performance workshop, react interaction performance workshop, runtime react speed workshop"
+      />
+      <meta name="og:image" content={facebookCoverUrl} />
+      <link rel="canonical" href={siteMetadata.siteUrl + location.pathname} />
+      <meta name="twitter:card" content="summary_large_image" />
+    </>
+  );
+};
 
 const WorkshopsPage = ({
   data,
