@@ -89,8 +89,8 @@ const WorkshopsPage = ({
                 </a>{' '}
                 has been helping companies like Framer, Restream, Toggl, and
                 dozens more to get their apps and sites faster. Over these
-                years, Ivan developed a step-by-step methodology to improving
-                web performance. Now, Ivan is teaching this methodology to other
+                years, Ivan has developed a step-by-step methodology to
+                improving web performance. Now, he’s teaching it to other
                 engineers.
               </p>
             </TextMaxWidthWrapper>
