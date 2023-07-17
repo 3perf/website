@@ -13,11 +13,12 @@ import {
   Nav,
   Marquee,
   FigureContainer,
+  Blockquote,
+  PhotoImage,
 } from './styled';
 import Image from '../../components/Image';
 import { graphql } from 'gatsby';
 import { GraphqlImage } from '../../types';
-import { styled } from 'styled-components';
 import facebookCoverUrl from './conference.jpg';
 
 export const Head = () => (
@@ -36,11 +37,6 @@ export const Head = () => (
     <meta name="og:image" content={facebookCoverUrl} />
   </>
 );
-
-const PhotoImage = styled(Image)`
-  border-radius: 4px;
-  overflow: hidden;
-`;
 
 const WorkshopsPage = ({
   data,
@@ -61,7 +57,7 @@ const WorkshopsPage = ({
               <span>expensive renders and effects</span> ·{' '}
               <span>react profiler</span> · <span>chrome devtools</span> ·&nbsp;
             </Marquee>
-            <Marquee duration={200}>
+            <Marquee duration={180}>
               <span>suspense</span> · <span>redux & context</span> ·{' '}
               <span>react 18</span> · <span>layout thrashing</span> ·{' '}
               <span>browser’s render loop</span> · <span>virtualization</span>{' '}
@@ -73,7 +69,7 @@ const WorkshopsPage = ({
               <span>font subsetting</span> · <span>responsive images</span> ·{' '}
               <span>http2 & http3</span> · <span>hydration cost</span> ·&nbsp;
             </Marquee>
-            <Marquee duration={300}>
+            <Marquee duration={250}>
               <span>third parties</span> · <span>cache-control</span> ·{' '}
               <span>webpagetest</span> · <span>staying fast</span> ·{' '}
               <span>prefetching</span> ·&nbsp;
@@ -81,16 +77,16 @@ const WorkshopsPage = ({
           </Keywords>
           <WidthWrapper>
             <TextMaxWidthWrapper>
-              <Header>Learn Web Per&shy;for&shy;mance First Hand</Header>
+              <Header>Learn Web Per&shy;for&shy;mance First-Hand</Header>
               <p>
                 Since 2017,{' '}
                 <a href="https://twitter.com/iamakulov" target="_blank">
                   Ivan Akulov
                 </a>{' '}
                 has been helping companies like Framer, Restream, Toggl, and
-                dozens more to get their apps and sites faster. Over these
-                years, Ivan has developed a step-by-step methodology to
-                improving web performance. Now, he’s teaching it to other
+                dozens more make their apps and sites faster. Over those years,
+                Ivan has developed a step-by-step approach to improving web
+                performance. Now, he’s teaching this approach to other
                 engineers.
               </p>
             </TextMaxWidthWrapper>
@@ -101,8 +97,9 @@ const WorkshopsPage = ({
                 imageData={data.conferenceImage.childImageSharp.gatsbyImageData}
               />
               <figcaption>
-                This image is from a conference, not from a workshop – getting
-                nice photos with mostly remote workshops is hard!
+                Since most workshops are remote, getting photos like this is
+                hard; so this is a photo of Ivan speaking at{' '}
+                <a href="https://reactsummit.com/">React Summit</a> instead 😇
               </figcaption>
             </figure>
             <figure>
@@ -110,43 +107,58 @@ const WorkshopsPage = ({
                 imageData={data.slidesImage.childImageSharp.gatsbyImageData}
               />
               <figcaption>
-                Workshops typically have barely 15-20 slides – 90% of time is
-                spent live coding and live debugging
+                Every workshop comes with cheatsheets for real-world performance
+                issues
               </figcaption>
             </figure>
+            <Blockquote>
+              <p>
+                I’ve had plenty of trainings in the past that were full-frontal
+                “death by powerpoint” where I had wished to do something
+                practical for a change, but not in this [React Performance]
+                workshop
+              </p>
+              <footer>
+                —{' '}
+                <a href="https://www.linkedin.com/in/patrickhund/">
+                  Patrick Hund
+                </a>
+                , Principal Web Engineer
+              </footer>
+            </Blockquote>
           </FigureContainer>
           <WidthWrapper>
             <TextMaxWidthWrapper>
               <p>
                 <strong>⚛️ React Performance Masterclass.</strong> In the React
-                workshop, we take a slow app → profile it → fix it – and then
-                repeat with the next app, over and over, until we learn every
-                common React performance antipattern.
+                workshop, we take several slow apps → profile them → and fix
+                each of them. Along the way, we learn numerous performance tools
+                and encounter all the common React performance antipatterns.
               </p>
               <p>
                 The workshop covers both basic (<code>useMemo()</code>, Chrome
-                DevTools, React Profiler) and advanced subjects (React Context,{' '}
-                <code>why-did-you-render</code>, <code>useTransition</code>, and
-                many more).{' '}
-                <a href="https://docs.3perf.com/react-workshop">Full Program</a>{' '}
+                DevTools, React Profiler) and advanced topics (React Context,{' '}
+                <code>why-did-you-render</code>, <code>useTransition</code>,
+                virtualization, and many more).{' '}
+                <a href="https://docs.3perf.com/react-workshop">Full program</a>{' '}
                 ·{' '}
                 <a href="https://twitter.com/iamakulov/status/1670733212967124992">
-                  Free Bonus Materials
+                  Free bonus materials
                 </a>
               </p>
               <br />
               <br />
               <p>
                 <strong>🌸 Core Web Vitals Masterclass.</strong> In the Core Web
-                Vitals workshop, we also take a slow app → profile it → fix it –
-                and then repeat, over and over, until we learn all the tools
-                you’ll need to use and cover all antipatterns you might
-                encounter in the wild.
+                Vitals workshop, we take several slow apps → profile them → and
+                fix them. In the process, we learn how to improve each Core Web
+                Vital, use tools like Lighthouse and WebPageTest, and solve
+                common issues you might encounter in the wild.
               </p>
               <p>
-                The workshop covers stuff like render-blocking resources,
-                responsive images, font optimizations, preloading, and more.{' '}
-                <a href="https://docs.3perf.com/cwv-workshop">Full Program</a>
+                The workshop covers things like render-blocking resources,
+                responsive images, font optimization, preloading, and more.{' '}
+                <a href="https://docs.3perf.com/cwv-workshop">Full program</a>
               </p>
               <br />
             </TextMaxWidthWrapper>
@@ -174,7 +186,7 @@ export const query = graphql`
         gatsbyImageData(width: 1000, placeholder: NONE, layout: CONSTRAINED)
       }
     }
-    slidesImage: file(relativePath: { eq: "workshops/powerpoint.png" }) {
+    slidesImage: file(relativePath: { eq: "workshops/cheatsheets.png" }) {
       childImageSharp {
         gatsbyImageData(width: 600, placeholder: NONE, layout: CONSTRAINED)
       }

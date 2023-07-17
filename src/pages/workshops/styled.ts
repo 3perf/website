@@ -5,6 +5,7 @@ import _Nav from '../../components/Nav';
 import _Marquee from '../../components/Marquee';
 import media from '../../styles/media';
 import { colors, gridSize, sizes } from '../../styles/variables';
+import Image from '../../components/Image';
 
 export const Background = styled.div`
   min-height: 100vh;
@@ -87,31 +88,108 @@ export const Keywords = styled.div`
 `}
 `;
 
+export const PhotoImage = styled(Image)`
+  border-radius: 4px;
+  overflow: hidden;
+`;
+
+export const Blockquote = styled.blockquote`
+  position: relative;
+
+  &::before {
+    content: '“';
+    position: absolute;
+    color: #555;
+    font-size: 60px;
+    z-index: 0;
+    font-weight: 900;
+    top: -25px;
+    left: -20px;
+  }
+
+  p {
+    position: relative;
+  }
+
+  footer {
+    margin-top: ${gridSize}px;
+  }
+`;
+
 export const FigureContainer = styled.div`
-  display: flex;
+  display: grid;
   margin: ${gridSize * 6}px auto;
   padding: 0 ${sizes.contentPadding}px;
-  gap: ${gridSize * 6}px;
+  gap: ${gridSize * 6}px ${gridSize * 8}px;
   max-width: 1400px;
   width: 100%;
 
-  figure {
+  // Style resets
+  figure,
+  blockquote {
     margin: 0;
   }
 
-  figure:nth-child(1) {
-    flex: 1.5;
-  }
+  // Grid layout
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: auto 1fr;
 
-  figure:nth-child(2) {
-    flex: 1;
-  }
+  grid-template-areas:
+    'image1 image2'
+    'image1 quote';
 
-  figcaption {
-    font-size: ${sizes.fontDefault}px;
-  }
+  ${media.medium`
+    grid-template-columns: 3fr 2fr;
+    column-gap: ${gridSize * 6}px;
+  `}
 
   ${media.small`
-    flex-direction: column;
+    grid-template-columns: 3fr 2fr;
+    grid-template-areas:
+      'image1 image1'
+      'quote image2';
+    column-gap: ${gridSize * 4}px;
   `}
+
+  ${media.xSmall`
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'image1'
+      'quote'
+      'image2';
+  `}
+
+  > :nth-child(1) {
+    grid-area: image1;
+  }
+
+  > :nth-child(2) {
+    grid-area: image2;
+
+    // Add a negative space because the image is not rectangular
+    margin-top: -${gridSize * 4}px;
+    ${media.small`
+      margin-top: -${gridSize * 2}px;
+    `}
+  }
+
+  > :nth-child(3) {
+    grid-area: quote;
+  }
+
+  // Font sizes
+  figcaption,
+  footer {
+    font-size: ${sizes.fontDefault}px;
+
+    ${media.medium`
+      font-size: ${sizes.fontSmall}px;
+    `}
+  }
+
+  ${Blockquote} {
+    ${media.medium`
+      font-size: ${sizes.fontDefault}px;
+    `}
+  }
 `;
