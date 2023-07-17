@@ -49,7 +49,7 @@
     "@babel/plugin-transform-object-assign": "^7.22.5",
     "@babel/preset-env": "^7.22.9",
     "@babel/preset-typescript": "^7.22.5",
-    "@netlify/plugin-gatsby": "^1.0.3",
+    "@netlify/plugin-gatsby": "^3.6.2",
     "@types/aws-lambda": "^8.10.53",
     "@types/cheerio": "^0.22.18",
     "@types/classnames": "^2.2.10",
@@ -99,5 +99,6 @@
     "typescript": "^5.1.6",
     "unist-util-visit": "^2.0.2",
     "unist-util-visit-parents": "^3.0.2"
-  }
+  },
+  "packageManager": "yarn@3.6.1"
 }
