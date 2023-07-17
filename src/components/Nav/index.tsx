@@ -4,8 +4,8 @@ const Nav = (props: NavBaseProps) => (
   <NavBase
     primaryItems={[
       { title: 'Services', href: '/#services' },
-      { title: 'Client Stories', href: '/#clients' },
-      { title: 'Perf Guides', href: '/content' },
+      { title: 'Client Cases', href: '/#clients' },
+      { title: 'Articles and Guides', href: '/content' },
       { title: 'About Us', href: '/#about' },
     ]}
     secondaryItems={[
