@@ -16,6 +16,7 @@ interface MailchimpSubscribeProps {
   className?: string;
   email?: string;
   text: string;
+  tags?: string;
   buttonText?: string;
 }
 
@@ -23,6 +24,7 @@ const MailchimpSubscribe = ({
   className,
   email = '',
   text,
+  tags,
   buttonText = 'Subscribe',
 }: MailchimpSubscribeProps) => {
   return (
@@ -45,6 +47,11 @@ const MailchimpSubscribe = ({
           />
           <MailchimpSubmit type="submit" value={buttonText} />
         </div>
+        {tags && (
+          <div hidden>
+            <input type="hidden" name="tags" value={tags} />
+          </div>
+        )}
         <HiddenDiv>
           <input
             type="text"
