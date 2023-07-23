@@ -31,6 +31,10 @@ const lastUpdatedDate = new Date(2022, 11, 8);
 const meta = {
   title:
     'React Concurrency, Explained: What useTransition and Suspense Hydration Actually Do',
+  htmlTitle: [
+    'React Concurrency, Explained',
+    'What useTransition and Suspense Hydration Actually\xa0Do',
+  ],
   description:
     'Concurrent rendering: how it helps with performance, how it works under the hood, and why Vue.js/Preact refused to ship anything similar',
   url: 'https://3perf.com/talks/react-concurrency',
@@ -103,7 +107,7 @@ export const Head = () => {
 };
 
 const ReactConcurrencyPage = ({ data }: ReactConcurrencyPageProps) => {
-  const [primaryTitle, subtitle] = meta.title.split(': ');
+  const [primaryTitle, subtitle] = meta.htmlTitle;
 
   return (
     <Layout>
