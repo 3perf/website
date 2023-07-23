@@ -31,9 +31,7 @@ export const Head = ({ data }: ComponentProps) => {
 
   return (
     <>
-      <title>
-        {title} · {siteMetadata.title}
-      </title>
+      <title>{title + ' · ' + siteMetadata.title}</title>
     </>
   );
 };

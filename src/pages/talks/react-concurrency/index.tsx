@@ -44,7 +44,7 @@ export const Head = () => {
 
   return (
     <>
-      <title>{meta.title} | PerfPerfPerf</title>
+      <title>{`${meta.title} · PerfPerfPerf`}</title>
 
       <meta name="description" content={meta.description} />
       <meta name="image" content={fullSocialCoverUrl} />
