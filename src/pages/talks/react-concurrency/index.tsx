@@ -29,9 +29,10 @@ const publishedDate = new Date(2022, 8, 29);
 const lastUpdatedDate = new Date(2022, 11, 8);
 
 const meta = {
-  title: 'React Concurrency, Explained',
+  title:
+    'React Concurrency, Explained: What useTransition and Suspense Hydration Actually Do',
   description:
-    'Concurrent Rendering: when it helps, how it works under the hood, and why Vue.js/Preact refused to ship anything similar',
+    'Concurrent rendering: how it helps with performance, how it works under the hood, and why Vue.js/Preact refused to ship anything similar',
   url: 'https://3perf.com/talks/react-concurrency',
 };
 
@@ -102,13 +103,16 @@ export const Head = () => {
 };
 
 const ReactConcurrencyPage = ({ data }: ReactConcurrencyPageProps) => {
+  const [primaryTitle, subtitle] = meta.title.split(': ');
+
   return (
     <Layout>
       <WidthWrapper>
         <Nav logoKind={LogoKind.Black} />
         <TalkHeader
           imageData={data.cover.childImageSharp.gatsbyImageData}
-          title={meta.title}
+          title={primaryTitle}
+          subtitle={subtitle}
           description={
             <>
               <p>
@@ -130,8 +134,9 @@ const ReactConcurrencyPage = ({ data }: ReactConcurrencyPageProps) => {
             <>
               <a href="https://smashingconf.com/freiburg-2022/schedule/#day2-ivan-akulov">
                 Smashing Conf
-              </a>,{' '}
-              <a href="https://perfnow.nl/speakers#ivan">performance.now()</a>, and <a href="https://reactsummit.com/">React Summit</a>
+              </a>
+              , <a href="https://perfnow.nl/speakers#ivan">performance.now()</a>
+              , and <a href="https://reactsummit.com/">React Summit</a>
             </>
           }
         />

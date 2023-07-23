@@ -17,11 +17,19 @@ export const Image = styled(GatsbyImage)`
   `};
 `;
 
-export const Title = styled.h1`
+export const Title = styled.h1<{ $hasSubtitle: boolean }>`
   font-size: 2em;
   line-height: 1.2;
   margin-top: ${gridSize * 4}px;
   margin-bottom: ${gridSize * 2}px;
+
+  ${media.small`
+    font-size: 1.5em;
+  `}
+`;
+
+export const Subtitle = styled.span`
+  font-weight: normal;
 `;
 
 export const Description = styled.div``;

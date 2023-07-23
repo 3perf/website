@@ -1,10 +1,11 @@
 import { IGatsbyImageData } from 'gatsby-plugin-image';
 import { JSXChildrenProp } from '../../../types';
-import { Container, Description, Image, Title } from './styled';
+import { Container, Description, Image, Subtitle, Title } from './styled';
 
 interface TalkHeaderProps {
   imageData: IGatsbyImageData;
   title: JSXChildrenProp;
+  subtitle?: JSXChildrenProp;
   description: JSXChildrenProp;
   className?: string;
 }
@@ -12,12 +13,20 @@ interface TalkHeaderProps {
 const TalkHeader = ({
   imageData,
   title,
+  subtitle,
   description,
   className,
 }: TalkHeaderProps) => (
   <Container className={className}>
     <Image loading="eager" imageData={imageData} />
-    <Title>{title}</Title>
+    <Title $hasSubtitle={!!subtitle}>
+      {title}
+      {subtitle && (
+        <>
+          : <Subtitle>{subtitle}</Subtitle>
+        </>
+      )}
+    </Title>
     <Description>{description}</Description>
   </Container>
 );
