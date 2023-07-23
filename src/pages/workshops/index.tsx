@@ -28,7 +28,7 @@ export const Head = ({ location }: HeadProps) => {
   return (
     <>
       <title>
-        React Performance and Core Web Vitals Workshops | PerfPerfPerf
+        React Performance and Core Web Vitals Workshops · PerfPerfPerf
       </title>
       <meta
         name="description"

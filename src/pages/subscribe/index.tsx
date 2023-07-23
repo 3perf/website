@@ -29,7 +29,7 @@ const getEmailFromQueryString = (queryString: string) => {
 
 export const Head = () => (
   <>
-    <title>Subscribe | PerfPerfPerf</title>
+    <title>Subscribe · PerfPerfPerf</title>
   </>
 );
 

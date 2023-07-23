@@ -16,7 +16,7 @@ const IFrame = styled.iframe`
 
 export const Head = () => (
   <>
-    <title>Building quick apps in 2019</title>
+    <title>Building quick apps in 2019 · PerfPerfPerf</title>
     <meta property="og:url" content="https://3perf.com/talks/quick-apps/" />
   </>
 );
