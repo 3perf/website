@@ -34,6 +34,7 @@ module.exports = {
     logoUrl: `${siteUrl}/logo-black-raster.png`,
   },
   plugins: [
+    'gatsby-plugin-sitemap',
     'gatsby-plugin-netlify',
     'gatsby-plugin-styled-components',
     'gatsby-plugin-typescript',
