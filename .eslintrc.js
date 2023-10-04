@@ -6,7 +6,7 @@ module.exports = {
   extends: [
     'plugin:@typescript-eslint/recommended',
     'plugin:@typescript-eslint/recommended-requiring-type-checking',
-    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
     'prettier',
     'plugin:import/errors',
     'plugin:import/warnings',
@@ -31,5 +31,7 @@ module.exports = {
     // Incompatible with `"esModuleInterop": true`
     'import/default': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
+    // Warns about import styled from 'styled-components', impossible to disable just for this case
+    'import/no-named-as-default': 'off',
   },
 };

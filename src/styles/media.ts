@@ -1,5 +1,7 @@
 import { css } from 'styled-components';
 
+// This needs to be reworked (as it breaks syntax highlighting), so ignoring the ESLint error for now
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
 const media = {
   xSmall: (arg: any, ...otherArgs: any[]) => css`
     @media (max-width: 425px) {
@@ -31,5 +33,6 @@ const media = {
     }
   `,
 };
+/* eslint-enable @typescript-eslint/no-unsafe-argument */
 
 export default media;

@@ -6,6 +6,7 @@ import WidthWrapper from '../../../components/WidthWrapper';
 import { SlideGatsbyImage } from '../../../components/talks/Slide';
 import TalkHeader from '../../../components/talks/TalkHeader';
 import TalkMeta from '../../../components/talks/TalkMeta';
+import { useSiteMetadata } from '../../../shared/useSiteMetadata';
 import {
   BlockImage,
   Blockquote,
@@ -27,7 +28,6 @@ import httpCdnUrl from './slides/http-cdn.svg';
 import jsScriptsBlockParsing1Url from './slides/js-scripts-block-parsing-1.svg';
 import perfImportanceDigitsUrl from './slides/perf-importance-digits.svg';
 import toolsWebpackBundleAnalyzer from './slides/tools-webpack-bundle-analyzer.mp4';
-import { useSiteMetadata } from '../../../shared/useSiteMetadata';
 
 interface FileUrl {
   publicURL: string;

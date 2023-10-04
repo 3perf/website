@@ -1,5 +1,6 @@
 'use client';
 
+import { assertNever } from 'assert-never';
 import { SVGProps, useEffect, useRef, useState } from 'react';
 import { JSXChildrenProp } from '../../../types';
 import { ImageWrapper, Text } from '../Slide/styled';
@@ -206,7 +207,7 @@ function getControlButtonContents(animationState: AnimationPlayState) {
     );
   }
 
-  throw new Error(`Unknown animation state: ${animationState}`);
+  assertNever(animationState);
 }
 
 export default AnimatedSlide;

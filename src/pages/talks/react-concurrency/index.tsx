@@ -5,10 +5,10 @@ import { LogoKind } from '../../../components/Logo';
 import WidthWrapper from '../../../components/WidthWrapper';
 import TalkHeader from '../../../components/talks/TalkHeader';
 import TalkMeta from '../../../components/talks/TalkMeta';
+import { useSiteMetadata } from '../../../shared/useSiteMetadata';
 import { Footer, Footnote, Nav, Slides } from '../styled';
 import socialCoverUrl from './cover.png';
 import SlidesContent from './slides.content';
-import { useSiteMetadata } from '../../../shared/useSiteMetadata';
 
 interface ReactConcurrencyPageProps {
   data: {

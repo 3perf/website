@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 import _Footer from '../../components/Footer';
+import Image from '../../components/Image';
 import _MailchimpSubscribe from '../../components/MailchimpSubscribe';
-import _Nav from '../../components/Nav';
 import _Marquee from '../../components/Marquee';
+import _Nav from '../../components/Nav';
 import media from '../../styles/media';
 import { colors, gridSize, sizes } from '../../styles/variables';
-import Image from '../../components/Image';
 
 export const Background = styled.div`
   min-height: 100vh;

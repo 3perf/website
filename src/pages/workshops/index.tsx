@@ -1,6 +1,11 @@
+import { HeadProps, graphql } from 'gatsby';
+import Image from '../../components/Image';
 import Layout from '../../components/Layout';
 import { LogoKind } from '../../components/Logo';
 import WidthWrapper from '../../components/WidthWrapper';
+import { useSiteMetadata } from '../../shared/useSiteMetadata';
+import { GraphqlImage } from '../../types';
+import facebookCoverUrl from './cover.png';
 import {
   Background,
   Container,
@@ -16,11 +21,6 @@ import {
   Blockquote,
   PhotoImage,
 } from './styled';
-import Image from '../../components/Image';
-import { HeadProps, graphql } from 'gatsby';
-import { GraphqlImage } from '../../types';
-import facebookCoverUrl from './cover.png';
-import { useSiteMetadata } from '../../shared/useSiteMetadata';
 
 export const Head = ({ location }: HeadProps) => {
   const siteMetadata = useSiteMetadata();
@@ -87,7 +87,11 @@ const WorkshopsPage = ({
               <Header>Learn Web Per&shy;for&shy;mance First-Hand</Header>
               <p>
                 Since 2017,{' '}
-                <a href="https://twitter.com/iamakulov" target="_blank">
+                <a
+                  href="https://twitter.com/iamakulov"
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   Ivan Akulov
                 </a>{' '}
                 has been helping companies like Framer, Restream, Toggl, and
