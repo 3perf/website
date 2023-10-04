@@ -37,7 +37,7 @@ const Image = ({
             loading={loading || 'lazy'}
             alt={alt}
             style={imgStyle}
-            $width={imageData.width}
+            width={imageData.width}
             height={imageData.height}
             $layout={imageData.layout}
           />

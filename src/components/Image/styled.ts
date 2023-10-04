@@ -11,14 +11,14 @@ export const Container = styled.span`
 
 export const Img = styled.img<{
   $layout: IGatsbyImageData['layout'];
-  $width: number;
+  width: number;
 }>`
   ${(props) => {
     if (props.$layout === 'constrained') {
       return css`
         width: 100%;
         height: auto;
-        max-width: ${props.$width}px;
+        max-width: ${props.width}px;
       `;
     }
 
