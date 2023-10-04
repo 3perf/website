@@ -23,6 +23,7 @@ if (process.env.DEV_SITE_HOSTNAME_OVERRIDE) {
 
 module.exports = {
   jsxRuntime: 'automatic',
+  trailingSlash: 'always',
   flags: {
     PARTIAL_HYDRATION: true,
   },

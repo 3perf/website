@@ -37,7 +37,7 @@ const meta = {
   ],
   description:
     'Concurrent rendering: how it helps with performance, how it works under the hood, and why Vue.js/Preact refused to ship anything similar',
-  url: 'https://3perf.com/talks/react-concurrency',
+  url: 'https://3perf.com/talks/react-concurrency/',
 };
 
 // TODO: move basic meta tags for article to a separate component that will take
