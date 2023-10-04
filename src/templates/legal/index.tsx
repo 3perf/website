@@ -32,6 +32,7 @@ export const Head = ({ data }: ComponentProps) => {
   return (
     <>
       <title>{title + ' · ' + siteMetadata.title}</title>
+      <meta name="robots" content="noindex" />
     </>
   );
 };
