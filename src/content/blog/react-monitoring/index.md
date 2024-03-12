@@ -12,7 +12,7 @@ socialImage:
   twitter: './cover-twitter.png'
 date:
   published: 2022-06-06T15:00:00
-  modified: 2022-06-08T16:00:00
+  modified: 2024-03-12T14:00:00
 # The article slug changed; let’s keep its original guid to avoid pushing a new RSS item
 rssForceGuid: https://3perf.com/blog/runtime-perf/
 ---
@@ -146,13 +146,12 @@ The challenge is that React Profiler measures only a part of the whole interacti
 
 If you added an expensive `useLayoutEffect` or accidentally increased your layout costs twice, React Profiler just wouldn’t catch that.
 
-### Why not `performance.mark()`/`performance.measure()`?
+### What about `performance.mark()`/`performance.measure()`?
 
 Instead of using `performance.now()` to measure how long an interaction took, you could also use [`performance.mark()`](http://developer.mozilla.org/en-US/docs/Web/API/Performance/mark) and [`performance.measure()`](http://developer.mozilla.org/en-US/docs/Web/API/Performance/measure) APIs:
 
 ```js
 function measureInteraction(interactionName) {
-  // Don’t do this
   performance.mark(interactionName + ' start');
 
   return {
@@ -169,11 +168,13 @@ function measureInteraction(interactionName) {
 }
 ```
 
-This has a useful side effect. `performance.measure()` entries are visible in Chrome DevTools, which makes debugging performance issues easier:
+It’s slightly more complex, but has two useful side effects:
 
-![](./user-timings.png)
+- `performance.measure()` entries are visible in Chrome DevTools, which makes debugging performance issues easier:
 
-However, in Chrome, `performance.measure()` calls consume _a lot_ of memory. In my tests, creating 5000 `performance.measure()` entries causes the browser’s tab to increase its memory usage by ~100 MB. And if your app stays open for a while – like Gmail or Figma – 5000 entries is not that much!
+  ![](./user-timings.png)
+
+- Another part of the app can read all `performance.mark()` and `performance.measure()` entries (using [`PerformanceObserver`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceObserver) with types `mark` and `measure`). This is helpful when you have an independent monitoring script that needs to collect measurements from the whole app.
 
 ### How does this work with React 18’s concurrent rendering?
 
