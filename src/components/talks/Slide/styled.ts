@@ -9,7 +9,7 @@ export const Container = styled.figure`
   align-items: flex-start;
   margin: -8px;
 
-  font-family: 'Merriweather', Georgia, serif;
+  font-family: system-ui, sans-serif;
 
   > * {
     margin: 8px;

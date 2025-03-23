@@ -316,7 +316,7 @@ const noteStyles = css`
 `;
 
 export const Content = styled.article<{ formatting?: { roundImageBorder?: boolean } }>`
-  font-family: 'Merriweather', Georgia, serif;
+  font-family: system-ui, sans-serif;
   max-width: 600px;
 
   ${headerStyles}
