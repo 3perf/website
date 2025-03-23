@@ -36,6 +36,7 @@ interface ContentPageProps {
     polyfills: GraphqlImage;
     awesomeWebpackPerf: GraphqlImage;
     photo: GraphqlImage;
+    packer: GraphqlImage;
   };
 }
 
@@ -138,6 +139,11 @@ const ContentPage = ({ data }: ContentPageProps) => {
             <ContentItem
               link="https://twitter.com/iamakulov/status/1223188926787178497"
               title="Webpack bundles, large and small"
+            />
+            <ContentItem
+              link="/blog/packer/"
+              title="Performance Archaeology: Packer.js, a JS Minifier from 2004"
+              image={data.packer}
             />
           </Section>
           <SectionHeader>Guides</SectionHeader>
@@ -320,6 +326,11 @@ export const query = graphql`
       }
     }
     notion: file(relativePath: { eq: "notion-social.png" }) {
+      childImageSharp {
+        gatsbyImageData(height: 150, placeholder: NONE, layout: FIXED)
+      }
+    }
+    packer: file(relativePath: { eq: "packer/cover-facebook.jpg" }) {
       childImageSharp {
         gatsbyImageData(height: 150, placeholder: NONE, layout: FIXED)
       }

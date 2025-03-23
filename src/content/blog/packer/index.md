@@ -1,7 +1,7 @@
 ---
 title: 'Performance Archaeology: Packer.js, a JS Minifier from 2004'
 alternativeTitles:
-  social: 'Performance Archaeology: Packer.js'
+  social: 'Performance Archaeology: Packer.js, a JS Minifier from 2004'
   seo: 'Performance Archaeology: Packer.js, a JS Minifier from 2004'
 author:
   id: iamakulov
@@ -9,7 +9,7 @@ author:
   link: https://iamakulov.com
   twitterId: iamakulov
   facebookId: '100002052594007'
-description: 'Reverse-engineering a surprisingly effective JS minifier from 2004'
+description: 'Reverse-engineering a surprisingly effective twenty-year-old JS minifier'
 rssDescription: |
   Back in 2018, while doing a performance audit for a client, I stumbled upon an unusually-looking piece of code:
 
