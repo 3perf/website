@@ -1,7 +1,6 @@
 import { graphql } from 'gatsby';
 import { IGatsbyImageData } from 'gatsby-plugin-image';
 import Layout from '../../../components/Layout';
-import { LogoKind } from '../../../components/Logo';
 import WidthWrapper from '../../../components/WidthWrapper';
 import { SlideGatsbyImage } from '../../../components/talks/Slide';
 import TalkHeader from '../../../components/talks/TalkHeader';
@@ -181,7 +180,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
   return (
     <Layout>
       <WidthWrapper>
-        <Nav logoKind={LogoKind.Black} />
+        <Nav />
         <TalkHeader
           imageData={data.indexSlide.childImageSharp.gatsbyImageData}
           title="Web Performance 101"

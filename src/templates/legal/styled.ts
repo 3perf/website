@@ -81,10 +81,6 @@ const listStyles = css`
     padding-left: 32px;
   }
 
-  ul {
-    list-style-type: '— ';
-  }
-
   /* Duplicating the class to increase specificity */
   p + .list_compact.list_compact,
   p + .list_compact.list_compact {

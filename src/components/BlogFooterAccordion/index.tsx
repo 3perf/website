@@ -10,15 +10,9 @@ const stuffToPromote = [
     href: '/talks/web-perf-101/',
   },
   {
-    imageKey: 'content',
-    title: 'Case studies, guides, and open-source tools',
-    href: '/content',
-  },
-
-  {
-    imageKey: 'services',
-    title: 'Make your site or web app fast',
-    href: '/#services',
+    imageKey: 'reactConcurrency',
+    title: 'React Concurrency, Explained',
+    href: '/talks/react-concurrency/',
   },
 ];
 
@@ -36,13 +30,8 @@ const BlogFooterAccordion = ({ className }: BlogFooterAccordionProps) => {
           gatsbyImageData(height: 130, placeholder: NONE, layout: FIXED)
         }
       }
-      services: file(relativePath: { eq: "BlogFooterAccordion/services.png" }) {
-        childImageSharp {
-          gatsbyImageData(height: 130, placeholder: NONE, layout: FIXED)
-        }
-      }
-      content: file(
-        relativePath: { eq: "BlogFooterAccordion/content-views.png" }
+      reactConcurrency: file(
+        relativePath: { eq: "BlogFooterAccordion/react-concurrency.png" }
       ) {
         childImageSharp {
           gatsbyImageData(height: 130, placeholder: NONE, layout: FIXED)
