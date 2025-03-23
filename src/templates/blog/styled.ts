@@ -315,7 +315,7 @@ const noteStyles = css`
   }
 `;
 
-export const Content = styled.article`
+export const Content = styled.article<{ formatting?: { roundImageBorder?: boolean } }>`
   font-family: 'Merriweather', Georgia, serif;
   max-width: 600px;
 
@@ -355,4 +355,29 @@ export const Content = styled.article`
   mark {
     background: ${colors.softYellow};
   }
+
+  hr {
+    margin-top: 32px;
+    margin-bottom: 32px;
+    border: none;
+    position: relative;
+
+    &::after {
+      content: '· · ·';
+      text-align: center;
+      width: 100%;
+      display: block;
+      color: #999;
+      letter-spacing: 5px;
+      user-select: none;
+    }
+  }
+
+  ${({ formatting }) =>
+    formatting?.roundImageBorder &&
+    css`
+      .media-container img {
+        border-radius: 2px;
+      }
+    `}
 `;

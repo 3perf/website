@@ -128,7 +128,7 @@ const ContentPage = ({ data }: ContentPageProps) => {
               title="Making React interactions in Causal 4× faster"
             />
             <ContentItem
-              link="https://twitter.com/iamakulov/status/1522008502398554113"
+              link="/blog/spotify-1am/"
               title="A dive into Spotify performance at 1 am"
             />
             <ContentItem

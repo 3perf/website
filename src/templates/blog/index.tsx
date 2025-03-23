@@ -60,6 +60,9 @@ interface QueryProps {
           twitterId: string;
           facebookId: string;
         };
+        formatting?: {
+          roundImageBorder?: boolean;
+        };
       };
     };
   };
@@ -153,7 +156,7 @@ const Component = ({ data }: QueryProps) => {
             </a>
           </TopMeta>
         </Header>
-        <Content>
+        <Content formatting={articleMeta.formatting}>
           <div dangerouslySetInnerHTML={{ __html: page.html }} />
         </Content>
         <BottomMeta>
@@ -235,6 +238,9 @@ export const pageQuery = graphql`
           link
           twitterId
           facebookId
+        }
+        formatting {
+          roundImageBorder
         }
       }
     }
