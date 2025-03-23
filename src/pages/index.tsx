@@ -46,6 +46,7 @@ interface ContentItemProps {
   description?: string | JSXChildrenProp;
   badge?: string | JSXChildrenProp;
   link: string;
+  isPopular?: boolean;
 }
 
 const ContentItem = ({
@@ -54,6 +55,7 @@ const ContentItem = ({
   description,
   link,
   badge,
+  isPopular,
 }: ContentItemProps) => {
   return (
     <ItemLink href={link}>
@@ -66,6 +68,7 @@ const ContentItem = ({
         <ItemTitle>{title}</ItemTitle>
         &nbsp;
         {badge && <Badge>{badge}</Badge>}
+        {isPopular && '★'}
       </div>
       {description && <ItemDescription>{description}</ItemDescription>}
     </ItemLink>
@@ -118,6 +121,7 @@ const ContentPage = ({ data }: ContentPageProps) => {
               link="/blog/notion/"
               title="Analyzing Notion app performance"
               description="How to make a React app load ~30% faster – just by tuning some configs and delaying some scripts"
+              isPopular
             />
             <ContentItem
               link="/blog/causal/"
@@ -144,6 +148,7 @@ const ContentPage = ({ data }: ContentPageProps) => {
               link="/blog/packer/"
               title="Performance Archaeology: Packer.js, a JS Minifier from 2004"
               image={data.packer}
+              badge="New"
             />
           </Section>
           <SectionHeader>Guides</SectionHeader>
@@ -152,12 +157,14 @@ const ContentPage = ({ data }: ContentPageProps) => {
               link="/talks/react-concurrency/"
               image={data.reactConcurrency}
               title="React Concurrency, Explained"
+              isPopular
             />
 
             <ContentItem
               link="/talks/web-perf-101/"
               title="Web Performance 101"
               description="A comprehencive guide into modern loading performance"
+              isPopular
             />
 
             <ContentItem
@@ -186,6 +193,7 @@ const ContentPage = ({ data }: ContentPageProps) => {
               link="/blog/react-monitoring/"
               title="How to monitor React render performance"
               description="So you just made your app fast. Now, how do you ensure it doesn't get slow again?"
+              isPopular
             />
             <ContentItem
               link="https://developers.google.com/web/fundamentals/performance/webpack/"
@@ -219,6 +227,7 @@ const ContentPage = ({ data }: ContentPageProps) => {
             <ContentItem
               link="/blog/link-rels/"
               title="Preload, prefetch and other <link> tags"
+              isPopular
             />
             <ContentItem
               link="https://github.com/GoogleChromeLabs/webpack-libs-optimizations"

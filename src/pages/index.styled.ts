@@ -103,9 +103,8 @@ export const Badge = styled.span`
   border-radius: 999px;
   padding: 2px 8px;
 
-  border: 1px solid ${colors.brightYellow};
+  border: 1px solid currentColor;
   background-size: 100px;
-  color: ${colors.brightYellow};
 
   font-size: 10px;
   text-transform: uppercase;
