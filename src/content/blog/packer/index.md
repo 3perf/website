@@ -227,21 +227,21 @@ JavaScript tools went a long way since 2007. So how does Packer compare to the l
 
 Let’s compare it by minifying jQuery 1.3.2. With the latest 2025 Terser, it gets down to 54 KB:
 
-![Image.png](https://res.craft.do/user/full/2ece4b12-4ceb-0b26-7909-17063832b522/doc/035FFCB9-A8B2-447D-ABAB-5F009423C20E/B3E8A67D-5D47-448E-AFD9-8227ED881C42_2/hfiTiJCy28nkYqJb0Hsto0vAKtGaDVBxbhZ0UfCd1iIz/Image.png)
+![A screenshot of the Terser REPL with jQuery](./terser-jquery.png)
 
 With Packer, however, it gets down to 40 KB (14 KB less):
 
-![Image.png](https://res.craft.do/user/full/2ece4b12-4ceb-0b26-7909-17063832b522/doc/035FFCB9-A8B2-447D-ABAB-5F009423C20E/2B24D07D-1915-458C-87BA-73DA6434778C_2/1WMu28Afb9hyUAhihh0gqxKd5BlfnXPnCuYPxVxNMRUz/Image.png)
+![A screenshot of the Packer REPL with jQuery](./packer-jquery.png)
 
 ...What?
 
 Let’s check with another library, Three.js. Terser gets it down to 358 KB:
 
-![CleanShot 2025-03-01 at 20.58.35@2x.png](https://res.craft.do/user/full/2ece4b12-4ceb-0b26-7909-17063832b522/doc/035FFCB9-A8B2-447D-ABAB-5F009423C20E/C6EF4FAF-1DED-4EE6-90E8-B17527035229_2/5LwywNhRqEXOT5TfY2oaFZMhfaKkQrNPVZFNoSHLp8Yz/CleanShot%202025-03-01%20at%2020.58.352x.png)
+![A screenshot of the Terser REPL with Three.js](./terser-threejs.png)
 
 Packer gets it down to 266 KB (almost 100 KB less):
 
-![CleanShot 2025-03-01 at 20.58.51@2x.png](https://res.craft.do/user/full/2ece4b12-4ceb-0b26-7909-17063832b522/doc/035FFCB9-A8B2-447D-ABAB-5F009423C20E/ED7BA7DE-BDCB-44A6-B058-7F16C4589566_2/FEmEiidcWkkUssMXBwIy7xpwlIcA1LMqSA525x7w0bQz/CleanShot%202025-03-01%20at%2020.58.512x.png)
+![A screenshot of the Packer REPL with Three.js](./packer-threejs.png)
 
 How is Packer so effective?!
 
