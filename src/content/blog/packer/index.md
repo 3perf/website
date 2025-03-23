@@ -210,7 +210,7 @@ and try to understand what each of its parts does:
   Finally, this is the _runtime_ of Packer. It takes the minified code (<code>"6 4(2){5 3=0;<wbr />7(5 1=0;1<2.8;++1)<wbr />3+=2[1];<wbr />9 3}<wbr />a.b(4(c,d,e))"</code>) and the list of keywords (<code>"|i<wbr />|arguments<wbr />|result<wbr />|sum<wbr />|var<wbr />|function<wbr />|for<wbr />|length<wbr />|return<wbr />|console<wbr />|log<wbr />|10<wbr />|20<wbr />|30"</code>) – and replaces each identifier in the first string with the corresponding keyword from the second string. Once it’s done, it returns the unminified code string:
 
   ```javascript{wordWrap: true}
-  'function sum(arguments){var result = 0;for(var i=0;i<arguments.length;++i)result+=arguments[i];return result;}console.log(sum(10, 20, 30))';
+  'function sum(arguments){var result = 0;for(var i=0;i<arguments.length;++i)result+=arguments[i];return result;}console.log(sum(10, 20, 30))'
   ```
 
   which is then passed into `eval()` and executed.
