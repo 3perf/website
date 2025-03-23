@@ -139,7 +139,7 @@ const ReactConcurrencyPage = ({ data }: ReactConcurrencyPageProps) => {
                 Smashing Conf
               </a>
               , <a href="https://perfnow.nl/speakers#ivan">performance.now()</a>
-              , and <a href="https://reactsummit.com/">React Summit</a>
+              , <a href="https://reactsummit.com/">React Summit</a>, and more
             </>
           }
         />
