@@ -371,3 +371,5 @@ for await (const animal of getAnimals()) {
 ```
 
 ...Packer will just work.
+
+_Thanks to [Jacob Groß](https://kurtextrem.de/) and [Giulio Zausa](https://giuliozausa.dev/) for reviewing a draft of this post._
