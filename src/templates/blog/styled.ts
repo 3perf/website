@@ -96,10 +96,6 @@ const listStyles = css`
     padding-left: 32px;
   }
 
-  ul {
-    list-style-type: '— ';
-  }
-
   /* Duplicating the class to increase specificity */
   p + .list_compact.list_compact,
   .list_compact.list_compact + p {
@@ -183,6 +179,14 @@ const gatsbyHighlightStyles = css`
     > pre > code {
       padding: 0;
       background: unset;
+    }
+
+    &[data-word-wrap] {
+      > pre,
+      > pre > code {
+        white-space: pre-wrap;
+        overflow-wrap: break-word;
+      }
     }
   }
 `;

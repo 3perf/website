@@ -174,8 +174,8 @@ const Component = ({ data }: QueryProps) => {
           )}
         </BottomMeta>
         <MailchimpSubscribe
-          text="Performance articles, case studies, and more. A new email every few weeks (or less). Subscribe:"
-          buttonText="Grow my perf skills"
+          text="Performance articles, case studies, and more. A new email every once in a while:"
+          buttonText="Subscribe"
         />
         <BlogFooterAccordion />
         <Footer />

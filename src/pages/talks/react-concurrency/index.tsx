@@ -1,7 +1,6 @@
 import { graphql } from 'gatsby';
 import { IGatsbyImageData } from 'gatsby-plugin-image';
 import Layout from '../../../components/Layout';
-import { LogoKind } from '../../../components/Logo';
 import WidthWrapper from '../../../components/WidthWrapper';
 import TalkHeader from '../../../components/talks/TalkHeader';
 import TalkMeta from '../../../components/talks/TalkMeta';
@@ -112,7 +111,7 @@ const ReactConcurrencyPage = ({ data }: ReactConcurrencyPageProps) => {
   return (
     <Layout>
       <WidthWrapper>
-        <Nav logoKind={LogoKind.Black} />
+        <Nav />
         <TalkHeader
           imageData={data.cover.childImageSharp.gatsbyImageData}
           title={primaryTitle}

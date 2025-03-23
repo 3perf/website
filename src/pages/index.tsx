@@ -1,150 +1,352 @@
 import { graphql } from 'gatsby';
-import Footer from '../components/Footer';
-import AboutSection from '../components/HomeSectionAbout';
-import ClientsSection from '../components/HomeSectionClients';
-import MaterialsSection from '../components/HomeSectionMaterials';
-import ServicesSection from '../components/HomeSectionServices';
-import HomeSectionTestimonials from '../components/HomeSectionTestimonials';
+import { Suspense } from 'react';
+import GatsbyImage from '../components/Image';
 import Layout from '../components/Layout';
 import { LogoKind } from '../components/Logo';
 import { NavKind } from '../components/NavBase';
 import WidthWrapper from '../components/WidthWrapper';
+import type { GraphqlImage, JSXChildrenProp } from '../types';
+import facebookCoverUrl from './facebook-cover.png';
 import {
-  ActionButton,
-  FooterWrapper,
-  ContactSection,
+  Background,
+  Badge,
+  BadgeImage,
+  Footer,
   Header,
-  HeaderBackground,
-  H1,
+  ItemDescription,
+  ItemImage,
+  ItemLink,
+  ItemTitle,
+  MailchimpSubscribe,
   Nav,
-  NewArticleBackground,
-  NewArticleLink,
-  SectionWrapper,
-  ServicesBackground,
-  IndexPageGlobalStyles,
-  Mark,
+  Section,
+  SectionHeader,
+  AvatarImage,
+  NameLink,
+  Name,
 } from './index.styled';
+import twitterCoverUrl from './twitter-cover.png';
 
-interface IndexPageProps {
+interface ContentPageProps {
   data: {
-    allMarkdownRemark: {
-      edges: [
-        {
-          node: {
-            fields: {
-              slug: string;
-            };
-            frontmatter: {
-              title: string;
-            };
-          };
-        },
-      ];
-    };
+    reactConcurrency: GraphqlImage;
+    webpackLibs: GraphqlImage;
+    notion: GraphqlImage;
+    reexports: GraphqlImage;
+    polyfills: GraphqlImage;
+    awesomeWebpackPerf: GraphqlImage;
+    photo: GraphqlImage;
   };
 }
+
+interface ContentItemProps {
+  image?: GraphqlImage;
+  title: string | JSXChildrenProp;
+  description?: string | JSXChildrenProp;
+  badge?: string | JSXChildrenProp;
+  link: string;
+}
+
+const ContentItem = ({
+  image,
+  title,
+  description,
+  link,
+  badge,
+}: ContentItemProps) => {
+  return (
+    <ItemLink href={link}>
+      {image && (
+        <ItemImage>
+          <GatsbyImage imageData={image.childImageSharp.gatsbyImageData} />
+        </ItemImage>
+      )}
+      <div>
+        <ItemTitle>{title}</ItemTitle>
+        &nbsp;
+        {badge && <Badge>{badge}</Badge>}
+      </div>
+      {description && <ItemDescription>{description}</ItemDescription>}
+    </ItemLink>
+  );
+};
 
 export function Head() {
   return (
     <>
-      <title>PerfPerfPerf · Web performance consulting</title>
-      <meta
-        name="description"
-        content="We help companies to make their web apps faster and increase their revenue. We worked with Google, Framer, Common, CMTT and others"
-      />
-      <meta
-        name="keywords"
-        content="perf perf perf, performance, performance consulting, performance optimization, performance agency, performance company, web performance, web performance optimization, web performance consulting, react performance consulting, react performance optimization"
-      />
+      <title>Web Performance Talks, Articles and Tools | PerfPerfPerf</title>
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:image:src" content={twitterCoverUrl} />
+      <meta name="og:image" content={facebookCoverUrl} />
     </>
   );
 }
 
-const IndexPage = ({ data }: IndexPageProps) => (
-  <Layout>
-    <IndexPageGlobalStyles />
-    <HeaderBackground>
-      <WidthWrapper>
-        <Nav
-          logoKind={LogoKind.White}
-          logoLinksToHome={false}
-          isLogoPlayful={true}
-          navKind={NavKind.Light}
-        />
-        <Header>
-          <H1>
-            <Mark>Make your site or web app fast</Mark>&nbsp;→ get more revenue
-            &amp; happier users
-          </H1>
-        </Header>
-        <ActionButton kind="light" href="#contact">
-          Get a Quote
-        </ActionButton>
-      </WidthWrapper>
-      <NewArticleBackground>
+const ContentPage = ({ data }: ContentPageProps) => {
+  return (
+    <Background>
+      <Layout>
         <WidthWrapper>
-          <strong>New article:</strong>{' '}
-          <NewArticleLink
-            href={data.allMarkdownRemark.edges[0].node.fields.slug}
-          >
-            {data.allMarkdownRemark.edges[0].node.frontmatter.title}
-          </NewArticleLink>
-        </WidthWrapper>
-      </NewArticleBackground>
-    </HeaderBackground>
-    <div>
-      <WidthWrapper>
-        <SectionWrapper id="testimonials">
-          <HomeSectionTestimonials />
-        </SectionWrapper>
-      </WidthWrapper>
-      <SectionWrapper>
-        <ServicesBackground>
-          <WidthWrapper id="services">
-            <ServicesSection />
-          </WidthWrapper>
-        </ServicesBackground>
-      </SectionWrapper>
-      <WidthWrapper>
-        <SectionWrapper id="materials">
-          <MaterialsSection />
-        </SectionWrapper>
-        <SectionWrapper id="clients">
-          <ClientsSection />
-        </SectionWrapper>
-        <SectionWrapper id="about">
-          <AboutSection />
-        </SectionWrapper>
-        <SectionWrapper id="contact" $marginBottom={0}>
-          <ContactSection />
-        </SectionWrapper>
-        <FooterWrapper>
-          <Footer linkToHome={false} license={false} />
-        </FooterWrapper>
-      </WidthWrapper>
-    </div>
-  </Layout>
-);
+          <Nav
+            navKind={NavKind.Light}
+            logoKind={LogoKind.White}
+            logoLinksToHome={false}
+            isLogoPlayful={true}
+          />
+          <Header>Web Performance, Explained</Header>
+          <p>
+            React and Core Web Vitals writing from{' '}
+            <NameLink href="https://iamakulov.com">
+              <AvatarImage
+                imageData={data.photo.childImageSharp.gatsbyImageData}
+                alt=""
+              />{' '}
+              <Name>Ivan Akulov</Name>
+            </NameLink>
+            , a web performance engineer and a Google Developer Expert.
+          </p>
+          <p>
+            Backed by <Suspense>{new Date().getFullYear() - 2017}</Suspense>{' '}
+            years of doing performance work with Google, Framer, Toggl,
+            Restream, and many more companies.
+          </p>
+          <SectionHeader>Case Studies</SectionHeader>
+          <Section>
+            <ContentItem
+              image={data.notion}
+              link="/blog/notion/"
+              title="Analyzing Notion app performance"
+              description="How to make a React app load ~30% faster – just by tuning some configs and delaying some scripts"
+            />
+            <ContentItem
+              link="/blog/causal/"
+              title="Making React interactions in Causal 4× faster"
+            />
+            <ContentItem
+              link="https://twitter.com/iamakulov/status/1522008502398554113"
+              title="A dive into Spotify performance at 1 am"
+            />
+            <ContentItem
+              link="https://iamakulov.com/notes/walmart/"
+              title="Analyzing the Walmart site performance"
+              description="A deep-dive into improving Walmart's site speed and conversion"
+            />
+            <ContentItem
+              link="https://iamakulov.com/notes/polished-webpack/"
+              title="Improving a popular library's size for webpack users"
+            />
+            <ContentItem
+              link="https://twitter.com/iamakulov/status/1223188926787178497"
+              title="Webpack bundles, large and small"
+            />
+          </Section>
+          <SectionHeader>Guides</SectionHeader>
+          <Section>
+            <ContentItem
+              link="/talks/react-concurrency/"
+              image={data.reactConcurrency}
+              title="React Concurrency, Explained"
+            />
 
-export default IndexPage;
+            <ContentItem
+              link="/talks/web-perf-101/"
+              title="Web Performance 101"
+              description="A comprehencive guide into modern loading performance"
+            />
+
+            <ContentItem
+              link="https://iamakulov.com/notes/optimize-images-webpack/"
+              title="How to optimize images in webpack"
+            />
+            <ContentItem
+              link="/blog/perf-for-startups/"
+              title="Quick apps in 3 steps"
+              description="Want to get faster with a minimal effort? Do this."
+            />
+            <ContentItem
+              link="https://twitter.com/iamakulov/status/1244762505685225472"
+              title="How PerfPerfPerf's site got to 100 in PageSpeed Insights"
+              description="Spoiler alert: no client-side JavaScript"
+            />
+            <ContentItem
+              link="https://iamakulov.com/notes/resize-scroll/"
+              title="How to optimize resizing or scrolling"
+            />
+            <ContentItem
+              link="https://iamakulov.com/notes/caching/"
+              title="Short basics of caching"
+            />
+            <ContentItem
+              link="/blog/react-monitoring/"
+              title="How to monitor React render performance"
+              description="So you just made your app fast. Now, how do you ensure it doesn't get slow again?"
+            />
+            <ContentItem
+              link="https://developers.google.com/web/fundamentals/performance/webpack/"
+              title="Optimizing web performance in webpack"
+              description="Guide for Google's Web Fundamentals, together with Addy Osmani"
+            />
+            <ContentItem
+              link="https://twitter.com/iamakulov/status/1262391881364897796"
+              title="How to remove bundle duplicates"
+            />
+            <ContentItem
+              link="https://twitter.com/iamakulov/status/1362397450456154114"
+              title="How to find and fix unnecessary React rerenders"
+            />
+            <ContentItem
+              link="/blog/polyfills/"
+              title="How to load polyfills only when needed"
+              image={data.polyfills}
+            />
+            <ContentItem
+              link="https://twitter.com/iamakulov/status/1377605414779510784"
+              title="Tips to improve Cumulative Layout Shift"
+            />
+            <ContentItem
+              link="https://twitter.com/iamakulov/status/1313258115152912385"
+              title="6 ways to optimize third parties"
+            />
+          </Section>
+          <SectionHeader>References</SectionHeader>
+          <Section>
+            <ContentItem
+              link="/blog/link-rels/"
+              title="Preload, prefetch and other <link> tags"
+            />
+            <ContentItem
+              link="https://github.com/GoogleChromeLabs/webpack-libs-optimizations"
+              image={data.webpackLibs}
+              title="webpack-libs-optimizations"
+              description={
+                <>
+                  Performance tips &amp; tricks for popular JS libraries.
+                  Created in collaboration with the Google Chrome team
+                  <BadgeImage src="https://img.shields.io/github/stars/GoogleChromeLabs/webpack-libs-optimizations" />
+                </>
+              }
+            />
+            <ContentItem
+              link="https://github.com/iamakulov/awesome-webpack-perf"
+              title="awesome-webpack-perf"
+              description={
+                <>
+                  A curated list of webpack tools for web performance
+                  <BadgeImage src="https://img.shields.io/github/stars/iamakulov/awesome-webpack-perf" />
+                </>
+              }
+            />
+            <ContentItem
+              link="https://github.com/iamakulov/devtools-perf-features"
+              title="devtools-perf-features"
+              description="Chrome DevTools' little known features for performance debugging"
+            />
+            <ContentItem
+              link="https://twitter.com/iamakulov/status/1372562184199364614"
+              title="PerfPerfPerf's favorite tools"
+              description={
+                <>
+                  <em>Non-webpack</em> tools for web performance
+                </>
+              }
+            />
+          </Section>
+          <SectionHeader>Trivia</SectionHeader>
+          <Section>
+            <ContentItem
+              link="https://twitter.com/iamakulov/status/1331551351214645251"
+              title="Why reexports are bad for performance"
+              image={data.reexports}
+            />
+            <ContentItem
+              link="https://twitter.com/iamakulov/status/1275769142809944064"
+              title="1 💟 = 1 web perf tip"
+            />
+            <ContentItem
+              link="https://twitter.com/iamakulov/status/1353650608750825472"
+              title={<code>/&#42;#__PURE__*/</code>}
+              description="What it is and why it's in every JS bundle – even though you likely never heard of it"
+            />
+            <ContentItem
+              link="https://twitter.com/iamakulov/status/1419658784134234112"
+              title={
+                <>
+                  Antipattern: <code>&lt;link rel=&quot;preload&quot;&gt;</code>{' '}
+                  and fonts
+                </>
+              }
+            />
+            <ContentItem
+              link="https://twitter.com/iamakulov/status/1385230664648253443"
+              title="Antipattern: objects in React contexts"
+            />
+          </Section>
+          <SectionHeader>Tools</SectionHeader>
+          <Section>
+            <ContentItem
+              link="https://googlefonts.3perf.com/"
+              title="Google Fonts optimizer"
+              description="A 550-byte script to make your Google Fonts render 1-3 seconds faster"
+            />
+            <ContentItem
+              link="https://www.npmjs.com/package/moment-locales-webpack-plugin"
+              title="moment-locales-webpack-plugin"
+              description={
+                <>
+                  A webpack plugin that removes unused Moment locales and makes
+                  the bundle hundreds of KBs smaller
+                  <BadgeImage src="https://img.shields.io/npm/dw/moment-locales-webpack-plugin.svg" />
+                </>
+              }
+            />
+          </Section>
+          <MailchimpSubscribe text="Performance articles, case studies, and more. Subscribe:" />
+          <Footer license={false} />
+        </WidthWrapper>
+      </Layout>
+    </Background>
+  );
+};
+
+export default ContentPage;
 
 export const query = graphql`
-  # Retrieve the latest article
-  query {
-    allMarkdownRemark(
-      filter: { fields: { slug: {}, sourceName: { eq: "blog" } } }
-      sort: { frontmatter: { date: { published: DESC } } }
-      limit: 1
+  {
+    reactConcurrency: file(
+      relativePath: { eq: "talks/react-concurrency/cover.png" }
     ) {
-      edges {
-        node {
-          fields {
-            slug
-          }
-          frontmatter {
-            title
-          }
-        }
+      childImageSharp {
+        gatsbyImageData(height: 150, placeholder: NONE, layout: FIXED)
+      }
+    }
+    notion: file(relativePath: { eq: "notion-social.png" }) {
+      childImageSharp {
+        gatsbyImageData(height: 150, placeholder: NONE, layout: FIXED)
+      }
+    }
+    webpackLibs: file(relativePath: { eq: "webpack-libs.png" }) {
+      childImageSharp {
+        gatsbyImageData(height: 150, placeholder: NONE, layout: FIXED)
+      }
+    }
+    reexports: file(relativePath: { eq: "reexports.png" }) {
+      childImageSharp {
+        gatsbyImageData(height: 150, placeholder: NONE, layout: FIXED)
+      }
+    }
+    polyfills: file(relativePath: { eq: "polyfills.png" }) {
+      childImageSharp {
+        gatsbyImageData(height: 150, placeholder: NONE, layout: FIXED)
+      }
+    }
+    awesomeWebpackPerf: file(relativePath: { eq: "awesome-webpack-perf.png" }) {
+      childImageSharp {
+        gatsbyImageData(height: 150, placeholder: NONE, layout: FIXED)
+      }
+    }
+    photo: file(relativePath: { eq: "photo.jpg" }) {
+      childImageSharp {
+        gatsbyImageData(width: 24, height: 24, layout: FIXED, placeholder: NONE)
       }
     }
   }

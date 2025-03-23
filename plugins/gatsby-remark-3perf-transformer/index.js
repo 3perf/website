@@ -5,6 +5,8 @@ const visitWithAncestors = require('unist-util-visit-parents');
 const { parser } = require('posthtml-parser');
 const mime = require('mime-types');
 const createMediaMarkup = require('./createMediaMarkup');
+const cheerio = require('cheerio');
+const JSON5 = require('json5');
 
 module.exports = ({ markdownAST }) => {
   // Add a <div class="table-container"> wrapper around each table
@@ -117,9 +119,31 @@ module.exports = ({ markdownAST }) => {
     },
   );
 
+  visit(
+    markdownAST,
+    (node) => node.type === 'html' && parseHTMLCodeOptions(node)?.wordWrap,
+    (node) => {
+      const $ = cheerio.load(node.value);
+      const root = $('div.gatsby-highlight');
+
+      if (root.length === 0) {
+        throw new Error(
+          `gatsby-remark-3perf-transformer: Expected a div with class "gatsby-highlight" but got ${
+            $.root().children().first().prop('tagName') || 'no element'
+          } with class "${
+            $.root().children().first().attr('class') || 'no class'
+          }"`,
+        );
+      }
+
+      root.attr('data-word-wrap', '');
+      node.value = $.html();
+    },
+  );
+
   // Spread lists that have new lines between list items
   visitWithAncestors(markdownAST, 'list', (node, ancestors) => {
-    // Don’t do anything with table-of-contents lists
+    // Don't do anything with table-of-contents lists
     if (ancestors.some((ancestor) => ancestor.type === 'Toc')) {
       return;
     }
@@ -133,3 +157,39 @@ module.exports = ({ markdownAST }) => {
 
   return markdownAST;
 };
+
+function parseHTMLCodeOptions(node) {
+  // If you have Markdown like
+  // ```javascript{wordWrap: true}
+  // ...
+  // ```
+  // then node.lang will be everything before the space (`javascript{wordWrap:`) and node.meta will be everything after the space (`true`).
+  // Thus, we need to concatenate these to get the original string (`javascript{wordWrap: true}`).
+  // This mimics what gatsby-remark-prismjs does: https://github.com/gatsbyjs/gatsby/blob/346314d678d9465c998c12466f810b21592f6cb5/packages/gatsby-remark-prismjs/src/index.js#L38-L48
+  if (!node.lang) return;
+  const language = node.meta ? node.lang + node.meta : node.lang;
+  if (!language) return;
+
+  const optionsStringWithoutBraces = language.split('{')[1];
+  if (!optionsStringWithoutBraces) return;
+
+  const optionsString = '{' + optionsStringWithoutBraces;
+
+  try {
+    const optionsJson = JSON5.parse(optionsString);
+    return optionsJson;
+  } catch (e) {
+    console.error(
+      'gatsby-remark-3perf-transformer: Failed to parse options for a code block:',
+      e,
+    );
+    console.error('gatsby-remark-3perf-transformer: Original node:', node);
+    console.error(
+      'gatsby-remark-3perf-transformer: Options string:',
+      optionsString,
+    );
+    throw new Error(
+      `gatsby-remark-3perf-transformer: Failed to parse options for a code block: ${e.message}. See the error message above for more details.`,
+    );
+  }
+}

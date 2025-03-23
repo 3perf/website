@@ -175,7 +175,7 @@ const WorkshopsPage = ({
             </TextMaxWidthWrapper>
             <FooterContainer>
               <MailchimpSubscribe
-                text="We’re running 2-4 public workshops per year. Leave your email to learn when the next one happens:"
+                text="We’re running a few public workshops per year. Leave your email to learn when the next one happens:"
                 // this tag ID means `workshop_interest`
                 tags="2313376"
               />

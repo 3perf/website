@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import Layout from '../../../components/Layout';
-import { LogoKind } from '../../../components/Logo';
 import WidthWrapper from '../../../components/WidthWrapper';
 import media from '../../../styles/media';
 import { Footer, Nav } from '../styled';
@@ -25,7 +24,7 @@ const QuickAppsPage = () => {
   return (
     <Layout>
       <WidthWrapper>
-        <Nav logoKind={LogoKind.Black} />
+        <Nav />
         <IFrame
           src="https://onedrive.live.com/embed?cid=A2820C2EF7555CB4&amp;resid=A2820C2EF7555CB4%211660501&amp;authkey=AHqpMrgQkHFQKdQ&amp;em=2&amp;wdAr=1.7777777777777777"
           width="962px"
