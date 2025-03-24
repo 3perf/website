@@ -16,9 +16,7 @@ rssDescription: |
   “These days, how do you typically serve polyfills only to browsers that need them?”
 
   Turns out the answer is large enough for a full article!
-socialImage:
-  facebook: './cover-facebook.png'
-  twitter: './cover-twitter.png'
+socialImage: './cover-facebook.png'
 date:
   published: 2020-02-13T19:00:00
   modified: 2020-02-13T19:00:00
@@ -31,10 +29,12 @@ A colleague asked me:
 I know three ready-to-use approaches for that:
 
 - [polyfill.io](#polyfillio)
-  
+  - [Tricky parts](#tricky-parts)
 - [module/nomodule](#modulenomodule)
-  
+  - [Tricky parts](#tricky-parts-1)
 - [Babel’s `useBuiltIns`](#babels-usebuiltins)
+  - [Tricky parts](#tricky-parts-2)
+- [Summing up](#summing-up)
 
 # polyfill.io
 
@@ -99,7 +99,7 @@ There’s a bunch of guides and plugins for bundles and frameworks that help to 
 - [for webpack](https://dev.to/thejohnstew/differential-serving-3dkf)
 - [for Babel](https://babeljs.io/docs/en/babel-preset-env#targetsesmodules)
 - [for Next.js](https://github.com/zeit/next.js/issues/7563#issuecomment-568569235)
-:::
+  :::
 
 ## Tricky parts
 

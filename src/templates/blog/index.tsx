@@ -46,13 +46,8 @@ interface QueryProps {
           modified: string;
           formattedModified: string;
         };
-        socialImage: {
-          facebook: {
-            publicURL: string;
-          };
-          twitter: {
-            publicURL: string;
-          };
+        socialImage?: {
+          publicURL: string;
         };
         author: {
           name: string;
@@ -81,22 +76,18 @@ export const Head = ({ data }: QueryProps) => {
     <>
       <title>{seoTitle + ' · ' + siteMetadata.title}</title>
       <meta name="description" content={articleMeta.description} />
-      {articleMeta.socialImage.facebook && (
+      {articleMeta.socialImage && (
         <meta
           name="image"
-          content={
-            siteMetadata.siteUrl + articleMeta.socialImage.facebook.publicURL
-          }
+          content={siteMetadata.siteUrl + articleMeta.socialImage.publicURL}
         />
       )}
       <meta itemProp="name" content={seoTitle} />
       <meta itemProp="description" content={articleMeta.description} />
-      {articleMeta.socialImage.facebook && (
+      {articleMeta.socialImage && (
         <meta
           itemProp="image"
-          content={
-            siteMetadata.siteUrl + articleMeta.socialImage.facebook.publicURL
-          }
+          content={siteMetadata.siteUrl + articleMeta.socialImage.publicURL}
         />
       )}
       <meta name="twitter:card" content="summary_large_image" />
@@ -104,22 +95,18 @@ export const Head = ({ data }: QueryProps) => {
       <meta name="twitter:description" content={articleMeta.description} />
       <meta name="twitter:site" content={`@${siteMetadata.twitterId}`} />
       <meta name="twitter:creator" content={`@${authorDetails.twitterId}`} />
-      {articleMeta.socialImage.twitter && (
+      {articleMeta.socialImage && (
         <meta
           name="twitter:image:src"
-          content={
-            siteMetadata.siteUrl + articleMeta.socialImage.twitter.publicURL
-          }
+          content={siteMetadata.siteUrl + articleMeta.socialImage.publicURL}
         />
       )}
       <meta name="og:title" content={socialTitle} />
       <meta name="og:description" content={articleMeta.description} />
-      {articleMeta.socialImage.facebook && (
+      {articleMeta.socialImage && (
         <meta
           name="og:image"
-          content={
-            siteMetadata.siteUrl + articleMeta.socialImage.facebook.publicURL
-          }
+          content={siteMetadata.siteUrl + articleMeta.socialImage.publicURL}
         />
       )}
       <meta name="og:site_name" content={siteMetadata.title} />
@@ -226,12 +213,7 @@ export const pageQuery = graphql`
           formattedModified: modified(formatString: "D MMMM YYYY")
         }
         socialImage {
-          facebook {
-            publicURL
-          }
-          twitter {
-            publicURL
-          }
+          publicURL
         }
         author {
           name

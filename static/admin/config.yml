@@ -67,18 +67,9 @@ collections:
       - { label: 'RSS Description', name: 'rssDescription', widget: 'text' }
       - label: 'Social Images'
         name: 'socialImage'
-        widget: 'object'
-        fields:
-          - label: 'Facebook'
-            name: 'facebook'
-            widget: 'file'
-            media_library: { allow_multiple: false, choose_url: false }
-            required: false
-          - label: 'Twitter'
-            name: 'twitter'
-            widget: 'file'
-            media_library: { allow_multiple: false, choose_url: false }
-            required: false
+        widget: 'file'
+        media_library: { allow_multiple: false, choose_url: false }
+        required: false
       - label: 'Published & Modified'
         name: 'date'
         widget: 'object'

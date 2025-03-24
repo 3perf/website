@@ -16,9 +16,7 @@ rssDescription: |
   But if you’re building a software product – like Notion does – chances are you’re relatively unaffected. And in this case, as the Internet is slowing down, having a quick app is more important than ever.<br /><br />
 
   In this case study, let’s take a look at Notion, an advanced note-taking web app, and learn how to make it load 30% faster:<br />
-socialImage:
-  facebook: './notion-social.png'
-  twitter: './notion-social.png'
+socialImage: './notion-social.png'
 date:
   published: 2020-05-19T20:00:00
   modified: 2020-05-19T20:00:00

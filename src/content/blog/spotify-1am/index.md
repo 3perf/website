@@ -6,9 +6,6 @@ author:
   link: https://twitter.com/iamakulov
   twitterId: iamakulov
   facebookId: '100002052594007'
-socialImage:
-  facebook: './cover-facebook.png'
-  twitter: './cover-twitter.png'
 date:
   published: 2022-05-05T01:00:00
   modified: 2022-05-05T01:00:00

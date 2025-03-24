@@ -14,9 +14,7 @@ rssDescription: |
   Ever been in a situation when you wanted to build a quick app – but didn’t have enough time to invest into the performance?
 
   We wrote about the three most significant things that help with web performance and don’t take a lot of time.
-socialImage:
-  facebook: './cover-facebook.png'
-  twitter: './cover-twitter.png'
+socialImage: './cover-facebook.png'
 date:
   published: 2019-06-11T14:00:00
   modified: 2020-01-26T14:00:00

@@ -25,7 +25,6 @@ import {
   NameLink,
   Name,
 } from './index.styled';
-import twitterCoverUrl from './twitter-cover.png';
 
 interface ContentPageProps {
   data: {
@@ -80,7 +79,6 @@ export function Head() {
     <>
       <title>Web Performance Talks, Articles and Tools | PerfPerfPerf</title>
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:image:src" content={twitterCoverUrl} />
       <meta name="og:image" content={facebookCoverUrl} />
     </>
   );

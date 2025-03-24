@@ -7,9 +7,7 @@ author:
   link: https://twitter.com/iamakulov
   twitterId: iamakulov
   facebookId: '100002052594007'
-socialImage:
-  facebook: './cover-facebook.png'
-  twitter: './cover-twitter.png'
+socialImage: './cover-facebook.png'
 date:
   published: 2022-06-06T15:00:00
   modified: 2024-03-12T14:00:00

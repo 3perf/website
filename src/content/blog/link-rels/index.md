@@ -16,9 +16,7 @@ rssDescription: |
   🔬 How they look<br />
   ⚙️ What they do<br />
   🤷 And when to use each one<br />
-socialImage:
-  facebook: './cover-facebook.png'
-  twitter: './cover-twitter.png'
+socialImage: './cover-facebook.png'
 date:
   published: 2019-03-18T20:00:00
   modified: 2021-05-11T12:00:00

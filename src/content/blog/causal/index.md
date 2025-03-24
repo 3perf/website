@@ -7,9 +7,7 @@ author:
   twitterId: iamakulov
   facebookId: '100002052594007'
 description: 'How to speed up React interactions 4× with Chrome DevTools, React Profiler, and just a few line changes'
-socialImage:
-  facebook: './causal-meta.png'
-  twitter: './causal-meta.png'
+socialImage: './causal-meta.png'
 date:
   published: 2022-11-24T09:00:00Z
   modified: 2022-11-24T09:00:00Z

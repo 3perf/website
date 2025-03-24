@@ -240,12 +240,11 @@ module.exports = {
                     {
                       'content:encoded': edge.node.html,
                     },
-                    postMeta.socialImage.facebook && {
+                    postMeta.socialImage && {
                       'media:content': {
                         _attr: {
                           url:
-                            siteMeta.siteUrl +
-                            postMeta.socialImage.facebook.publicURL,
+                            siteMeta.siteUrl + postMeta.socialImage.publicURL,
                           medium: 'image',
                         },
                       },
@@ -274,9 +273,7 @@ module.exports = {
                           name
                         }
                         socialImage {
-                          facebook {
-                            publicURL
-                          }
+                          publicURL
                         }
                         rssDescription
                         rssForceGuid

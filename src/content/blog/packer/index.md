@@ -16,9 +16,7 @@ rssDescription: |
   <code>eval(function(p,a,c,k,e,r){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String))...</code>
 
   This code was weird. Why an <code>eval()</code>? What’s with <code>p,a,c,k,e,r</code> which clearly combines into some name? I couldn’t help but dig into that, and the trip took me all the way back to 2004.
-socialImage:
-  facebook: './cover-facebook.jpg'
-  twitter: './cover-twitter.jpg'
+socialImage: './cover-facebook.jpg'
 date:
   published: 2025-03-23T20:00:00
   modified: 2025-03-23T20:00:00
