@@ -52,6 +52,11 @@ Packer is a JavaScript minifier made by Dean Edwards, and it appears to be one o
 
 A typical minifier compresses code by [removing whitespace, shortening variable names](https://esbuild.github.io/try/#dAAwLjI0LjIALS1taW5pZnkAZnVuY3Rpb24gc3VtKC4uLmFyZ3MpIHsKICBsZXQgcmVzdWx0ID0gMDsKICBmb3IgKGNvbnN0IGkgb2YgYXJncykgcmVzdWx0ICs9IGk7CiAgcmV0dXJuIHJlc3VsdDsKfQoKc3VtKDEsIDIsIDMp), and other similar tricks. Packer, however, does something completely different. How does it work?
 
+```toc
+# This code block gets replaced with the TOC
+header: Contents
+```
+
 # How Does Packer Work?
 
 :::sidenote[[Live mirror of Packer 3.0](https://web.archive.org/web/20120929074838/http://dean.edwards.name/packer/)]
@@ -282,6 +287,7 @@ Notice how `const`, `name`, `age`, and `color` (which are repeated over and over
 
 :::sidenote[Of course, it’s not always Gzip – it [could also be Brotli or zstd](https://paulcalvano.com/2024-03-19-choosing-between-gzip-brotli-and-zstandard-compression/). But I’m not getting into the trenches here.]
 Does this mean you should use Packer as your minifier of choice? Absolutely not. Every modern properly configured server applies yet another level of compression to any text file it sends. This compression is called Gzip, and it [does the same thing Packer does](https://3perf.com/talks/web-perf-101/#http-brotli-1): deduplicates repeated strings. Except it’s _much_ more effective at that:
+:::
 
 ```shell
 # Terser
