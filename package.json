@@ -103,5 +103,5 @@
     "unist-util-visit": "^2.0.2",
     "unist-util-visit-parents": "^3.0.2"
   },
-  "packageManager": "yarn@3.6.1"
+  "packageManager": "yarn@4.10.0"
 }
