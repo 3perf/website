@@ -662,6 +662,4 @@ With these optimizations, updating category cells becomes a much smoother experi
 We still have chunks of yellow/red in the recording, but they’re much smaller – and interwined with blue!
 :::
 
-In a couple weeks of work, PerfPerfPerf helped Causal to improve the responsiveness by almost four times. Other PerfPerfPerf clients had a similar experience – e.g., we helped [Appsmith](https://www.appsmith.com/) to reduce the cost of several interactions 1.9×...2.8×, and [Hugo](https://www.hugo.team/) to make JS init time 2.5× lower. If you’d like to make your React app load or execute faster too, <a href="https://3perf.com/#contact">reach out!</a>
-
 _Cross-posted [to the Causal blog](https://www.causal.app/blog/react-perf)._

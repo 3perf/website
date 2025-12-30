@@ -1,6 +1,7 @@
 import { graphql } from 'gatsby';
 import { IGatsbyImageData } from 'gatsby-plugin-image';
 import Layout from '../../../components/Layout';
+import MailchimpSubscribe from '../../../components/MailchimpSubscribe';
 import WidthWrapper from '../../../components/WidthWrapper';
 import TalkHeader from '../../../components/talks/TalkHeader';
 import TalkMeta from '../../../components/talks/TalkMeta';
@@ -148,17 +149,10 @@ const ReactConcurrencyPage = ({ data }: ReactConcurrencyPageProps) => {
         </Slides>
         <TalkMeta lastUpdatedDate={lastUpdatedDate} />
         <Footnote>
-          <p>
-            <strong>
-              <mark>Want to apply this advice (& more) to your app?</mark>
-            </strong>{' '}
-            We helped React apps like Appsmith, Hugo, and Castor to get two,
-            three, or even ten times faster and make customers happier.
-          </p>
-          <p>
-            Check out <a href="/blog/causal/">a case study</a>, or{' '}
-            <a href="/#services">let’s chat!</a>
-          </p>
+          <MailchimpSubscribe
+            text="Performance articles, case studies, and more. A new email every once in a while:"
+            buttonText="Subscribe"
+          />
         </Footnote>
         <Footer />
       </WidthWrapper>

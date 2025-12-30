@@ -178,7 +178,7 @@ The best way to improve the startup time is to code-split away some features tha
 />
 ```
 
-<mark>Code splitting is the best first optimization you can do.</mark> It brings huge performance benefits: after doing code splitting, Tinder reported [a 60% decrease in the complete load time](https://medium.com/@addyosmani/a-tinder-progressive-web-app-performance-case-study-78919d98ece0); and our client, Framer, managed to [cut 40-45% off the CPU Idle time](https://3perf.com/#clients).
+<mark>Code splitting is the best first optimization you can do.</mark> It brings huge performance benefits: after doing code splitting, Tinder reported [a 60% decrease in the complete load time](https://medium.com/@addyosmani/a-tinder-progressive-web-app-performance-case-study-78919d98ece0); and our client, Framer, managed to cut 40-45% off the CPU Idle time.
 
 There are [several common approaches to code splitting](https://medium.com/js-dojo/3-code-splitting-patterns-for-vuejs-and-webpack-b8fff1ea0ba4):
 
@@ -601,7 +601,7 @@ So, how much time can all these optimizations save us?
 
 In total, based on this (very rough) calculation, <mark>we save 3.9 out of 12.6 seconds – a 30% improvement</mark> just by tuning some configs and deferring some loading. And this is after great speed improvements the Notion team has already done.
 
-It turns out, almost every app has low-hanging fruits that could be implemented just by tuning the bundler configuration and doing a few precise code changes. So here’s [the easiest way to find and pick them](/#services). And if you read this far and liked this case study, consider spreading the word about it:
+It turns out, almost every app has low-hanging fruits that could be implemented just by tuning the bundler configuration and doing a few precise code changes. If you read this far and liked this case study, consider spreading the word about it:
 
 https://twitter.com/iamakulov/status/1262729442159443973
 

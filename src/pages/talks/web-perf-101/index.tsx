@@ -1,6 +1,7 @@
 import { graphql } from 'gatsby';
 import { IGatsbyImageData } from 'gatsby-plugin-image';
 import Layout from '../../../components/Layout';
+import MailchimpSubscribe from '../../../components/MailchimpSubscribe';
 import WidthWrapper from '../../../components/WidthWrapper';
 import { SlideGatsbyImage } from '../../../components/talks/Slide';
 import TalkHeader from '../../../components/talks/TalkHeader';
@@ -191,11 +192,6 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
                 why performance is important, what performance optimizations
                 exist, and which tools can help you understand if your app is
                 performing well.
-              </p>
-              <p>
-                <strong>Want to apply this advice to your site?</strong> We help
-                companies like Framer, Toggl, SitePoint to get faster – and we’d
-                be happy to help you as well! <a href="/#services">Reach out</a>
               </p>
             </>
           }
@@ -2689,13 +2685,7 @@ const WebPerf101Page = ({ data }: WebPerf101PageProps) => {
           lastUpdatedDate={lastUpdatedDate}
         />
         <Footnote>
-          <p>
-            <strong>
-              <mark>Want to apply this advice to your site?</mark>
-            </strong>{' '}
-            We helped Google, Framer, SitePoint, and other companies.{' '}
-            <a href="/#services">Reach out</a>
-          </p>
+          <MailchimpSubscribe text="Performance articles, case studies, and more. A new email every once in a while:" />
         </Footnote>
         <Footer />
       </WidthWrapper>
