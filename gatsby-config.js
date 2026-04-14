@@ -1,4 +1,5 @@
 const createMediaMarkup = require('./plugins/gatsby-remark-3perf-transformer/createMediaMarkup.js');
+const { DEFAULT_AUTHOR } = require('./src/constants/author.ts');
 
 let siteUrl = 'https://3perf.com';
 if (process.env.DEV_SITE_HOSTNAME_OVERRIDE) {
@@ -230,7 +231,7 @@ module.exports = {
                   title: postMeta.title,
                   description: postMeta.rssDescription,
                   date: postMeta.date.published,
-                  author: postMeta.author.name,
+                  author: postMeta.author?.name ?? DEFAULT_AUTHOR.name,
                   url: siteMeta.siteUrl + edge.node.fields.slug,
                   guid:
                     postMeta.rssForceGuid ||

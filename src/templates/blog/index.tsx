@@ -2,6 +2,7 @@ import { graphql, Script } from 'gatsby';
 import Layout from '../../components/Layout';
 import { LogoKind } from '../../components/Logo';
 import WidthWrapper from '../../components/WidthWrapper';
+import { type AuthorFields, resolveAuthor } from '../../constants/author';
 import {
   BlogFooterAccordion,
   Content,
@@ -13,26 +14,6 @@ import {
   Nav,
   Title,
 } from './styled';
-
-type AuthorFields = {
-  name: string;
-  link: string;
-  twitterId: string;
-  facebookId: string;
-};
-
-const DEFAULT_AUTHOR: AuthorFields = {
-  name: 'Ivan Akulov',
-  link: 'https://twitter.com/iamakulov',
-  twitterId: 'iamakulov',
-  facebookId: '100002052594007',
-};
-
-function resolveAuthor(
-  author: Partial<AuthorFields> | null | undefined,
-): AuthorFields {
-  return { ...DEFAULT_AUTHOR, ...(author ?? {}) };
-}
 
 interface QueryProps {
   data: {
