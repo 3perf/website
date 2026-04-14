@@ -40,7 +40,7 @@ As a consequence, DevTools throttling is often pretty approximate. [Per Googleâ€
 
 ## Example: 12-second hero image
 
-A Framer client recently asked why a 20 kB hero image would take 12-15 seconds to load on a 3G connection. They attached a screenshot from Chrome DevTools:
+A Framer client recently asked why a 20 kB hero image would take 12 seconds to load on a 3G connection. They attached a screenshot from Chrome DevTools:
 
 ![](./client1-devtools.png)
 
