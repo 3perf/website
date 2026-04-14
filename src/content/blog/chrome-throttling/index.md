@@ -51,7 +51,7 @@ As a consequence, DevTools throttling is often pretty approximate. [Per Google�
 
 > Request-level throttling [...] is how throttling is implemented with Chrome DevTools. In real mobile connectivity, latency affects things at the packet level rather than the request level. <mark>As a result, this throttling isn’t highly accurate.</mark> It also has a few more downsides that are summarized in [Network Throttling & Chrome - status](https://docs.google.com/document/d/1TwWLaLAfnBfbk5_ZzpGXegPapCIfyzT4MWuZgspKUAQ/edit?tab=t.0#heading=h.buq49xxy577t). The TLDR: while it’s a [decent approximation](https://docs.google.com/document/d/10lfVdS1iDWCRKQXPfbxEn4Or99D64mvNlugP1AQuFlE/edit?tab=t.0#heading=h.xgjl2srtytjt), it’s not a sufficient model of a slow connection.
 
-## Why This Is Unlikely To Change
+## This Is Unlikely To Change
 
 If Chrome DevTools throttling is inaccurate, why wouldn’t Chrome fix it? The answer is that this inaccuracy is a tradeoff of a key design goal: allowing throttling per tab or per request. From [the corresponding Google doc](https://docs.google.com/document/d/1TwWLaLAfnBfbk5_ZzpGXegPapCIfyzT4MWuZgspKUAQ/edit?tab=t.0):
 
