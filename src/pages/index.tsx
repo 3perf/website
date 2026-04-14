@@ -146,7 +146,6 @@ const ContentPage = ({ data }: ContentPageProps) => {
               link="/blog/packer/"
               title="Performance Archaeology: Packer.js, a JS Minifier from 2004"
               image={data.packer}
-              badge="New"
             />
           </Section>
           <SectionHeader>Guides</SectionHeader>
@@ -218,6 +217,12 @@ const ContentPage = ({ data }: ContentPageProps) => {
             <ContentItem
               link="https://twitter.com/iamakulov/status/1313258115152912385"
               title="6 ways to optimize third parties"
+            />
+            <ContentItem
+              link="/blog/chrome-throttling/"
+              title="Chrome DevTools Throttling Is Not Accurate"
+              description="Chrome DevTools slows down requests, not packets. This means its throttling is often off."
+              badge="New"
             />
           </Section>
           <SectionHeader>References</SectionHeader>
