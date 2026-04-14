@@ -109,8 +109,8 @@ const ContentPage = ({ data }: ContentPageProps) => {
           </p>
           <p>
             Backed by <Suspense>{new Date().getFullYear() - 2017}</Suspense>{' '}
-            years of doing performance work with Google, Framer, Toggl,
-            Restream, and many more companies.
+            years of doing performance work with Framer, Polymarket, Google, and
+            many more companies.
           </p>
           <SectionHeader>Case Studies</SectionHeader>
           <Section>
