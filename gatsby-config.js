@@ -37,7 +37,6 @@ module.exports = {
   },
   plugins: [
     'gatsby-plugin-sitemap',
-    'gatsby-plugin-netlify',
     'gatsby-plugin-styled-components',
     'gatsby-plugin-typescript',
     `gatsby-plugin-image`,
