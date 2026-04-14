@@ -1,4 +1,5 @@
 import { Suspense } from 'react';
+import '../../styles/fonts';
 import { JSXChildrenProp } from '../../types';
 import { GlobalStyle } from './GlobalStyle';
 
