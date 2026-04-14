@@ -9,7 +9,7 @@ date:
   modified: 2026-04-14T00:00:00Z
 ---
 
-I had several cases where someone complained about things being slow in Chrome with 3G or 4G throttling, and I had to explain why that’s not the case in real life. Here’s this argument so I can link to it in the future.
+I had several cases this year where someone complained about things being slow in Chrome with network throttling, but a test on a real network didn’t reproduce that. Here’s the explanation for “why” so I can link to it in the future.
 
 ## 12-second hero image
 
