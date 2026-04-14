@@ -1,8 +1,8 @@
 ---
 title: 'Chrome DevTools Throttling Is Not Accurate'
-description: 'Chrome DevTools slows down requests, not packets. This means its throttling is often off.'
+description: 'Chrome DevTools slows down requests, not packets. This means its throttling is often off where it matters.'
 rssDescription: |
-  The real network operates on packets. However, Chrome DevTools slows down requests, not packets. This means DevTools throttling is often pretty off.
+  The real network operates on packets. However, Chrome DevTools slows down requests, not packets. This means DevTools throttling is often pretty off where it matters.
 date:
   published: 2026-04-14T00:00:00Z
   modified: 2026-04-14T00:00:00Z
