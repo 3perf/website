@@ -11,7 +11,19 @@ date:
 
 I had several cases where someone complained about things being slow in Chrome with 3G or 4G throttling, and I had to explain why that’s not the case in real life. Here’s this argument so I can link to it in the future.
 
-![{border: true, maxWidth: 477, caption: "One of the recent questions from a client at Framer"}](./client.png)
+## 12-second hero image
+
+A Framer client recently asked why a 20 kB hero image would take 12 seconds to load on a 3G connection. They attached a screenshot from Chrome DevTools:
+
+![](./client1-devtools.png)
+
+:::sidenote[_Close-to-real?_ This test used [WebPageTest](https://www.webpagetest.org/), which is the gold standard for network testing.]
+Upon investigation, it turned out that on a close-to-real 3G connection, the image would only take 300-500 ms to load:
+:::
+
+![](./client1-wpt.png)
+
+Why such a large difference? Well:
 
 ## Chrome Doesn’t Emulate A Slow Network Well
 
@@ -39,23 +51,11 @@ As a consequence, DevTools throttling is often pretty approximate. [Per Google�
 
 > Request-level throttling [...] is how throttling is implemented with Chrome DevTools. In real mobile connectivity, latency affects things at the packet level rather than the request level. <mark>As a result, this throttling isn’t highly accurate.</mark> It also has a few more downsides that are summarized in [Network Throttling & Chrome - status](https://docs.google.com/document/d/1TwWLaLAfnBfbk5_ZzpGXegPapCIfyzT4MWuZgspKUAQ/edit?tab=t.0#heading=h.buq49xxy577t). The TLDR: while it’s a [decent approximation](https://docs.google.com/document/d/10lfVdS1iDWCRKQXPfbxEn4Or99D64mvNlugP1AQuFlE/edit?tab=t.0#heading=h.xgjl2srtytjt), it’s not a sufficient model of a slow connection.
 
-## Example: 12-second hero image
+## Why This Is Unlikely To Change
 
-A Framer client recently asked why a 20 kB hero image would take 12 seconds to load on a 3G connection. They attached a screenshot from Chrome DevTools:
+If Chrome DevTools throttling is inaccurate, why wouldn’t Chrome fix it? The answer is that this inaccuracy is a tradeoff of a key design goal: allowing throttling per tab or per request. From [the corresponding Google doc](https://docs.google.com/document/d/1TwWLaLAfnBfbk5_ZzpGXegPapCIfyzT4MWuZgspKUAQ/edit?tab=t.0):
 
-![](./client1-devtools.png)
-
-:::sidenote[_Close-to-real?_ This test used [WebPageTest](https://www.webpagetest.org/), which does packet-level throttling.]
-Upon investigation, it turned out that on a close-to-real 3G connection, the image would only take 300-500 ms to load:
-:::
-
-![](./client1-wpt.png)
-
-:::sidenote[While writing this, I learned that [Chrome 117+ automatically prioritizes the first five large images it finds](https://web.dev/articles/fetch-priority#:~:text=As%20of%20Chrome%20117%2C%20the%20first%205%20large%20images%20are%20set%20to%20%22Medium%22%20to%20speed%20this%20up%2C%20and%20two%20of%20them%20can%20be%20fetched%20in%20parallel%20during%20the%20initial%20%22tight%20mode%22.).]
-Why such a big difference? On a real network, the requests on this site are staggered. As the HTML arrives, the browser starts downloading images that it finds. High-priority images get requested first. Lower-priority images [get a little delay](https://web.dev/articles/fetch-priority#:~:text=For%20example%2C%20low%2Dpriority%20resources%20like%20images%20are%20often%20held%20back%20from%20being%20requested%20while%20the%20browser%20processes%20critical%20%3Chead%3E%20items.). The server [may also delay lower-priority resources](https://blog.cloudflare.com/better-http-2-prioritization-for-a-faster-web/). As a result, the first few critical images on this site have a lot of bandwidth: it’s only split across a few requests.
-:::
-
-Chrome DevTools misses a lot of these details. They don’t actually throttle the network; under the hood, the connection is fast. On this fast connection, all images arrive at roughly the same time. And when they arrive, DevTools simulates the slow network by splitting the fake slow bandwidth [equally across all requests](https://www.debugbear.com/blog/chrome-devtools-network-throttling#limitations-of-devtools-bandwidth-throttling:~:text=However%2C%20DevTools%20bandwidth%20throttling%20divides%20available%20bandwidth%20equally%20across%20requests.%20That%20means%20a%20high%2Dpriority%20file%20might%20load%20early%20for%20real%20visitors%2C%20but%20load%20slowly%20in%20DevTools.). With several dozen images, that’s much less bandwidth for the critical one!
+> Per-tab throttling is the primary requirement that led to the design of devtools throttling. Doing this outside the browser isn’t possible. Maintaining per-tab at the net-layer gets “ugly” according to mmenke, “If it's an HTTP header, that makes a SOCKS proxy more complicated, and doesn't work for HTTPS. If we’re sending bonus data to the proxy, that’s no longer SOCKS, as it doesn’t allow support sending side-channel data. Can also be difficult determining which request is for which tab. Also worth noting as we’re sharing sockets, if two tabs are talking to the same origin, they can have effects on each other. It’s even worse with HTTP2. It’s not clear it’s even possible to shape just some traffic in that case (It’s also encrypted, so at least a purely traffic shaping proxy will have no clue where the requests start and where they end).”
 
 ## What To Use Instead
 
