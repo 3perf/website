@@ -1,13 +1,15 @@
 'use client';
 
+import '@fontsource/fira-code/latin-600.css';
+import '@fontsource/fira-code/latin-400.css';
+import '@fontsource/bricolage-grotesque/latin-400.css';
+import '@fontsource/bricolage-grotesque/latin-700.css';
+import '@fontsource/bricolage-grotesque/latin-800.css';
 import { createGlobalStyle } from 'styled-components';
 import { linkActiveStyles, linkStyles } from '../../styles/shared-styles';
 import { colors, sizes } from '../../styles/variables';
-import { getGlobalFonts } from './getGlobalFonts';
 
 export const GlobalStyle = createGlobalStyle`
-  ${getGlobalFonts()}
-
   *,
   *::before,
   *::after {
@@ -15,7 +17,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   html {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Bricolage Grotesque', sans-serif;
     overflow-x: hidden;
 
     --link-color: #06c;

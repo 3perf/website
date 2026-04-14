@@ -66,7 +66,7 @@ const headerStyles = css`
   h4,
   h5,
   h6 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Bricolage Grotesque', sans-serif;
     margin-top: 2em;
 
     .anchor {
@@ -125,6 +125,16 @@ const mediaStyles = css`
      * 100% is more than 900px, and clamp() returns 100% */
     width: min(max(100%, 80vw), 900px);
     height: auto;
+  }
+
+  .media-container img {
+    border-radius: 2px;
+  }
+
+  /* Inset stroke; does not change layout (unlike border). */
+  .media-container_border img {
+    outline: 1px solid rgba(0, 0, 0, 0.05);
+    outline-offset: -1px;
   }
 
   .sidenote__heading .media-container img,
@@ -195,14 +205,6 @@ const gatsbyHighlightStyles = css`
 const sidenoteWidth = 300;
 const sidenoteMargin = 48;
 const sidenoteStyles = css`
-  /* Reset blockquote styles */
-  .sidenote__heading {
-    margin: unset;
-    font-style: unset;
-    padding: unset;
-    border: unset;
-  }
-
   ${media.notMedium`
     .sidenote {
       display: flex;
@@ -250,7 +252,7 @@ const tocStyles = css`
       ${gridSize * 2}px;
     font-size: ${sizes.fontSmall}px;
     border-radius: 2px;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Bricolage Grotesque', sans-serif;
 
     &.toc_with-header {
       margin: ${gridSize * 4}px -${gridSize * 2}px;
@@ -295,12 +297,6 @@ const tocStyles = css`
 // Note styles
 const noteStyles = css`
   .note {
-    /* Unset blockquote styles */
-    margin: unset;
-    padding: unset;
-    border: unset;
-    font-style: unset;
-
     background: ${colors.softYellow};
     margin: ${sizes.paragraphSpacing}px -${gridSize * 2}px;
     padding: ${gridSize}px ${gridSize * 2}px;
@@ -315,7 +311,7 @@ const noteStyles = css`
   }
 `;
 
-export const Content = styled.article<{ formatting?: { roundImageBorder?: boolean } }>`
+export const Content = styled.article`
   font-family: system-ui, sans-serif;
   max-width: 600px;
 
@@ -340,15 +336,25 @@ export const Content = styled.article<{ formatting?: { roundImageBorder?: boolea
     margin-top: ${sizes.paragraphSpacing}px;
   }
 
-  blockquote {
+  blockquote:not(.sidenote__heading):not(.note) {
+    position: relative;
     margin: ${sizes.paragraphSpacing}px 0;
-    border-left: black 5px solid;
-    padding: ${gridSize * 2}px 0 ${gridSize * 3}px ${gridSize * 4}px;
-    font-style: italic;
+    border-left: #333 5px solid;
+    padding-left: ${gridSize * 3}px;
 
-    pre,
-    code {
-      font-style: normal;
+    &::before {
+      content: '“';
+      position: absolute;
+      left: -${gridSize * 2}px;
+      top: 0;
+      display: block;
+      height: 30px;
+      overflow: hidden;
+      line-height: 40px;
+      font-size: 60px;
+      font-weight: 900;
+      color: #333;
+      background: white;
     }
   }
 
@@ -372,12 +378,4 @@ export const Content = styled.article<{ formatting?: { roundImageBorder?: boolea
       user-select: none;
     }
   }
-
-  ${({ formatting }) =>
-    formatting?.roundImageBorder &&
-    css`
-      .media-container img {
-        border-radius: 2px;
-      }
-    `}
 `;

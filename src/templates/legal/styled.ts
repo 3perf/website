@@ -51,7 +51,7 @@ const headerStyles = css`
   h4,
   h5,
   h6 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Bricolage Grotesque', sans-serif;
     margin-top: 2em;
 
     .anchor {
@@ -112,7 +112,7 @@ export const Content = styled.article`
   blockquote {
     margin: ${sizes.paragraphSpacing}px 0 ${sizes.paragraphSpacing * 2}px
       ${-gridSize * 3}px;
-    font-family: Montserrat, sans-serif;
+    font-family: 'Bricolage Grotesque', sans-serif;
     padding: ${gridSize * 2}px ${gridSize * 3}px ${gridSize * 2}px;
     background: ${colors.softYellow};
     border-radius: 4px;

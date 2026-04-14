@@ -14,6 +14,26 @@ import {
   Title,
 } from './styled';
 
+type AuthorFields = {
+  name: string;
+  link: string;
+  twitterId: string;
+  facebookId: string;
+};
+
+const DEFAULT_AUTHOR: AuthorFields = {
+  name: 'Ivan Akulov',
+  link: 'https://twitter.com/iamakulov',
+  twitterId: 'iamakulov',
+  facebookId: '100002052594007',
+};
+
+function resolveAuthor(
+  author: Partial<AuthorFields> | null | undefined,
+): AuthorFields {
+  return { ...DEFAULT_AUTHOR, ...(author ?? {}) };
+}
+
 interface QueryProps {
   data: {
     site: {
@@ -49,15 +69,7 @@ interface QueryProps {
         socialImage?: {
           publicURL: string;
         };
-        author: {
-          name: string;
-          link: string;
-          twitterId: string;
-          facebookId: string;
-        };
-        formatting?: {
-          roundImageBorder?: boolean;
-        };
+        author?: Partial<AuthorFields> | null;
       };
     };
   };
@@ -68,46 +80,44 @@ export const Head = ({ data }: QueryProps) => {
   const page = data.markdownRemark;
   const articleMeta = page.frontmatter;
   const visibleTitle = articleMeta.title;
-  const authorDetails = articleMeta.author;
+  const authorDetails = resolveAuthor(articleMeta.author);
   const socialTitle = articleMeta.alternativeTitles?.social || visibleTitle;
   const seoTitle = articleMeta.alternativeTitles?.seo || visibleTitle;
+  const socialImageUrl = articleMeta.socialImage?.publicURL;
 
   return (
     <>
       <title>{seoTitle + ' · ' + siteMetadata.title}</title>
       <meta name="description" content={articleMeta.description} />
-      {articleMeta.socialImage && (
-        <meta
-          name="image"
-          content={siteMetadata.siteUrl + articleMeta.socialImage.publicURL}
-        />
+      {socialImageUrl && (
+        <meta name="image" content={siteMetadata.siteUrl + socialImageUrl} />
       )}
       <meta itemProp="name" content={seoTitle} />
       <meta itemProp="description" content={articleMeta.description} />
-      {articleMeta.socialImage && (
+      {socialImageUrl && (
         <meta
           itemProp="image"
-          content={siteMetadata.siteUrl + articleMeta.socialImage.publicURL}
+          content={siteMetadata.siteUrl + socialImageUrl}
         />
       )}
-      <meta name="twitter:card" content="summary_large_image" />
+      <meta
+        name="twitter:card"
+        content={socialImageUrl ? 'summary_large_image' : 'summary'}
+      />
       <meta name="twitter:title" content={socialTitle} />
       <meta name="twitter:description" content={articleMeta.description} />
       <meta name="twitter:site" content={`@${siteMetadata.twitterId}`} />
       <meta name="twitter:creator" content={`@${authorDetails.twitterId}`} />
-      {articleMeta.socialImage && (
+      {socialImageUrl && (
         <meta
           name="twitter:image:src"
-          content={siteMetadata.siteUrl + articleMeta.socialImage.publicURL}
+          content={siteMetadata.siteUrl + socialImageUrl}
         />
       )}
       <meta name="og:title" content={socialTitle} />
       <meta name="og:description" content={articleMeta.description} />
-      {articleMeta.socialImage && (
-        <meta
-          name="og:image"
-          content={siteMetadata.siteUrl + articleMeta.socialImage.publicURL}
-        />
+      {socialImageUrl && (
+        <meta name="og:image" content={siteMetadata.siteUrl + socialImageUrl} />
       )}
       <meta name="og:site_name" content={siteMetadata.title} />
       <meta name="fb:admins" content={authorDetails.facebookId} />
@@ -126,7 +136,7 @@ export const Head = ({ data }: QueryProps) => {
 const Component = ({ data }: QueryProps) => {
   const page = data.markdownRemark;
   const articleMeta = page.frontmatter;
-  const authorDetails = articleMeta.author;
+  const authorDetails = resolveAuthor(articleMeta.author);
 
   const visibleTitle = articleMeta.title;
 
@@ -143,7 +153,7 @@ const Component = ({ data }: QueryProps) => {
             </a>
           </TopMeta>
         </Header>
-        <Content formatting={articleMeta.formatting}>
+        <Content>
           <div dangerouslySetInnerHTML={{ __html: page.html }} />
         </Content>
         <BottomMeta>
@@ -220,9 +230,6 @@ export const pageQuery = graphql`
           link
           twitterId
           facebookId
-        }
-        formatting {
-          roundImageBorder
         }
       }
     }

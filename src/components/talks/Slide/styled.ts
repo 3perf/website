@@ -55,7 +55,7 @@ export const ImageWrapper = styled.a<{
     line-height: 120px;
 
     color: #ccc;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Bricolage Grotesque', sans-serif;
     font-size: 60px;
     font-weight: bold;
 

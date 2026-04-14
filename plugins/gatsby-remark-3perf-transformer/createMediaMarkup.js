@@ -127,6 +127,21 @@ function createMediaMarkup({
     fallbackElement.attrs.style = `min-height: ${mediaOptions.scrollable.height}px; min-width: calc(${mediaOptions.scrollable.height}px * ${aspectRatio});`;
   }
 
+  if (fallbackElement && mediaOptions.maxWidth != null) {
+    const w = mediaOptions.maxWidth;
+    if (typeof w !== 'number' || !Number.isFinite(w) || w <= 0) {
+      throw new Error('maxWidth must be a positive finite number (pixels)');
+    }
+    const fragment = `max-width: ${w}px`;
+    fallbackElement.attrs.style = fallbackElement.attrs.style
+      ? `${fragment}; ${fallbackElement.attrs.style}`
+      : fragment;
+  }
+
+  if (mediaOptions.border && fallbackElement) {
+    figureElement.attrs.class += ' media-container_border';
+  }
+
   return render([
     {
       ...figureElement,

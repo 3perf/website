@@ -9,8 +9,6 @@ author:
 date:
   published: 2022-05-05T01:00:00
   modified: 2022-05-05T01:00:00
-formatting:
-  roundImageBorder: true
 ---
 
 _This is a shareable version of [an X thread](https://twitter.com/iamakulov/status/1522008502398554113)._
