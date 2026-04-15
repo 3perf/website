@@ -233,10 +233,7 @@ const sidenoteStyles = css`
 
   ${media.medium`
     .sidenote__heading {
-      background: ${colors.softYellow};
-      margin: ${sizes.paragraphSpacing}px -${gridSize * 2}px 0;
-      padding: ${gridSize}px ${gridSize * 2}px;
-
+      margin: ${sizes.paragraphSpacing / 2}px 0 ${sizes.paragraphSpacing}px;
       font-size: ${sizes.fontSmall}px;
     }
   `}

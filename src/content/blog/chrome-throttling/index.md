@@ -6,7 +6,7 @@ rssDescription: |
 socialImage: './cover.png'
 date:
   published: 2026-04-14T00:00:00Z
-  modified: 2026-04-14T00:00:00Z
+  modified: 2026-04-15T12:00:00Z
 ---
 
 I had several cases this year where someone complained about things being slow in Chrome with network throttling, but a test on a real network didn’t reproduce that. Here’s the explanation for “why” so I can link to it in the future.
@@ -56,6 +56,10 @@ As a consequence, DevTools throttling is often pretty approximate. [Per Google�
 If Chrome DevTools throttling is inaccurate, why wouldn’t Chrome fix it? The answer is that this inaccuracy is a tradeoff of a key design goal: allowing throttling per tab or per request. From [the corresponding Google doc](https://docs.google.com/document/d/1TwWLaLAfnBfbk5_ZzpGXegPapCIfyzT4MWuZgspKUAQ/edit?tab=t.0):
 
 > Per-tab throttling is the primary requirement that led to the design of devtools throttling. Doing this outside the browser isn’t possible. Maintaining per-tab at the net-layer gets “ugly” according to mmenke, “If it's an HTTP header, that makes a SOCKS proxy more complicated, and doesn't work for HTTPS. If we’re sending bonus data to the proxy, that’s no longer SOCKS, as it doesn’t allow support sending side-channel data. Can also be difficult determining which request is for which tab. Also worth noting as we’re sharing sockets, if two tabs are talking to the same origin, they can have effects on each other. It’s even worse with HTTP2. It’s not clear it’s even possible to shape just some traffic in that case (It’s also encrypted, so at least a purely traffic shaping proxy will have no clue where the requests start and where they end).”
+
+:::note
+**Update from Apr 15:** there is [a fresh proposal to switch to packet-level throttling](https://docs.google.com/document/d/1g5kFgBCKR1UItG5IW3QellAtvE8Dx1rfaqR3xfswjx8/edit?tab=t.0). Upvote it by starring [the corresponding issue](https://issues.chromium.org/issues/496616821).
+:::
 
 ## What To Use Instead
 
