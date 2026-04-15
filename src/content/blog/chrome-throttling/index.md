@@ -64,3 +64,4 @@ Use tools that apply packet-level throttling:
 - [WebPageTest](https://www.webpagetest.org/) is the gold standard for tests on specific networks and devices
 - [Network Link Conditioner](https://nshipster.com/network-link-conditioner/) is an old-but-good Apple tool with a GUI to simulate slow networks on macOS
 - [`@sitespeed.io/throttle`](https://www.npmjs.com/package/@sitespeed.io/throttle) is a CLI alternative for macOS and Linux
+- [winShaper](https://calendar.perfplanet.com/2016/testing-with-realistic-networking-conditions/) is a GUI tool for Windows
