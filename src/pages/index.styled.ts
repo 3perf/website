@@ -6,7 +6,7 @@ import _MailchimpSubscribe from '../components/MailchimpSubscribe';
 import _Nav from '../components/Nav';
 import media from '../styles/media';
 import { linkActiveStyles, linkStyles } from '../styles/shared-styles';
-import { colors, gridSize, sizes } from '../styles/variables';
+import { animations, colors, gridSize, sizes } from '../styles/variables';
 import backgroundUrl from './background.svg';
 
 export const Background = styled.div`
@@ -50,6 +50,26 @@ export const Section = styled.div`
   column-gap: ${gridSize * 6}px;
 `;
 
+export const SectionDateView = styled.div`
+  margin-top: ${gridSize * 8}px;
+`;
+
+export const DateYearHeader = styled.h3`
+  margin: ${gridSize * 6}px 0 ${gridSize * 3}px;
+  font-size: 36px;
+  font-weight: bold;
+  line-height: 1;
+  color: ${colors.brightYellow};
+
+  &:first-of-type {
+    margin-top: 0;
+  }
+
+  ${media.small`
+    font-size: 28px;
+  `}
+`;
+
 export const SectionHeader = styled.h2`
   margin: ${gridSize * 8}px 0 ${gridSize * 4}px;
   font-size: 48px;
@@ -59,6 +79,158 @@ export const SectionHeader = styled.h2`
   ${media.small`
     font-size: 36px;
   `}
+`;
+
+export const SortPills = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: ${gridSize}px;
+  margin: ${gridSize * 8}px 0 0;
+`;
+
+export const SortPill = styled.label`
+  position: relative;
+  isolation: isolate;
+  display: inline-grid;
+  place-items: center;
+  margin: 0;
+  min-height: 31px;
+  padding: 6px ${gridSize * 2}px;
+  font: inherit;
+  font-size: ${sizes.fontDefault}px;
+  line-height: 1.2;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  color: inherit;
+  transition: color ${animations.hover.duration} ${animations.hover.easing};
+
+  > span {
+    position: relative;
+    z-index: 1;
+  }
+
+  > svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  > svg [data-pill-fill],
+  > svg [data-pill-stroke] {
+    transition: fill ${animations.hover.duration} ${animations.hover.easing},
+      stroke ${animations.hover.duration} ${animations.hover.easing};
+  }
+
+  > svg [data-pill-fill] {
+    fill: transparent;
+  }
+
+  > svg [data-pill-stroke] {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.35);
+  }
+
+  &:hover > svg [data-pill-fill],
+  &:focus-within > svg [data-pill-fill] {
+    fill: rgba(255, 219, 1, 0.12);
+    transition: none;
+  }
+
+  &:hover > svg [data-pill-stroke],
+  &:focus-within > svg [data-pill-stroke] {
+    stroke: ${colors.brightYellow};
+    transition: none;
+  }
+`;
+
+export const SortInput = styled.input.attrs({ type: 'radio' })`
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+`;
+
+export const SortLegend = styled.legend`
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+`;
+
+export const SortSwitcher = styled.fieldset`
+  margin: 0;
+  padding: 0;
+  border: 0;
+
+  > [data-sort-view='date'] {
+    display: none;
+  }
+
+  #sort-content:checked ~ ${SortPills} label[for='sort-content'],
+  #sort-date:checked ~ ${SortPills} label[for='sort-date'] {
+    color: #151515;
+  }
+
+  #sort-content:checked
+    ~ ${SortPills}
+    label[for='sort-content']
+    > svg
+    [data-pill-fill],
+  #sort-date:checked
+    ~ ${SortPills}
+    label[for='sort-date']
+    > svg
+    [data-pill-fill] {
+    fill: ${colors.brightYellow};
+  }
+
+  #sort-content:checked
+    ~ ${SortPills}
+    label[for='sort-content']
+    > svg
+    [data-pill-stroke],
+  #sort-date:checked
+    ~ ${SortPills}
+    label[for='sort-date']
+    > svg
+    [data-pill-stroke] {
+    stroke: ${colors.brightYellow};
+  }
+
+  #sort-content:focus-visible ~ ${SortPills} label[for='sort-content'],
+  #sort-date:focus-visible ~ ${SortPills} label[for='sort-date'] {
+    outline: 2px solid ${colors.brightYellow};
+    outline-offset: 2px;
+  }
+
+  #sort-date:checked ~ [data-sort-view='content'] {
+    display: none;
+  }
+
+  #sort-date:checked ~ [data-sort-view='date'] {
+    display: block;
+  }
+`;
+
+export const ItemSectionLabel = styled.div`
+  font-size: ${sizes.fontSmall}px;
+  opacity: 0.65;
+  margin-bottom: ${gridSize * 0.25}px;
 `;
 
 export const ItemLink = styled(Link)`
@@ -82,7 +254,13 @@ export const ItemTitle = styled.div`
   }
 `;
 
-export const ItemImage = styled.div``;
+export const ItemImage = styled.div<{ $belowTitle?: boolean }>`
+  ${(p) =>
+    p.$belowTitle &&
+    `
+    margin-top: ${gridSize * 1.5}px;
+  `}
+`;
 
 export const ItemDescription = styled.div`
   margin-top: ${gridSize * 0.5}px;
