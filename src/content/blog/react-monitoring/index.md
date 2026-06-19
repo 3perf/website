@@ -30,14 +30,6 @@ Tracking React render performance is challenging. With loading performance, ther
 
 To track how your app behaves _after_ it loads, you’d need to do some work.
 
-:::note
-**Disclaimer: the solution below is not battle-tested.** These steps are based on the experiences of clients I worked with, plus my experiments in the field. It’s how I would approach setting up performance tests today. However, I haven’t had a chance to implement this in a real-world app myself yet.
-
-This means I might not be aware of some edge cases or pitfalls. This guide should be a good starting point for setting up your monitoring system, but it might (or might not!) need fine-tuning to be useful.
-
-(Have your experience to add? Please [share it on Twitter](https://twitter.com/iamakulov/status/1533885339168714752)!)
-:::
-
 # Step 1: Pick the Most Important Interactions
 
 Before you start monitoring render performance, you need to decide _what_ to monitor.
