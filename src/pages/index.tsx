@@ -342,6 +342,15 @@ const HOME_CONTENT: HomeContentItem[] = [
   // React & runtime — components, scheduling, interactions
   {
     section: 'reactRuntime',
+    publishedAt: '2026-06-27T00:00:00Z',
+    link: '/blog/hydration-mismatch/',
+    title: 'Hidden Cost of Hydration Mismatches',
+    description:
+      'When a single React hydration mismatch on a page tanks Largest Contentful Paint to red',
+    badge: 'New',
+  },
+  {
+    section: 'reactRuntime',
     imageKey: 'reactConcurrency',
     publishedAt: '2022-09-29T00:00:00.000Z',
     link: '/talks/react-concurrency/',
@@ -389,8 +398,7 @@ const HOME_CONTENT: HomeContentItem[] = [
     link: '/blog/chrome-throttling/',
     title: 'Chrome DevTools Throttling Is Not Accurate',
     description:
-      'Chrome DevTools slows down requests, not packets. This means its throttling is often off.',
-    badge: 'New',
+      'Chrome DevTools slows down requests, not packets. This means its throttling is often off',
   },
   {
     section: 'tooling',
