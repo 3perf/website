@@ -134,6 +134,9 @@ module.exports = {
                 sizes,
                 presentationWidth,
                 presentationHeight,
+                // Public URL of the original, full-resolution image (copied to
+                // /static by gatsby-plugin-sharp). Used by `clickable` images.
+                originalImg,
               }) {
                 return createMediaMarkup({
                   kind: 'image',
@@ -155,6 +158,7 @@ module.exports = {
                     : [],
                   presentationWidth,
                   presentationHeight,
+                  originalSrc: originalImg,
                 });
               },
             },

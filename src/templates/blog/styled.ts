@@ -131,8 +131,16 @@ const mediaStyles = css`
     border-radius: 2px;
   }
 
+  /* Clickable images: the wrapping <a> shouldn’t inherit the text-link
+   * border-bottom; mirror the talks ImageWrapper and make it block-level. */
+  .media-container a {
+    display: block;
+    border-bottom: none;
+  }
+
   /* Inset stroke; does not change layout (unlike border). */
-  .media-container_border img {
+  .media-container_border img,
+  .media-container_border video {
     outline: 1px solid rgba(0, 0, 0, 0.05);
     outline-offset: -1px;
   }

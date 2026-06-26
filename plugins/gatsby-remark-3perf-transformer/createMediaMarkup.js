@@ -9,6 +9,7 @@ const { render } = require('posthtml-render');
  *  sources: { src?: string; srcSet?: string; sizes?: string; type: string }[]
  *  presentationWidth?: number;
  *  presentationHeight?: number;
+ *  originalSrc?: string;
  * }} param0
  * @returns {string}
  */
@@ -19,6 +20,7 @@ function createMediaMarkup({
   sources = [],
   presentationWidth,
   presentationHeight,
+  originalSrc,
 }) {
   // Alt holds either the alt string, or a stringified JSON object with media options
   /**
@@ -29,6 +31,9 @@ function createMediaMarkup({
    *  presentationWidth?: number;
    *  presentationHeight?: number;
    *  sources?: { src?: string; srcSet?: string; sizes?: string; type: string }[];
+   *  maxWidth?: number;
+   *  border?: boolean;
+   *  clickable?: boolean;
    * }}
    */
   let mediaOptions = {};
@@ -127,31 +132,52 @@ function createMediaMarkup({
     fallbackElement.attrs.style = `min-height: ${mediaOptions.scrollable.height}px; min-width: calc(${mediaOptions.scrollable.height}px * ${aspectRatio});`;
   }
 
-  if (fallbackElement && mediaOptions.maxWidth != null) {
+  if (mediaOptions.maxWidth != null) {
     const w = mediaOptions.maxWidth;
     if (typeof w !== 'number' || !Number.isFinite(w) || w <= 0) {
       throw new Error('maxWidth must be a positive finite number (pixels)');
     }
     const fragment = `max-width: ${w}px`;
-    fallbackElement.attrs.style = fallbackElement.attrs.style
-      ? `${fragment}; ${fallbackElement.attrs.style}`
+    const targetElement = fallbackElement ?? containerElement;
+    targetElement.attrs.style = targetElement.attrs.style
+      ? `${fragment}; ${targetElement.attrs.style}`
       : fragment;
   }
 
-  if (mediaOptions.border && fallbackElement) {
+  if (mediaOptions.border) {
     figureElement.attrs.class += ' media-container_border';
+  }
+
+  /** @type {import('posthtml-parser').NodeTag} */
+  const mediaElement = {
+    ...containerElement,
+    content: [...sourceElements, fallbackElement].filter(Boolean),
+  };
+
+  // Clickable images: wrap the image in a plain <a> linking to the original,
+  // full-resolution asset, so readers can open it in a new tab to inspect
+  // details. Falls back to the displayed `src` if the original isn’t available.
+  let clickableMediaElement = mediaElement;
+  if (mediaOptions.clickable) {
+    if (!fallback) {
+      throw new Error('Clickable media is only supported for images');
+    }
+
+    clickableMediaElement = {
+      tag: 'a',
+      attrs: {
+        href: originalSrc ?? fallback.src,
+        target: '_blank',
+        rel: 'noopener noreferrer',
+      },
+      content: [mediaElement],
+    };
   }
 
   return render([
     {
       ...figureElement,
-      content: [
-        {
-          ...containerElement,
-          content: [...sourceElements, fallbackElement].filter(Boolean),
-        },
-        captionElement,
-      ].filter(Boolean),
+      content: [clickableMediaElement, captionElement].filter(Boolean),
     },
   ]);
 }
