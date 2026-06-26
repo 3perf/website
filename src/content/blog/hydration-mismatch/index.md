@@ -1,8 +1,8 @@
 ---
 title: 'Hidden Cost of Hydration Mismatches'
-description: 'A single hydration mismatch on a page tanks Largest Contentful Paint from green all the way to red'
+description: 'When a single React hydration mismatch tanks Largest Contentful Paint to red'
 rssDescription: |
-  A single hydration mismatch on a page tanks Largest Contentful Paint from green all the way to red
+  When a single React hydration mismatch tanks Largest Contentful Paint to red
 date:
   published: 2026-06-27T00:00:00Z
   modified: 2026-06-27T00:00:00Z
