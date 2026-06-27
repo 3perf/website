@@ -346,7 +346,7 @@ const HOME_CONTENT: HomeContentItem[] = [
     link: '/blog/hydration-mismatch/',
     title: 'Hidden Cost of Hydration Mismatches',
     description:
-      'When a single React hydration mismatch on a page tanks Largest Contentful Paint to red',
+      'A single hydration mismatch on a page tanks Largest Contentful Paint from green all the way to red',
     badge: 'New',
   },
   {
