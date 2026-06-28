@@ -43,7 +43,7 @@ Here’s the second piece of the puzzle.
 
 If you use web fonts (and [`font-display: swap`](https://developer.chrome.com/docs/performance/insights/font-display)), as the page loads, you’d frequently see text shift like this:
 
-![{maxWidth: 300, border: true}](./assets/webpage-loading-example.mp4)
+![{maxWidth: 300, border: true, presentationWidth: 1000, presentationHeight: 1500}](./assets/webpage-loading-example.mp4)
 
 This happens because the same characters tend to have [different physical sizes in different fonts](https://tonsky.me/blog/font-size/). So when a web font loads, and a text element switches from a system font to that web font, it would often get a few pixels larger or smaller.
 
