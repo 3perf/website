@@ -1,5 +1,14 @@
 const createMediaMarkup = require('./plugins/gatsby-remark-3perf-transformer/createMediaMarkup.js');
 const { DEFAULT_AUTHOR } = require('./src/constants/author.ts');
+const cheerio = require('cheerio');
+
+function prepareHtmlForRss(html) {
+  const $ = cheerio.load(html, null, false);
+  $(
+    'h1 > a.anchor.before, h2 > a.anchor.before, h3 > a.anchor.before, h4 > a.anchor.before, h5 > a.anchor.before, h6 > a.anchor.before',
+  ).remove();
+  return $.html();
+}
 
 let siteUrl = 'https://3perf.com';
 if (process.env.DEV_SITE_HOSTNAME_OVERRIDE) {
@@ -242,7 +251,7 @@ module.exports = {
                   // eslint-disable-next-line @typescript-eslint/camelcase
                   custom_elements: [
                     {
-                      'content:encoded': edge.node.html,
+                      'content:encoded': prepareHtmlForRss(edge.node.html),
                     },
                     postMeta.socialImage && {
                       'media:content': {
