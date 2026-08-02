@@ -20,7 +20,7 @@ export const Header = styled.header`
 `;
 
 export const TopMeta = styled.div`
-  margin-top: ${gridSize * 2}px;
+  margin-top: ${gridSize * 3}px;
 `;
 
 export const BottomMeta = styled.div`
@@ -31,7 +31,7 @@ export const Title = styled.h1`
   margin: 0;
   font-size: 80px;
   font-weight: 900;
-  line-height: 1;
+  line-height: 0.85;
 
   ${media.small`
     font-size: 53.3333px;

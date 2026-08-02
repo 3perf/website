@@ -19,7 +19,7 @@ export const Image = styled(GatsbyImage)`
 
 export const Title = styled.h1<{ $hasSubtitle: boolean }>`
   font-size: 2.6667em;
-  line-height: 1.2;
+  line-height: 1;
   margin-top: ${gridSize * 4}px;
   margin-bottom: ${gridSize * 2}px;
 

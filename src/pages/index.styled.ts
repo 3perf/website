@@ -28,8 +28,8 @@ export const Nav = styled(_Nav)`
 
 export const Header = styled.h1`
   margin: ${gridSize * 8}px 0 ${gridSize * 4}px;
-  font-size: 80px;
-  line-height: 1.2;
+  font-size: 90px;
+  line-height: 0.85;
   color: ${colors.brightYellow};
   font-weight: 900;
 

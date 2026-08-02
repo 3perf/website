@@ -35,7 +35,7 @@ export const GlobalStyle = createGlobalStyle`
   h5,
   h6 {
     font-family: 'Bricolage Grotesque Variable', sans-serif;
-    font-stretch: 70%;
+    font-stretch: 75%;
   }
 
   a {
