@@ -66,7 +66,6 @@ const headerStyles = css`
   h4,
   h5,
   h6 {
-    font-family: 'Bricolage Grotesque Variable', sans-serif;
     margin-top: 2em;
 
     .anchor {
@@ -257,7 +256,6 @@ const tocStyles = css`
       ${gridSize * 2}px;
     font-size: ${sizes.fontSmall}px;
     border-radius: 2px;
-    font-family: 'Bricolage Grotesque Variable', sans-serif;
 
     &.toc_with-header {
       margin: ${gridSize * 4}px -${gridSize * 2}px;
@@ -317,7 +315,6 @@ const noteStyles = css`
 `;
 
 export const Content = styled.article`
-  font-family: system-ui, sans-serif;
   max-width: 600px;
 
   ${headerStyles}

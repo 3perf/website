@@ -9,8 +9,6 @@ export const Container = styled.figure`
   align-items: flex-start;
   margin: -8px;
 
-  font-family: system-ui, sans-serif;
-
   > * {
     margin: 8px;
   }
@@ -55,7 +53,6 @@ export const ImageWrapper = styled.a<{
     line-height: 120px;
 
     color: #ccc;
-    font-family: 'Bricolage Grotesque Variable', sans-serif;
     font-size: 60px;
     font-weight: bold;
 
