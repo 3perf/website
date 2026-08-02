@@ -17,12 +17,12 @@ export const Content = styled.div`
 
 export const Header = styled.h1`
   color: ${colors.brightYellow};
-  font-size: 36px;
+  font-size: 48px;
   font-weight: 900;
   margin: ${gridSize * 8}px 0 ${gridSize * 3}px;
 
   ${media.notSmall`
-    font-size: 60px;
+    font-size: 80px;
     margin-top: ${gridSize * 16}px;
   `}
 `;

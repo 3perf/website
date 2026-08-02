@@ -28,7 +28,7 @@ export const Nav = styled(_Nav)`
 
 export const Header = styled.h1`
   margin: ${gridSize * 8}px 0 ${gridSize * 4}px;
-  font-size: 60px;
+  font-size: 80px;
   line-height: 1.2;
   color: ${colors.brightYellow};
   font-weight: 900;
@@ -40,7 +40,7 @@ export const Header = styled.h1`
   -webkit-text-fill-color: transparent;
 
   ${media.small`
-    font-size: 36px;
+    font-size: 48px;
     margin-bottom: ${gridSize * 2}px;
   `}
 `;
@@ -56,7 +56,7 @@ export const SectionDateView = styled.div`
 
 export const DateYearHeader = styled.h3`
   margin: ${gridSize * 6}px 0 ${gridSize * 3}px;
-  font-size: 36px;
+  font-size: 48px;
   font-weight: bold;
   line-height: 1;
   color: ${colors.brightYellow};
@@ -66,18 +66,18 @@ export const DateYearHeader = styled.h3`
   }
 
   ${media.small`
-    font-size: 28px;
+    font-size: 37.3333px;
   `}
 `;
 
 export const SectionHeader = styled.h2`
   margin: ${gridSize * 8}px 0 ${gridSize * 4}px;
-  font-size: 48px;
+  font-size: 64px;
   font-weight: bold;
   line-height: 1;
 
   ${media.small`
-    font-size: 36px;
+    font-size: 48px;
   `}
 `;
 

@@ -29,12 +29,12 @@ export const BottomMeta = styled.div`
 
 export const Title = styled.h1`
   margin: 0;
-  font-size: 60px;
+  font-size: 80px;
   font-weight: 900;
   line-height: 1;
 
   ${media.small`
-    font-size: 40px;
+    font-size: 53.3333px;
   `}
 `;
 
@@ -75,16 +75,16 @@ const headerStyles = css`
   }
 
   h1 {
-    font-size: 32px;
+    font-size: 42.6667px;
     font-weight: 900;
   }
 
   h2 {
-    font-size: 24px;
+    font-size: 32px;
   }
 
   h3 {
-    font-size: 18px;
+    font-size: 24px;
   }
 `;
 
