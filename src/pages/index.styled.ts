@@ -120,7 +120,8 @@ export const SortPill = styled.label`
 
   > svg [data-pill-fill],
   > svg [data-pill-stroke] {
-    transition: fill ${animations.hover.duration} ${animations.hover.easing},
+    transition:
+      fill ${animations.hover.duration} ${animations.hover.easing},
       stroke ${animations.hover.duration} ${animations.hover.easing};
   }
 

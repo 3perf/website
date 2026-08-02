@@ -9,7 +9,8 @@ export const linkStyles = css`
   // to fully-bordered images as well
   border-bottom: 1px solid;
   border-color: var(--link-border-color);
-  transition: color ${animations.hover.duration} ${animations.hover.easing},
+  transition:
+    color ${animations.hover.duration} ${animations.hover.easing},
     border-color ${animations.hover.duration} ${animations.hover.easing};
 `;
 
