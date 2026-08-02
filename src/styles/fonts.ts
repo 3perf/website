@@ -2,3 +2,5 @@
 import '@fontsource/fira-code/latin-600.css';
 import '@fontsource/fira-code/latin-400.css';
 import '@fontsource-variable/bricolage-grotesque/standard.css';
+import '@fontsource-variable/public-sans/wght.css';
+import '@fontsource-variable/public-sans/wght-italic.css';
