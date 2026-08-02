@@ -14,7 +14,7 @@ __metadata:
     "@babel/plugin-transform-object-assign": ^7.22.5
     "@babel/preset-env": ^7.22.9
     "@babel/preset-typescript": ^7.22.5
-    "@fontsource/bricolage-grotesque": ^5.2.10
+    "@fontsource-variable/bricolage-grotesque": ^5.3.0
     "@fontsource/fira-code": ^4.5.10
     "@fontsource/merriweather": ^4.5.12
     "@netlify/plugin-gatsby": ^3.8.4
@@ -1927,10 +1927,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fontsource/bricolage-grotesque@npm:^5.2.10":
-  version: 5.2.10
-  resolution: "@fontsource/bricolage-grotesque@npm:5.2.10"
-  checksum: b172843761626248558edbc6a5b6a17392be4dce44e22bf8cec321fc4ed00ddbbb70195ab622a0b839261642a983f98b497ecc03a79215bd74578c3dd53d4098
+"@fontsource-variable/bricolage-grotesque@npm:^5.3.0":
+  version: 5.3.0
+  resolution: "@fontsource-variable/bricolage-grotesque@npm:5.3.0"
+  checksum: 125b12ae4bc6bee2be4f8437501d8fbfde45bafe96f0ce4fc600d89975f599e483b9a620eb0a82a1b6ae9f80f5e9769649a2b59e65ec97bd2cbb8b70cbf956cb
   languageName: node
   linkType: hard
 

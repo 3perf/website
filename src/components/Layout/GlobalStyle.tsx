@@ -12,7 +12,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   html {
-    font-family: 'Bricolage Grotesque', sans-serif;
+    font-family: 'Bricolage Grotesque Variable', sans-serif;
     overflow-x: hidden;
 
     --link-color: #06c;
