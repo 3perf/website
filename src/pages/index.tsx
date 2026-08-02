@@ -58,11 +58,7 @@ type HomeImageKey =
   | 'polyfills';
 
 type SectionId =
-  | 'caseStudies'
-  | 'loadingAndImages'
-  | 'bundles'
-  | 'reactRuntime'
-  | 'tooling';
+  'caseStudies' | 'loadingAndImages' | 'bundles' | 'reactRuntime' | 'tooling';
 
 type HomeContentItemBase = {
   section: SectionId;

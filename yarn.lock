@@ -77,7 +77,7 @@ __metadata:
     polished: ^3.6.4
     posthtml-parser: ^0.11.0
     posthtml-render: ^3.0.0
-    prettier: ^2.0.5
+    prettier: 3.9.6
     prismjs: ^1.27.0
     query-string: ^6.12.1
     react: canary
@@ -18433,12 +18433,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:^2.0.5":
-  version: 2.4.0
-  resolution: "prettier@npm:2.4.0"
+"prettier@npm:3.9.6":
+  version: 3.9.6
+  resolution: "prettier@npm:3.9.6"
   bin:
-    prettier: bin-prettier.js
-  checksum: ac1bf07566dad5f58469e6d8a954bd5c0f833935597deb00330e9f673e14e4cf81e07dee7eff5776c0edebe11358d199f332d9940be40c8b455516034e553ce0
+    prettier: bin/prettier.cjs
+  checksum: 3fb6a3b6462b05afb825697a3fdcdd9bd1480c11d10d655b7ddbcaf2560beb695caffbe155b5020466005aa06bff74a61ba9c16e602bff849331b62f5db26cdf
   languageName: node
   linkType: hard
 
