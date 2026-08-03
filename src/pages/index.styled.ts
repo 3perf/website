@@ -28,6 +28,7 @@ export const Nav = styled(_Nav)`
 
 export const Header = styled.h1`
   margin: ${gridSize * 8}px 0 ${gridSize * 4}px;
+  font-family: var(--font-large);
   font-size: 60px;
   line-height: 1.2;
   color: ${colors.brightYellow};
@@ -56,6 +57,7 @@ export const SectionDateView = styled.div`
 
 export const DateYearHeader = styled.h3`
   margin: ${gridSize * 6}px 0 ${gridSize * 3}px;
+  font-family: var(--font-large);
   font-size: 36px;
   font-weight: bold;
   line-height: 1;
@@ -72,6 +74,7 @@ export const DateYearHeader = styled.h3`
 
 export const SectionHeader = styled.h2`
   margin: ${gridSize * 8}px 0 ${gridSize * 4}px;
+  font-family: var(--font-large);
   font-size: 48px;
   font-weight: bold;
   line-height: 1;

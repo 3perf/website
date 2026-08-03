@@ -8,6 +8,7 @@ export const Outer = styled.div`
 
 export const Inner = styled.div`
   padding: 32px 36px;
+  font-family: var(--font-large);
   font-size: 36px;
   transform: rotate(1deg);
 `;

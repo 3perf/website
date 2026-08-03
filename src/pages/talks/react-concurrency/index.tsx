@@ -49,7 +49,7 @@ export const Head = () => {
 
   return (
     <>
-      <title>{`${meta.title} · PerfPerfPerf`}</title>
+      <title>Mayenne Sans + System</title>
 
       <meta name="description" content={meta.description} />
       <meta name="image" content={fullSocialCoverUrl} />

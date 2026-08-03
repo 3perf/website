@@ -5,6 +5,14 @@ import { linkActiveStyles, linkStyles } from '../../styles/shared-styles';
 import { colors, sizes } from '../../styles/variables';
 
 export const GlobalStyle = createGlobalStyle`
+  @font-face {
+    font-family: 'Mayenne Sans';
+    src: url('/fonts/Mayenne-Sans-Regular.woff2') format('woff2');
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+  }
+
   *,
   *::before,
   *::after {
@@ -12,7 +20,10 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   html {
-    font-family: 'Bricolage Grotesque Variable', sans-serif;
+    --font-large: 'Mayenne Sans', sans-serif;
+    --font-body: system-ui, sans-serif;
+
+    font-family: var(--font-body);
     overflow-x: hidden;
 
     --link-color: #06c;

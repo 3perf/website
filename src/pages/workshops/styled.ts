@@ -40,6 +40,7 @@ export const Nav = styled(_Nav)`
 
 export const Header = styled.h1`
   margin: 0 0 ${gridSize * 3}px;
+  font-family: var(--font-large);
   font-size: 3em;
   line-height: 1.2;
   font-weight: 900;
@@ -74,6 +75,7 @@ export const Marquee = styled(_Marquee)`
 
 export const Keywords = styled.div`
   margin: 0 0 ${gridSize * 6}px;
+  font-family: var(--font-large);
   font-size: 40px;
   color: #222;
   font-weight: 900;
@@ -99,6 +101,7 @@ export const Blockquote = styled.blockquote`
     content: '“';
     position: absolute;
     color: #555;
+    font-family: var(--font-large);
     font-size: 60px;
     z-index: 0;
     font-weight: 900;

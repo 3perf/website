@@ -511,7 +511,7 @@ const ContentItem = ({
 export function Head() {
   return (
     <>
-      <title>Web Performance Talks, Articles and Tools | PerfPerfPerf</title>
+      <title>Mayenne Sans + System</title>
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="og:image" content={facebookCoverUrl} />
     </>

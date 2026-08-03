@@ -8,6 +8,7 @@ export const Link = styled.a`
   border: none;
   position: relative;
 
+  font-family: var(--font-large);
   font-size: 60px;
   font-weight: bold;
   white-space: nowrap;

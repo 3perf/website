@@ -32,10 +32,12 @@ export const Figure = styled.figure`
 `;
 
 export const Caption = styled.figcaption`
+  font-family: var(--font-large);
   font-size: 36px;
   margin-bottom: ${gridSize * 2}px;
 
   ${media.small`
+    font-family: var(--font-body);
     font-size: 24px;
     margin-bottom: ${gridSize * 1.5}px;
   `}
@@ -56,6 +58,7 @@ export const Link = styled.a`
     /* Increase the area to allow moving the mouse from the image to the element */
     width: 180px;
     text-align: center;
+    font-family: var(--font-large);
     font-size: 60px;
     font-weight: bold;
 

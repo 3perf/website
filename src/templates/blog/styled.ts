@@ -29,6 +29,7 @@ export const BottomMeta = styled.div`
 
 export const Title = styled.h1`
   margin: 0;
+  font-family: var(--font-large);
   font-size: 60px;
   font-weight: 900;
   line-height: 1;
@@ -66,7 +67,6 @@ const headerStyles = css`
   h4,
   h5,
   h6 {
-    font-family: 'Bricolage Grotesque Variable', sans-serif;
     margin-top: 2em;
 
     .anchor {
@@ -75,6 +75,7 @@ const headerStyles = css`
   }
 
   h1 {
+    font-family: var(--font-large);
     font-size: 32px;
     font-weight: 900;
   }
@@ -257,7 +258,7 @@ const tocStyles = css`
       ${gridSize * 2}px;
     font-size: ${sizes.fontSmall}px;
     border-radius: 2px;
-    font-family: 'Bricolage Grotesque Variable', sans-serif;
+    font-family: var(--font-body);
 
     &.toc_with-header {
       margin: ${gridSize * 4}px -${gridSize * 2}px;
@@ -295,6 +296,7 @@ const tocStyles = css`
 
   .toc__header {
     margin: 0 0 ${gridSize}px;
+    font-family: var(--font-large);
     font-size: 26px;
   }
 `;
@@ -317,7 +319,7 @@ const noteStyles = css`
 `;
 
 export const Content = styled.article`
-  font-family: system-ui, sans-serif;
+  font-family: var(--font-body);
   max-width: 600px;
 
   ${headerStyles}
@@ -356,6 +358,7 @@ export const Content = styled.article`
       height: 30px;
       overflow: hidden;
       line-height: 40px;
+      font-family: var(--font-large);
       font-size: 60px;
       font-weight: 900;
       color: #333;

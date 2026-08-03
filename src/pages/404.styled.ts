@@ -17,6 +17,7 @@ export const Content = styled.div`
 
 export const Header = styled.h1`
   color: ${colors.brightYellow};
+  font-family: var(--font-large);
   font-size: 36px;
   font-weight: 900;
   margin: ${gridSize * 8}px 0 ${gridSize * 3}px;

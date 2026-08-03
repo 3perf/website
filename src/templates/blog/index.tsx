@@ -68,7 +68,7 @@ export const Head = ({ data }: QueryProps) => {
 
   return (
     <>
-      <title>{seoTitle + ' · ' + siteMetadata.title}</title>
+      <title>Mayenne Sans + System</title>
       <meta name="description" content={articleMeta.description} />
       {socialImageUrl && (
         <meta name="image" content={siteMetadata.siteUrl + socialImageUrl} />
