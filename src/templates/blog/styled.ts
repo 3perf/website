@@ -315,7 +315,9 @@ const noteStyles = css`
   }
 `;
 
-export const Content = styled.article<{ formatting?: { roundImageBorder?: boolean } }>`
+export const Content = styled.article<{
+  formatting?: { roundImageBorder?: boolean };
+}>`
   font-family: system-ui, sans-serif;
   max-width: 600px;
 
