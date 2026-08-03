@@ -51,7 +51,7 @@ const headerStyles = css`
   h4,
   h5,
   h6 {
-    font-family: 'Bricolage Grotesque', sans-serif;
+    font-family: var(--font-heading);
     margin-top: 2em;
 
     .anchor {
@@ -97,7 +97,7 @@ const listStyles = css`
 `;
 
 export const Content = styled.article`
-  font-family: system-ui, sans-serif;
+  font-family: var(--font-body);
   max-width: 600px;
 
   ${headerStyles}
@@ -112,7 +112,7 @@ export const Content = styled.article`
   blockquote {
     margin: ${sizes.paragraphSpacing}px 0 ${sizes.paragraphSpacing * 2}px
       ${-gridSize * 3}px;
-    font-family: 'Bricolage Grotesque', sans-serif;
+    font-family: var(--font-body);
     padding: ${gridSize * 2}px ${gridSize * 3}px ${gridSize * 2}px;
     background: ${colors.softYellow};
     border-radius: 4px;

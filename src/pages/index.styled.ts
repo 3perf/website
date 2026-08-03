@@ -27,22 +27,19 @@ export const Nav = styled(_Nav)`
 `;
 
 export const Header = styled.h1`
-  margin: ${gridSize * 8}px 0 ${gridSize * 4}px;
-  font-size: 60px;
+  margin: -20px;
+  padding: 20px;
+  font-family: 'Magnet Headline Slanted', sans-serif;
+  font-size: 150px;
   line-height: 1.2;
   color: ${colors.brightYellow};
-  font-weight: 900;
+  font-weight: 400;
 
   background: url('${backgroundUrl}') center bottom;
   background-size: cover;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-
-  ${media.small`
-    font-size: 36px;
-    margin-bottom: ${gridSize * 2}px;
-  `}
 `;
 
 export const Section = styled.div`
@@ -120,7 +117,8 @@ export const SortPill = styled.label`
 
   > svg [data-pill-fill],
   > svg [data-pill-stroke] {
-    transition: fill ${animations.hover.duration} ${animations.hover.easing},
+    transition:
+      fill ${animations.hover.duration} ${animations.hover.easing},
       stroke ${animations.hover.duration} ${animations.hover.easing};
   }
 

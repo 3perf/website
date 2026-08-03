@@ -49,7 +49,7 @@ export const Head = () => {
 
   return (
     <>
-      <title>{`${meta.title} · PerfPerfPerf`}</title>
+      <title>Magnet</title>
 
       <meta name="description" content={meta.description} />
       <meta name="image" content={fullSocialCoverUrl} />

@@ -27,9 +27,7 @@ export const Head = ({ location }: HeadProps) => {
 
   return (
     <>
-      <title>
-        React Performance and Core Web Vitals Workshops · PerfPerfPerf
-      </title>
+      <title>Magnet</title>
       <meta
         name="description"
         content="Learn how to make your app faster with these workshops from Ivan Akulov. Featured at Smashing Conf, React Summit, and more."

@@ -5,6 +5,8 @@ import { NavKind } from '../components/NavBase';
 import WidthWrapper from '../components/WidthWrapper';
 import { BackgroundWrapper, Content, Header, Text } from './404.styled';
 
+export const Head = () => <title>Magnet</title>;
+
 const NotFoundPage = () => (
   <Layout>
     <BackgroundWrapper>
