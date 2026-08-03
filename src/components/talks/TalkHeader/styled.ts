@@ -18,13 +18,13 @@ export const Image = styled(GatsbyImage)`
 `;
 
 export const Title = styled.h1<{ $hasSubtitle: boolean }>`
-  font-size: 2.6667em;
+  font-size: 48px;
   line-height: 1;
   margin-top: ${gridSize * 4}px;
   margin-bottom: ${gridSize * 2}px;
 
   ${media.small`
-    font-size: 2em;
+    font-size: 36px;
   `}
 `;
 

@@ -26,12 +26,12 @@ export const RelatedLinks = styled.div`
 
 export const Title = styled.h1`
   margin: 0;
-  font-size: 80px;
+  font-size: 72px;
   font-weight: 900;
   line-height: 1;
 
   ${media.small`
-    font-size: 53.3333px;
+    font-size: 48px;
   `}
 `;
 
@@ -60,12 +60,12 @@ const headerStyles = css`
   }
 
   h1 {
-    font-size: 42.6667px;
+    font-size: 36px;
     font-weight: 900;
   }
 
   h2 {
-    font-size: 32px;
+    font-size: 30px;
   }
 
   h3 {

@@ -8,12 +8,12 @@ export const Link = styled.a`
   border: none;
   position: relative;
 
-  font-size: 80px;
+  font-size: 72px;
   font-weight: bold;
   white-space: nowrap;
 
   ${media.small`
-    font-size: 64px;
+    font-size: 60px;
     white-space: normal;
     line-height: 1;
   `};
