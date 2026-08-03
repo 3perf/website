@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import media from '../../../styles/media';
-import { gridSize, sizes } from '../../../styles/variables';
+import { fontFamilies, gridSize, sizes } from '../../../styles/variables';
 import GatsbyImage from '../../Image';
 
 export const Container = styled.figure`
@@ -9,7 +9,7 @@ export const Container = styled.figure`
   align-items: flex-start;
   margin: -8px;
 
-  font-family: system-ui, sans-serif;
+  font-family: ${fontFamilies.body};
 
   > * {
     margin: 8px;
@@ -55,7 +55,7 @@ export const ImageWrapper = styled.a<{
     line-height: 120px;
 
     color: #ccc;
-    font-family: 'Bricolage Grotesque', sans-serif;
+    font-family: ${fontFamilies.body};
     font-size: 60px;
     font-weight: bold;
 
@@ -92,6 +92,8 @@ export const Text = styled.figcaption<{
   ${(props) =>
     props.$isSectionHeader &&
     css`
+      font-family: ${fontFamilies.heading};
+
       ${media.notSmall`
       font-size: 1.25em;
     `}

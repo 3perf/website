@@ -5,7 +5,7 @@ import _MailchimpSubscribe from '../../components/MailchimpSubscribe';
 import _Nav from '../../components/Nav';
 import codeHighlightStyles from '../../styles/code-highlight-styles';
 import media from '../../styles/media';
-import { colors, gridSize, sizes } from '../../styles/variables';
+import { colors, fontFamilies, gridSize, sizes } from '../../styles/variables';
 
 //////////////////////////////////////////////////////////////////////
 // React blocks
@@ -66,7 +66,7 @@ const headerStyles = css`
   h4,
   h5,
   h6 {
-    font-family: 'Bricolage Grotesque', sans-serif;
+    font-family: ${fontFamilies.heading};
     margin-top: 2em;
 
     .anchor {
@@ -257,7 +257,7 @@ const tocStyles = css`
       ${gridSize * 2}px;
     font-size: ${sizes.fontSmall}px;
     border-radius: 2px;
-    font-family: 'Bricolage Grotesque', sans-serif;
+    font-family: ${fontFamilies.body};
 
     &.toc_with-header {
       margin: ${gridSize * 4}px -${gridSize * 2}px;
@@ -317,7 +317,7 @@ const noteStyles = css`
 `;
 
 export const Content = styled.article`
-  font-family: system-ui, sans-serif;
+  font-family: ${fontFamilies.body};
   max-width: 600px;
 
   ${headerStyles}

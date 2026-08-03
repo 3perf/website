@@ -26,12 +26,9 @@ interface ComponentProps {
 }
 
 export const Head = ({ data }: ComponentProps) => {
-  const title = data.markdownRemark.frontmatter.title;
-  const siteMetadata = data.site.siteMetadata;
-
   return (
     <>
-      <title>{title + ' · ' + siteMetadata.title}</title>
+      <title>Neue Freigeist</title>
       <meta name="robots" content="noindex" />
     </>
   );

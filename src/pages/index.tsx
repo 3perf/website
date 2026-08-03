@@ -58,11 +58,7 @@ type HomeImageKey =
   | 'polyfills';
 
 type SectionId =
-  | 'caseStudies'
-  | 'loadingAndImages'
-  | 'bundles'
-  | 'reactRuntime'
-  | 'tooling';
+  'caseStudies' | 'loadingAndImages' | 'bundles' | 'reactRuntime' | 'tooling';
 
 type HomeContentItemBase = {
   section: SectionId;
@@ -515,7 +511,7 @@ const ContentItem = ({
 export function Head() {
   return (
     <>
-      <title>Web Performance Talks, Articles and Tools | PerfPerfPerf</title>
+      <title>Neue Freigeist</title>
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="og:image" content={facebookCoverUrl} />
     </>

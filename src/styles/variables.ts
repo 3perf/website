@@ -17,6 +17,12 @@ export const sizes = {
   fontSmall: 13,
 };
 
+export const fontFamilies = {
+  heading: "'Neue Freigeist', sans-serif",
+  body: "'Neue Freigeist', sans-serif",
+  code: "'Fira Code', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace",
+};
+
 export const animations = {
   hover: {
     duration: '0.25s',

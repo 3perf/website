@@ -2,7 +2,7 @@
 
 import { createGlobalStyle } from 'styled-components';
 import { linkActiveStyles, linkStyles } from '../../styles/shared-styles';
-import { colors, sizes } from '../../styles/variables';
+import { colors, fontFamilies, sizes } from '../../styles/variables';
 
 export const GlobalStyle = createGlobalStyle`
   *,
@@ -12,7 +12,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   html {
-    font-family: 'Bricolage Grotesque', sans-serif;
+    font-family: ${fontFamilies.body};
     overflow-x: hidden;
 
     --link-color: #06c;
@@ -28,6 +28,15 @@ export const GlobalStyle = createGlobalStyle`
     overflow: hidden;
   }
 
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: ${fontFamilies.heading};
+  }
+
   a {
     ${linkStyles}
   }
@@ -39,8 +48,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   code {
-    font-family: 'Fira Code', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono',
-      monospace;
+    font-family: ${fontFamilies.code};
     background: ${colors.codeBackground};
     padding: 0 3px;
     border-radius: 2px;

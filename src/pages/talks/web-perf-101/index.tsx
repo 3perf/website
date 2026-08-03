@@ -84,9 +84,7 @@ export const Head = () => {
 
   return (
     <>
-      <title>
-        Web Performance 101: JS, CSS, HTTP, images &amp; fonts · PerfPerfPerf
-      </title>
+      <title>Neue Freigeist</title>
       <link rel="canonical" href="https://3perf.com/talks/web-perf-101/" />
       {/* Hooray! Meta tags! */}
       <meta
