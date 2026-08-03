@@ -5,6 +5,15 @@ import { linkActiveStyles, linkStyles } from '../../styles/shared-styles';
 import { colors, sizes } from '../../styles/variables';
 
 export const GlobalStyle = createGlobalStyle`
+  @font-face {
+    font-family: 'Massilia';
+    src: url('/fonts/massilia-variable-wdth-wght-slnt.woff') format('woff');
+    font-style: oblique -10deg 0deg;
+    font-stretch: 25% 200%;
+    font-weight: 200 900;
+    font-display: swap;
+  }
+
   *,
   *::before,
   *::after {
@@ -12,7 +21,10 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   html {
-    font-family: 'Bricolage Grotesque', sans-serif;
+    --font-heading: 'Massilia', sans-serif;
+    --font-body: 'Massilia', sans-serif;
+
+    font-family: var(--font-body);
     overflow-x: hidden;
 
     --link-color: #06c;
@@ -28,6 +40,15 @@ export const GlobalStyle = createGlobalStyle`
     overflow: hidden;
   }
 
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading);
+  }
+
   a {
     ${linkStyles}
   }
@@ -38,9 +59,13 @@ export const GlobalStyle = createGlobalStyle`
     ${linkActiveStyles}
   }
 
-  code {
+  code,
+  pre {
     font-family: 'Fira Code', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono',
       monospace;
+  }
+
+  code {
     background: ${colors.codeBackground};
     padding: 0 3px;
     border-radius: 2px;

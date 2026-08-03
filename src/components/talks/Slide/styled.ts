@@ -9,7 +9,7 @@ export const Container = styled.figure`
   align-items: flex-start;
   margin: -8px;
 
-  font-family: system-ui, sans-serif;
+  font-family: var(--font-body);
 
   > * {
     margin: 8px;
@@ -55,7 +55,7 @@ export const ImageWrapper = styled.a<{
     line-height: 120px;
 
     color: #ccc;
-    font-family: 'Bricolage Grotesque', sans-serif;
+    font-family: var(--font-body);
     font-size: 60px;
     font-weight: bold;
 
