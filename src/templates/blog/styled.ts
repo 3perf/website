@@ -20,7 +20,7 @@ export const Header = styled.header`
 `;
 
 export const TopMeta = styled.div`
-  margin-top: ${gridSize * 2}px;
+  margin-top: ${gridSize * 3}px;
 `;
 
 export const BottomMeta = styled.div`
@@ -29,12 +29,12 @@ export const BottomMeta = styled.div`
 
 export const Title = styled.h1`
   margin: 0;
-  font-size: 60px;
+  font-size: 72px;
   font-weight: 900;
-  line-height: 1;
+  line-height: 0.85;
 
   ${media.small`
-    font-size: 40px;
+    font-size: 48px;
   `}
 `;
 
@@ -75,16 +75,16 @@ const headerStyles = css`
   }
 
   h1 {
-    font-size: 32px;
+    font-size: 36px;
     font-weight: 900;
   }
 
   h2 {
-    font-size: 24px;
+    font-size: 30px;
   }
 
   h3 {
-    font-size: 18px;
+    font-size: 24px;
   }
 `;
 
