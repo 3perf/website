@@ -1,0 +1,85 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: #f4f0e8;
+  color: #171717;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  margin: 0;
+}
+
+main {
+  display: grid;
+  min-height: 100vh;
+  align-content: center;
+  gap: 2rem;
+  width: min(58rem, calc(100% - 3rem));
+  margin: 0 auto;
+  padding: 4rem 0;
+}
+
+.repro-kicker {
+  margin: 0 0 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.repro-lcp {
+  max-width: 13ch;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(4rem, 11vw, 7.5rem);
+  font-weight: 700;
+  letter-spacing: -0.06em;
+  line-height: 0.88;
+}
+
+.repro-font-loaded .repro-lcp {
+  font-family: 'Hydration Mismatch Repro Serif', serif;
+  font-size: clamp(4.4rem, 12vw, 8.2rem);
+  letter-spacing: -0.045em;
+  line-height: 0.94;
+}
+
+.repro-panel {
+  max-width: 44rem;
+  padding: 1.25rem 1.5rem;
+  border: 2px solid currentColor;
+  border-radius: 0.75rem;
+  background: rgb(255 255 255 / 55%);
+  box-shadow: 0.4rem 0.4rem 0 currentColor;
+}
+
+.repro-panel p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.repro-panel p + p {
+  margin-top: 0.75rem;
+}
+
+.repro-status {
+  display: inline-block;
+  min-width: 10.5rem;
+  margin-right: 0.35rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  background: #ffdc5e;
+  font-weight: 700;
+  text-align: center;
+}
+
+.repro-status[data-hydrated='true'] {
+  background: #73e28f;
+}
+
+code {
+  font-size: 0.9em;
+}
